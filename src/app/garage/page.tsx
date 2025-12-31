@@ -3,6 +3,7 @@
 import { Canvas } from "@react-three/fiber";
 import { OrbitControls, useGLTF, Environment } from "@react-three/drei";
 import { Suspense } from "react";
+import { Loader } from "@/components/general/loader"; // Add this import
 
 function GarageModel() {
   const { scene } = useGLTF("/models/garage_002.glb");
@@ -21,8 +22,12 @@ function BasePlane() {
 export default function InteractiveGaragePage() {
   return (
     <div className="h-[calc(100vh-3.5rem)] w-full">
-      <Canvas camera={{ position: [5, 5, 5], fov: 50 }} className="bg-gray-900">
-        <Suspense fallback={null}>
+      <Canvas
+        camera={{ position: [5, 5, 5], fov: 50 }}
+        className="bg-background"
+      >
+        <Suspense fallback={<Loader />}>
+          {/* Changed from fallback={null} */}
           <Environment
             files="/hdris/green-lake-bluesky-cloud_0_5K_0c043645-9b9d-43e3-9db5-616be256f73a.exr"
             background={false}
@@ -35,3 +40,6 @@ export default function InteractiveGaragePage() {
     </div>
   );
 }
+
+// Add preload for faster loading
+useGLTF.preload("/models/garage_002.glb");
