@@ -9,6 +9,15 @@ function GarageModel() {
   return <primitive object={scene} />;
 }
 
+function BasePlane() {
+  return (
+    <mesh rotation={[-Math.PI / 2, 0, 0]} position={[0, 0, 0]}>
+      <planeGeometry args={[9, 6]} />
+      <meshStandardMaterial color="#808080" />
+    </mesh>
+  );
+}
+
 export default function InteractiveGaragePage() {
   return (
     <div className="h-[calc(100vh-3.5rem)] w-full">
@@ -19,6 +28,7 @@ export default function InteractiveGaragePage() {
         <Suspense fallback={null}>
           <ambientLight intensity={0.5} />
           <directionalLight position={[10, 10, 5]} intensity={1} />
+          <BasePlane />
           <GarageModel />
           <OrbitControls />
         </Suspense>
