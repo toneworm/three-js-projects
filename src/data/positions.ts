@@ -37,10 +37,10 @@ export const explosionIndividualOffsets: Record<
   Plate_Front_Z001: [0.25, 0.5, 0],
 
   // Plates - Side
-  Plate_Side_T: [-0.3, 0.9, 0],
-  Plate_Side_T001: [-0.1, 0.9, 0],
-  Plate_Side_T002: [0.1, 0.9, 0],
-  Plate_Side_T003: [0.3, 0.9, 0],
+  Plate_Side_T: [-0.8, 0.9, 0],
+  Plate_Side_T001: [-0.3, 0.9, 0],
+  Plate_Side_T002: [0.3, 0.9, 0],
+  Plate_Side_T003: [0.8, 0.9, 0],
 
   // Plates - Back
   Plate_Back_A: [-0.25, 0.5, 0],

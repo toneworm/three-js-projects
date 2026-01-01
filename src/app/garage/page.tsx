@@ -13,19 +13,26 @@ import * as THREE from "three";
 import { useLogPartNames } from "@/hooks/useLogPartNames";
 // import { CameraLogger } from "@/hooks/camera-logger";
 
-const garageModelUrl = "/models/garage_003.glb";
+const garageModelUrl = "/models/garage_004.glb";
+const explosionMultiplier = 1.2;
 
 // Helper function to find offset based on prefix matching
 function getExplosionOffset(name: string): [number, number, number] | null {
   // Check individual overrides first
   if (explosionIndividualOffsets[name]) {
-    return explosionIndividualOffsets[name];
+    return explosionIndividualOffsets[name].map(
+      (val) => val * explosionMultiplier
+    ) as [number, number, number];
   }
 
   // Fall back to group matching
   for (const [prefix, offset] of Object.entries(explosionGroupOffsets)) {
     if (name.startsWith(prefix)) {
-      return offset;
+      return offset.map((val) => val * explosionMultiplier) as [
+        number,
+        number,
+        number
+      ];
     }
   }
 
@@ -128,7 +135,7 @@ export default function InteractiveGaragePage() {
           />
           <BasePlane />
           <GarageModel isExploded={isExploded} />
-          <OrbitControls />
+          <OrbitControls maxPolarAngle={Math.PI / 2 - 0.1} />
         </Suspense>
       </Canvas>
     </div>
