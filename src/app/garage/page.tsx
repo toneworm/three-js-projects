@@ -4,7 +4,10 @@ import { Suspense, useEffect, useState } from "react";
 import { Canvas } from "@react-three/fiber";
 import { OrbitControls, useGLTF, Environment } from "@react-three/drei";
 import { Loader } from "@/components/general/loader";
-import { explosionGroupOffsets } from "@/data/positions";
+import {
+  explosionGroupOffsets,
+  explosionIndividualOffsets,
+} from "@/data/positions";
 import { Button } from "@/components/ui/button";
 import * as THREE from "three";
 import { useLogPartNames } from "@/hooks/useLogPartNames";
@@ -14,11 +17,18 @@ const garageModelUrl = "/models/garage_003.glb";
 
 // Helper function to find offset based on prefix matching
 function getExplosionOffset(name: string): [number, number, number] | null {
+  // Check individual overrides first
+  if (explosionIndividualOffsets[name]) {
+    return explosionIndividualOffsets[name];
+  }
+
+  // Fall back to group matching
   for (const [prefix, offset] of Object.entries(explosionGroupOffsets)) {
     if (name.startsWith(prefix)) {
       return offset;
     }
   }
+
   return null;
 }
 
