@@ -45,6 +45,38 @@ function GarageModel({ isExploded }: { isExploded: boolean }) {
   // Log all part names once on mount
   useLogPartNames(scene);
 
+  // Apply materials once on mount
+  useEffect(() => {
+    if (!scene) return;
+
+    // Define materials
+    const woodMaterial = new THREE.MeshStandardMaterial({
+      color: "#c9a86a", // Desaturated, faded yellow/orange wood
+      roughness: 0.8,
+      metalness: 0.1,
+    });
+
+    const brickMaterial = new THREE.MeshStandardMaterial({
+      color: "#8b4a3a", // Red brick color
+      roughness: 0.9,
+      metalness: 0.0,
+    });
+
+    scene.traverse((child) => {
+      if ((child as THREE.Mesh).isMesh) {
+        const mesh = child as THREE.Mesh;
+
+        // Apply red brick material to wall plinth
+        if (mesh.name.toLowerCase().includes("plinth")) {
+          mesh.material = brickMaterial;
+        } else {
+          // Apply wood material to all other components
+          mesh.material = woodMaterial;
+        }
+      }
+    });
+  }, [scene]);
+
   // Animate each part based on explosion state
   useEffect(() => {
     if (!scene) return;
@@ -104,7 +136,7 @@ function BasePlane() {
   return (
     <mesh rotation={[-Math.PI / 2, 0, 0]} position={[0, 0, 0]}>
       <planeGeometry args={[9, 6]} />
-      <meshStandardMaterial color="#808080" />
+      <meshStandardMaterial color="#96886A" roughness={0.9} metalness={0.1} />
     </mesh>
   );
 }
