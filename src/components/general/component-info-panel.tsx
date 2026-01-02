@@ -1,6 +1,7 @@
 import { useState } from "react";
 import { Eye, EyeOff } from "lucide-react";
 import type { ComponentInfo } from "@/types";
+import { cn } from "@/lib/utils";
 
 interface ComponentInfoPanelProps {
   info: ComponentInfo | null;
@@ -12,7 +13,12 @@ export function ComponentInfoPanel({ info }: ComponentInfoPanelProps) {
   if (!info) return null;
 
   return (
-    <div className="absolute top-4 right-8 p-4 max-w-48 sm:max-w-64 min-w-32 bg-foreground text-background z-10">
+    <div
+      className={cn(
+        "absolute top-4 right-8 p-4 w-48 sm:w-64 bg-foreground text-background z-10 overflow-hidden interpolate-size",
+        isVisible ? "h-auto" : "h-14"
+      )}
+    >
       <div className="flex items-center justify-between gap-4">
         <h3 className="uppercase tracking-widest font-medium">{info.name}</h3>
         <button
@@ -23,12 +29,15 @@ export function ComponentInfoPanel({ info }: ComponentInfoPanelProps) {
           {isVisible ? <EyeOff size={18} /> : <Eye size={18} />}
         </button>
       </div>
-      {isVisible && (
-        <>
-          <p className="text-sm text-muted-foreground">{info.dimensions}</p>
-          <p className="text-sm mt-2">{info.description}</p>
-        </>
-      )}
+      <div
+        className={cn(
+          "mt-2 transition-opacity opacity-100",
+          !isVisible && "opacity-0"
+        )}
+      >
+        <p className="text-sm text-muted-foreground">{info.dimensions}</p>
+        <p className="text-sm mt-2">{info.description}</p>
+      </div>
     </div>
   );
 }
