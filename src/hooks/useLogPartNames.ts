@@ -1,12 +1,9 @@
 import { useEffect } from "react";
 import * as THREE from "three";
 
-export function useLogPartNames(
-  scene: THREE.Group | null,
-  enabled: boolean = true
-) {
+export function useLogPartNames(scene: THREE.Group | null) {
   useEffect(() => {
-    if (!scene || !enabled) return;
+    if (!scene) return;
 
     const partNames: string[] = [];
 
@@ -18,5 +15,5 @@ export function useLogPartNames(
 
     console.log("=== All Part Names ===");
     console.log(JSON.stringify(partNames, null, 2));
-  }, [scene, enabled]);
+  }, [scene]);
 }
