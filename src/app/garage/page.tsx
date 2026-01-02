@@ -1,148 +1,193 @@
 "use client";
 
-import { Suspense, useEffect, useState } from "react";
+import { Suspense, useState } from "react";
 import * as THREE from "three";
 import { Canvas, ThreeEvent } from "@react-three/fiber";
-import { OrbitControls, useGLTF, Environment } from "@react-three/drei";
+import {
+  OrbitControls,
+  useGLTF,
+  Environment,
+  Outlines,
+} from "@react-three/drei";
 import { Button } from "@/components/ui/button";
 import { Loader } from "@/components/general/loader";
 import { getComponentInfo, getExplosionOffset } from "@/lib/utils";
-// import { useLogPartNames } from "@/hooks/useLogPartNames";
 import { ComponentInfoPanel } from "@/components/general/component-info-panel";
+import { useSpring, animated } from "@react-spring/three";
 
 const garageModelUrl = "/models/garage_004.glb";
+
+interface GarageMeshProps {
+  geometry: THREE.BufferGeometry;
+  material: THREE.Material;
+  name: string;
+  position: [number, number, number];
+  rotation?: [number, number, number];
+  scale?: [number, number, number];
+  isExploded: boolean;
+  isSelected: boolean;
+  isHovered: boolean;
+  onPointerOver: (e: ThreeEvent<PointerEvent>) => void;
+  onPointerOut: () => void;
+  onClick: (e: ThreeEvent<MouseEvent>) => void;
+}
+
+function GarageMesh({
+  geometry,
+  material,
+  name,
+  position,
+  rotation,
+  scale,
+  isExploded,
+  isSelected,
+  isHovered,
+  onPointerOver,
+  onPointerOut,
+  onClick,
+}: GarageMeshProps) {
+  const offset = getExplosionOffset(name) || [0, 0, 0];
+
+  const explodedPosition: [number, number, number] = [
+    position[0] + offset[0],
+    position[1] + offset[1],
+    position[2] + offset[2],
+  ];
+
+  // Animated position with ease-in-out cubic
+  const { animatedPosition } = useSpring({
+    animatedPosition: isExploded ? explodedPosition : position,
+    config: {
+      duration: 1000,
+      easing: (t: number) =>
+        t < 0.5 ? 4 * t * t * t : 1 - Math.pow(-2 * t + 2, 3) / 2,
+    },
+  });
+
+  // Clone material and apply emissive based on state
+  const displayMaterial = (material as THREE.MeshStandardMaterial).clone();
+
+  if (isSelected) {
+    displayMaterial.emissive = new THREE.Color(0xffffff);
+    displayMaterial.emissiveIntensity = 0.3;
+  } else if (isHovered) {
+    displayMaterial.emissive = new THREE.Color(0xeeff1a);
+    displayMaterial.emissiveIntensity = 0.2;
+  }
+
+  return (
+    <animated.mesh
+      geometry={geometry}
+      material={displayMaterial}
+      // @ts-ignore - react-spring types issue
+      position={animatedPosition}
+      rotation={rotation}
+      scale={scale}
+      onPointerOver={onPointerOver}
+      onPointerOut={onPointerOut}
+      onClick={onClick}
+    >
+      {(isSelected || isHovered) && (
+        <Outlines
+          screenspace={true}
+          thickness={isSelected ? 0.012 : 0.012}
+          color={isSelected ? "white" : "#eeff1a"}
+          angle={0}
+        />
+      )}
+    </animated.mesh>
+  );
+}
 
 function GarageModel({
   isExploded,
   selectedComponent,
   setSelectedComponent,
+  hoveredComponent,
+  setHoveredComponent,
 }: {
   isExploded: boolean;
   selectedComponent: string;
   setSelectedComponent: React.Dispatch<React.SetStateAction<string>>;
+  hoveredComponent: string;
+  setHoveredComponent: React.Dispatch<React.SetStateAction<string>>;
 }) {
   const { scene } = useGLTF(garageModelUrl);
 
-  // Log all part names once on mount (only in test mode)
-  // useLogPartNames(scene);
+  // Extract all meshes from the scene with their properties
+  const meshes: Array<{
+    name: string;
+    geometry: THREE.BufferGeometry;
+    material: THREE.Material;
+    position: [number, number, number];
+    rotation: [number, number, number];
+    scale: [number, number, number];
+  }> = [];
 
-  // Apply materials once on mount
-  useEffect(() => {
-    if (!scene) return;
+  scene.traverse((child) => {
+    if ((child as THREE.Mesh).isMesh) {
+      const mesh = child as THREE.Mesh;
+      if (mesh.name && mesh.name !== "Scene") {
+        // Apply custom materials
+        let material;
 
-    // Define materials
-    const woodMaterial = new THREE.MeshStandardMaterial({
-      color: "#c9a86a", // Desaturated, faded yellow/orange wood
-      roughness: 0.8,
-      metalness: 0.1,
-    });
-
-    const brickMaterial = new THREE.MeshStandardMaterial({
-      color: "#8b4a3a", // Red brick color
-      roughness: 0.9,
-      metalness: 0.0,
-    });
-
-    scene.traverse((child) => {
-      if ((child as THREE.Mesh).isMesh) {
-        const mesh = child as THREE.Mesh;
-
-        // Apply red brick material to wall plinth
         if (mesh.name.toLowerCase().includes("plinth")) {
-          mesh.material = brickMaterial;
+          material = new THREE.MeshStandardMaterial({
+            color: "#8b4a3a",
+            roughness: 0.9,
+            metalness: 0.0,
+          });
         } else {
-          // Apply wood material to all other components
-          mesh.material = woodMaterial;
+          material = new THREE.MeshStandardMaterial({
+            color: "#c9a86a",
+            roughness: 0.8,
+            metalness: 0.1,
+          });
         }
+
+        meshes.push({
+          name: mesh.name,
+          geometry: mesh.geometry,
+          material: material,
+          position: [mesh.position.x, mesh.position.y, mesh.position.z],
+          rotation: [mesh.rotation.x, mesh.rotation.y, mesh.rotation.z],
+          scale: [mesh.scale.x, mesh.scale.y, mesh.scale.z],
+        });
       }
-    });
-  }, [scene]);
+    }
+  });
 
-  // Animate each part based on explosion state
-  useEffect(() => {
-    if (!scene) return;
-
-    scene.traverse((child) => {
-      if (child.name) {
-        const offset = getExplosionOffset(child.name);
-
-        if (offset) {
-          const mesh = child as THREE.Object3D;
-
-          // Store original position if not already stored
-          if (!mesh.userData.originalPosition) {
-            mesh.userData.originalPosition = mesh.position.clone();
-          }
-
-          const targetPosition = isExploded
-            ? new THREE.Vector3(
-                mesh.userData.originalPosition.x + offset[0],
-                mesh.userData.originalPosition.y + offset[1],
-                mesh.userData.originalPosition.z + offset[2]
-              )
-            : mesh.userData.originalPosition;
-
-          // Animate the position
-          const startPosition = mesh.position.clone();
-          const duration = 1000; // 1 second
-          const startTime = Date.now();
-
-          const animate = () => {
-            const elapsed = Date.now() - startTime;
-            const progress = Math.min(elapsed / duration, 1);
-
-            // Ease in-out cubic
-            const eased =
-              progress < 0.5
-                ? 4 * progress * progress * progress
-                : 1 - Math.pow(-2 * progress + 2, 3) / 2;
-
-            mesh.position.lerpVectors(startPosition, targetPosition, eased);
-
-            if (progress < 1) {
-              requestAnimationFrame(animate);
-            }
-          };
-
-          animate();
-        }
-      }
-    });
-  }, [scene, isExploded]);
-
-  // Handle pointer events
-  const handlePointerOver = (e: ThreeEvent<PointerEvent>) => {
+  const handlePointerOver = (name: string) => (e: ThreeEvent<PointerEvent>) => {
     e.stopPropagation();
     document.body.style.cursor = "pointer";
-    if (e.object.name && e.object.name !== "Scene") {
-      console.log(e.object.name);
-    }
+    setHoveredComponent(name);
   };
 
   const handlePointerOut = () => {
     document.body.style.cursor = "default";
-    console.log("...");
+    setHoveredComponent("");
   };
 
-  const handleClick = (e: ThreeEvent<MouseEvent>) => {
+  const handleClick = (name: string) => (e: ThreeEvent<MouseEvent>) => {
     e.stopPropagation();
-    const name = e.object.name;
-    if (name && name !== "Scene") {
-      if (name !== selectedComponent) {
-        setSelectedComponent(name);
-      }
-
-      console.log(`Clicked on: ${name}`);
-    }
+    setSelectedComponent(name === selectedComponent ? "" : name);
   };
 
   return (
-    <primitive
-      object={scene}
-      onPointerOver={handlePointerOver}
-      onPointerOut={handlePointerOut}
-      onClick={handleClick}
-    />
+    <group>
+      {meshes.map((mesh) => (
+        <GarageMesh
+          key={mesh.name}
+          {...mesh}
+          isExploded={isExploded}
+          isSelected={mesh.name === selectedComponent}
+          isHovered={mesh.name === hoveredComponent}
+          onPointerOver={handlePointerOver(mesh.name)}
+          onPointerOut={handlePointerOut}
+          onClick={handleClick(mesh.name)}
+        />
+      ))}
+    </group>
   );
 }
 
@@ -158,6 +203,7 @@ function BasePlane() {
 export default function InteractiveGaragePage() {
   const [isExploded, setIsExploded] = useState(false);
   const [selectedComponent, setSelectedComponent] = useState<string>("");
+  const [hoveredComponent, setHoveredComponent] = useState<string>("");
 
   return (
     <div className="h-[calc(100vh-3.5rem)] w-full relative">
@@ -177,14 +223,6 @@ export default function InteractiveGaragePage() {
         className="bg-background"
       >
         <Suspense fallback={<Loader />}>
-          {/* <Environment
-            files="/hdris/green-lake-bluesky-cloud_0_5K_0c043645-9b9d-43e3-9db5-616be256f73a.exr"
-            background={false}
-          /> */}
-          {/* <hemisphereLight
-            args={["#87CEEB", "#8B7355", 4]}
-            position={[0, 10, 0]}
-          /> */}
           <Suspense fallback={null}>
             <Environment preset="sunset" background={false} />
           </Suspense>
@@ -193,6 +231,8 @@ export default function InteractiveGaragePage() {
             isExploded={isExploded}
             selectedComponent={selectedComponent}
             setSelectedComponent={setSelectedComponent}
+            hoveredComponent={hoveredComponent}
+            setHoveredComponent={setHoveredComponent}
           />
           <OrbitControls maxPolarAngle={Math.PI / 2 - 0.1} />
         </Suspense>
@@ -200,6 +240,3 @@ export default function InteractiveGaragePage() {
     </div>
   );
 }
-
-// Add preload for faster loading
-// useGLTF.preload(garageModelUrl);
