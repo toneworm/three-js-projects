@@ -10,7 +10,13 @@ interface ComponentInfoPanelProps {
 export function ComponentInfoPanel({ info }: ComponentInfoPanelProps) {
   const [isVisible, setIsVisible] = useState(true);
 
-  if (!info) return null;
+  if (!info) {
+    return (
+      <div className="absolute top-4 right-8 p-4 w-48 sm:w-64 z-10">
+        Click on a structural element to see more details...
+      </div>
+    );
+  }
 
   return (
     <div
