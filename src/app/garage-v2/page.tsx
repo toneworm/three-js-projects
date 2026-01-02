@@ -79,7 +79,6 @@ function GarageMeshV2({
     <animated.mesh
       geometry={geometry}
       material={displayMaterial}
-      // @ts-ignore - react-spring types issue
       position={animatedPosition}
       rotation={rotation}
       scale={scale}

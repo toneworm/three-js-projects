@@ -1,6 +1,6 @@
 "use client";
 
-import { Suspense, use, useState } from "react";
+import { Suspense, useState } from "react";
 import * as THREE from "three";
 import { Canvas, ThreeEvent } from "@react-three/fiber";
 import {
@@ -80,7 +80,6 @@ function GarageMesh({
     <animated.mesh
       geometry={geometry}
       material={displayMaterial}
-      // @ts-ignore - react-spring types issue
       position={animatedPosition}
       rotation={rotation}
       scale={scale}
