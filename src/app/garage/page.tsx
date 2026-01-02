@@ -11,7 +11,8 @@ import {
 import { Button } from "@/components/ui/button";
 import * as THREE from "three";
 import { useLogPartNames } from "@/hooks/useLogPartNames";
-// import { CameraLogger } from "@/hooks/camera-logger";
+import { useSearchParams } from "next/navigation";
+import { CameraLogger } from "@/hooks/camera-logger";
 
 const garageModelUrl = "/models/garage_004.glb";
 const explosionMultiplier = 1.2;
@@ -39,11 +40,17 @@ function getExplosionOffset(name: string): [number, number, number] | null {
   return null;
 }
 
-function GarageModel({ isExploded }: { isExploded: boolean }) {
+function GarageModel({
+  isExploded,
+  testMode,
+}: {
+  isExploded: boolean;
+  testMode: boolean;
+}) {
   const { scene } = useGLTF(garageModelUrl);
 
-  // Log all part names once on mount
-  useLogPartNames(scene);
+  // Log all part names once on mount (only in test mode)
+  useLogPartNames(scene, testMode);
 
   // Apply materials once on mount
   useEffect(() => {
@@ -143,10 +150,12 @@ function BasePlane() {
 
 export default function InteractiveGaragePage() {
   const [isExploded, setIsExploded] = useState(false);
+  const searchParams = useSearchParams();
+  const testMode = searchParams.get("test") === "true";
 
   return (
     <div className="h-[calc(100vh-3.5rem)] w-full relative">
-      <div className="absolute top-4 left-4 z-10">
+      <div className="absolute top-4 left-4 z-10 flex gap-2">
         <Button
           onClick={() => setIsExploded(!isExploded)}
           variant="default"
@@ -154,19 +163,28 @@ export default function InteractiveGaragePage() {
         >
           {isExploded ? "Collapse" : "Explode"}
         </Button>
+        {testMode && (
+          <div className="bg-yellow-500 text-black px-4 py-2 rounded-lg font-semibold">
+            TEST MODE
+          </div>
+        )}
       </div>
       <Canvas
         camera={{ position: [-10.43, 6.88, 13.47], fov: 50 }}
         className="bg-background"
       >
         <Suspense fallback={<Loader />}>
-          {/* <CameraLogger /> */}
-          <Environment
+          {testMode && <CameraLogger />}
+          {/* <Environment
             files="/hdris/green-lake-bluesky-cloud_0_5K_0c043645-9b9d-43e3-9db5-616be256f73a.exr"
             background={false}
+          /> */}
+          <hemisphereLight
+            args={["#87CEEB", "#8B7355", 4]}
+            position={[0, 10, 0]}
           />
           <BasePlane />
-          <GarageModel isExploded={isExploded} />
+          <GarageModel isExploded={isExploded} testMode={testMode} />
           <OrbitControls maxPolarAngle={Math.PI / 2 - 0.1} />
         </Suspense>
       </Canvas>
@@ -175,4 +193,4 @@ export default function InteractiveGaragePage() {
 }
 
 // Add preload for faster loading
-useGLTF.preload(garageModelUrl);
+// useGLTF.preload(garageModelUrl);
