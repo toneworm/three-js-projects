@@ -7,7 +7,9 @@ export function Header() {
       <div className="w-full px-4 flex h-14 items-center">
         <div className="mr-4 flex">
           <Link className="mr-4 flex items-center gap-2 lg:mr-6" href="/">
-            <span className="font-bold">Three.js Projects</span>
+            <span className="uppercase tracking-widest">
+              Three.js Projects | Interactive Garage
+            </span>
           </Link>
         </div>
         <div className="flex flex-1 items-center justify-end gap-2">

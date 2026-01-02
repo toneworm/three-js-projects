@@ -1,3 +1,5 @@
+export const explosionMultiplier = 1.2;
+
 // Individual overrides (checked first)
 export const explosionIndividualOffsets: Record<
   string,

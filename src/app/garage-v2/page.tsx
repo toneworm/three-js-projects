@@ -7,38 +7,37 @@ import { OrbitControls, useGLTF, Environment } from "@react-three/drei";
 import { Button } from "@/components/ui/button";
 import { Loader } from "@/components/general/loader";
 import { getComponentInfo, getExplosionOffset } from "@/lib/utils";
-// import { useLogPartNames } from "@/hooks/useLogPartNames";
 import { ComponentInfoPanel } from "@/components/general/component-info-panel";
 
 const garageModelUrl = "/models/garage_004.glb";
 
-function GarageModel({
+function GarageModelV2({
   isExploded,
-  selectedComponent,
-  setSelectedComponent,
+  onHover,
+  onSelect,
+  selectedName,
+  hoveredName,
 }: {
   isExploded: boolean;
-  selectedComponent: string;
-  setSelectedComponent: React.Dispatch<React.SetStateAction<string>>;
+  onHover: (name: string) => void;
+  onSelect: (name: string) => void;
+  selectedName: string;
+  hoveredName: string;
 }) {
   const { scene } = useGLTF(garageModelUrl);
-
-  // Log all part names once on mount (only in test mode)
-  // useLogPartNames(scene);
 
   // Apply materials once on mount
   useEffect(() => {
     if (!scene) return;
 
-    // Define materials
     const woodMaterial = new THREE.MeshStandardMaterial({
-      color: "#c9a86a", // Desaturated, faded yellow/orange wood
+      color: "#c9a86a",
       roughness: 0.8,
       metalness: 0.1,
     });
 
     const brickMaterial = new THREE.MeshStandardMaterial({
-      color: "#8b4a3a", // Red brick color
+      color: "#8b4a3a",
       roughness: 0.9,
       metalness: 0.0,
     });
@@ -47,16 +46,50 @@ function GarageModel({
       if ((child as THREE.Mesh).isMesh) {
         const mesh = child as THREE.Mesh;
 
-        // Apply red brick material to wall plinth
+        // Apply materials
         if (mesh.name.toLowerCase().includes("plinth")) {
           mesh.material = brickMaterial;
         } else {
-          // Apply wood material to all other components
           mesh.material = woodMaterial;
         }
       }
     });
   }, [scene]);
+
+  // Apply hover/selection highlighting
+  useEffect(() => {
+    if (!scene) return;
+
+    scene.traverse((child) => {
+      if ((child as THREE.Mesh).isMesh) {
+        const mesh = child as THREE.Mesh;
+
+        // Reset emissive
+        if (
+          mesh.material &&
+          (mesh.material as THREE.MeshStandardMaterial).emissive
+        ) {
+          (mesh.material as THREE.MeshStandardMaterial).emissive.setHex(
+            0x000000
+          );
+          (mesh.material as THREE.MeshStandardMaterial).emissiveIntensity = 0;
+        }
+
+        // Apply highlight
+        if (mesh.name === selectedName) {
+          (mesh.material as THREE.MeshStandardMaterial).emissive.setHex(
+            0xffffff
+          );
+          (mesh.material as THREE.MeshStandardMaterial).emissiveIntensity = 0.3;
+        } else if (mesh.name === hoveredName) {
+          (mesh.material as THREE.MeshStandardMaterial).emissive.setHex(
+            0xffff00
+          );
+          (mesh.material as THREE.MeshStandardMaterial).emissiveIntensity = 0.2;
+        }
+      }
+    });
+  }, [scene, selectedName, hoveredName]);
 
   // Animate each part based on explosion state
   useEffect(() => {
@@ -69,7 +102,6 @@ function GarageModel({
         if (offset) {
           const mesh = child as THREE.Object3D;
 
-          // Store original position if not already stored
           if (!mesh.userData.originalPosition) {
             mesh.userData.originalPosition = mesh.position.clone();
           }
@@ -82,16 +114,14 @@ function GarageModel({
               )
             : mesh.userData.originalPosition;
 
-          // Animate the position
           const startPosition = mesh.position.clone();
-          const duration = 1000; // 1 second
+          const duration = 1000;
           const startTime = Date.now();
 
           const animate = () => {
             const elapsed = Date.now() - startTime;
             const progress = Math.min(elapsed / duration, 1);
 
-            // Ease in-out cubic
             const eased =
               progress < 0.5
                 ? 4 * progress * progress * progress
@@ -115,24 +145,20 @@ function GarageModel({
     e.stopPropagation();
     document.body.style.cursor = "pointer";
     if (e.object.name && e.object.name !== "Scene") {
-      console.log(e.object.name);
+      onHover(e.object.name);
     }
   };
 
   const handlePointerOut = () => {
     document.body.style.cursor = "default";
-    console.log("...");
+    onHover("");
   };
 
   const handleClick = (e: ThreeEvent<MouseEvent>) => {
     e.stopPropagation();
     const name = e.object.name;
     if (name && name !== "Scene") {
-      if (name !== selectedComponent) {
-        setSelectedComponent(name);
-      }
-
-      console.log(`Clicked on: ${name}`);
+      onSelect(name === selectedName ? "" : name);
     }
   };
 
@@ -155,9 +181,10 @@ function BasePlane() {
   );
 }
 
-export default function InteractiveGaragePage() {
+export default function InteractiveGarageV2Page() {
   const [isExploded, setIsExploded] = useState(false);
-  const [selectedComponent, setSelectedComponent] = useState<string>("");
+  const [selectedName, setSelectedName] = useState<string>("");
+  const [hoveredName, setHoveredName] = useState<string>("");
 
   return (
     <div className="h-[calc(100vh-3.5rem)] w-full relative">
@@ -166,33 +193,29 @@ export default function InteractiveGaragePage() {
           onClick={() => setIsExploded(!isExploded)}
           variant="default"
           size="lg"
-          className="px-4 uppercase tracking-widest rounded-none"
+          className="font-bold"
         >
           {isExploded ? "Collapse" : "Explode"}
         </Button>
       </div>
-      <ComponentInfoPanel info={getComponentInfo(selectedComponent)} />
+      <div className="absolute top-24 right-4 z-10 bg-green-900 p-20">
+        <ComponentInfoPanel info={getComponentInfo(selectedName)} />
+      </div>
       <Canvas
         camera={{ position: [-10.43, 6.88, 13.47], fov: 50 }}
         className="bg-background"
       >
         <Suspense fallback={<Loader />}>
-          {/* <Environment
-            files="/hdris/green-lake-bluesky-cloud_0_5K_0c043645-9b9d-43e3-9db5-616be256f73a.exr"
-            background={false}
-          /> */}
-          {/* <hemisphereLight
-            args={["#87CEEB", "#8B7355", 4]}
-            position={[0, 10, 0]}
-          /> */}
           <Suspense fallback={null}>
             <Environment preset="sunset" background={false} />
           </Suspense>
           <BasePlane />
-          <GarageModel
+          <GarageModelV2
             isExploded={isExploded}
-            selectedComponent={selectedComponent}
-            setSelectedComponent={setSelectedComponent}
+            onHover={setHoveredName}
+            onSelect={setSelectedName}
+            selectedName={selectedName}
+            hoveredName={hoveredName}
           />
           <OrbitControls maxPolarAngle={Math.PI / 2 - 0.1} />
         </Suspense>
@@ -200,6 +223,3 @@ export default function InteractiveGaragePage() {
     </div>
   );
 }
-
-// Add preload for faster loading
-// useGLTF.preload(garageModelUrl);
