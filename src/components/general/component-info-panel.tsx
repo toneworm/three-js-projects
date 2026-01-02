@@ -12,7 +12,7 @@ export function ComponentInfoPanel({ info }: ComponentInfoPanelProps) {
   if (!info) return null;
 
   return (
-    <div className="absolute top-4 right-8 p-4 max-w-64 min-w-32 bg-foreground text-background z-10">
+    <div className="absolute top-4 right-8 p-4 max-w-48 sm:max-w-64 min-w-32 bg-foreground text-background z-10">
       <div className="flex items-center justify-between gap-4">
         <h3 className="uppercase tracking-widest font-medium">{info.name}</h3>
         <button
