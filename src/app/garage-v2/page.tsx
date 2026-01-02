@@ -15,7 +15,7 @@ import { getComponentInfo, getExplosionOffset } from "@/lib/utils";
 import { ComponentInfoPanel } from "@/components/general/component-info-panel";
 import { useSpring, animated } from "@react-spring/three";
 
-const garageModelUrl = "/models/garage_004.glb";
+const garageModelUrl = "/models/garage_005.glb";
 
 interface GarageMeshV2Props {
   geometry: THREE.BufferGeometry;

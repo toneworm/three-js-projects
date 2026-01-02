@@ -1,6 +1,6 @@
 "use client";
 
-import { Suspense, useState } from "react";
+import { Suspense, use, useState } from "react";
 import * as THREE from "three";
 import { Canvas, ThreeEvent } from "@react-three/fiber";
 import {
@@ -14,8 +14,9 @@ import { Loader } from "@/components/general/loader";
 import { getComponentInfo, getExplosionOffset } from "@/lib/utils";
 import { ComponentInfoPanel } from "@/components/general/component-info-panel";
 import { useSpring, animated } from "@react-spring/three";
+import { useLogPartNames } from "@/hooks/useLogPartNames";
 
-const garageModelUrl = "/models/garage_004.glb";
+const garageModelUrl = "/models/garage_005.glb";
 
 interface GarageMeshProps {
   geometry: THREE.BufferGeometry;
@@ -113,6 +114,8 @@ function GarageModel({
   setHoveredComponent: React.Dispatch<React.SetStateAction<string>>;
 }) {
   const { scene } = useGLTF(garageModelUrl);
+
+  useLogPartNames(scene);
 
   // Extract all meshes from the scene with their properties
   const meshes: Array<{

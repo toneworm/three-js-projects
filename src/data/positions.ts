@@ -8,10 +8,10 @@ export const explosionIndividualOffsets: Record<
   // Foundation
   Wall_Brick_Plinth: [0, 0, 0],
 
-  // Floor Joists
-  Joist_Side: [-0.1, 0.1, 0],
-  Joist_Side001: [0, 0.1, -0.1],
-  Joist_Back: [0.1, 0.1, 0],
+  // Sole Plates
+  Sole_Plate_Side: [-0.1, 0.1, 0],
+  Sole_Plate_Side001: [0, 0.1, -0.1],
+  Sole_Plate_Back: [0.1, 0.1, 0],
 
   // Posts - Front
   Post_Front_1M_Oak: [0, 0, 0],
@@ -40,9 +40,9 @@ export const explosionIndividualOffsets: Record<
 
   // Plates - Side
   Plate_Side_T: [-0.8, 0.9, 0],
-  Plate_Side_T001: [-0.3, 0.9, 0],
-  Plate_Side_T002: [0.3, 0.9, 0],
-  Plate_Side_T003: [0.8, 0.9, 0],
+  Plate_Side_T001: [0.8, 0.9, 0],
+  Tie_Beam_T001: [-0.3, 0.9, 0],
+  Tie_Beam_T002: [0.3, 0.9, 0],
 
   // Plates - Back
   Plate_Back_A: [-0.25, 0.5, 0],
@@ -52,27 +52,27 @@ export const explosionIndividualOffsets: Record<
   // Ridge
   Rise: [0, 1.6, 0],
 
-  // Rafters - Common Middle
-  Rafter_Common_Middle: [-0.2, 1.35, 0],
-  Rafter_Common_Middle001: [0.2, 1.35, 0],
+  // Rafters - Common
+  Rafter_Common: [-0.2, 1.35, 0],
+  Rafter_Common001: [0.2, 1.35, 0],
 
-  // Rafters - Common Outer
-  Rafter_Common_Outer: [-0.2, 1.35, 0],
-  Rafter_Common_Outer001: [-0.2, 1.35, 0],
-  Rafter_Common_Outer002: [0.2, 1.35, 0],
-  Rafter_Common_Outer003: [0.2, 1.35, 0],
+  // Rafters - Jack Outer
+  Rafter_Jack_Outer: [-0.2, 1.35, 0],
+  Rafter_Jack_Outer001: [-0.2, 1.35, 0],
+  Rafter_Jack_Outer002: [0.2, 1.35, 0],
+  Rafter_Jack_Outer003: [0.2, 1.35, 0],
 
-  // Rafters - Common Outer Middle
-  Rafter_Common_Outer_Middle: [-0.2, 1.35, 0],
-  Rafter_Common_Outer_Middle001: [-0.2, 1.35, 0],
-  Rafter_Common_Outer_Middle002: [0.2, 1.35, 0],
-  Rafter_Common_Outer_Middle003: [0.2, 1.35, 0],
+  // Rafters - Jack Outer Middle
+  Rafter_Jack_Outer_Middle: [-0.2, 1.35, 0],
+  Rafter_Jack_Outer_Middle001: [-0.2, 1.35, 0],
+  Rafter_Jack_Outer_Middle002: [0.2, 1.35, 0],
+  Rafter_Jack_Outer_Middle003: [0.2, 1.35, 0],
 
-  // Rafters - Common Outer Small
-  Rafter_Common_Outer_Small: [-0.2, 1.35, 0],
-  Rafter_Common_Outer_Small001: [-0.2, 1.35, 0],
-  Rafter_Common_Outer_Small002: [0.2, 1.35, 0],
-  Rafter_Common_Outer_Small003: [0.2, 1.35, 0],
+  // Rafters - Jack Outer Small
+  Rafter_Jack_Outer_Small: [-0.2, 1.35, 0],
+  Rafter_Jack_Outer_Small001: [-0.2, 1.35, 0],
+  Rafter_Jack_Outer_Small002: [0.2, 1.35, 0],
+  Rafter_Jack_Outer_Small003: [0.2, 1.35, 0],
 
   // Rafters - Hip
   Rafter_Hip: [-0.2, 1.35, 0.4],

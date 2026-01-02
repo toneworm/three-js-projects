@@ -8,11 +8,25 @@ export const componentData: Record<string, ComponentInfo> = {
       "Load-bearing brick base that the entire structure sits on, runs around the perimeter",
   },
 
-  Joist: {
-    name: "Floor Joist",
+  Sole_Plate_Side: {
+    name: "Sole Plate",
     dimensions: "150mm x 50mm",
     description:
-      "Horizontal beams sitting on brick wall that support the floor, spaced at regular intervals",
+      "Horizontal timber beams sitting on top of brick plinth around the perimeter, providing a level surface for the frame to sit on",
+  },
+
+  Sole_Plate_Back: {
+    name: "Sole Plate",
+    dimensions: "150mm x 50mm",
+    description:
+      "Horizontal timber beams sitting on top of brick plinth around the perimeter, providing a level surface for the frame to sit on",
+  },
+
+  Tie_Beam: {
+    name: "Tie Beam",
+    dimensions: "150mm x 50mm",
+    description:
+      "Horizontal structural beams running from front to back across the garage, connecting opposite walls and preventing them from spreading",
   },
 
   Post_Front: {
@@ -66,20 +80,27 @@ export const componentData: Record<string, ComponentInfo> = {
     name: "Common Rafter",
     dimensions: "150mm x 50mm",
     description:
-      "Standard angled roof beams at 27° pitch, run perpendicular to walls with bird's mouth joints",
+      "Main angled roof beams at 27° pitch, run from wall plate to ridge board with bird's mouth joints. Only two common rafters run the full length from front to back",
+  },
+
+  Rafter_Jack: {
+    name: "Jack Rafter",
+    dimensions: "150mm x 50mm",
+    description:
+      "Shorter angled roof beams at 27° pitch that run from the wall plate to the hip rafter, not reaching the ridge board",
   },
 
   Rafter_Hip: {
     name: "Hip Rafter",
     dimensions: "150mm x 50mm",
     description:
-      "Diagonal corner rafters at ~20° pitch with angled cheek cuts, run from corners to ridge",
+      "Diagonal corner rafters at ~20° pitch with angled cheek cuts, run from corners to ridge. Four hip rafters form the hip-ended roof",
   },
 
   Rise: {
     name: "Ridge Board",
     dimensions: "150mm x 50mm",
-    description: "Peak beam where rafters meet at top of roof",
+    description: "Peak beam where common rafters meet at top of roof",
   },
 
   Brace_Knee: {
