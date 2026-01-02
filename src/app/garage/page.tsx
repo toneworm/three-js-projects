@@ -148,7 +148,7 @@ function BasePlane() {
   );
 }
 
-export default function InteractiveGaragePage() {
+function GarageScene() {
   const [isExploded, setIsExploded] = useState(false);
   const searchParams = useSearchParams();
   const testMode = searchParams.get("test") === "true";
@@ -189,6 +189,14 @@ export default function InteractiveGaragePage() {
         </Suspense>
       </Canvas>
     </div>
+  );
+}
+
+export default function InteractiveGaragePage() {
+  return (
+    <Suspense fallback={<Loader />}>
+      <GarageScene />
+    </Suspense>
   );
 }
 
