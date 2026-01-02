@@ -17,7 +17,7 @@ export function ComponentInfoPanel({ info }: ComponentInfoPanelProps) {
         <h3 className="uppercase tracking-widest font-medium">{info.name}</h3>
         <button
           onClick={() => setIsVisible(!isVisible)}
-          className="cursor-pointer shrink-0 hover:opacity-70 transition-opacity rounded-sm bg-background text-foreground p-1"
+          className="cursor-pointer shrink-0 hover:opacity-70 transition-opacity rounded bg-background text-foreground p-1"
           aria-label={isVisible ? "Hide details" : "Show details"}
         >
           {isVisible ? <EyeOff size={18} /> : <Eye size={18} />}
