@@ -21,8 +21,9 @@ export function ComponentInfoPanel({ info }: ComponentInfoPanelProps) {
   return (
     <div
       className={cn(
-        "absolute top-4 right-4 p-4 w-48 sm:w-64 bg-foreground text-background z-10 overflow-hidden interpolate-panel",
-        isVisible ? "max-h-72" : "max-h-20"
+        "absolute top-4 right-4 p-4 w-48 sm:w-64 bg-foreground text-background z-10 overflow-hidden"
+        // isVisible ? "max-h-72" : "max-h-20",
+        // "interpolate-panel",
       )}
     >
       <div className="flex items-center justify-between gap-4">
