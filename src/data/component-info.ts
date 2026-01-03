@@ -94,7 +94,7 @@ export const componentData: Record<string, ComponentInfo> = {
     name: "Hip Rafter",
     dimensions: "150mm x 50mm",
     description:
-      "Diagonal corner rafters at ~20° pitch with angled cheek cuts, run from corners to ridge. Four hip rafters form the hip-ended roof",
+      "Diagonal corner rafters with angled cheek cuts, run from corners to ridge. Four hip rafters form the hip-ended roof",
   },
 
   Rise: {
