@@ -12,7 +12,7 @@ export function ComponentInfoPanel({ info }: ComponentInfoPanelProps) {
 
   if (!info) {
     return (
-      <div className="absolute top-4 right-4 p-4 w-48 sm:w-64 z-10">
+      <div className="absolute top-4 right-4 w-48 sm:w-64 z-10 text-right">
         Click on a structural element to see more details...
       </div>
     );
