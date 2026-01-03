@@ -12,7 +12,7 @@ export function ComponentInfoPanel({ info }: ComponentInfoPanelProps) {
 
   if (!info) {
     return (
-      <div className="absolute top-4 right-8 p-4 w-48 sm:w-64 z-10">
+      <div className="absolute top-4 right-4 p-4 w-48 sm:w-64 z-10">
         Click on a structural element to see more details...
       </div>
     );
@@ -21,8 +21,8 @@ export function ComponentInfoPanel({ info }: ComponentInfoPanelProps) {
   return (
     <div
       className={cn(
-        "absolute top-4 right-8 p-4 w-48 sm:w-64 bg-foreground text-background z-10 overflow-hidden interpolate-size",
-        isVisible ? "h-auto" : "h-14"
+        "absolute top-4 right-4 p-4 w-48 sm:w-64 bg-foreground text-background z-10 overflow-hidden interpolate-panel",
+        isVisible ? "max-h-60" : "max-h-20"
       )}
     >
       <div className="flex items-center justify-between gap-4">
@@ -35,12 +35,7 @@ export function ComponentInfoPanel({ info }: ComponentInfoPanelProps) {
           {isVisible ? <EyeOff size={18} /> : <Eye size={18} />}
         </button>
       </div>
-      <div
-        className={cn(
-          "mt-2 transition-opacity opacity-100",
-          !isVisible && "opacity-0"
-        )}
-      >
+      <div className={cn("mt-2 transition-all", !isVisible && "hidden")}>
         <p className="text-sm text-muted-foreground">{info.dimensions}</p>
         <p className="text-sm mt-2">{info.description}</p>
       </div>
