@@ -90,11 +90,13 @@ function GarageModel({
   setSelectedComponent,
   hoveredComponent,
   setHoveredComponent,
+  visibleComponents,
 }: {
   selectedComponent: string;
   setSelectedComponent: React.Dispatch<React.SetStateAction<string>>;
   hoveredComponent: string;
   setHoveredComponent: React.Dispatch<React.SetStateAction<string>>;
+  visibleComponents: GarageComponent[];
 }) {
   const { scene } = useGLTF(garageModelUrl);
 
@@ -165,9 +167,14 @@ function GarageModel({
     setSelectedComponent(name === selectedComponent ? "" : name);
   };
 
+  // Filter meshes to only show visible components
+  const filteredMeshes = meshes.filter((mesh) =>
+    visibleComponents.includes(mesh.name as GarageComponent)
+  );
+
   return (
     <group>
-      {meshes.map((mesh) => (
+      {filteredMeshes.map((mesh) => (
         <GarageMesh
           key={mesh.name}
           {...mesh}
@@ -231,6 +238,7 @@ export default function InteractiveGaragePage() {
             setSelectedComponent={setSelectedComponent}
             hoveredComponent={hoveredComponent}
             setHoveredComponent={setHoveredComponent}
+            visibleComponents={visibleComponents}
           />
           <OrbitControls maxPolarAngle={Math.PI / 2 - 0.1} />
         </Suspense>
