@@ -16,6 +16,7 @@ import { ComponentInfoPanel } from "@/components/general/component-info-panel";
 import { ConfigurablePanel } from "@/components/general/configurable-panel";
 import { useSpring, animated } from "@react-spring/three";
 import { useLogPartNames } from "@/hooks/use-log-part-names";
+import { garagePocConfig } from "@/data/poc-garage-config";
 
 const garageModelUrl = "/models/garage_poc.glb";
 
@@ -186,7 +187,10 @@ export default function InteractiveGaragePage() {
         info={getComponentInfo(selectedComponent)}
         className="absolute top-4 right-4 w-48 sm:w-64 z-10"
       />
-      <ConfigurablePanel className="absolute top-4 left-4 w-48 sm:w-64 z-10" />
+      <ConfigurablePanel
+        config={garagePocConfig}
+        className="absolute top-4 left-4 w-48 sm:w-64 z-10"
+      />
 
       <Canvas
         camera={{ position: [-10.43, 6.88, 13.47], fov: 50 }}
