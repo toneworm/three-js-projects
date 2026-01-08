@@ -17,6 +17,11 @@ import { ConfigurablePanel } from "@/components/general/configurable-panel";
 import { useSpring, animated } from "@react-spring/three";
 import { useLogPartNames } from "@/hooks/use-log-part-names";
 import { garagePocConfig } from "@/data/poc-garage-config";
+import {
+  resolveGarageComponents,
+  GarageFormState,
+  GarageComponent,
+} from "@/lib/poc-garage-resolver";
 
 const garageModelUrl = "/models/garage_poc.glb";
 
@@ -180,6 +185,13 @@ function GarageModel({
 export default function InteractiveGaragePage() {
   const [selectedComponent, setSelectedComponent] = useState<string>("");
   const [hoveredComponent, setHoveredComponent] = useState<string>("");
+  const [visibleComponents, setVisibleComponents] = useState<GarageComponent[]>(
+    []
+  );
+
+  const handleResolvedChange = (resolved: GarageComponent[]) => {
+    setVisibleComponents(resolved);
+  };
 
   return (
     <div className="h-[calc(100vh-3.5rem)] w-full relative">
@@ -187,10 +199,24 @@ export default function InteractiveGaragePage() {
         info={getComponentInfo(selectedComponent)}
         className="absolute top-4 right-4 w-48 sm:w-64 z-10"
       />
-      <ConfigurablePanel
+      <ConfigurablePanel<GarageFormState, GarageComponent[]>
         config={garagePocConfig}
         className="absolute top-4 left-4 w-48 sm:w-64 z-10"
+        resolver={resolveGarageComponents}
+        onResolvedChange={handleResolvedChange}
       />
+
+      {/* Debug display for visible components */}
+      {visibleComponents.length > 0 && (
+        <div className="absolute bottom-4 left-4 bg-background border border-border p-4 rounded-md z-10">
+          <h3 className="text-sm font-semibold mb-2">Visible Components:</h3>
+          <ul className="text-xs space-y-1">
+            {visibleComponents.map((component) => (
+              <li key={component}>{component}</li>
+            ))}
+          </ul>
+        </div>
+      )}
 
       <Canvas
         camera={{ position: [-10.43, 6.88, 13.47], fov: 50 }}

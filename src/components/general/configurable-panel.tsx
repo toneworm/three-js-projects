@@ -8,15 +8,19 @@ import { Label } from "@/components/ui/label";
 import { cn } from "@/lib/utils";
 import { Config } from "@/types";
 
-interface ConfigurablePanelProps {
+interface ConfigurablePanelProps<TState = Record<string, string | boolean>, TResult = string[]> {
   config?: Config;
   className?: string;
+  resolver?: (state: TState) => TResult;
+  onResolvedChange?: (resolved: TResult) => void;
 }
 
-export function ConfigurablePanel({
+export function ConfigurablePanel<TState = Record<string, string | boolean>, TResult = string[]>({
   config,
   className,
-}: ConfigurablePanelProps) {
+  resolver,
+  onResolvedChange,
+}: ConfigurablePanelProps<TState, TResult>) {
   const [isOpen, setIsOpen] = useState(false);
   const [formState, setFormState] = useState<Record<string, string | boolean>>(
     {}
@@ -35,12 +39,18 @@ export function ConfigurablePanel({
     setFormState(initialState);
   }, [config]);
 
-  // Log form state whenever it changes
+  // Call resolver whenever form state changes
   useEffect(() => {
     if (Object.keys(formState).length > 0) {
       console.log("Form state updated:", formState);
+
+      if (resolver && onResolvedChange) {
+        const resolved = resolver(formState as TState);
+        console.log("Resolved components:", resolved);
+        onResolvedChange(resolved);
+      }
     }
-  }, [formState]);
+  }, [formState, resolver, onResolvedChange]);
 
   const handleRadioChange = (controlId: string, value: string) => {
     setFormState((prev) => ({
