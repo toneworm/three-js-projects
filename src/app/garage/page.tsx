@@ -14,7 +14,7 @@ import { Loader } from "@/components/general/loader";
 import { getComponentInfo, getExplosionOffset } from "@/lib/utils";
 import { ComponentInfoPanel } from "@/components/general/component-info-panel";
 import { useSpring, animated } from "@react-spring/three";
-import { useLogPartNames } from "@/hooks/useLogPartNames";
+import { useLogPartNames } from "@/hooks/use-log-part-names";
 
 const garageModelUrl = "/models/garage_005.glb";
 
@@ -219,7 +219,10 @@ export default function InteractiveGaragePage() {
           {isExploded ? "Collapse" : "Explode"}
         </Button>
       </div>
-      <ComponentInfoPanel info={getComponentInfo(selectedComponent)} />
+      <ComponentInfoPanel
+        info={getComponentInfo(selectedComponent)}
+        className="absolute top-4 right-4 w-48 sm:w-64 z-10"
+      />
       <Canvas
         camera={{ position: [-10.43, 6.88, 13.47], fov: 50 }}
         className="bg-background"

@@ -5,14 +5,18 @@ import { cn } from "@/lib/utils";
 
 interface ComponentInfoPanelProps {
   info: ComponentInfo | null;
+  className?: string;
 }
 
-export function ComponentInfoPanel({ info }: ComponentInfoPanelProps) {
+export function ComponentInfoPanel({
+  info,
+  className,
+}: ComponentInfoPanelProps) {
   const [isVisible, setIsVisible] = useState(true);
 
   if (!info) {
     return (
-      <div className="absolute top-4 right-4 w-48 sm:w-64 z-10 text-right">
+      <div className={cn("text-right", className)}>
         Click on a structural element to see more details...
       </div>
     );
@@ -21,12 +25,11 @@ export function ComponentInfoPanel({ info }: ComponentInfoPanelProps) {
   return (
     <div
       className={cn(
-        "absolute top-4 right-4 p-4 w-48 sm:w-64 bg-foreground text-background z-10 overflow-hidden"
-        // isVisible ? "max-h-72" : "max-h-20",
-        // "interpolate-panel",
+        "p-4 bg-foreground text-background overflow-hidden interpolate-panel",
+        className
       )}
     >
-      <div className="flex items-center justify-between gap-4">
+      <div className="flex items-center justify-between gap-4 text-left">
         <h3 className="uppercase tracking-widest font-medium">{info.name}</h3>
         <button
           onClick={() => setIsVisible(!isVisible)}
@@ -36,7 +39,9 @@ export function ComponentInfoPanel({ info }: ComponentInfoPanelProps) {
           {isVisible ? <EyeOff size={18} /> : <Eye size={18} />}
         </button>
       </div>
-      <div className={cn("mt-2 transition-all", !isVisible && "hidden")}>
+      <div
+        className={cn("mt-2 text-left transition-all", !isVisible && "hidden")}
+      >
         <p className="text-sm text-muted-foreground">{info.dimensions}</p>
         <p className="text-sm mt-2">{info.description}</p>
       </div>
