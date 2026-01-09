@@ -1,6 +1,6 @@
 "use client";
 
-import { Suspense, useState } from "react";
+import { Suspense, useRef, useState } from "react";
 import * as THREE from "three";
 import { Canvas, ThreeEvent } from "@react-three/fiber";
 import {
@@ -8,6 +8,7 @@ import {
   useGLTF,
   Environment,
   Outlines,
+  useHelper,
 } from "@react-three/drei";
 import { Button } from "@/components/ui/button";
 import { Loader } from "@/components/general/loader";
@@ -32,14 +33,15 @@ interface GarageMeshProps {
   position: [number, number, number];
   rotation?: [number, number, number];
   scale?: [number, number, number];
-  isSelected: boolean;
-  isHovered: boolean;
-  onPointerOver: (e: ThreeEvent<PointerEvent>) => void;
-  onPointerOut: () => void;
-  onClick: (e: ThreeEvent<MouseEvent>) => void;
+  isSelected?: boolean;
+  isHovered?: boolean;
+  onPointerOver?: (e: ThreeEvent<PointerEvent>) => void;
+  onPointerOut?: () => void;
+  onClick?: (e: ThreeEvent<MouseEvent>) => void;
 }
 
 function GarageMesh({
+  name,
   geometry,
   material,
   position,
@@ -62,6 +64,9 @@ function GarageMesh({
     displayMaterial.emissiveIntensity = 0.2;
   }
 
+  // Only apply shadows to cladding
+  const isCladding = name.toLowerCase().includes("cladding");
+
   return (
     <animated.mesh
       geometry={geometry}
@@ -72,6 +77,8 @@ function GarageMesh({
       onPointerOver={onPointerOver}
       onPointerOut={onPointerOut}
       onClick={onClick}
+      castShadow={isCladding}
+      receiveShadow={isCladding}
     >
       {(isSelected || isHovered) && (
         <Outlines
@@ -178,11 +185,12 @@ function GarageModel({
         <GarageMesh
           key={mesh.name}
           {...mesh}
-          isSelected={mesh.name === selectedComponent}
-          isHovered={mesh.name === hoveredComponent}
-          onPointerOver={handlePointerOver(mesh.name)}
-          onPointerOut={handlePointerOut}
-          onClick={handleClick(mesh.name)}
+          // Turn these off for now
+          // isSelected={mesh.name === selectedComponent}
+          // isHovered={mesh.name === hoveredComponent}
+          // onPointerOver={handlePointerOver(mesh.name)}
+          // onPointerOut={handlePointerOut}
+          // onClick={handleClick(mesh.name)}
         />
       ))}
     </group>
@@ -202,10 +210,11 @@ export default function InteractiveGaragePage() {
 
   return (
     <div className="h-[calc(100vh-3.5rem)] w-full relative">
-      <ComponentInfoPanel
+      {/* Hide for now */}
+      {/* <ComponentInfoPanel
         info={getComponentInfo(selectedComponent)}
         className="absolute top-4 right-4 w-48 sm:w-64 z-10"
-      />
+      /> */}
       <ConfigurablePanel<GarageFormState, GarageComponent[]>
         config={garagePocConfig}
         className="absolute top-4 left-4 w-48 sm:w-48 z-10"
@@ -228,11 +237,13 @@ export default function InteractiveGaragePage() {
       <Canvas
         camera={{ position: [-10.43, 6.88, 13.47], fov: 50 }}
         className="bg-background"
+        shadows
       >
         <Suspense fallback={<Loader />}>
           <Suspense fallback={null}>
             <Environment preset="sunset" background={false} />
           </Suspense>
+          <Lighting />
           <GarageModel
             selectedComponent={selectedComponent}
             setSelectedComponent={setSelectedComponent}
@@ -240,9 +251,41 @@ export default function InteractiveGaragePage() {
             setHoveredComponent={setHoveredComponent}
             visibleComponents={visibleComponents}
           />
-          <OrbitControls maxPolarAngle={Math.PI / 2 - 0.1} />
+          <FloorPlane />
+          <OrbitControls maxPolarAngle={Math.PI / 2 - 0.05} />
         </Suspense>
       </Canvas>
     </div>
+  );
+}
+
+function FloorPlane() {
+  return (
+    <mesh rotation={[-Math.PI / 2, 0, 0]} position={[0, 0, 0]} receiveShadow>
+      <planeGeometry args={[15, 10]} />
+      <meshStandardMaterial color="#204312" roughness={0.8} metalness={0.2} />
+    </mesh>
+  );
+}
+
+function Lighting() {
+  return (
+    <>
+      <directionalLight
+        position={[-5, 10, 5]}
+        intensity={1.5}
+        color="#87CEEB"
+        castShadow
+        shadow-mapSize-width={2048}
+        shadow-mapSize-height={2048}
+        shadow-camera-far={50}
+        shadow-camera-left={-10}
+        shadow-camera-right={10}
+        shadow-camera-top={10}
+        shadow-camera-bottom={-10}
+        shadow-bias={-0.0001}
+      />
+      <ambientLight intensity={0.3} />
+    </>
   );
 }

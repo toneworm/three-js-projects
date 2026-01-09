@@ -48,9 +48,25 @@ export const garagePocConfig: Config = {
         },
       ],
     },
+    {
+      id: "cladding",
+      label: "Cladding",
+      controls: [
+        {
+          id: "claddingType",
+          defaultValue: "none",
+          options: [
+            { value: "none", label: "None" },
+            { value: "softwood", label: "Softwood" },
+            { value: "larch", label: "Larch" },
+            { value: "black", label: "Black" },
+            { value: "oak", label: "Oak" },
+          ],
+        },
+      ],
+    },
   ],
 };
-
 
 // [
 //   "Two_Bay_Garage",
@@ -62,5 +78,9 @@ export const garagePocConfig: Config = {
 //   "Hip_Roof",
 //   "Gable_Roof_No_Window",
 //   "Gable_Roof_With_Window",
-//   "Half_Hip_Roof_With_Window"
-// ]
+//   "Half_Hip_Roof_With_Window",
+//   "Cladding_L",
+//   "Cladding_R",
+//   "Cladding_Posts_L",
+//   "Cladding_Posts_R",
+// ];

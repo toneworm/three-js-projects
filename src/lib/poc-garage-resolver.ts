@@ -3,6 +3,7 @@ export type GarageFormState = {
   windowType: "none" | "dormer" | "velux";
   logStoreLeft: boolean;
   logStoreRight: boolean;
+  claddingType: "none" | "softwood" | "larch" | "black" | "oak";
 };
 
 export type GarageComponent =
@@ -15,7 +16,11 @@ export type GarageComponent =
   | "Hip_Roof"
   | "Gable_Roof_No_Window"
   | "Gable_Roof_With_Window"
-  | "Half_Hip_Roof_With_Window";
+  | "Half_Hip_Roof_With_Window"
+  | "Cladding_L"
+  | "Cladding_R"
+  | "Cladding_Posts_L"
+  | "Cladding_Posts_R";
 
 export function resolveGarageComponents(
   state: GarageFormState
@@ -49,6 +54,14 @@ export function resolveGarageComponents(
   // Add log stores
   if (state.logStoreLeft) components.push("Log_Store_L");
   if (state.logStoreRight) components.push("Log_Store_R");
+
+  // Add cladding if not 'none'
+  if (state.claddingType !== "none") {
+    components.push("Cladding_L");
+    components.push("Cladding_R");
+    components.push("Cladding_Posts_L");
+    components.push("Cladding_Posts_R");
+  }
 
   return components;
 }
