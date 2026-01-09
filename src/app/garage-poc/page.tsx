@@ -22,7 +22,10 @@ import {
   resolveGarageComponents,
   GarageFormState,
   GarageComponent,
+  GarageComponentWithMaterial,
+  MaterialType,
 } from "@/lib/poc-garage-resolver";
+import { MATERIAL_COLORS } from "@/lib/material-constants";
 
 const garageModelUrl = "/models/garage_poc_v2.glb";
 
@@ -103,7 +106,7 @@ function GarageModel({
   setSelectedComponent: React.Dispatch<React.SetStateAction<string>>;
   hoveredComponent: string;
   setHoveredComponent: React.Dispatch<React.SetStateAction<string>>;
-  visibleComponents: GarageComponent[];
+  visibleComponents: GarageComponentWithMaterial[];
 }) {
   const { scene } = useGLTF(garageModelUrl);
 
@@ -174,10 +177,31 @@ function GarageModel({
     setSelectedComponent(name === selectedComponent ? "" : name);
   };
 
-  // Filter meshes to only show visible components
-  const filteredMeshes = meshes.filter((mesh) =>
-    visibleComponents.includes(mesh.name as GarageComponent)
-  );
+  // Create a map of component names to their materials
+  const componentMaterialMap = new Map<GarageComponent, MaterialType>();
+  visibleComponents.forEach((comp) => {
+    componentMaterialMap.set(comp.name, comp.material);
+  });
+
+  // Filter meshes to only show visible components and apply correct materials
+  const filteredMeshes = meshes
+    .filter((mesh) => componentMaterialMap.has(mesh.name as GarageComponent))
+    .map((mesh) => {
+      const materialType = componentMaterialMap.get(mesh.name as GarageComponent) || "default";
+      const color = MATERIAL_COLORS[materialType];
+
+      // Create material with the correct color
+      const material = new THREE.MeshStandardMaterial({
+        color: color,
+        roughness: 0.8,
+        metalness: 0.1,
+      });
+
+      return {
+        ...mesh,
+        material: material,
+      };
+    });
 
   return (
     <group>
@@ -200,12 +224,14 @@ function GarageModel({
 export default function InteractiveGaragePage() {
   const [selectedComponent, setSelectedComponent] = useState<string>("");
   const [hoveredComponent, setHoveredComponent] = useState<string>("");
-  const [visibleComponents, setVisibleComponents] = useState<GarageComponent[]>(
+  const [visibleComponents, setVisibleComponents] = useState<GarageComponentWithMaterial[]>(
     []
   );
 
-  const handleResolvedChange = (resolved: GarageComponent[]) => {
+  const handleResolvedChange = (resolved: GarageComponentWithMaterial[]) => {
     setVisibleComponents(resolved);
+
+    console.log("Visible Components:", resolved);
   };
 
   return (
@@ -215,7 +241,7 @@ export default function InteractiveGaragePage() {
         info={getComponentInfo(selectedComponent)}
         className="absolute top-4 right-4 w-48 sm:w-64 z-10"
       /> */}
-      <ConfigurablePanel<GarageFormState, GarageComponent[]>
+      <ConfigurablePanel<GarageFormState, GarageComponentWithMaterial[]>
         config={garagePocConfig}
         className="absolute top-4 left-4 w-48 sm:w-48 z-10"
         resolver={resolveGarageComponents}
@@ -228,7 +254,9 @@ export default function InteractiveGaragePage() {
           <h3 className="text-sm font-semibold mb-2">Visible Components:</h3>
           <ul className="text-xs space-y-1">
             {visibleComponents.map((component) => (
-              <li key={component}>{component}</li>
+              <li key={component.name}>
+                {component.name} - {component.material}
+              </li>
             ))}
           </ul>
         </div>
