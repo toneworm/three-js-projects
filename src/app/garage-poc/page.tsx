@@ -23,7 +23,7 @@ import {
   GarageComponent,
 } from "@/lib/poc-garage-resolver";
 
-const garageModelUrl = "/models/garage_poc.glb";
+const garageModelUrl = "/models/garage_poc_v2.glb";
 
 interface GarageMeshProps {
   geometry: THREE.BufferGeometry;
@@ -208,14 +208,14 @@ export default function InteractiveGaragePage() {
       />
       <ConfigurablePanel<GarageFormState, GarageComponent[]>
         config={garagePocConfig}
-        className="absolute top-4 left-4 w-48 sm:w-64 z-10"
+        className="absolute top-4 left-4 w-48 sm:w-48 z-10"
         resolver={resolveGarageComponents}
         onResolvedChange={handleResolvedChange}
       />
 
       {/* Debug display for visible components */}
       {visibleComponents.length > 0 && (
-        <div className="absolute bottom-4 left-4 bg-background border border-border p-4 rounded-md z-10">
+        <div className="absolute bottom-4 left-4 bg-background border border-border p-4 z-10">
           <h3 className="text-sm font-semibold mb-2">Visible Components:</h3>
           <ul className="text-xs space-y-1">
             {visibleComponents.map((component) => (

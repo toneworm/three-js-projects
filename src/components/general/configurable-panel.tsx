@@ -8,14 +8,20 @@ import { Label } from "@/components/ui/label";
 import { cn } from "@/lib/utils";
 import { Config } from "@/types";
 
-interface ConfigurablePanelProps<TState = Record<string, string | boolean>, TResult = string[]> {
+interface ConfigurablePanelProps<
+  TState = Record<string, string | boolean>,
+  TResult = string[]
+> {
   config?: Config;
   className?: string;
   resolver?: (state: TState) => TResult;
   onResolvedChange?: (resolved: TResult) => void;
 }
 
-export function ConfigurablePanel<TState = Record<string, string | boolean>, TResult = string[]>({
+export function ConfigurablePanel<
+  TState = Record<string, string | boolean>,
+  TResult = string[]
+>({
   config,
   className,
   resolver,
@@ -69,20 +75,18 @@ export function ConfigurablePanel<TState = Record<string, string | boolean>, TRe
   return (
     <div
       className={cn(
-        "bg-background border border-border p-4 min-w-62.5",
+        "bg-background border border-border p-4 min-w-48",
         className
       )}
     >
-      <div className="flex items-center justify-start gap-2">
-        <Button
-          variant="default"
-          size="lg"
-          className="px-4 uppercase tracking-widest rounded-none"
-          onClick={() => setIsOpen(!isOpen)}
-        >
-          {isOpen ? "Hide" : "Configure"}
-        </Button>
-      </div>
+      <Button
+        variant="default"
+        size="lg"
+        className="px-4 uppercase tracking-widest rounded-none w-full"
+        onClick={() => setIsOpen(!isOpen)}
+      >
+        {isOpen ? "Hide" : "Configure"}
+      </Button>
 
       {isOpen && (
         <div className="mt-4 p-4 border border-border bg-muted/50 space-y-6">
