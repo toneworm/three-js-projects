@@ -27,7 +27,7 @@ import {
 } from "@/lib/poc-garage-resolver";
 import { MATERIAL_COLORS } from "@/lib/material-constants";
 
-const garageModelUrl = "/models/garage_poc_v2.glb";
+const garageModelUrl = "/models/garage_poc_v3.glb";
 
 interface GarageMeshProps {
   geometry: THREE.BufferGeometry;
@@ -126,23 +126,10 @@ function GarageModel({
     if ((child as THREE.Mesh).isMesh) {
       const mesh = child as THREE.Mesh;
       if (mesh.name && mesh.name !== "Scene") {
-        // Apply custom materials
+        // Apply materials
         let material;
 
-        // if (mesh.name.toLowerCase().includes("plinth")) {
-        //   material = new THREE.MeshStandardMaterial({
-        //     color: "#8b4a3a",
-        //     roughness: 0.9,
-        //     metalness: 0.0,
-        //   });
-        // } else {
-        //   material = new THREE.MeshStandardMaterial({
-        //     color: "#c9a86a",
-        //     roughness: 0.8,
-        //     metalness: 0.1,
-        //   });
-        // }
-
+        // default material
         material = new THREE.MeshStandardMaterial({
           color: "#c9a86a",
           roughness: 0.8,
@@ -187,15 +174,60 @@ function GarageModel({
   const filteredMeshes = meshes
     .filter((mesh) => componentMaterialMap.has(mesh.name as GarageComponent))
     .map((mesh) => {
-      const materialType = componentMaterialMap.get(mesh.name as GarageComponent) || "default";
-      const color = MATERIAL_COLORS[materialType];
+      const materialType =
+        componentMaterialMap.get(mesh.name as GarageComponent) || "default";
 
-      // Create material with the correct color
-      const material = new THREE.MeshStandardMaterial({
-        color: color,
-        roughness: 0.8,
-        metalness: 0.1,
-      });
+      let material = mesh.material;
+
+      // cladding
+      if (["softwood", "larch", "black", "oak"].includes(materialType)) {
+        const color = MATERIAL_COLORS[materialType];
+
+        // Create material with the correct color
+        material = new THREE.MeshStandardMaterial({
+          color: color,
+          roughness: 0.8,
+          metalness: 0.1,
+        });
+      }
+
+      // other materials
+      if (materialType === "metal") {
+        material = new THREE.MeshStandardMaterial({
+          color: "#aaaaaa",
+          roughness: 0.4,
+          metalness: 1.0,
+        });
+      }
+
+      if (materialType === "glass") {
+        // material = new THREE.MeshStandardMaterial({
+        //   color: "#a0c8f0",
+        //   roughness: 0.1,
+        //   metalness: 0.0,
+        //   transparent: true,
+        //   opacity: 0.6,
+        // });
+
+        material = new THREE.MeshPhysicalMaterial({
+          color: "#fff",
+          roughness: 0.1,
+          metalness: 0.0,
+          transparent: true,
+          opacity: 0.6,
+          transmission: 0.9,
+          clearcoat: 1.0,
+          clearcoatRoughness: 0.1,
+        });
+      }
+
+      if (materialType === "default") {
+        material = new THREE.MeshStandardMaterial({
+          color: "#c9a86a",
+          roughness: 0.8,
+          metalness: 0.1,
+        });
+      }
 
       return {
         ...mesh,
@@ -224,9 +256,9 @@ function GarageModel({
 export default function InteractiveGaragePage() {
   const [selectedComponent, setSelectedComponent] = useState<string>("");
   const [hoveredComponent, setHoveredComponent] = useState<string>("");
-  const [visibleComponents, setVisibleComponents] = useState<GarageComponentWithMaterial[]>(
-    []
-  );
+  const [visibleComponents, setVisibleComponents] = useState<
+    GarageComponentWithMaterial[]
+  >([]);
 
   const handleResolvedChange = (resolved: GarageComponentWithMaterial[]) => {
     setVisibleComponents(resolved);
@@ -290,8 +322,8 @@ export default function InteractiveGaragePage() {
 function FloorPlane() {
   return (
     <mesh rotation={[-Math.PI / 2, 0, 0]} position={[0, 0, 0]} receiveShadow>
-      <planeGeometry args={[15, 10]} />
-      <meshStandardMaterial color="#204312" roughness={0.8} metalness={0.2} />
+      <planeGeometry args={[10, 5.2]} />
+      <meshStandardMaterial color="#211700" roughness={1} />
     </mesh>
   );
 }
@@ -302,7 +334,7 @@ function Lighting() {
       <directionalLight
         position={[-5, 10, 5]}
         intensity={1.5}
-        color="#87CEEB"
+        color="#a7aedb"
         castShadow
         shadow-mapSize-width={2048}
         shadow-mapSize-height={2048}

@@ -1,39 +1,15 @@
-export type GarageFormState = {
-  roofType: "gable" | "halfHip" | "hip";
-  windowType: "none" | "dormer" | "velux";
-  logStoreLeft: boolean;
-  logStoreRight: boolean;
-  claddingType: "none" | "softwood" | "larch" | "black" | "oak";
-};
-
-export type GarageComponent =
-  | "Two_Bay_Garage"
-  | "Window_Dormer"
-  | "Window_Velux"
-  | "Log_Store_R"
-  | "Log_Store_L"
-  | "Half_Hip_Roof_No_Window"
-  | "Hip_Roof"
-  | "Gable_Roof_No_Window"
-  | "Gable_Roof_With_Window"
-  | "Half_Hip_Roof_With_Window"
-  | "Cladding_L"
-  | "Cladding_R"
-  | "Cladding_Posts_L"
-  | "Cladding_Posts_R";
-
-export type MaterialType = "default" | "softwood" | "larch" | "black" | "oak";
-
-export type GarageComponentWithMaterial = {
-  name: GarageComponent;
-  material: MaterialType;
-};
+import {
+  GarageFormState,
+  GarageComponentWithMaterial,
+  MaterialType,
+} from "@/types";
 
 export function resolveGarageComponents(
   state: GarageFormState
 ): GarageComponentWithMaterial[] {
   const components: GarageComponentWithMaterial[] = [
     { name: "Two_Bay_Garage", material: "default" },
+    { name: "Two_Bay_Garage_Screws", material: "metal" },
   ];
 
   // Determine roof based on type and windows
@@ -46,7 +22,9 @@ export function resolveGarageComponents(
     });
   } else if (state.roofType === "halfHip") {
     components.push({
-      name: hasWindows ? "Half_Hip_Roof_With_Window" : "Half_Hip_Roof_No_Window",
+      name: hasWindows
+        ? "Half_Hip_Roof_With_Window"
+        : "Half_Hip_Roof_No_Window",
       material: "default",
     });
   } else if (state.roofType === "hip") {
@@ -59,6 +37,7 @@ export function resolveGarageComponents(
       components.push({ name: "Window_Dormer", material: "default" });
     } else if (state.windowType === "velux") {
       components.push({ name: "Window_Velux", material: "default" });
+      components.push({ name: "Window_Velux_Glass", material: "glass" });
     }
   }
 

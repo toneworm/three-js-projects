@@ -67,20 +67,3 @@ export const garagePocConfig: Config = {
     },
   ],
 };
-
-// [
-//   "Two_Bay_Garage",
-//   "Window_Dormer",
-//   "Window_Velux",
-//   "Log_Store_R",
-//   "Log_Store_L",
-//   "Half_Hip_Roof_No_Window",
-//   "Hip_Roof",
-//   "Gable_Roof_No_Window",
-//   "Gable_Roof_With_Window",
-//   "Half_Hip_Roof_With_Window",
-//   "Cladding_L",
-//   "Cladding_R",
-//   "Cladding_Posts_L",
-//   "Cladding_Posts_R",
-// ];
