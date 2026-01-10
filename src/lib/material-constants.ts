@@ -1,6 +1,6 @@
-import { MaterialType } from "./poc-garage-resolver";
+import { MaterialType } from "@/types";
 
-export const MATERIAL_COLORS: Record<MaterialType, string> = {
+export const MATERIAL_COLORS: Partial<Record<MaterialType, string>> = {
   default: "#c9a86a",
   softwood: "#d4a574",
   larch: "#b8956a",
