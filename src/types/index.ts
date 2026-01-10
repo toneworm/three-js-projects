@@ -38,6 +38,7 @@ export type GarageFormState = {
 export type GarageComponent =
   | "Two_Bay_Garage"
   | "Two_Bay_Garage_Screws"
+  | "Two_Bay_Garage_Wall"
   | "Window_Dormer"
   | "Window_Velux"
   | "Window_Velux_Glass"
@@ -60,7 +61,8 @@ export type MaterialType =
   | "black"
   | "oak"
   | "metal"
-  | "glass";
+  | "glass"
+  | "brick";
 
 export type GarageComponentWithMaterial = {
   name: GarageComponent;

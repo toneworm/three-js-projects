@@ -193,6 +193,14 @@ function GarageModel({
         });
       }
 
+      if (materialType === "brick") {
+        material = new THREE.MeshStandardMaterial({
+          color: "#733a25",
+          roughness: 0.9,
+          metalness: 0.0,
+        });
+      }
+
       if (materialType === "glass") {
         // material = new THREE.MeshStandardMaterial({
         //   color: "#a0c8f0",

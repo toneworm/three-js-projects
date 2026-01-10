@@ -10,6 +10,7 @@ export function resolveGarageComponents(
   const components: GarageComponentWithMaterial[] = [
     { name: "Two_Bay_Garage", material: "default" },
     { name: "Two_Bay_Garage_Screws", material: "metal" },
+    { name: "Two_Bay_Garage_Wall", material: "brick" },
   ];
 
   // Determine roof based on type and windows
