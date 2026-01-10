@@ -11,7 +11,7 @@ import {
 } from "@react-three/drei";
 import { Button } from "@/components/ui/button";
 import { Loader } from "@/components/general/loader";
-import { getComponentInfo, getExplosionOffset } from "@/lib/utils";
+import { getComponentInfoV1, getExplosionOffset } from "@/lib/utils";
 import { ComponentInfoPanel } from "@/components/general/component-info-panel";
 import { useSpring, animated } from "@react-spring/three";
 
@@ -216,7 +216,7 @@ export default function InteractiveGarageV2Page() {
         </Button>
       </div>
       <ComponentInfoPanel
-        info={getComponentInfo(selectedComponent)}
+        info={getComponentInfoV1(selectedComponent)}
         className="absolute top-4 right-4 w-48 sm:w-64 z-10"
       />
       <Canvas

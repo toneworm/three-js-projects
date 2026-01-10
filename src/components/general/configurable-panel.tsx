@@ -121,15 +121,15 @@ export function ConfigurablePanel<
                                 key={option.value}
                                 className="flex items-center space-x-2"
                               >
-                                <RadioGroupItem
-                                  value={option.value}
-                                  id={`${control.id}-${option.value}`}
-                                  className="cursor-pointer"
-                                />
                                 <Label
                                   htmlFor={`${control.id}-${option.value}`}
                                   className="text-sm font-normal cursor-pointer"
                                 >
+                                  <RadioGroupItem
+                                    value={option.value}
+                                    id={`${control.id}-${option.value}`}
+                                  />
+
                                   {option.label}
                                 </Label>
                               </div>

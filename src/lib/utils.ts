@@ -1,7 +1,8 @@
 import { clsx, type ClassValue } from "clsx";
 import { twMerge } from "tailwind-merge";
 import type { ComponentInfo } from "@/types";
-import { componentData } from "@/data/component-info";
+import { componentData as componentDataV1 } from "@/data/component-info-garage-v1";
+import { componentData as componentDataPoc } from "@/data/component-info-poc-garage";
 import {
   explosionGroupOffsets,
   explosionIndividualOffsets,
@@ -12,17 +13,36 @@ export function cn(...inputs: ClassValue[]) {
   return twMerge(clsx(inputs));
 }
 
+// THESE NEED TO BE MADE GENERIC
 // Helper to find component info by prefix matching
-export function getComponentInfo(name: string): ComponentInfo | null {
+export function getComponentInfoV1(name: string): ComponentInfo | null {
   if (!name) return null;
 
   // Direct match first
-  if (componentData[name]) {
-    return componentData[name];
+  if (componentDataV1[name]) {
+    return componentDataV1[name];
   }
 
   // Prefix match
-  for (const [prefix, info] of Object.entries(componentData)) {
+  for (const [prefix, info] of Object.entries(componentDataV1)) {
+    if (name.startsWith(prefix)) {
+      return info;
+    }
+  }
+
+  return null;
+}
+
+export function getComponentInfoPoc(name: string): ComponentInfo | null {
+  if (!name) return null;
+
+  // Direct match first
+  if (componentDataPoc[name]) {
+    return componentDataPoc[name];
+  }
+
+  // Prefix match
+  for (const [prefix, info] of Object.entries(componentDataPoc)) {
     if (name.startsWith(prefix)) {
       return info;
     }

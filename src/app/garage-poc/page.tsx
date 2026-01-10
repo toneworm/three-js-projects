@@ -1,6 +1,6 @@
 "use client";
 
-import { Suspense, useRef, useState } from "react";
+import { Suspense, useState } from "react";
 import * as THREE from "three";
 import { Canvas, ThreeEvent } from "@react-three/fiber";
 import {
@@ -8,24 +8,22 @@ import {
   useGLTF,
   Environment,
   Outlines,
-  useHelper,
 } from "@react-three/drei";
-import { Button } from "@/components/ui/button";
 import { Loader } from "@/components/general/loader";
-import { getComponentInfo } from "@/lib/utils";
+import { getComponentInfoPoc } from "@/lib/utils";
 import { ComponentInfoPanel } from "@/components/general/component-info-panel";
 import { ConfigurablePanel } from "@/components/general/configurable-panel";
 import { useSpring, animated } from "@react-spring/three";
 import { useLogPartNames } from "@/hooks/use-log-part-names";
 import { garagePocConfig } from "@/data/poc-garage-config";
+import { resolveGarageComponents } from "@/lib/poc-garage-resolver";
+import { MATERIAL_COLORS } from "@/lib/material-constants";
 import {
-  resolveGarageComponents,
   GarageFormState,
   GarageComponent,
   GarageComponentWithMaterial,
   MaterialType,
-} from "@/lib/poc-garage-resolver";
-import { MATERIAL_COLORS } from "@/lib/material-constants";
+} from "@/types";
 
 const garageModelUrl = "/models/garage_poc_v3.glb";
 
@@ -179,11 +177,10 @@ function GarageModel({
 
       let material = mesh.material;
 
-      // cladding
+      // Cladding materials
       if (["softwood", "larch", "black", "oak"].includes(materialType)) {
         const color = MATERIAL_COLORS[materialType];
 
-        // Create material with the correct color
         material = new THREE.MeshStandardMaterial({
           color: color,
           roughness: 0.8,
@@ -241,12 +238,11 @@ function GarageModel({
         <GarageMesh
           key={mesh.name}
           {...mesh}
-          // Turn these off for now
-          // isSelected={mesh.name === selectedComponent}
-          // isHovered={mesh.name === hoveredComponent}
-          // onPointerOver={handlePointerOver(mesh.name)}
-          // onPointerOut={handlePointerOut}
-          // onClick={handleClick(mesh.name)}
+          isSelected={mesh.name === selectedComponent}
+          isHovered={mesh.name === hoveredComponent}
+          onPointerOver={handlePointerOver(mesh.name)}
+          onPointerOut={handlePointerOut}
+          onClick={handleClick(mesh.name)}
         />
       ))}
     </group>
@@ -269,10 +265,10 @@ export default function InteractiveGaragePage() {
   return (
     <div className="h-[calc(100vh-3.5rem)] w-full relative">
       {/* Hide for now */}
-      {/* <ComponentInfoPanel
-        info={getComponentInfo(selectedComponent)}
+      <ComponentInfoPanel
+        info={getComponentInfoPoc(selectedComponent)}
         className="absolute top-4 right-4 w-48 sm:w-64 z-10"
-      /> */}
+      />
       <ConfigurablePanel<GarageFormState, GarageComponentWithMaterial[]>
         config={garagePocConfig}
         className="absolute top-4 left-4 w-48 sm:w-48 z-10"
@@ -312,7 +308,10 @@ export default function InteractiveGaragePage() {
             visibleComponents={visibleComponents}
           />
           <FloorPlane />
-          <OrbitControls maxPolarAngle={Math.PI / 2 - 0.05} />
+          <OrbitControls
+            maxPolarAngle={Math.PI / 2 - 0.05}
+            target={[-0.5, 0, 0]}
+          />
         </Suspense>
       </Canvas>
     </div>
