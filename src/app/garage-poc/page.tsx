@@ -277,7 +277,7 @@ export default function InteractiveGaragePage() {
       />
 
       {/* Debug display for visible components */}
-      {visibleComponents.length > 0 && (
+      {/* {visibleComponents.length > 0 && (
         <div className="absolute bottom-4 left-4 bg-background border border-border p-4 z-10">
           <h3 className="text-sm font-semibold mb-2">Visible Components:</h3>
           <ul className="text-xs space-y-1">
@@ -288,7 +288,7 @@ export default function InteractiveGaragePage() {
             ))}
           </ul>
         </div>
-      )}
+      )} */}
 
       <Canvas
         camera={{ position: [-10.43, 6.88, 13.47], fov: 50 }}
