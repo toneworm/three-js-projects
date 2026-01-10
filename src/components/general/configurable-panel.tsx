@@ -121,6 +121,7 @@ export function ConfigurablePanel<
                                   className="text-sm font-normal cursor-pointer"
                                 >
                                   <RadioGroupItem
+                                    className="cursor-pointer"
                                     value={option.value}
                                     id={`${control.id}-${option.value}`}
                                   />
@@ -134,25 +135,23 @@ export function ConfigurablePanel<
                       ) : (
                         // Checkbox for boolean controls - label inline
                         <div className="flex items-center space-x-2">
-                          <Checkbox
-                            id={control.id}
-                            checked={formState[control.id] === true}
-                            onCheckedChange={(checked) =>
-                              handleCheckboxChange(
-                                control.id,
-                                checked as boolean
-                              )
-                            }
-                            className="cursor-pointer"
-                          />
-                          {control.label && (
-                            <Label
-                              htmlFor={control.id}
-                              className="text-sm font-normal cursor-pointer"
-                            >
-                              {control.label}
-                            </Label>
-                          )}
+                          <Label
+                            htmlFor={control.id}
+                            className="text-sm font-normal cursor-pointer"
+                          >
+                            <Checkbox
+                              id={control.id}
+                              checked={formState[control.id] === true}
+                              onCheckedChange={(checked) =>
+                                handleCheckboxChange(
+                                  control.id,
+                                  checked as boolean
+                                )
+                              }
+                              className="cursor-pointer"
+                            />
+                            {control.label || control.id}
+                          </Label>
                         </div>
                       )}
                     </div>

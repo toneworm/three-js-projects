@@ -29,12 +29,6 @@ export const componentData: Record<string, ComponentInfo> = {
       "Flush-mounted roof window installed in the plane of the roof, provides natural light without altering roofline",
   },
 
-  Window_Velux_Glass: {
-    name: "Velux Window Glass",
-    dimensions: "Standard roof window",
-    description: "Glass panel for the Velux roof window",
-  },
-
   Log_Store: {
     name: "Log Store",
     dimensions: "Variable",

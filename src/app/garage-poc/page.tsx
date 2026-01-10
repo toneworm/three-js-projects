@@ -13,7 +13,6 @@ import { Loader } from "@/components/general/loader";
 import { getComponentInfoPoc } from "@/lib/utils";
 import { ComponentInfoPanel } from "@/components/general/component-info-panel";
 import { ConfigurablePanel } from "@/components/general/configurable-panel";
-import { useSpring, animated } from "@react-spring/three";
 import { useLogPartNames } from "@/hooks/use-log-part-names";
 import { garagePocConfig } from "@/data/poc-garage-config";
 import { resolveGarageComponents } from "@/lib/poc-garage-resolver";
@@ -69,7 +68,7 @@ function GarageMesh({
   const isCladding = name.toLowerCase().includes("cladding");
 
   return (
-    <animated.mesh
+    <mesh
       geometry={geometry}
       material={displayMaterial}
       position={position}
@@ -89,7 +88,7 @@ function GarageMesh({
           angle={0}
         />
       )}
-    </animated.mesh>
+    </mesh>
   );
 }
 
@@ -124,11 +123,8 @@ function GarageModel({
     if ((child as THREE.Mesh).isMesh) {
       const mesh = child as THREE.Mesh;
       if (mesh.name && mesh.name !== "Scene") {
-        // Apply materials
-        let material;
-
         // default material
-        material = new THREE.MeshStandardMaterial({
+        const material = new THREE.MeshStandardMaterial({
           color: "#c9a86a",
           roughness: 0.8,
           metalness: 0.1,
