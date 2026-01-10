@@ -18,6 +18,15 @@ interface ConfigurablePanelProps<
   onResolvedChange?: (resolved: TResult) => void;
 }
 
+// hack... make it generic later
+const initialFormState: Record<string, string | boolean> = {
+  roofType: "gable",
+  windowType: "none",
+  logStoreLeft: false,
+  logStoreRight: false,
+  claddingType: "none",
+};
+
 export function ConfigurablePanel<
   TState = Record<string, string | boolean>,
   TResult = string[]
@@ -28,22 +37,8 @@ export function ConfigurablePanel<
   onResolvedChange,
 }: ConfigurablePanelProps<TState, TResult>) {
   const [isOpen, setIsOpen] = useState(false);
-  const [formState, setFormState] = useState<Record<string, string | boolean>>(
-    {}
-  );
-
-  // Initialize form state with default values
-  useEffect(() => {
-    if (!config) return;
-
-    const initialState: Record<string, string | boolean> = {};
-    config.groups.forEach((group) => {
-      group.controls.forEach((control) => {
-        initialState[control.id] = control.defaultValue;
-      });
-    });
-    setFormState(initialState);
-  }, [config]);
+  const [formState, setFormState] =
+    useState<Record<string, string | boolean>>(initialFormState);
 
   // Call resolver whenever form state changes
   useEffect(() => {

@@ -294,6 +294,7 @@ export default function InteractiveGaragePage() {
         camera={{ position: [-10.43, 6.88, 13.47], fov: 50 }}
         className="bg-background"
         shadows
+        onPointerMissed={() => setSelectedComponent("")}
       >
         <Suspense fallback={<Loader />}>
           <Suspense fallback={null}>
