@@ -27,7 +27,7 @@ export function ComponentInfoPanel({
     <div
       className={cn(
         "p-4 bg-foreground text-background overflow-hidden interpolate-panel",
-        className
+        className,
       )}
     >
       <div className="flex items-center justify-between gap-4 text-left">

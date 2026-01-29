@@ -11,8 +11,8 @@ export function CameraLogger() {
     if (now - lastLogTime.current > 500) {
       console.log(
         `Camera position: [${camera.position.x.toFixed(
-          2
-        )}, ${camera.position.y.toFixed(2)}, ${camera.position.z.toFixed(2)}]`
+          2,
+        )}, ${camera.position.y.toFixed(2)}, ${camera.position.z.toFixed(2)}]`,
       );
       lastLogTime.current = now;
     }

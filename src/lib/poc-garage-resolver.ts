@@ -5,7 +5,7 @@ import {
 } from "@/types";
 
 export function resolveGarageComponents(
-  state: GarageFormState
+  state: GarageFormState,
 ): GarageComponentWithMaterial[] {
   const components: GarageComponentWithMaterial[] = [
     { name: "Two_Bay_Garage", material: "default" },

@@ -53,12 +53,12 @@ export function getComponentInfoPoc(name: string): ComponentInfo | null {
 
 // Helper function to find offset based on prefix matching
 export function getExplosionOffset(
-  name: string
+  name: string,
 ): [number, number, number] | null {
   // Check individual overrides first
   if (explosionIndividualOffsets[name]) {
     return explosionIndividualOffsets[name].map(
-      (val) => val * explosionMultiplier
+      (val) => val * explosionMultiplier,
     ) as [number, number, number];
   }
 
@@ -68,7 +68,7 @@ export function getExplosionOffset(
       return offset.map((val) => val * explosionMultiplier) as [
         number,
         number,
-        number
+        number,
       ];
     }
   }
