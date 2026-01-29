@@ -2,6 +2,7 @@ import { useState } from "react";
 import { Eye, EyeOff } from "lucide-react";
 import type { ComponentInfo } from "@/types";
 import { cn } from "@/lib/utils";
+import { Button } from "@/components/ui/button";
 
 interface ComponentInfoPanelProps {
   info: ComponentInfo | null;
@@ -31,13 +32,15 @@ export function ComponentInfoPanel({
     >
       <div className="flex items-center justify-between gap-4 text-left">
         <h3 className="uppercase tracking-widest font-medium">{info.name}</h3>
-        <button
+        <Button
+          variant="ghost"
+          size="icon-sm"
           onClick={() => setIsVisible(!isVisible)}
-          className="cursor-pointer shrink-0 hover:opacity-70 transition-opacity rounded bg-background text-foreground p-1"
+          className="shrink-0 bg-background text-foreground hover:bg-background/80"
           aria-label={isVisible ? "Hide details" : "Show details"}
         >
           {isVisible ? <EyeOff size={18} /> : <Eye size={18} />}
-        </button>
+        </Button>
       </div>
       <div
         className={cn("mt-2 text-left transition-all", !isVisible && "hidden")}
