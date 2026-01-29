@@ -295,7 +295,7 @@ export default function InteractiveGaragePage() {
       )} */}
 
       <Canvas
-        camera={{ position: [-10.43, 6.88, 13.47], fov: 50 }}
+        camera={{ position: [-10.43, 6.88, 13.47], fov: 30 }}
         className="bg-background"
         shadows
         onPointerMissed={() => setSelectedComponent("")}
@@ -312,7 +312,7 @@ export default function InteractiveGaragePage() {
             setHoveredComponent={setHoveredComponent}
             visibleComponents={visibleComponents}
           />
-          <FloorPlane />
+          {/* <FloorPlane /> */}
           <OrbitControls
             maxPolarAngle={Math.PI / 2 - 0.05}
             target={[-0.5, 0, 0]}
