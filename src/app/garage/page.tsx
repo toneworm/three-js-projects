@@ -231,7 +231,7 @@ export default function InteractiveGaragePage() {
           <Suspense fallback={null}>
             <Environment preset="sunset" background={false} />
           </Suspense>
-          {/* <BasePlane /> */}
+          <BasePlane />
           <GarageModel
             isExploded={isExploded}
             selectedComponent={selectedComponent}
