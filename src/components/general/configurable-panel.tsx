@@ -1,6 +1,6 @@
 "use client";
 
-import { useState, useEffect } from "react";
+import { useState, useEffect, useRef } from "react";
 import { Button } from "@/components/ui/button";
 import { RadioGroup, RadioGroupItem } from "@/components/ui/radio-group";
 import { Checkbox } from "@/components/ui/checkbox";
@@ -10,7 +10,7 @@ import { Config } from "@/types";
 
 interface ConfigurablePanelProps<
   TState = Record<string, string | boolean>,
-  TResult = string[]
+  TResult = string[],
 > {
   config?: Config;
   className?: string;
@@ -18,7 +18,6 @@ interface ConfigurablePanelProps<
   onResolvedChange?: (resolved: TResult) => void;
 }
 
-// hack... make it generic later
 const initialFormState: Record<string, string | boolean> = {
   roofType: "gable",
   windowType: "none",
@@ -29,7 +28,7 @@ const initialFormState: Record<string, string | boolean> = {
 
 export function ConfigurablePanel<
   TState = Record<string, string | boolean>,
-  TResult = string[]
+  TResult = string[],
 >({
   config,
   className,
@@ -40,18 +39,28 @@ export function ConfigurablePanel<
   const [formState, setFormState] =
     useState<Record<string, string | boolean>>(initialFormState);
 
-  // Call resolver whenever form state changes
+  // Store the latest callbacks in refs to avoid dependency issues
+  const resolverRef = useRef(resolver);
+  const onResolvedChangeRef = useRef(onResolvedChange);
+
+  // Update refs when props change
+  useEffect(() => {
+    resolverRef.current = resolver;
+    onResolvedChangeRef.current = onResolvedChange;
+  });
+
+  // Only depend on formState - use refs for callbacks
   useEffect(() => {
     if (Object.keys(formState).length > 0) {
       console.log("Form state updated:", formState);
 
-      if (resolver && onResolvedChange) {
-        const resolved = resolver(formState as TState);
+      if (resolverRef.current && onResolvedChangeRef.current) {
+        const resolved = resolverRef.current(formState as TState);
         console.log("Resolved components:", resolved);
-        onResolvedChange(resolved);
+        onResolvedChangeRef.current(resolved);
       }
     }
-  }, [formState, resolver, onResolvedChange]);
+  }, [formState]); // ← Only formState now
 
   const handleRadioChange = (controlId: string, value: string) => {
     setFormState((prev) => ({
@@ -71,7 +80,7 @@ export function ConfigurablePanel<
     <div
       className={cn(
         "bg-background border border-border p-4 min-w-48",
-        className
+        className,
       )}
     >
       <Button
@@ -125,7 +134,6 @@ export function ConfigurablePanel<
                                     value={option.value}
                                     id={`${control.id}-${option.value}`}
                                   />
-
                                   {option.label}
                                 </Label>
                               </div>
@@ -133,7 +141,6 @@ export function ConfigurablePanel<
                           </RadioGroup>
                         </>
                       ) : (
-                        // Checkbox for boolean controls - label inline
                         <div className="flex items-center space-x-2">
                           <Label
                             htmlFor={control.id}
@@ -145,7 +152,7 @@ export function ConfigurablePanel<
                               onCheckedChange={(checked) =>
                                 handleCheckboxChange(
                                   control.id,
-                                  checked as boolean
+                                  checked as boolean,
                                 )
                               }
                               className="cursor-pointer"

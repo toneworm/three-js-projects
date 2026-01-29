@@ -295,7 +295,7 @@ export default function InteractiveGaragePage() {
       )} */}
 
       <Canvas
-        camera={{ position: [-10.43, 6.88, 13.47], fov: 30 }}
+        camera={{ position: [-12.43, 12.88, 19.47], fov: 30 }}
         className="bg-background"
         shadows
         onPointerMissed={() => setSelectedComponent("")}
@@ -312,7 +312,7 @@ export default function InteractiveGaragePage() {
             setHoveredComponent={setHoveredComponent}
             visibleComponents={visibleComponents}
           />
-          {/* <FloorPlane /> */}
+          <FloorPlane />
           <OrbitControls
             maxPolarAngle={Math.PI / 2 - 0.05}
             target={[-0.5, 0, 0]}
@@ -327,7 +327,7 @@ function FloorPlane() {
   return (
     <mesh rotation={[-Math.PI / 2, 0, 0]} position={[0, 0, 0]} receiveShadow>
       <planeGeometry args={[10, 5.2]} />
-      <meshStandardMaterial color="#211700" roughness={1} />
+      <meshStandardMaterial color="#413720" roughness={1} />
     </mesh>
   );
 }
