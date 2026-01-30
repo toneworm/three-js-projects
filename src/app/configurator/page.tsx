@@ -4,6 +4,7 @@ import { Suspense } from "react";
 import { Environment, OrbitControls } from "@react-three/drei";
 import { Canvas } from "@react-three/fiber";
 
+import Post from "@/components/building/post";
 import { Loader } from "@/components/general/loader";
 
 export default function ConfiguratorPage() {
@@ -19,10 +20,12 @@ export default function ConfiguratorPage() {
             <Environment preset="sunset" background={false} />
           </Suspense>
 
-          <mesh>
+          {/* <mesh>
             <boxGeometry args={[1, 1, 1]} />
             <meshStandardMaterial color="hotpink" />
-          </mesh>
+          </mesh> */}
+
+          <Post />
 
           <OrbitControls maxPolarAngle={Math.PI / 2 - 0.1} />
         </Suspense>
