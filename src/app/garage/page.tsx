@@ -1,20 +1,21 @@
 "use client";
 
 import { Suspense, useState } from "react";
-import * as THREE from "three";
-import { Canvas, ThreeEvent } from "@react-three/fiber";
 import {
-  OrbitControls,
-  useGLTF,
   Environment,
+  OrbitControls,
   Outlines,
+  useGLTF,
 } from "@react-three/drei";
-import { Button } from "@/components/ui/button";
-import { Loader } from "@/components/general/loader";
-import { getComponentInfoV1, getExplosionOffset } from "@/lib/utils";
+import { Canvas, type ThreeEvent } from "@react-three/fiber";
+import * as THREE from "three";
+import { animated, useSpring } from "@react-spring/three";
+
 import { ComponentInfoPanel } from "@/components/general/component-info-panel";
-import { useSpring, animated } from "@react-spring/three";
+import { Loader } from "@/components/general/loader";
+import { Button } from "@/components/ui/button";
 import { useLogPartNames } from "@/hooks/use-log-part-names";
+import { getComponentInfoV1, getExplosionOffset } from "@/lib/utils";
 
 const garageModelUrl = "/models/garage_005.glb";
 
@@ -61,7 +62,7 @@ function GarageMesh({
     config: {
       duration: 1000,
       easing: (t: number) =>
-        t < 0.5 ? 4 * t * t * t : 1 - Math.pow(-2 * t + 2, 3) / 2,
+        t < 0.5 ? 4 * t * t * t : 1 - (-2 * t + 2) ** 3 / 2,
     },
   });
 
@@ -131,7 +132,7 @@ function GarageModel({
       const mesh = child as THREE.Mesh;
       if (mesh.name && mesh.name !== "Scene") {
         // Apply custom materials
-        let material;
+        let material: THREE.Material;
 
         if (mesh.name.toLowerCase().includes("plinth")) {
           material = new THREE.MeshStandardMaterial({

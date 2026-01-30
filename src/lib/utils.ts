@@ -1,6 +1,6 @@
-import { clsx, type ClassValue } from "clsx";
+import { type ClassValue, clsx } from "clsx";
 import { twMerge } from "tailwind-merge";
-import type { ComponentInfo } from "@/types";
+
 import { componentData as componentDataV1 } from "@/data/component-info-garage-v1";
 import { componentData as componentDataPoc } from "@/data/component-info-poc-garage";
 import {
@@ -8,6 +8,7 @@ import {
   explosionIndividualOffsets,
   explosionMultiplier,
 } from "@/data/positions";
+import type { ComponentInfo } from "@/types";
 
 export function cn(...inputs: ClassValue[]) {
   return twMerge(clsx(inputs));

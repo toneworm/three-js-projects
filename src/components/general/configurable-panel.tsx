@@ -1,12 +1,13 @@
 "use client";
 
-import { useState, useEffect, useRef } from "react";
+import { useEffect, useRef, useState } from "react";
+
 import { Button } from "@/components/ui/button";
-import { RadioGroup, RadioGroupItem } from "@/components/ui/radio-group";
 import { Checkbox } from "@/components/ui/checkbox";
 import { Label } from "@/components/ui/label";
+import { RadioGroup, RadioGroupItem } from "@/components/ui/radio-group";
 import { cn } from "@/lib/utils";
-import { Config } from "@/types";
+import type { Config } from "@/types";
 
 interface ConfigurablePanelProps<
   TState = Record<string, string | boolean>,
@@ -99,73 +100,71 @@ export function ConfigurablePanel<
               No configuration available
             </p>
           ) : (
-            <>
-              {config.groups.map((group) => (
-                <div key={group.id} className="space-y-3">
-                  <h3 className="text-sm font-semibold text-foreground">
-                    {group.label}
-                  </h3>
-                  {group.controls.map((control) => (
-                    <div key={control.id} className="space-y-2">
-                      {control.options ? (
-                        <>
-                          {control.label && (
-                            <Label className="text-sm text-muted-foreground">
-                              {control.label}
-                            </Label>
-                          )}
-                          <RadioGroup
-                            value={formState[control.id] as string}
-                            onValueChange={(value) =>
-                              handleRadioChange(control.id, value)
-                            }
-                          >
-                            {control.options.map((option) => (
-                              <div
-                                key={option.value}
-                                className="flex items-center space-x-2"
-                              >
-                                <Label
-                                  htmlFor={`${control.id}-${option.value}`}
-                                  className="text-sm font-normal cursor-pointer"
-                                >
-                                  <RadioGroupItem
-                                    className="cursor-pointer"
-                                    value={option.value}
-                                    id={`${control.id}-${option.value}`}
-                                  />
-                                  {option.label}
-                                </Label>
-                              </div>
-                            ))}
-                          </RadioGroup>
-                        </>
-                      ) : (
-                        <div className="flex items-center space-x-2">
-                          <Label
-                            htmlFor={control.id}
-                            className="text-sm font-normal cursor-pointer"
-                          >
-                            <Checkbox
-                              id={control.id}
-                              checked={formState[control.id] === true}
-                              onCheckedChange={(checked) =>
-                                handleCheckboxChange(
-                                  control.id,
-                                  checked as boolean,
-                                )
-                              }
-                              className="cursor-pointer"
-                            />
-                            {control.label || control.id}
+            config.groups.map((group) => (
+              <div key={group.id} className="space-y-3">
+                <h3 className="text-sm font-semibold text-foreground">
+                  {group.label}
+                </h3>
+                {group.controls.map((control) => (
+                  <div key={control.id} className="space-y-2">
+                    {control.options ? (
+                      <>
+                        {control.label && (
+                          <Label className="text-sm text-muted-foreground">
+                            {control.label}
                           </Label>
-                        </div>
-                      )}
-                    </div>
-                  ))}
-                </div>
-              ))}
-            </>
+                        )}
+                        <RadioGroup
+                          value={formState[control.id] as string}
+                          onValueChange={(value) =>
+                            handleRadioChange(control.id, value)
+                          }
+                        >
+                          {control.options.map((option) => (
+                            <div
+                              key={option.value}
+                              className="flex items-center space-x-2"
+                            >
+                              <Label
+                                htmlFor={`${control.id}-${option.value}`}
+                                className="text-sm font-normal cursor-pointer"
+                              >
+                                <RadioGroupItem
+                                  className="cursor-pointer"
+                                  value={option.value}
+                                  id={`${control.id}-${option.value}`}
+                                />
+                                {option.label}
+                              </Label>
+                            </div>
+                          ))}
+                        </RadioGroup>
+                      </>
+                    ) : (
+                      <div className="flex items-center space-x-2">
+                        <Label
+                          htmlFor={control.id}
+                          className="text-sm font-normal cursor-pointer"
+                        >
+                          <Checkbox
+                            id={control.id}
+                            checked={formState[control.id] === true}
+                            onCheckedChange={(checked) =>
+                              handleCheckboxChange(
+                                control.id,
+                                checked as boolean,
+                              )
+                            }
+                            className="cursor-pointer"
+                          />
+                          {control.label || control.id}
+                        </Label>
+                      </div>
+                    )}
+                  </div>
+                ))}
+              </div>
+            ))
           )}
         </div>
       )}

@@ -1,5 +1,6 @@
+import type { Metadata } from "next";
+
 import { Header } from "@/components/layout/header";
-import { Metadata } from "next";
 
 export const metadata: Metadata = {
   title: "ThreeJS Projects | Garage",

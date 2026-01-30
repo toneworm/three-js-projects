@@ -1,9 +1,9 @@
 "use client";
 
-import { Suspense, useState } from "react";
-import * as THREE from "three";
-import { Canvas, ThreeEvent } from "@react-three/fiber";
-import { OrbitControls, Environment } from "@react-three/drei";
+import { Suspense } from "react";
+import { Environment, OrbitControls } from "@react-three/drei";
+import { Canvas } from "@react-three/fiber";
+
 import { Loader } from "@/components/general/loader";
 
 export default function ConfiguratorPage() {

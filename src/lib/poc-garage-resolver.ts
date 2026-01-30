@@ -1,6 +1,6 @@
-import {
-  GarageFormState,
+import type {
   GarageComponentWithMaterial,
+  GarageFormState,
   MaterialType,
 } from "@/types";
 

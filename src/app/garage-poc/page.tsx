@@ -1,26 +1,27 @@
 "use client";
 
 import { Suspense, useState } from "react";
-import * as THREE from "three";
-import { Canvas, ThreeEvent } from "@react-three/fiber";
 import {
-  OrbitControls,
-  useGLTF,
   Environment,
+  OrbitControls,
   Outlines,
+  useGLTF,
 } from "@react-three/drei";
-import { Loader } from "@/components/general/loader";
-import { getComponentInfoPoc } from "@/lib/utils";
+import { Canvas, type ThreeEvent } from "@react-three/fiber";
+import * as THREE from "three";
+
 import { ComponentInfoPanel } from "@/components/general/component-info-panel";
 import { ConfigurablePanel } from "@/components/general/configurable-panel";
-import { useLogPartNames } from "@/hooks/use-log-part-names";
+import { Loader } from "@/components/general/loader";
 import { garagePocConfig } from "@/data/poc-garage-config";
-import { resolveGarageComponents } from "@/lib/poc-garage-resolver";
+import { useLogPartNames } from "@/hooks/use-log-part-names";
 import { MATERIAL_COLORS } from "@/lib/material-constants";
-import {
-  GarageFormState,
+import { resolveGarageComponents } from "@/lib/poc-garage-resolver";
+import { getComponentInfoPoc } from "@/lib/utils";
+import type {
   GarageComponent,
   GarageComponentWithMaterial,
+  GarageFormState,
   MaterialType,
 } from "@/types";
 
@@ -68,6 +69,7 @@ function GarageMesh({
   const isCladding = name.toLowerCase().includes("cladding");
 
   return (
+    // biome-ignore lint/a11y/noStaticElementInteractions: 3D mesh interaction
     <mesh
       geometry={geometry}
       material={displayMaterial}

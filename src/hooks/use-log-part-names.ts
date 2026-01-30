@@ -1,5 +1,5 @@
 import { useEffect } from "react";
-import * as THREE from "three";
+import type * as THREE from "three";
 
 export function useLogPartNames(scene: THREE.Group | null) {
   useEffect(() => {

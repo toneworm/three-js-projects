@@ -1,8 +1,9 @@
 import { useState } from "react";
 import { Eye, EyeOff } from "lucide-react";
-import type { ComponentInfo } from "@/types";
-import { cn } from "@/lib/utils";
+
 import { Button } from "@/components/ui/button";
+import { cn } from "@/lib/utils";
+import type { ComponentInfo } from "@/types";
 
 interface ComponentInfoPanelProps {
   info: ComponentInfo | null;
