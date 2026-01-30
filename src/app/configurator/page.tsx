@@ -12,7 +12,7 @@ export default function ConfiguratorPage() {
     <div className="h-[calc(100vh-3.5rem)] w-full relative">
       <div className="absolute top-4 left-4 z-10 flex gap-2">...</div>
       <Canvas
-        camera={{ position: [2, 1, 2], fov: 80 }}
+        camera={{ position: [2, 4, 3], fov: 80 }}
         className="bg-background"
       >
         <Suspense fallback={<Loader />}>
@@ -25,9 +25,10 @@ export default function ConfiguratorPage() {
             <meshStandardMaterial color="hotpink" />
           </mesh> */}
 
-          <Post />
+          <Post width={0.15} depth={0.15} height={2.4} />
 
-          <OrbitControls maxPolarAngle={Math.PI / 2 - 0.1} />
+          {/* <OrbitControls maxPolarAngle={Math.PI / 2 - 0.1} /> */}
+          <OrbitControls />
         </Suspense>
       </Canvas>
     </div>
