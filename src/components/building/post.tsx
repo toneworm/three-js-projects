@@ -1,4 +1,5 @@
 import { useTexture } from "@react-three/drei";
+import { useMemo } from "react";
 import * as THREE from "three";
 
 type PostProps = {
@@ -214,9 +215,13 @@ function generatePostGeometry({ width, height, depth, showBevel }: PostProps) {
     width, depth, width, 0, 0, 0,
   ]
 
-  const triangles = showBevel
-    ? new Float32Array([...mainTris, ...bevelEndTris])
-    : new Float32Array([...mainTris, ...endTris]);
+  const triangles = useMemo(
+    () =>
+      showBevel
+        ? new Float32Array([...mainTris, ...bevelEndTris])
+        : new Float32Array([...mainTris, ...endTris]),
+    [showBevel],
+  );
 
   const uvs = new Float32Array([...mainUVs, ...endUVs]);
 
