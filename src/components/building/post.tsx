@@ -1,10 +1,12 @@
 import { useTexture } from "@react-three/drei";
 import * as THREE from "three";
 
-type PostDimensions = {
+type PostProps = {
   width: number;
   height: number;
   depth: number;
+  showTenon?: boolean;
+  showBevel?: boolean;
 };
 
 // not sure how best to do this...
@@ -15,7 +17,18 @@ const maxDepth = 0.3;
 const minHeight = 1.5;
 const maxHeight = 5.0;
 
-export default function Post({ width, height, depth }: PostDimensions) {
+const tenonHeight = 0.1;
+const tenonWidthFactor = 0.4;
+const tenonDepthFactor = 0.6;
+const bevelOffset = 0.015;
+
+export default function Post({
+  width,
+  height,
+  depth,
+  showTenon = false,
+  showBevel = false,
+}: PostProps) {
   const texture = useTexture("/textures/oak_veneer_01_diff_1k.jpg");
 
   texture.wrapS = THREE.RepeatWrapping;
@@ -38,49 +51,40 @@ export default function Post({ width, height, depth }: PostDimensions) {
     );
   }
 
+  // reduce height with tenon
+  if (showTenon) {
+    height -= tenonHeight / 2;
+  }
+
   return (
-    <mesh>
-      <primitive object={generatePostGeometry({ width, height, depth })} />
-      {/* <meshStandardMaterial color="orange" flatShading /> */}
-      <meshStandardMaterial map={texture} flatShading />
-    </mesh>
+    <group>
+      <mesh>
+        <primitive
+          object={generatePostGeometry({ width, height, depth, showBevel })}
+        />
+        <meshStandardMaterial map={texture} flatShading />
+      </mesh>
+
+      <mesh visible={showTenon} position={[0, height, 0]}>
+        <boxGeometry
+          args={[
+            width * tenonWidthFactor,
+            tenonHeight,
+            depth * tenonDepthFactor,
+          ]}
+        />
+        <meshStandardMaterial map={texture} flatShading />
+      </mesh>
+    </group>
   );
 }
 
-function generatePostGeometry({ width, height, depth }: PostDimensions) {
+function generatePostGeometry({ width, height, depth, showBevel }: PostProps) {
   const geometry = new THREE.BufferGeometry();
 
   const w = width / 2;
   const d = depth / 2;
-
-  // prettier-ignore
-  // All start top left and go anti-clockwise round
-  // biome-ignore format: vertex array should not be formatted
-  const triangles = new Float32Array([
-    // Front face
-    -w, height, d, -w, 0, d, w, 0, d,
-    w, 0, d, w, height, d, -w, height, d,
-
-    // Right face
-    w, height, d, w, 0, d, w, 0, -d,
-    w, 0, -d, w, height, -d, w, height, d,
-
-    // Back face
-    w, height, -d, w, 0, -d, -w, 0, -d,
-    -w, 0, -d, -w, height, -d, w, height, -d,
-
-    // Left face
-    -w, height, -d, -w, 0, -d, -w, 0, d,
-    -w, 0, d, -w, height, d, -w, height, -d,
-
-    // Top face (lean over)
-    -w, height, -d, -w, height, d, w, height, d,
-    w, height, d, w, height, -d, -w, height, -d,
-
-    // Bottom face (lean under)
-    -w, 0, d, -w, 0, -d, w, 0, -d,
-    w, 0, -d, w, 0, d, -w, 0, d,
-  ]);
+  const h = height;
 
   const perimeter = 2 * (width + depth);
   const uFront = width / perimeter;
@@ -88,35 +92,133 @@ function generatePostGeometry({ width, height, depth }: PostDimensions) {
   const uBack = (2 * width + depth) / perimeter;
   const uLeft = 1;
 
-  const h = height;
+  // prettier-ignore
+  // All start top left and go anti-clockwise round
+  // biome-ignore format: vertex array should not be formatted
+  const mainTris = [
+    // Front face
+    -w, h, d, -w, bevelOffset, d, w, bevelOffset, d,
+    w, bevelOffset, d, w, h, d, -w, h, d,
+
+    // Right face
+    w, h, d, w, bevelOffset, d, w, bevelOffset, -d,
+    w, bevelOffset, -d, w, h, -d, w, h, d,
+
+    // Back face
+    w, h, -d, w, bevelOffset, -d, -w, bevelOffset, -d,
+    -w, bevelOffset, -d, -w, h, -d, w, h, -d,
+
+    // Left face
+    -w, h, -d, -w, bevelOffset, -d, -w, bevelOffset, d,
+    -w, bevelOffset, d, -w, h, d, -w, h, -d,
+
+    // Top face (lean over)
+    -w, h, -d, -w, h, d, w, h, d,
+    w, h, d, w, h, -d, -w, h, -d,
+  ]
 
   // prettier-ignore
   // biome-ignore format: vertex array should not be formatted
-  const uvs = new Float32Array([
+  const mainUVs = [
     // Front face
-    0, h, 0, 0, uFront, 0,
-    uFront, 0, uFront, h, 0, h,
+    0, h, 0, bevelOffset, uFront, bevelOffset,
+    uFront, bevelOffset, uFront, h, 0, h,
 
     // Right face
-    uFront, h, uFront, 0, uRight, 0,
-    uRight, 0, uRight, h, uFront, h,
-    
+    uFront, h, uFront, bevelOffset, uRight, bevelOffset,
+    uRight, bevelOffset, uRight, h, uFront, h,
+
     // Back face
-    uRight, h, uRight, 0, uBack, 0,
-    uBack, 0, uBack, h, uRight, h,
+    uRight, h, uRight, bevelOffset, uBack, bevelOffset,
+    uBack, bevelOffset, uBack, h, uRight, h,
 
     // Left face
-    uBack, h, uBack, 0, uLeft, 0,
-    uLeft, 0, uLeft, h, uBack, h,
+    uBack, h, uBack, bevelOffset, uLeft, bevelOffset,
+    uLeft, bevelOffset, uLeft, h, uBack, h,
 
     // Top face
-    0, depth, 0, 0, width, 0,
-    width, 0, width, depth, 0, depth,
+    0, h, 0, 0, uFront, 0,
+    uFront, 0, uFront, h, 0, h,
+  ]
 
-    // Bottom face
+  // prettier-ignore
+  // biome-ignore format: vertex array should not be formatted
+  const endTris = [
+    // Front strip
+    -w, bevelOffset, d, -w, 0, d, w, 0, d,
+    w, 0, d, w, bevelOffset, d, -w, bevelOffset, d,
+
+    // Right strip
+    w, bevelOffset, d, w, 0, d, w, 0, -d,
+    w, 0, -d, w, bevelOffset, -d, w, bevelOffset, d,
+
+    // Back strip
+    w, bevelOffset, -d, w, 0, -d, -w, 0, -d,
+    -w, 0, -d, -w, bevelOffset, -d, w, bevelOffset, -d,
+
+    // Left strip
+    -w, bevelOffset, -d, -w, 0, -d, -w, 0, d,
+    -w, 0, d, -w, bevelOffset, d, -w, bevelOffset, -d,
+
+    // Bottom face (lean under)
+    -w, 0, d, -w, 0, -d, w, 0, -d,
+    w, 0, -d, w, 0, d, -w, 0, d,
+  ]
+
+  // prettier-ignore
+  // biome-ignore format: vertex array should not be formatted
+  const bevelEndTris = [
+    // Front Bevel
+    -w, bevelOffset, d, -w + bevelOffset, 0, d - bevelOffset, w - bevelOffset, 0, d - bevelOffset,
+    w - bevelOffset, 0, d - bevelOffset, w, bevelOffset, d, -w, bevelOffset, d,
+
+    // Right Bevel
+    w, bevelOffset, d, w - bevelOffset, 0, d - bevelOffset, w - bevelOffset, 0, -d + bevelOffset,
+    w - bevelOffset, 0, -d + bevelOffset, w, bevelOffset, -d, w, bevelOffset, d,
+
+    // Back Bevel
+    w, bevelOffset, -d, w - bevelOffset, 0, -d + bevelOffset, -w + bevelOffset, 0, -d + bevelOffset,
+    -w + bevelOffset, 0, -d + bevelOffset, -w, bevelOffset, -d, w, bevelOffset, -d,
+
+    // Left Bevel
+    -w, bevelOffset, -d, -w + bevelOffset, 0, -d + bevelOffset, -w + bevelOffset, 0, d - bevelOffset,
+    -w + bevelOffset, 0, d - bevelOffset, -w, bevelOffset, d, -w, bevelOffset, -d,
+
+    // Bottom face (lean under)
+    -w + bevelOffset, 0, d - bevelOffset, -w + bevelOffset, 0, -d + bevelOffset, w - bevelOffset, 0, -d + bevelOffset,
+    w - bevelOffset, 0, -d + bevelOffset, w - bevelOffset, 0, d - bevelOffset, -w + bevelOffset, 0, d - bevelOffset,
+  ];
+
+  // prettier-ignore
+  // biome-ignore format: vertex array should not be formatted
+  // Use the same UVs for bevel and non-bevelled ends
+  const endUVs = [
+    // Front strip UVs
+    0, bevelOffset, 0, 0, uFront, 0,
+    uFront, 0, uFront, bevelOffset, 0, bevelOffset,
+    
+    // Right strip UVs
+    uFront, bevelOffset, uFront, 0, uRight, 0,
+    uRight, 0, uRight, bevelOffset, uFront, bevelOffset,
+
+    // Back strip UVs
+    uRight, bevelOffset, uRight, 0, uBack, 0,
+    uBack, 0, uBack, bevelOffset, uRight, bevelOffset,
+
+    // Left strip UVs
+    uBack, bevelOffset, uBack, 0, uLeft, 0,
+    uLeft, 0, uLeft, bevelOffset, uBack, bevelOffset,
+
+    // Bottom face UVs
     0, 0, 0, depth, width, depth,
     width, depth, width, 0, 0, 0,
-  ]);
+  ]
+
+  const triangles = showBevel
+    ? new Float32Array([...mainTris, ...bevelEndTris])
+    : new Float32Array([...mainTris, ...endTris]);
+
+  const uvs = new Float32Array([...mainUVs, ...endUVs]);
 
   geometry.setAttribute("position", new THREE.BufferAttribute(triangles, 3));
   geometry.setAttribute("uv", new THREE.BufferAttribute(uvs, 2));
