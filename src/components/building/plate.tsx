@@ -1,4 +1,5 @@
 import { Float, useTexture } from "@react-three/drei";
+import { join } from "path";
 import { useMemo } from "react";
 import * as THREE from "three";
 import { mergeGeometries } from "three/addons/utils/BufferGeometryUtils.js";
@@ -34,6 +35,7 @@ export default function Plate({
   jointSize = jointSizeDefault,
 }: PlateProps) {
   const texture = useTexture("/textures/oak_veneer_01_diff_1k.jpg");
+  // const texture = useTexture("/textures/uv_texture.jpg");
 
   texture.wrapS = THREE.RepeatWrapping;
   texture.wrapT = THREE.RepeatWrapping;
@@ -65,24 +67,15 @@ export default function Plate({
       jointSize,
     );
 
-    const endPlateLeftGeo = createEndGeometry(
-      "block",
-      height,
-      depth,
-      jointSize,
-    );
+    // Left end cap - rotate to face -X, then translate
+    const endPlateLeftGeo = createBlockEndGeometry(height, depth, jointSize);
+    endPlateLeftGeo.rotateZ(Math.PI / 2); // Rotate to point along -X
+    endPlateLeftGeo.translate(-length / 2 + jointSize, height / 2, 0);
 
-    endPlateLeftGeo.translate(-(length / 2 - jointSize / 2), 0, 0);
-
-    const endPlateRightGeo = createEndGeometry(
-      "block",
-      height,
-      depth,
-      jointSize,
-    );
-
-    endPlateRightGeo.rotateY(Math.PI);
-    endPlateRightGeo.translate(length / 2 - jointSize / 2, 0, 0);
+    // Right end cap - rotate to face +X, then translate
+    const endPlateRightGeo = createBlockEndGeometry(height, depth, jointSize);
+    endPlateRightGeo.rotateZ(-Math.PI / 2); // Rotate to point along +X
+    endPlateRightGeo.translate(length / 2 - jointSize, height / 2, 0);
 
     const merged = mergeGeometries([
       mainPlateGeo,
@@ -138,45 +131,48 @@ function createMainPlateGeometry(
   const uBack = (depth + height) / circumference;
   const uBottom = (2 * depth + height) / circumference;
   const uFront = 1;
+  const uL = (length - 2 * jointSize) / circumference;
+
+  console.log({ uTop, uBack, uBottom, uFront, uL, circumference });
 
   // prettier-ignore
   // biome-ignore format: buffer array
   const tris = new Float32Array([
     // Top face
-    -l, h, -d, -l, h, d, l, h, d,
-    l, h, d, l, h, -d, -l, h, -d,
+    -l, h, -d,  -l, h, d,   l, h, d,
+    l, h, d,    l, h, -d,   -l, h, -d,
 
     // Back face
-    -l, 0, -d, -l, h, -d, l, h, -d,
-    l, h, -d, l, 0, -d, -l, 0, -d,
+    -l, 0, -d,  -l, h, -d,  l, h, -d,
+    l, h, -d,   l, 0, -d,   -l, 0, -d,
 
     // Bottom face
-    -l, 0, d, -l, 0, -d, l, 0, -d,
-    l, 0, -d, l, 0, d, -l, 0, d,
+    -l, 0, d,   -l, 0, -d,  l, 0, -d,
+    l, 0, -d,   l, 0, d,    -l, 0, d,
 
     // Front face
-    -l, h, d, -l, 0, d, l, 0, d,
-    l, 0, d, l, h, d, -l, h, d,
+    -l, h, d,   -l, 0, d,   l, 0, d,
+    l, 0, d,    l, h, d,    -l, h, d,
   ]);
 
   // prettier-ignore
   // biome-ignore format: buffer array
   const UVs = new Float32Array([
     // Top face
-    uTop, length, 0, length, 0, 0,
-    0, 0, uTop, 0, uTop, length,
+    uTop, uL,   0, uL,    0, 0,
+    0, 0,           uTop, 0,      uTop, uL,
 
     // Back face
-    uBack, length, 0, length, 0, 0,
-    0, 0, uBack, 0, uBack, length,
+    uBack, uL,  uTop, uL,    uTop, 0,
+    uTop, 0,           uBack, 0,     uBack, uL,
     
     // Bottom face
-    uBottom, length, 0, length, 0, 0,
-    0, 0, uBottom, 0, uBottom, length,
+    uBottom, uL,  uBack, uL,   uBack, 0,
+    uBack, 0,         uBottom, 0,      uBottom, uL,
 
     // Front face
-    uFront, length, 0, length, 0, 0,
-    0, 0, uFront, 0, uFront, length,
+    uFront, uL, uBottom, uL,    uBottom, 0,
+    uBottom, 0,     uFront, 0,    uFront, uL,
   ]);
 
   geometry.setAttribute("position", new THREE.BufferAttribute(tris, 3));
@@ -187,68 +183,71 @@ function createMainPlateGeometry(
 }
 
 function createBlockEndGeometry(
-  depth: number,
-  height: number,
-  jointSize: number,
+  height: number, // Width when standing upright (X-axis)
+  depth: number, // Depth (Z-axis)
+  jointSize: number, // Height when standing upright
 ) {
   const geometry = new THREE.BufferGeometry();
 
-  const d = depth / 2;
-  const h = height;
-  const j = jointSize / 2;
+  console.log({ jointSize, depth, height });
 
-  const circumference = 2 * (depth + height);
-  const uTop = depth / circumference;
-  const uBack = (depth + height) / circumference;
-  const uBottom = (2 * depth + height) / circumference;
-  const uFront = 1;
+  const w = height / 2; // Half-width
+  const d = depth / 2; // Half-depth
+  const j = jointSize; // Full height
+
+  const circumference = 2 * (height + depth);
+  const uFront = depth / circumference;
+  const uRight = (depth + height) / circumference;
+  const uBack = (2 * depth + height) / circumference;
+  const uLeft = 1; // Full wrap
+  const vTop = jointSize / circumference;
 
   // prettier-ignore
   // biome-ignore format: buffer array
   const tris = new Float32Array([
-    // Top face
-    -j, h, -d,  -j, h, d,   j, h, d,
-    j, h, d,    j, h, -d,   -j, h, -d,
+    // Front face (+Z)
+    w, j, d,   -w, j, d,   -w, 0, d,   // TR, TL, BL
+    -w, 0, d,   w, 0, d,    w, j, d,   // BL, BR, TR
 
-    // Back face
-    -j, 0, -d,  -j, h, -d,  j, h, -d,
-    j, h, -d,   j, 0, -d,   -j, 0, -d,
+    // Right face (+X)
+    w, j, -d,   w, j, d,   w, 0, d,    // TR, TL, BL
+    w, 0, d,    w, 0, -d,  w, j, -d,   // BL, BR, TR
 
-    // Bottom face
-    -j, 0, d,   -j, 0, -d,  j, 0, -d,
-    j, 0, -d,   j, 0, d,    -j, 0, d,
+    // Back face (-Z)
+    -w, j, -d,   w, j, -d,   w, 0, -d,  // TR, TL, BL
+    w, 0, -d,   -w, 0, -d,  -w, j, -d,  // BL, BR, TR
 
-    // Front face
-    -j, h, d,   -j, 0, d,   j, 0, d,
-    j, 0, d,    j, h, d,    -j, h, d,
+    // Left face (-X)
+    -w, j, d,   -w, j, -d,   -w, 0, -d,  // TR, TL, BL
+    -w, 0, -d,  -w, 0, d,    -w, j, d,   // BL, BR, TR
 
-    // End face (facing -X direction)
-    -j, h, -d,  -j, 0, -d,  -j, 0, d,
-    -j, 0, d,   -j, h, d,   -j, h, -d,
+    // Top face (+Y, end grain)
+    w, j, -d,   -w, j, -d,   -w, j, d,   // TR, TL, BL
+    -w, j, d,  w, j, d,   w, j, -d,    // BL, BR, TR
   ]);
 
   // prettier-ignore
   // biome-ignore format: buffer array
   const UVs = new Float32Array([
-    // Top face
-    uTop, jointSize,  0, jointSize,  0, 0,
-    0, 0,             uTop, 0,       uTop, jointSize,
+    // Front face
+    uFront, vTop,  0, vTop,       0, 0,
+    0, 0,          uFront, 0,     uFront, vTop,
+
+    // Right face
+    uRight, vTop,  uFront, vTop,  uFront, 0,
+    uFront, 0,     uRight, 0,     uRight, vTop,
 
     // Back face
-    uBack, jointSize, 0, jointSize,  0, 0,
-    0, 0,             uBack, 0,      uBack, jointSize,
-    
-    // Bottom face
-    uBottom, jointSize, 0, jointSize,  0, 0,
-    0, 0,               uBottom, 0,    uBottom, jointSize,
+    uBack, vTop,   uRight, vTop,  uRight, 0,
+    uRight, 0,     uBack, 0,      uBack, vTop,
 
-    // Front face
-    uFront, jointSize, 0, jointSize,  0, 0,
-    0, 0,              uFront, 0,     uFront, jointSize,
+    // Left face
+    uLeft, vTop,   uBack, vTop,   uBack, 0,
+    uBack, 0,      uLeft, 0,      uLeft, vTop,
 
-    // End face
-    0, h,      0, 0,      depth, 0,
-    depth, 0,  depth, h,  0, h,
+    // Top face (end grain)
+    0.25, 0.25,   0, 0.25,   0, 0,
+    0, 0,         0.25, 0,   0.25, 0.25,
   ]);
 
   geometry.setAttribute("position", new THREE.BufferAttribute(tris, 3));
