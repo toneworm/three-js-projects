@@ -36,20 +36,20 @@ export default function Post({
   texture.wrapT = THREE.RepeatWrapping;
 
   if (width < minWidth || width > maxWidth) {
-    width = Math.min(Math.max(width, minWidth), maxWidth);
     console.warn(`Post width ${width} out of bounds (${minWidth}-${maxWidth})`);
+    width = Math.min(Math.max(width, minWidth), maxWidth);
   }
 
   if (depth < minDepth || depth > maxDepth) {
-    depth = Math.min(Math.max(depth, minDepth), maxDepth);
     console.warn(`Post depth ${depth} out of bounds (${minDepth}-${maxDepth})`);
+    depth = Math.min(Math.max(depth, minDepth), maxDepth);
   }
 
   if (height < minHeight || height > maxHeight) {
-    height = Math.min(Math.max(height, minHeight), maxHeight);
     console.warn(
       `Post height ${height} out of bounds (${minHeight}-${maxHeight})`,
     );
+    height = Math.min(Math.max(height, minHeight), maxHeight);
   }
 
   // reduce height with tenon
@@ -59,10 +59,9 @@ export default function Post({
 
   return (
     <group>
-      <mesh>
-        <primitive
-          object={generatePostGeometry({ width, height, depth, showBevel })}
-        />
+      <mesh
+        geometry={generatePostGeometry({ width, height, depth, showBevel })}
+      >
         <meshStandardMaterial map={texture} flatShading />
       </mesh>
 
@@ -95,7 +94,7 @@ function generatePostGeometry({ width, height, depth, showBevel }: PostProps) {
 
   // prettier-ignore
   // All start top left and go anti-clockwise round
-  // biome-ignore format: vertex array should not be formatted
+  // biome-ignore format: buffer array
   const mainTris = [
     // Front face
     -w, h, d, -w, bevelOffset, d, w, bevelOffset, d,
@@ -119,7 +118,7 @@ function generatePostGeometry({ width, height, depth, showBevel }: PostProps) {
   ]
 
   // prettier-ignore
-  // biome-ignore format: vertex array should not be formatted
+  // biome-ignore format: buffer array
   const mainUVs = [
     // Front face
     0, h, 0, bevelOffset, uFront, bevelOffset,
@@ -143,7 +142,7 @@ function generatePostGeometry({ width, height, depth, showBevel }: PostProps) {
   ]
 
   // prettier-ignore
-  // biome-ignore format: vertex array should not be formatted
+  // biome-ignore format: buffer array
   const endTris = [
     // Front strip
     -w, bevelOffset, d, -w, 0, d, w, 0, d,
@@ -167,7 +166,7 @@ function generatePostGeometry({ width, height, depth, showBevel }: PostProps) {
   ]
 
   // prettier-ignore
-  // biome-ignore format: vertex array should not be formatted
+  // biome-ignore format: buffer array
   const bevelEndTris = [
     // Front Bevel
     -w, bevelOffset, d, -w + bevelOffset, 0, d - bevelOffset, w - bevelOffset, 0, d - bevelOffset,
@@ -191,7 +190,7 @@ function generatePostGeometry({ width, height, depth, showBevel }: PostProps) {
   ];
 
   // prettier-ignore
-  // biome-ignore format: vertex array should not be formatted
+  // biome-ignore format: buffer array
   // Use the same UVs for bevel and non-bevelled ends
   const endUVs = [
     // Front strip UVs
@@ -215,13 +214,9 @@ function generatePostGeometry({ width, height, depth, showBevel }: PostProps) {
     width, depth, width, 0, 0, 0,
   ]
 
-  const triangles = useMemo(
-    () =>
-      showBevel
-        ? new Float32Array([...mainTris, ...bevelEndTris])
-        : new Float32Array([...mainTris, ...endTris]),
-    [showBevel],
-  );
+  const triangles = showBevel
+    ? new Float32Array([...mainTris, ...bevelEndTris])
+    : new Float32Array([...mainTris, ...endTris]);
 
   const uvs = new Float32Array([...mainUVs, ...endUVs]);
 
