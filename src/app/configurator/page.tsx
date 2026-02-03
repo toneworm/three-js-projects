@@ -51,6 +51,18 @@ function Scene() {
     <>
       <Plate length={4} height={0.1} depth={0.1} />
 
+      <group position={[0, 2, 1]}>
+        <Plate length={4} height={0.15} depth={0.15} />
+      </group>
+
+      <group position={[-1.925, 0, 1]}>
+        <Post width={0.15} depth={0.15} height={2.05} showTenon />
+      </group>
+
+      <group position={[1.925, 0, 1]}>
+        <Post width={0.15} depth={0.15} height={2.05} showTenon />
+      </group>
+
       <group position={[0, 0, -2]}>
         <Post width={0.15} depth={0.15} height={2.4} showTenon />
 
