@@ -49,33 +49,57 @@ function Scene() {
 
   return (
     <>
-      <Plate length={4} height={0.1} depth={0.1} />
+      <group>
+        <Plate length={4} height={0.1} depth={0.1} />
 
-      <group position={[0, 2, 1]}>
-        <Plate length={4} height={0.15} depth={0.15} />
-      </group>
-
-      <group position={[-1.925, 0, 1]}>
-        <Post width={0.15} depth={0.15} height={2.05} showTenon />
-      </group>
-
-      <group position={[1.925, 0, 1]}>
-        <Post width={0.15} depth={0.15} height={2.05} showTenon />
-      </group>
-
-      <group position={[0, 0, -2]}>
-        <Post width={0.15} depth={0.15} height={2.4} showTenon />
-
-        <group position={[0.5, 0, 0]}>
-          <Post width={0.15} depth={0.15} height={1.9} showTenon />
+        <group position={[0, 2, 1]}>
+          <Plate length={4} height={0.15} depth={0.15} />
         </group>
 
-        <group position={[-0.5, 1, 0]}>
-          <Post width={0.2} depth={0.05} height={1.5} showTenon showBevel />
-        </group>
+        <Post
+          width={0.15}
+          depth={0.15}
+          height={1.95}
+          showTenon
+          position={[-1.925, 0, 1]}
+        />
 
-        <group position={[-1, 1.5, 0]}>
-          <Post width={0.2} depth={0.2} height={1.5} showTenon showBevel />
+        <Post
+          width={0.15}
+          depth={0.15}
+          height={1.95}
+          showTenon
+          position={[1.925, 0, 1]}
+        />
+
+        <group position={[0, 0, -2]}>
+          <Post width={0.15} depth={0.15} height={2.4} showTenon />
+
+          <Post
+            width={0.15}
+            depth={0.15}
+            height={1.9}
+            showTenon
+            position={[0.5, 0, 0]}
+          />
+
+          <Post
+            width={0.2}
+            depth={0.05}
+            height={1.5}
+            showTenon
+            showBevel
+            position={[-0.5, 1, 0]}
+          />
+
+          <Post
+            width={0.2}
+            depth={0.2}
+            height={1.5}
+            showTenon
+            showBevel
+            position={[-1, 1.5, 0]}
+          />
         </group>
       </group>
     </>
