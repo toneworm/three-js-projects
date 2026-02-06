@@ -4,14 +4,13 @@ import * as THREE from "three";
 import { mergeGeometries } from "three/addons/utils/BufferGeometryUtils.js";
 
 import { createMainPostGeo } from "@/lib/geometry/bodies/post";
-import { createBevelEndGeo } from "@/lib/geometry/caps/bevel-cap";
-import { createTenonEndGeo } from "@/lib/geometry/caps/tenon-cap";
-
+import { createBevelEndGeo } from "@/lib/geometry/caps_joints/bevel-cap";
+import { createTenonEndGeo } from "@/lib/geometry/caps_joints/tenon-cap";
+import { createBlockCapGeo } from "@/lib/geometry/caps_joints/block-cap";
 import {
   clampTenonDimensions,
   clampPostDimensions,
 } from "@/lib/validation/clamp-dimensions";
-import { createBlockCapGeo } from "@/lib/geometry/caps/block-cap";
 
 type PostProps = {
   width: number;
@@ -58,8 +57,6 @@ export default function Post({
   );
 
   const geometry = useMemo(() => {
-    const geometries: THREE.BufferGeometry[] = [];
-
     // Main post body
     const mainPostGeo = createMainPostGeo(width, height, depth, endSize);
 
@@ -67,6 +64,8 @@ export default function Post({
     const bottomPostGeo = showBevel
       ? createBevelEndGeo(width, endSize, depth, bevelOffset)
       : createBlockCapGeo(width, endSize, depth);
+    bottomPostGeo.rotateZ(Math.PI);
+    bottomPostGeo.translate(0, endSize, 0);
 
     // Top cap (tenon or block)
     const topPostGeo = showTenon
@@ -82,12 +81,6 @@ export default function Post({
         ? createBlockCapGeo(width, endSize, depth)
         : bottomPostGeo.clone();
     topPostGeo.translate(0, height, 0);
-
-    // Bottom cap needs flipping if it's a block end
-    if (!showBevel) {
-      bottomPostGeo.rotateZ(Math.PI);
-      bottomPostGeo.translate(0, endSize, 0);
-    }
 
     // prettier-ignore
     // biome-ignore reason: want to switch these on and off easily

@@ -24,40 +24,41 @@ export function createBevelEndGeo(
   // biome-ignore format: buffer array
   const tris = new Float32Array([
     // Front strip
-    -w, endSize, d, -w, bevelOffset, d, w, bevelOffset, d,
-    w, bevelOffset, d, w, endSize, d, -w, endSize, d,
+    -w, endSize, d, -w, 0, d, w, 0, d,
+    w, 0, d, w, endSize, d, -w, endSize, d,
 
     // Right strip
-    w, endSize, d, w, bevelOffset, d, w, bevelOffset, -d,
-    w, bevelOffset, -d, w, endSize, -d, w, endSize, d,
-
+    w, endSize, d, w, 0, d, w, 0, -d,
+    w, 0, -d, w, endSize, -d, w, endSize, d,
+    
     // Back strip
-    w, endSize, -d, w, bevelOffset, -d, -w, bevelOffset, -d,
-    -w, bevelOffset, -d, -w, endSize, -d, w, endSize, -d,
+    w, endSize, -d, w, 0, -d, -w, 0, -d,
+    -w, 0, -d, -w, endSize, -d, w, endSize, -d,
 
     // Left strip
-    -w, endSize, -d, -w, bevelOffset, -d, -w, bevelOffset, d,
-    -w, bevelOffset, d, -w, endSize, d, -w, endSize, -d,
+    -w, endSize, -d, -w, 0, -d, -w, 0, d,
+    -w, 0, d, -w, endSize, d, -w, endSize, -d,
 
     // Front bevel
-    -w, bevelOffset, d, -w + bevelOffset, 0, d - bevelOffset, w - bevelOffset, 0, d - bevelOffset,
-    w - bevelOffset, 0, d - bevelOffset, w, bevelOffset, d, -w, bevelOffset, d,
-
+    -w + bevelOffset, endSize + bevelOffset, d - bevelOffset, -w, endSize, d, w, endSize, d,
+    w, endSize, d, w - bevelOffset, endSize + bevelOffset, d - bevelOffset, -w + bevelOffset, endSize + bevelOffset, d - bevelOffset,
+    
     // Right bevel
-    w, bevelOffset, d, w - bevelOffset, 0, d - bevelOffset, w - bevelOffset, 0, -d + bevelOffset,
-    w - bevelOffset, 0, -d + bevelOffset, w, bevelOffset, -d, w, bevelOffset, d,
+    w - bevelOffset, endSize + bevelOffset, d - bevelOffset, w, endSize, d, w, endSize, -d,
+    w, endSize, -d, w - bevelOffset, endSize + bevelOffset, -d + bevelOffset, w - bevelOffset, endSize + bevelOffset, d - bevelOffset,
 
     // Back bevel
-    w, bevelOffset, -d, w - bevelOffset, 0, -d + bevelOffset, -w + bevelOffset, 0, -d + bevelOffset,
-    -w + bevelOffset, 0, -d + bevelOffset, -w, bevelOffset, -d, w, bevelOffset, -d,
+    w - bevelOffset, endSize + bevelOffset, -d + bevelOffset, w, endSize, -d, -w, endSize, -d,
+    -w, endSize, -d, -w + bevelOffset, endSize + bevelOffset, -d + bevelOffset, w - bevelOffset, endSize + bevelOffset, -d + bevelOffset,
 
     // Left bevel
-    -w, bevelOffset, -d, -w + bevelOffset, 0, -d + bevelOffset, -w + bevelOffset, 0, d - bevelOffset,
-    -w + bevelOffset, 0, d - bevelOffset, -w, bevelOffset, d, -w, bevelOffset, -d,
+    -w + bevelOffset, endSize + bevelOffset, -d + bevelOffset, -w, endSize, -d, -w, endSize, d,
+    -w, endSize, d, -w + bevelOffset, endSize + bevelOffset, d - bevelOffset, -w + bevelOffset, endSize + bevelOffset, -d + bevelOffset,
 
-    // Bottom face (lean under)
-    -w + bevelOffset, 0, d - bevelOffset, -w + bevelOffset, 0, -d + bevelOffset, w - bevelOffset, 0, -d + bevelOffset,
-    w - bevelOffset, 0, -d + bevelOffset, w - bevelOffset, 0, d - bevelOffset, -w + bevelOffset, 0, d - bevelOffset,
+    // Top face
+    -w + bevelOffset, endSize + bevelOffset, -d + bevelOffset, -w + bevelOffset, endSize + bevelOffset, d - bevelOffset, w - bevelOffset, endSize + bevelOffset, d - bevelOffset,
+    w - bevelOffset, endSize + bevelOffset, d - bevelOffset, w - bevelOffset, endSize + bevelOffset, -d + bevelOffset, -w + bevelOffset, endSize + bevelOffset, -d + bevelOffset,
+    
   ]);
 
   // prettier-ignore

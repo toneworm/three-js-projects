@@ -35,14 +35,57 @@ export function clampPostDimensions(
   const clampedHeight = Math.min(Math.max(height, 1.5), 5.0);
 
   if (width !== clampedWidth) {
-    console.warn(`Post width ${width} clamped to ${clampedWidth} (0.05-0.3)`);
+    console.warn(`Post width ${width} clamped to ${clampedWidth} (0.05 - 0.3)`);
   }
   if (depth !== clampedDepth) {
-    console.warn(`Post depth ${depth} clamped to ${clampedDepth} (0.05-0.3)`);
+    console.warn(`Post depth ${depth} clamped to ${clampedDepth} (0.05 - 0.3)`);
   }
   if (height !== clampedHeight) {
-    console.warn(`Post height ${height} clamped to ${clampedHeight} (1.5-5.0)`);
+    console.warn(
+      `Post height ${height} clamped to ${clampedHeight} (1.5 - 5.0)`,
+    );
   }
 
   return { width: clampedWidth, height: clampedHeight, depth: clampedDepth };
+}
+
+export function clampPlateDimensions(
+  length: number,
+  height: number,
+  depth: number,
+): { length: number; height: number; depth: number } {
+  const clampedLength = Math.min(Math.max(length, 1.0), 5.0);
+  const clampedDepth = Math.min(Math.max(depth, 0.05), 0.3);
+  const clampedHeight = Math.min(Math.max(height, 0.05), 0.3);
+
+  if (length !== clampedLength) {
+    console.warn(
+      `Plate length ${length} clamped to ${clampedLength} (1.0 - 5.0)`,
+    );
+  }
+  if (depth !== clampedDepth) {
+    console.warn(
+      `Plate depth ${depth} clamped to ${clampedDepth} (0.05 - 0.3)`,
+    );
+  }
+  if (height !== clampedHeight) {
+    console.warn(
+      `Plate height ${height} clamped to ${clampedHeight} (0.05 - 0.3)`,
+    );
+  }
+
+  return { length: clampedLength, height: clampedHeight, depth: clampedDepth };
+}
+
+export function clampJointSize(length: number, jointSize: number): number {
+  const maxJointSize = length / 2 - 0.05; // Ensure at least 5cm of material on either side
+  const clampedJointSize = Math.min(jointSize, maxJointSize);
+
+  if (jointSize !== clampedJointSize) {
+    console.warn(
+      `Joint size ${jointSize} clamped to ${clampedJointSize} (max ${maxJointSize})`,
+    );
+  }
+
+  return clampedJointSize;
 }
