@@ -1,5 +1,5 @@
 import { useTexture } from "@react-three/drei";
-import { useMemo } from "react";
+import { useEffect, useMemo } from "react";
 import * as THREE from "three";
 import { mergeGeometries } from "three/addons/utils/BufferGeometryUtils.js";
 
@@ -36,10 +36,18 @@ export default function Plate({
   ...meshProps
 }: PlateProps & JSX.IntrinsicElements["mesh"]) {
   const texture = useTexture("/textures/oak_veneer_01_diff_1k.jpg");
-  // const texture = useTexture("/textures/uv_texture.jpg");
+  const texture2 = useTexture("/textures/uv_texture.jpg");
+  const texture3 = useTexture("/textures/uv_texture_color.webp");
 
   texture.wrapS = THREE.RepeatWrapping;
   texture.wrapT = THREE.RepeatWrapping;
+
+  texture2.wrapS = THREE.RepeatWrapping;
+  texture2.wrapT = THREE.RepeatWrapping;
+
+  texture3.wrapS = THREE.RepeatWrapping;
+  texture3.wrapT = THREE.RepeatWrapping;
+  texture3.colorSpace = THREE.SRGBColorSpace;
 
   // Validate/clamp dimensions
   const { length, height, depth } = clampPlateDimensions(
@@ -50,7 +58,8 @@ export default function Plate({
 
   const jointSize = clampJointSize(length, rawJointSize);
 
-  const geometry = useMemo(() => {
+  const { geometry, materials } = useMemo(() => {
+    // geometry
     const mainPlateGeo = createMainPlateGeo(length, height, depth, jointSize);
 
     // Left end cap
@@ -95,14 +104,73 @@ export default function Plate({
     merged.computeBoundingSphere();
     merged.computeBoundingBox();
 
-    return merged;
-  }, [length, height, depth, jointSize, leftEnd, rightEnd, bevelOffset]);
+    // materials
 
-  return (
-    <mesh geometry={geometry} {...meshProps}>
-      <meshStandardMaterial map={texture} />
-    </mesh>
-  );
+    // clear groups
+    merged.clearGroups();
+    merged.addGroup(0, mainPlateGeo.attributes.position.count, 0);
+    merged.addGroup(
+      mainPlateGeo.attributes.position.count,
+      endPlateLeftGeo.attributes.position.count,
+      1,
+    );
+    merged.addGroup(
+      mainPlateGeo.attributes.position.count +
+        endPlateLeftGeo.attributes.position.count,
+      endPlateRightGeo.attributes.position.count,
+      2,
+    );
+
+    const bodyTexture = texture.clone();
+
+    const circumference = 2 * height + 2 * depth;
+    const capStretchFix = 1 / circumference;
+    const leftCapLengthOffsetFix =
+      ((length - jointSize * 2) / circumference) % 1;
+
+    const leftCapTexture = texture.clone();
+    leftCapTexture.repeat.set(1, capStretchFix);
+    leftCapTexture.offset.set(0, leftCapLengthOffsetFix);
+
+    const rightCapTexture = texture.clone();
+    rightCapTexture.repeat.set(1, capStretchFix);
+    rightCapTexture.rotation = Math.PI;
+
+    return {
+      geometry: merged,
+      materials: [
+        new THREE.MeshStandardMaterial({ map: bodyTexture }),
+        new THREE.MeshStandardMaterial({ map: leftCapTexture }),
+        new THREE.MeshStandardMaterial({ map: rightCapTexture }),
+      ],
+    };
+  }, [
+    length,
+    height,
+    depth,
+    jointSize,
+    leftEnd,
+    rightEnd,
+    bevelOffset,
+    texture,
+    texture2,
+    texture3,
+  ]);
+
+  // dispose of cloned textures on updates
+  useEffect(() => {
+    return () => {
+      geometry.dispose();
+      materials.forEach((mat) => {
+        if (mat.map && mat.map !== texture) {
+          mat.map.dispose();
+        }
+        mat.dispose();
+      });
+    };
+  }, [geometry, materials, texture]);
+
+  return <mesh geometry={geometry} {...meshProps} material={materials} />;
 }
 
 function createEndGeo(
@@ -132,11 +200,14 @@ function applyEndGeoTransformations(
   jointSize: number,
 ) {
   switch (style) {
+    // TODO: lots of repetition here can probs be done better
     case "block":
       if (end === "left") {
+        geometry.rotateY(-Math.PI / 2);
         geometry.rotateZ(Math.PI / 2);
         geometry.translate(-length / 2 + jointSize, height / 2, 0);
       } else {
+        geometry.rotateY(Math.PI / 2);
         geometry.rotateZ(-Math.PI / 2);
         geometry.translate(length / 2 - jointSize, height / 2, 0);
       }
@@ -165,6 +236,7 @@ function applyEndGeoTransformations(
       break;
     case "bevel":
       if (end === "left") {
+        geometry.rotateY(Math.PI / 2);
         geometry.rotateZ(Math.PI / 2);
         geometry.translate(-length / 2 + jointSize, height / 2, 0);
       } else {
@@ -173,14 +245,4 @@ function applyEndGeoTransformations(
       }
       break;
   }
-}
-
-function createBottomJointGeo(
-  depth: number,
-  height: number,
-  jointSize: number,
-) {
-  const geometry = new THREE.BufferGeometry();
-
-  return geometry;
 }

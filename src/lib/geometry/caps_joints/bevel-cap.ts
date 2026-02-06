@@ -18,8 +18,6 @@ export function createBevelEndGeo(
   const uLeft = 1;
   const uBv = bevelOffset / width;
 
-  console.log(bevelOffset, uBv);
-
   // prettier-ignore
   // biome-ignore format: buffer array
   const tris = new Float32Array([

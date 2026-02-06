@@ -49,7 +49,7 @@ function Scene() {
 
   return (
     <>
-      <Plate
+      {/* <Plate
         length={2}
         height={0.1}
         depth={0.1}
@@ -65,7 +65,7 @@ function Scene() {
         leftEnd="bottom"
         rightEnd="top"
         position={[1, 0, 0]}
-      />
+      /> */}
 
       <group position={[0, 2, 1]}>
         <Plate
