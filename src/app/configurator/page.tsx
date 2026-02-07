@@ -67,16 +67,37 @@ function Scene() {
         position={[1, 0, 0]}
       /> */}
 
-      <group position={[0, 2, 1]}>
-        <Plate
-          length={4}
-          height={0.15}
-          depth={0.15}
-          jointSize={0.15}
-          leftEnd="block"
-          rightEnd="block"
-        />
-      </group>
+      <Plate
+        length={4}
+        height={0.15}
+        depth={0.15}
+        jointSize={0.15}
+        leftEnd="block"
+        rightEnd="block"
+        position={[0, 2, 1]}
+      />
+
+      <Plate
+        length={4}
+        height={0.15}
+        depth={0.15}
+        jointSize={0.15}
+        leftEnd="block"
+        rightEnd="block"
+        position={[0, 3, 1]}
+        rotation-y={Math.PI / 3}
+      />
+
+      <Plate
+        length={4}
+        height={0.15}
+        depth={0.15}
+        jointSize={0.15}
+        leftEnd="bevel"
+        rightEnd="bevel"
+        position={[-2, 3, 1]}
+        rotation-y={Math.PI / 2}
+      />
 
       <Post
         width={0.15}
