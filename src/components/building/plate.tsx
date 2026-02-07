@@ -123,18 +123,27 @@ export default function Plate({
 
     const bodyTexture = texture.clone();
 
-    const circumference = 2 * height + 2 * depth;
-    const capStretchFix = 1 / circumference;
-    const leftCapLengthOffsetFix =
-      ((length - jointSize * 2) / circumference) % 1;
+    const leftCapTexture = applyEndTextures(
+      // texture3,
+      texture,
+      leftEnd,
+      "left",
+      length,
+      height,
+      depth,
+      jointSize,
+    );
 
-    const leftCapTexture = texture.clone();
-    leftCapTexture.repeat.set(1, capStretchFix);
-    leftCapTexture.offset.set(0, leftCapLengthOffsetFix);
-
-    const rightCapTexture = texture.clone();
-    rightCapTexture.repeat.set(1, capStretchFix);
-    rightCapTexture.rotation = Math.PI;
+    const rightCapTexture = applyEndTextures(
+      // texture3,
+      texture,
+      rightEnd,
+      "right",
+      length,
+      height,
+      depth,
+      jointSize,
+    );
 
     return {
       geometry: merged,
@@ -203,11 +212,11 @@ function applyEndGeoTransformations(
     // TODO: lots of repetition here can probs be done better
     case "block":
       if (end === "left") {
-        geometry.rotateY(-Math.PI / 2);
+        geometry.rotateY(Math.PI / 2);
         geometry.rotateZ(Math.PI / 2);
         geometry.translate(-length / 2 + jointSize, height / 2, 0);
       } else {
-        geometry.rotateY(Math.PI / 2);
+        geometry.rotateY(Math.PI * 2);
         geometry.rotateZ(-Math.PI / 2);
         geometry.translate(length / 2 - jointSize, height / 2, 0);
       }
@@ -245,4 +254,72 @@ function applyEndGeoTransformations(
       }
       break;
   }
+}
+
+function applyEndTextures(
+  texture: THREE.Texture,
+  style: PlateEndStyle,
+  end: PlateEnd,
+  length: number,
+  height: number,
+  depth: number,
+  jointSize: number,
+): THREE.Texture {
+  const clonedTexture = texture.clone();
+
+  const circumference = 2 * height + 2 * depth;
+  const capStretchFix = 1 / circumference;
+
+  switch (style) {
+    case "block":
+      if (end === "left") {
+        clonedTexture.repeat.set(1, capStretchFix);
+        clonedTexture.offset.set(
+          0,
+          ((length - jointSize * 2) / circumference) % 1,
+        );
+      } else {
+        clonedTexture.repeat.set(1, capStretchFix);
+        clonedTexture.rotation = Math.PI;
+      }
+      break;
+    case "top":
+      if (end === "left") {
+        clonedTexture.repeat.set(1, capStretchFix);
+        clonedTexture.offset.set(
+          0,
+          ((length - jointSize * 2) / circumference) % 1,
+        );
+      } else {
+        clonedTexture.repeat.set(1, capStretchFix);
+        clonedTexture.rotation = Math.PI;
+      }
+      break;
+    case "bottom":
+      if (end === "left") {
+        clonedTexture.repeat.set(1, capStretchFix);
+        clonedTexture.offset.set(
+          0,
+          ((length - jointSize * 2) / circumference) % 1,
+        );
+      } else {
+        clonedTexture.repeat.set(1, capStretchFix);
+        clonedTexture.rotation = Math.PI;
+      }
+      break;
+    case "bevel":
+      if (end === "left") {
+        clonedTexture.repeat.set(1, capStretchFix);
+        clonedTexture.offset.set(
+          0,
+          ((length - jointSize * 2) / circumference) % 1,
+        );
+      } else {
+        clonedTexture.repeat.set(1, capStretchFix);
+        clonedTexture.rotation = Math.PI;
+      }
+      break;
+  }
+
+  return clonedTexture;
 }

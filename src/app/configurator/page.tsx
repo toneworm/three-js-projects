@@ -73,8 +73,8 @@ function Scene() {
           height={0.15}
           depth={0.15}
           jointSize={0.15}
-          leftEnd="bevel"
-          rightEnd="bevel"
+          leftEnd="block"
+          rightEnd="block"
         />
       </group>
 
