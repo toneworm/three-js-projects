@@ -49,7 +49,7 @@ function Scene() {
 
   return (
     <>
-      {/* <Plate
+      <Plate
         length={2}
         height={0.1}
         depth={0.1}
@@ -65,7 +65,7 @@ function Scene() {
         leftEnd="bottom"
         rightEnd="top"
         position={[1, 0, 0]}
-      /> */}
+      />
 
       <Plate
         length={4}
@@ -75,6 +75,17 @@ function Scene() {
         leftEnd="block"
         rightEnd="block"
         position={[0, 2, 1]}
+      />
+
+      <Plate
+        length={4}
+        height={0.15}
+        depth={0.15}
+        jointSize={0.15}
+        leftEnd="top"
+        rightEnd="top"
+        position={[0, 2.6, 1.5]}
+        rotation-y={Math.PI / 7}
       />
 
       <Plate
