@@ -121,11 +121,11 @@ export default function Plate({
       2,
     );
 
-    const bodyTexture = texture.clone();
+    const bodyTexture = texture3.clone();
 
     const leftCapTexture = applyEndTextures(
-      // texture3,
-      texture,
+      texture3,
+      // texture,
       leftEnd,
       "left",
       length,
@@ -135,8 +135,8 @@ export default function Plate({
     );
 
     const rightCapTexture = applyEndTextures(
-      // texture3,
-      texture,
+      texture3,
+      // texture,
       rightEnd,
       "right",
       length,
@@ -287,12 +287,13 @@ function applyEndTextures(
       if (end === "left") {
         clonedTexture.repeat.set(1, capStretchFix);
         clonedTexture.offset.set(
-          0,
+          0.5,
           ((length - jointSize * 2) / circumference) % 1,
         );
       } else {
         clonedTexture.repeat.set(1, capStretchFix);
         clonedTexture.rotation = Math.PI;
+        clonedTexture.offset.set(0.75, 1);
       }
       break;
     case "bottom":

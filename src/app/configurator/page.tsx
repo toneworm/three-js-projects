@@ -72,43 +72,45 @@ function Scene() {
         height={0.15}
         depth={0.15}
         jointSize={0.15}
-        leftEnd="block"
-        rightEnd="block"
+        leftEnd="top"
+        rightEnd="top"
         position={[0, 2, 1]}
       />
 
-      <Plate
-        length={4}
-        height={0.15}
-        depth={0.15}
-        jointSize={0.15}
-        leftEnd="top"
-        rightEnd="top"
-        position={[0, 2.6, 1.5]}
-        rotation-y={Math.PI / 7}
-      />
+      <group visible={false}>
+        <Plate
+          length={4}
+          height={0.15}
+          depth={0.15}
+          jointSize={0.15}
+          leftEnd="top"
+          rightEnd="top"
+          position={[0, 2.6, 1.5]}
+          rotation-y={Math.PI / 7}
+        />
 
-      <Plate
-        length={4}
-        height={0.15}
-        depth={0.15}
-        jointSize={0.15}
-        leftEnd="block"
-        rightEnd="block"
-        position={[0, 3, 1]}
-        rotation-y={Math.PI / 3}
-      />
+        <Plate
+          length={4}
+          height={0.15}
+          depth={0.15}
+          jointSize={0.15}
+          leftEnd="block"
+          rightEnd="block"
+          position={[0, 3, 1]}
+          rotation-y={Math.PI / 3}
+        />
 
-      <Plate
-        length={4}
-        height={0.15}
-        depth={0.15}
-        jointSize={0.15}
-        leftEnd="bevel"
-        rightEnd="bevel"
-        position={[-2, 3, 1]}
-        rotation-y={Math.PI / 2}
-      />
+        <Plate
+          length={4}
+          height={0.15}
+          depth={0.15}
+          jointSize={0.15}
+          leftEnd="bevel"
+          rightEnd="bevel"
+          position={[-2, 3, 1]}
+          rotation-y={Math.PI / 2}
+        />
+      </group>
 
       <Post
         width={0.15}

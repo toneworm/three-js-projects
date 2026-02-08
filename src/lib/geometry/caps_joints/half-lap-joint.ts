@@ -14,6 +14,8 @@ export function createHalfLapJoint(
   const uFront = width / perimeter;
   const uRight = (width + depth) / perimeter;
   const uBack = (2 * width + depth) / perimeter;
+  const uFrontOffset = (uFront + uRight) / 2;
+  const uBackOffset = (uBack + 1) / 2;
 
   // prettier-ignore
   // biome-ignore format: buffer array
@@ -51,16 +53,16 @@ export function createHalfLapJoint(
     uFront, 0, uFront, endSize, 0, endSize,
 
     // Right joint face UVs
-    uFront, endSize, uFront, 0, uRight, 0,
-    uRight, 0, uRight, endSize, uFront, endSize,
+    uFrontOffset, endSize, uFrontOffset, 0, uRight, 0,
+    uRight, 0, uRight, endSize, uFrontOffset, endSize,
 
     // Back joint face UVs
     uRight, endSize, uRight, 0, uBack, 0,
     uBack, 0, uBack, endSize, uRight, endSize,
 
     // Left joint face UVs
-    uBack, endSize, uBack, 0, 1, 0,
-    1, 0, 1, endSize, uBack, endSize,
+    uBack, endSize, uBack, 0, uBackOffset, 0,
+    uBackOffset, 0, uBackOffset, endSize, uBack, endSize,
 
     // End joint face UVs (top)
     0, 0, width, 0, width, depth,
