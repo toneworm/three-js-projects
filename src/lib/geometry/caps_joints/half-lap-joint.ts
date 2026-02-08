@@ -11,11 +11,17 @@ export function createHalfLapJoint(
   const d = depth / 2;
 
   const perimeter = 2 * (width + depth);
-  const uFront = width / perimeter;
+
+  const uWidth = width / perimeter;
+  const uDepth = depth / perimeter;
+
+  const uFront = uWidth;
   const uRight = (width + depth) / perimeter;
   const uBack = (2 * width + depth) / perimeter;
   const uFrontOffset = (uFront + uRight) / 2;
   const uBackOffset = (uBack + 1) / 2;
+
+  const uHeight = endSize / perimeter;
 
   // prettier-ignore
   // biome-ignore format: buffer array
@@ -37,8 +43,8 @@ export function createHalfLapJoint(
     -w, 0, 0, -w, endSize, 0, -w, endSize, -d,
 
     // End joint face (top)
-    -w, endSize, 0, w, endSize, 0, w, endSize, -d,
-    w, endSize, -d, -w, endSize, -d, -w, endSize, 0,
+    -w, endSize, -d, -w, endSize, 0, w, endSize, 0,
+    w, endSize, 0, w, endSize, -d, -w, endSize, -d,
 
     // End joint face (bottom)
     -w, 0, 0, -w, 0, d, w, 0, d,
@@ -49,28 +55,28 @@ export function createHalfLapJoint(
   // biome-ignore format: buffer array
   const uvs = new Float32Array([
     // Front joint face UVs
-    0, endSize, 0, 0, uFront, 0,
-    uFront, 0, uFront, endSize, 0, endSize,
+    0, uHeight, 0, 0, uFront, 0,
+    uFront, 0, uFront, uHeight, 0, uHeight,
 
     // Right joint face UVs
-    uFrontOffset, endSize, uFrontOffset, 0, uRight, 0,
-    uRight, 0, uRight, endSize, uFrontOffset, endSize,
+    uFrontOffset, uHeight, uFrontOffset, 0, uRight, 0,
+    uRight, 0, uRight, uHeight, uFrontOffset, uHeight,
 
     // Back joint face UVs
-    uRight, endSize, uRight, 0, uBack, 0,
-    uBack, 0, uBack, endSize, uRight, endSize,
+    uRight, uHeight, uRight, 0, uBack, 0,
+    uBack, 0, uBack, uHeight, uRight, uHeight,
 
     // Left joint face UVs
-    uBack, endSize, uBack, 0, uBackOffset, 0,
-    uBackOffset, 0, uBackOffset, endSize, uBack, endSize,
+    uBack, uHeight, uBack, 0, uBackOffset, 0,
+    uBackOffset, 0, uBackOffset, uHeight, uBack, uHeight,
 
     // End joint face UVs (top)
-    0, 0, width, 0, width, depth,
-    width, depth, 0, depth, 0, 0,
+    0, uDepth, 0, uDepth / 2, uWidth, uDepth / 2,
+    uWidth, uDepth / 2, uWidth, uDepth, 0, uDepth,
 
     // End joint face UVs (bottom)
-    0, 0, 0, depth, width, depth,
-    width, depth, width, 0, 0, 0,
+    0, uDepth / 2, 0, 0, uWidth, 0,
+    uWidth, 0, uWidth, uDepth / 2, 0, uDepth / 2,
   ]);
 
   geometry.setAttribute("position", new THREE.BufferAttribute(tris, 3));

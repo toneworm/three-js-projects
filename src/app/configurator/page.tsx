@@ -49,6 +49,17 @@ function Scene() {
 
   return (
     <>
+      <Post
+        width={0.15}
+        depth={0.15}
+        height={2.1}
+        endSize={0.35}
+        position={[-3, 0.5, 1]}
+        topEnd="tenon"
+        bottomEnd="tenon"
+        tenonHeight={0.12}
+      />
+
       <Plate
         length={2}
         height={0.1}
@@ -72,12 +83,12 @@ function Scene() {
         height={0.15}
         depth={0.15}
         jointSize={0.15}
-        leftEnd="top"
-        rightEnd="top"
+        leftEnd="bottom"
+        rightEnd="bottom"
         position={[0, 2, 1]}
       />
 
-      <group visible={false}>
+      <group visible={true}>
         <Plate
           length={4}
           height={0.15}
@@ -115,47 +126,27 @@ function Scene() {
       <Post
         width={0.15}
         depth={0.15}
-        height={1.95}
-        showTenon
+        height={2.098}
         position={[-1.925, 0, 1]}
+        topEnd="tenon"
       />
 
       <Post
         width={0.15}
         depth={0.15}
-        height={1.95}
-        showTenon
+        height={2.098}
         position={[1.925, 0, 1]}
+        topEnd="tenon"
       />
 
-      <group position={[0, 0, -2]}>
-        <Post width={0.15} depth={0.15} height={2.4} showTenon />
+      <group position={[0, 0, -2]} visible={true}>
+        <Post width={0.15} depth={0.15} height={2.4} />
 
-        <Post
-          width={0.15}
-          depth={0.15}
-          height={1.9}
-          showTenon
-          position={[0.5, 0, 0]}
-        />
+        <Post width={0.15} depth={0.15} height={1.9} position={[0.5, 0, 0]} />
 
-        <Post
-          width={0.2}
-          depth={0.05}
-          height={1.5}
-          showTenon
-          showBevel
-          position={[-0.5, 1, 0]}
-        />
+        <Post width={0.2} depth={0.05} height={1.5} position={[-0.5, 1, 0]} />
 
-        <Post
-          width={0.2}
-          depth={0.2}
-          height={1.5}
-          showTenon
-          showBevel
-          position={[-1, 1.5, 0]}
-        />
+        <Post width={0.2} depth={0.2} height={1.5} position={[-1, 1.5, 0]} />
       </group>
     </>
   );

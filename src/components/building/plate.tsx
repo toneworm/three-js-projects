@@ -9,7 +9,7 @@ import { createBlockCapGeo } from "@/lib/geometry/caps_joints/block-cap";
 import { createHalfLapJoint } from "@/lib/geometry/caps_joints/half-lap-joint";
 import {
   clampPlateDimensions,
-  clampJointSize,
+  clampEndSize,
 } from "@/lib/validation/clamp-dimensions";
 
 type PlateProps = {
@@ -41,6 +41,7 @@ export default function Plate({
 
   texture.wrapS = THREE.RepeatWrapping;
   texture.wrapT = THREE.RepeatWrapping;
+  texture.colorSpace = THREE.SRGBColorSpace;
 
   texture2.wrapS = THREE.RepeatWrapping;
   texture2.wrapT = THREE.RepeatWrapping;
@@ -56,7 +57,7 @@ export default function Plate({
     rawDepth,
   );
 
-  const jointSize = clampJointSize(length, rawJointSize);
+  const jointSize = clampEndSize(length, rawJointSize);
 
   const { geometry, materials } = useMemo(() => {
     // geometry
@@ -268,55 +269,47 @@ function applyEndTextures(
   const clonedTexture = texture.clone();
 
   const circumference = 2 * height + 2 * depth;
-  const capStretchFix = 1 / circumference;
 
   switch (style) {
     case "block":
       if (end === "left") {
-        clonedTexture.repeat.set(1, capStretchFix);
+        // TODO: Fix plate length issues (it's not using the joint size)
         clonedTexture.offset.set(
           0,
           ((length - jointSize * 2) / circumference) % 1,
         );
       } else {
-        clonedTexture.repeat.set(1, capStretchFix);
         clonedTexture.rotation = Math.PI;
       }
       break;
     case "top":
       if (end === "left") {
-        clonedTexture.repeat.set(1, capStretchFix);
         clonedTexture.offset.set(
           0.5,
           ((length - jointSize * 2) / circumference) % 1,
         );
       } else {
-        clonedTexture.repeat.set(1, capStretchFix);
         clonedTexture.rotation = Math.PI;
         clonedTexture.offset.set(0.75, 1);
       }
       break;
     case "bottom":
       if (end === "left") {
-        clonedTexture.repeat.set(1, capStretchFix);
         clonedTexture.offset.set(
           0,
           ((length - jointSize * 2) / circumference) % 1,
         );
       } else {
-        clonedTexture.repeat.set(1, capStretchFix);
         clonedTexture.rotation = Math.PI;
       }
       break;
     case "bevel":
       if (end === "left") {
-        clonedTexture.repeat.set(1, capStretchFix);
         clonedTexture.offset.set(
           0,
           ((length - jointSize * 2) / circumference) % 1,
         );
       } else {
-        clonedTexture.repeat.set(1, capStretchFix);
         clonedTexture.rotation = Math.PI;
       }
       break;

@@ -1,15 +1,19 @@
 export function clampTenonDimensions(
-  postWidth: number,
-  postDepth: number,
+  bodyWidth: number,
+  bodyDepth: number,
+  endSize: number,
   tenonWidth: number,
   tenonDepth: number,
+  tenonHeight: number,
   maxRatio = 0.8, // 80% of post dimension
-): { tenonWidth: number; tenonDepth: number } {
-  const maxTenonWidth = postWidth * maxRatio;
-  const maxTenonDepth = postDepth * maxRatio;
+): { tenonWidth: number; tenonDepth: number; tenonHeight: number } {
+  const maxTenonWidth = bodyWidth * maxRatio;
+  const maxTenonDepth = bodyDepth * maxRatio;
+  const maxTenonHeight = endSize;
 
   const clampedWidth = Math.min(tenonWidth, maxTenonWidth);
   const clampedDepth = Math.min(tenonDepth, maxTenonDepth);
+  const clampedHeight = Math.min(tenonHeight, maxTenonHeight);
 
   if (tenonWidth !== clampedWidth) {
     console.warn(
@@ -21,8 +25,17 @@ export function clampTenonDimensions(
       `Tenon depth ${tenonDepth} clamped to ${clampedDepth} (max ${maxRatio * 100}% of post depth)`,
     );
   }
+  if (tenonHeight !== clampedHeight) {
+    console.warn(
+      `Tenon height ${tenonHeight} clamped to ${clampedHeight} (max ${maxTenonHeight})`,
+    );
+  }
 
-  return { tenonWidth: clampedWidth, tenonDepth: clampedDepth };
+  return {
+    tenonWidth: clampedWidth,
+    tenonDepth: clampedDepth,
+    tenonHeight: clampedHeight,
+  };
 }
 
 export function clampPostDimensions(
@@ -77,15 +90,15 @@ export function clampPlateDimensions(
   return { length: clampedLength, height: clampedHeight, depth: clampedDepth };
 }
 
-export function clampJointSize(length: number, jointSize: number): number {
-  const maxJointSize = length / 2 - 0.05; // Ensure at least 5cm of material on either side
-  const clampedJointSize = Math.min(jointSize, maxJointSize);
+export function clampEndSize(length: number, endSize: number): number {
+  const maxEndSize = length / 2 - 0.05; // Ensure at least 5cm of material on either side
+  const clampedEndSize = Math.min(endSize, maxEndSize);
 
-  if (jointSize !== clampedJointSize) {
+  if (endSize !== clampedEndSize) {
     console.warn(
-      `Joint size ${jointSize} clamped to ${clampedJointSize} (max ${maxJointSize})`,
+      `End / Joint size ${endSize} clamped to ${clampedEndSize} (max ${maxEndSize})`,
     );
   }
 
-  return clampedJointSize;
+  return clampedEndSize;
 }

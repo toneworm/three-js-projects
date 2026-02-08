@@ -10,13 +10,14 @@ export function createMainPostGeo(
 
   const w = width / 2;
   const d = depth / 2;
-  const h = height;
+  const h = height - endSize;
 
   const perimeter = 2 * (width + depth);
   const uFront = width / perimeter;
   const uRight = (width + depth) / perimeter;
   const uBack = (2 * width + depth) / perimeter;
   const uLeft = 1;
+  const uHeight = (h - endSize) / perimeter;
 
   // All start top left and go anti-clockwise round
   // prettier-ignore
@@ -44,20 +45,20 @@ export function createMainPostGeo(
   // Use the same UVs for bevel and non-bevelled ends
   const uvs = new Float32Array([
     // Front face
-    0, h, 0, endSize, uFront, endSize,
-    uFront, endSize, uFront, h, 0, h,
+    0, uHeight, 0, 0, uFront, 0,
+    uFront, 0, uFront, uHeight, 0, uHeight,
 
     // Right face
-    uFront, h, uFront, endSize, uRight, endSize,
-    uRight, endSize, uRight, h, uFront, h,
+    uFront, uHeight, uFront, 0, uRight, 0,
+    uRight, 0, uRight, uHeight, uFront, uHeight,
 
     // Back face
-    uRight, h, uRight, endSize, uBack, endSize,
-    uBack, endSize, uBack, h, uRight, h,
+    uRight, uHeight, uRight, 0, uBack, 0,
+    uBack, 0, uBack, uHeight, uRight, uHeight,
 
     // Left face
-    uBack, h, uBack, endSize, uLeft, endSize,
-    uLeft, endSize, uLeft, h, uBack, h,
+    uBack, uHeight, uBack, 0, uLeft, 0,
+    uLeft, 0, uLeft, uHeight, uBack, uHeight,
   ])
 
   geometry.setAttribute("position", new THREE.BufferAttribute(tris, 3));

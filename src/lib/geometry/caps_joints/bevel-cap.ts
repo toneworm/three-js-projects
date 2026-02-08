@@ -12,11 +12,16 @@ export function createBevelEndGeo(
   const d = depth / 2;
 
   const perimeter = 2 * (width + depth);
-  const uFront = width / perimeter;
+
+  const uWidth = width / perimeter;
+  const uDepth = depth / perimeter;
+  const uHeight = endSize / perimeter;
+  const uBv = bevelOffset / perimeter;
+
+  const uFront = uWidth;
   const uRight = (width + depth) / perimeter;
   const uBack = (2 * width + depth) / perimeter;
   const uLeft = 1;
-  const uBv = bevelOffset / width;
 
   // prettier-ignore
   // biome-ignore format: buffer array
@@ -63,40 +68,40 @@ export function createBevelEndGeo(
   // biome-ignore format: buffer array
   const uvs = new Float32Array([
     // Front strip UVs
-    0, endSize, 0, 0, uFront, 0,
-    uFront, 0, uFront, endSize, 0, endSize,
+    0, uHeight, 0, 0, uFront, 0,
+    uFront, 0, uFront, uHeight, 0, uHeight,
 
     // Right strip UVs
-    uFront, endSize, uFront, 0, uRight, 0,
-    uRight, 0, uRight, endSize, uFront, endSize,
+    uFront, uHeight, uFront, 0, uRight, 0,
+    uRight, 0, uRight, uHeight, uFront, uHeight,
 
     // Back strip UVs
-    uRight, endSize, uRight, 0, uBack, 0,
-    uBack, 0, uBack, endSize, uRight, endSize,
+    uRight, uHeight, uRight, 0, uBack, 0,
+    uBack, 0, uBack, uHeight, uRight, uHeight,
 
     // Left strip UVs
-    uBack, endSize, uBack, 0, uLeft, 0,
-    uLeft, 0, uLeft, endSize, uBack, endSize,
+    uBack, uHeight, uBack, 0, uLeft, 0,
+    uLeft, 0, uLeft, uHeight, uBack, uHeight,
 
     // Front bevel UVs
-    0, uBv, 0, 0, uFront, 0,
-    uFront, 0, uFront, uBv, 0, uBv,
+    uBv, uBv, 0, 0, uFront, 0,
+    uFront, 0, uFront - uBv, uBv, uBv, uBv,
     
     // Right bevel UVs
-    uFront, uBv, uFront, 0, uRight, 0,
-    uRight, 0, uRight, uBv, uFront, uBv,
+    uFront + uBv, uBv, uFront, 0, uRight, 0,
+    uRight, 0, uRight - uBv, uBv, uFront + uBv, uBv,
 
     // Back bevel UVs
-    uRight, uBv, uRight, 0, uBack, 0,
-    uBack, 0, uBack, uBv, uRight, uBv,
+    uRight + uBv, uBv, uRight, 0, uBack, 0,
+    uBack, 0, uBack - uBv, uBv, uRight + uBv, uBv,
 
     // Left bevel UVs
-    uBack, uBv, uBack, 0, uLeft, 0,
-    uLeft, 0, uLeft, uBv, uBack, uBv,
+    uBack + uBv, uBv, uBack, 0, uLeft, 0,
+    uLeft, 0, uLeft - uBv, uBv, uBack + uBv, uBv,
 
-    // Bottom face UVs
-    0, 0, 0, depth, width, depth,
-    width, depth, width, 0, 0, 0,
+    // Top face UVs
+    0, uDepth, 0, 0, uWidth, 0,
+    uWidth, 0, uWidth, uDepth, 0, uDepth,
   ]);
 
   geometry.setAttribute("position", new THREE.BufferAttribute(tris, 3));

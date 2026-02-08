@@ -12,15 +12,22 @@ export function createTenonEndGeo(
 
   const w = width / 2;
   const d = depth / 2;
-  const tw = w - tenonWidth / 2;
-  const td = d - tenonDepth / 2;
+  const tw = tenonWidth / 2;
+  const td = tenonDepth / 2;
   const th = endSize - tenonHeight;
 
   const perimeter = 2 * (width + depth);
+
   const uFront = width / perimeter;
   const uRight = (width + depth) / perimeter;
   const uBack = (2 * width + depth) / perimeter;
   const uLeft = 1;
+  const uHeight = th / perimeter;
+  const uEndSize = endSize / perimeter;
+  const uTenonBase = th / perimeter;
+
+  const uTw = tw / perimeter;
+  const uTd = (td * 1.5) / perimeter; // i don't know why but this works...
 
   // prettier-ignore
   // biome-ignore format: buffer array
@@ -82,20 +89,20 @@ export function createTenonEndGeo(
   // biome-ignore format: buffer array
   const uvs = new Float32Array([
     // Front strip UVs
-    0, th, 0, 0, uFront, 0,
-    uFront, 0, uFront, th, 0, th,
+    0, uHeight, 0, 0, uFront, 0,
+    uFront, 0, uFront, uHeight, 0, uHeight,
 
     // Right strip UVs
-    uFront, th, uFront, 0, uRight, 0,
-    uRight, 0, uRight, th, uFront, th,
+    uFront, uHeight, uFront, 0, uRight, 0,
+    uRight, 0, uRight, uHeight, uFront, uHeight,
 
     // Back strip UVs
-    uRight, th, uRight, 0, uBack, 0,
-    uBack, 0, uBack, th, uRight, th,
+    uRight, uHeight, uRight, 0, uBack, 0,
+    uBack, 0, uBack, uHeight, uRight, uHeight,
     
     // Left strip UVs
-    uBack, th, uBack, 0, uLeft, 0,
-    uLeft, 0, uLeft, th, uBack, th,
+    uBack, uHeight, uBack, 0, uLeft, 0,
+    uLeft, 0, uLeft, uHeight, uBack, uHeight,
 
     // Tenon front base UVs
     -tw, td, -w, d, w, d,
@@ -114,20 +121,20 @@ export function createTenonEndGeo(
     -w, d, -tw, td, -tw, -td,
 
     // Tenon front face UVs
-    (uFront + uRight) / 2, endSize, (uFront + uRight) / 2, th, (uFront) / 2, th,
-    (uFront) / 2, th, (uFront) / 2, endSize, (uFront + uRight) / 2, endSize,
+    uTw, uEndSize, uTw, uTenonBase, uFront - uTw, uTenonBase,
+    uFront - uTw, uTenonBase, uFront - uTw, uEndSize, uTw, uEndSize,
 
     // Tenon right face UVs
-    (uFront) / 2, endSize, (uFront) / 2, th, (uRight) / 2, th,
-    (uRight) / 2, th, (uRight) / 2, endSize, (uFront) / 2, endSize,
-    
+    uFront + uTd, uEndSize, uFront + uTd, uTenonBase, uRight - uTd, uTenonBase,
+    uRight - uTd, uTenonBase, uRight - uTd, uEndSize, uFront + uTd, uEndSize,
+
     // Tenon back face UVs
-    (uRight) / 2, endSize, (uRight) / 2, th, (uBack) / 2, th,
-    (uBack) / 2, th, (uBack) / 2, endSize, (uRight) / 2, endSize,
-    
+    uRight + uTw, uEndSize, uRight + uTw, uTenonBase, uBack - uTw, uTenonBase,
+    uBack - uTw, uTenonBase, uBack - uTw, uEndSize, uRight + uTw, uEndSize,
+
     // Tenon left face UVs
-    (uBack) / 2, endSize, (uBack) / 2, th, (uLeft) / 2, th,
-    (uLeft) / 2, th, (uLeft) / 2, endSize, (uBack) / 2, endSize,
+    uBack + uTd, uEndSize, uBack + uTd, uTenonBase, uLeft - uTd, uTenonBase,
+    uLeft - uTd, uTenonBase, uLeft - uTd, uEndSize, uBack + uTd, uEndSize,
 
     // Tenon top face UVs
     -tw, -td, -tw, td, tw, td,

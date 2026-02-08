@@ -11,9 +11,14 @@ export function createBlockCapGeo(
   const d = depth / 2;
 
   const perimeter = 2 * (width + depth);
-  const uFront = width / perimeter;
+
+  const uWidth = width / perimeter;
+  const uDepth = depth / perimeter;
+
+  const uFront = uWidth;
   const uRight = (width + depth) / perimeter;
   const uBack = (2 * width + depth) / perimeter;
+  const uHeight = endSize / perimeter;
 
   // prettier-ignore
   // biome-ignore format: buffer array
@@ -43,24 +48,24 @@ export function createBlockCapGeo(
   // biome-ignore format: buffer array
   const uvs = new Float32Array([
     // Front face UVs
-    0, endSize, 0, 0, uFront, 0,
-    uFront, 0, uFront, endSize, 0, endSize,
+    0, uHeight, 0, 0, uFront, 0,
+    uFront, 0, uFront, uHeight, 0, uHeight,
 
     // Right face UVs
-    uFront, endSize, uFront, 0, uRight, 0,
-    uRight, 0, uRight, endSize, uFront, endSize,
+    uFront, uHeight, uFront, 0, uRight, 0,
+    uRight, 0, uRight, uHeight, uFront, uHeight,
 
     // Back face UVs
-    uRight, endSize, uRight, 0, uBack, 0,
-    uBack, 0, uBack, endSize, uRight, endSize,
+    uRight, uHeight, uRight, 0, uBack, 0,
+    uBack, 0, uBack, uHeight, uRight, uHeight,
 
     // Left face UVs
-    uBack, endSize, uBack, 0, 1, 0,
-    1, 0, 1, endSize, uBack, endSize,
+    uBack, uHeight, uBack, 0, 1, 0,
+    1, 0, 1, uHeight, uBack, uHeight,
 
     // End face UVs
-    0, 0, width, 0, width, depth,
-    width, depth, 0, depth, 0, 0,
+    0, 0, uWidth, 0, uWidth, uDepth,
+    uWidth, uDepth, 0, uDepth, 0, 0,
   ]);
 
   geometry.setAttribute("position", new THREE.BufferAttribute(tris, 3));
