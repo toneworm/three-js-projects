@@ -106,20 +106,62 @@ export function clampEndSize(length: number, endSize: number): number {
 export function clampRafterDimensions(
   height: number,
   depth: number,
-): { height: number; depth: number } {
-  const clampedDepth = Math.min(Math.max(depth, 0.05), 0.3);
-  const clampedHeight = Math.min(Math.max(height, 0.05), 0.3);
+  cheekAngle: number,
+  rise?: number,
+  run?: number,
+  angle?: number,
+): {
+  height: number;
+  depth: number;
+  cheekAngle: number;
+  clampedRise?: number;
+  clampedRun?: number;
+  clampedAngle?: number;
+} {
+  const clampedDepth = Math.min(Math.max(depth, 0.015), 0.3);
+  const clampedHeight = Math.min(Math.max(height, 0.05), 0.5);
+  const clampedCheekAngle = Math.min(
+    Math.max(cheekAngle, -Math.PI / 3),
+    Math.PI / 4,
+  );
+  const clampedRise = rise !== undefined ? Math.max(rise, 0) : undefined;
+  const clampedRun = run !== undefined ? Math.max(run, 0) : undefined;
+  const clampedAngle =
+    angle !== undefined ? Math.min(Math.max(angle, 0), Math.PI / 3) : undefined;
 
   if (depth !== clampedDepth) {
     console.warn(
-      `Rafter depth ${depth} clamped to ${clampedDepth} (0.05 - 0.3)`,
+      `Rafter depth ${depth} clamped to ${clampedDepth} (0.015 - 0.3)`,
     );
   }
   if (height !== clampedHeight) {
     console.warn(
-      `Rafter height ${height} clamped to ${clampedHeight} (0.05 - 0.3)`,
+      `Rafter height ${height} clamped to ${clampedHeight} (0.05 - 0.5)`,
+    );
+  }
+  if (cheekAngle !== clampedCheekAngle) {
+    console.warn(
+      `Rafter cheek angle ${cheekAngle} clamped to ${clampedCheekAngle} (-${Math.PI / 4} - ${Math.PI / 4})`,
+    );
+  }
+  if (rise !== clampedRise) {
+    console.warn(`Rafter rise ${rise} clamped to ${clampedRise} (min 0)`);
+  }
+  if (run !== clampedRun) {
+    console.warn(`Rafter run ${run} clamped to ${clampedRun} (min 0)`);
+  }
+  if (angle !== clampedAngle) {
+    console.warn(
+      `Rafter angle ${angle} clamped to ${clampedAngle} (0 - ${Math.PI / 3})`,
     );
   }
 
-  return { height: clampedHeight, depth: clampedDepth };
+  return {
+    height: clampedHeight,
+    depth: clampedDepth,
+    cheekAngle: clampedCheekAngle,
+    clampedRise,
+    clampedRun,
+    clampedAngle,
+  };
 }

@@ -25,7 +25,7 @@ type RafterBaseProps = {
 export default function Rafter({
   height: rawHeight,
   depth: rawDepth,
-  cheekAngle = 0,
+  cheekAngle: rawCheekAngle = 0,
   rise: rawRise,
   run: rawRun,
   angle: rawAngle,
@@ -37,19 +37,36 @@ export default function Rafter({
   texture.colorSpace = THREE.SRGBColorSpace;
 
   // Validate/clamp dimensions
-  const { height, depth } = clampRafterDimensions(rawHeight, rawDepth);
+  const { height, depth, cheekAngle, clampedRise, clampedRun, clampedAngle } =
+    clampRafterDimensions(
+      rawHeight,
+      rawDepth,
+      rawCheekAngle,
+      rawRise,
+      rawRun,
+      rawAngle,
+    );
+
   const { run, rise, angle, length } = resolveRafterGeometry({
-    run: rawRun,
-    rise: rawRise,
-    angle: rawAngle,
+    run: clampedRun,
+    rise: clampedRise,
+    angle: clampedAngle,
   } as RafterGeometryProps);
 
-  console.log({ run, rise, angle, length });
+  // console.log({ run, rise, angle, length });
 
   const { geometry, materials } = useMemo(() => {
     // Main rafter
-    const mainRafterGeo = createMainRafterGeo(length, height, depth, angle);
-    mainRafterGeo.rotateZ(angle);
+    const mainRafterGeo = createMainRafterGeo(
+      height,
+      depth,
+      angle,
+      cheekAngle,
+      run,
+      rise,
+      length,
+    );
+    // mainRafterGeo.rotateZ(angle);
 
     // prettier-ignore
     // biome-ignore reason: want to switch these on and off easily
@@ -81,7 +98,7 @@ export default function Rafter({
       geometry: merged,
       materials: [new THREE.MeshStandardMaterial({ map: bodyTexture })],
     };
-  }, [length, height, depth, texture, angle, rise, run]);
+  }, [length, height, depth, texture, angle, rise, run, cheekAngle]);
 
   // dispose of cloned textures on updates
   useEffect(() => {

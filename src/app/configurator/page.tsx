@@ -52,7 +52,33 @@ function Scene() {
 
   return (
     <>
-      <Rafter height={0.3} depth={0.1} angle={Math.PI / 6} run={2} />
+      {/* <Rafter
+        height={0.3}
+        depth={0.1}
+        angle={Math.PI / 6}
+        run={2}
+        // cheekAngle={Math.PI / 2}
+      /> */}
+
+      <Rafter
+        height={0.1}
+        depth={0.015}
+        angle={Math.PI / 6}
+        // angle={0}
+        run={2}
+        cheekAngle={Math.PI / 4}
+        // cheekAngle={0}
+        position={[-0.25, 1.18, 2]}
+      />
+
+      <mesh
+        position={[1.075, 0.84, 0.075]}
+        rotation-x={Math.PI / 2}
+        rotation-z={Math.PI / 4}
+      >
+        <boxGeometry args={[0.2, 2, 0.2]} />
+        <meshStandardMaterial color="sandybrown" />
+      </mesh>
 
       {/* <group position={[-0.5, 0, 0]}>
         <RafterCSG length={2} height={0.15} depth={0.15} />
