@@ -7,7 +7,10 @@ import { useControls, button } from "leva";
 
 import Post from "@/components/building/post";
 import Plate from "@/components/building/plate";
+import Rafter from "@/components/building/rafter";
 import { Loader } from "@/components/general/loader";
+import RafterBlend from "@/components/building/rafter-blend";
+import RafterCSG from "@/components/building/rafter-csg";
 
 export default function ConfiguratorPage() {
   return (
@@ -49,7 +52,32 @@ function Scene() {
 
   return (
     <>
-      <Post
+      {/* <Rafter height={0.3} depth={0.1} angle={Math.PI / 6} run={2} /> */}
+
+      {/* <group position={[-0.5, 0, 0]}>
+        <RafterCSG length={2} height={0.15} depth={0.15} />
+      </group>
+
+      <RafterBlend
+        width={1.2}
+        length={2}
+        depth={2}
+        angle={Math.PI / 6}
+        birdsMouthSeat={0.1}
+        birdsMouthDepth={0.1}
+        scale={[10, 20, 10]}
+      /> */}
+
+      <Plate
+        length={2}
+        height={0.1}
+        depth={0.1}
+        leftEnd="bottom"
+        rightEnd="top"
+        position={[-1, 0, 0]}
+      />
+
+      {/* <Post
         width={0.15}
         depth={0.15}
         height={2.1}
@@ -147,7 +175,7 @@ function Scene() {
         <Post width={0.2} depth={0.05} height={1.5} position={[-0.5, 1, 0]} />
 
         <Post width={0.2} depth={0.2} height={1.5} position={[-1, 1.5, 0]} />
-      </group>
+      </group> */}
     </>
   );
 }

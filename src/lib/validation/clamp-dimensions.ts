@@ -102,3 +102,24 @@ export function clampEndSize(length: number, endSize: number): number {
 
   return clampedEndSize;
 }
+
+export function clampRafterDimensions(
+  height: number,
+  depth: number,
+): { height: number; depth: number } {
+  const clampedDepth = Math.min(Math.max(depth, 0.05), 0.3);
+  const clampedHeight = Math.min(Math.max(height, 0.05), 0.3);
+
+  if (depth !== clampedDepth) {
+    console.warn(
+      `Rafter depth ${depth} clamped to ${clampedDepth} (0.05 - 0.3)`,
+    );
+  }
+  if (height !== clampedHeight) {
+    console.warn(
+      `Rafter height ${height} clamped to ${clampedHeight} (0.05 - 0.3)`,
+    );
+  }
+
+  return { height: clampedHeight, depth: clampedDepth };
+}
