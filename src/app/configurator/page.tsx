@@ -52,7 +52,7 @@ function Scene() {
 
   return (
     <>
-      {/* <Rafter height={0.3} depth={0.1} angle={Math.PI / 6} run={2} /> */}
+      <Rafter height={0.3} depth={0.1} angle={Math.PI / 6} run={2} />
 
       {/* <group position={[-0.5, 0, 0]}>
         <RafterCSG length={2} height={0.15} depth={0.15} />
@@ -68,14 +68,14 @@ function Scene() {
         scale={[10, 20, 10]}
       /> */}
 
-      <Plate
+      {/* <Plate
         length={2}
         height={0.1}
         depth={0.1}
         leftEnd="bottom"
         rightEnd="top"
         position={[-1, 0, 0]}
-      />
+      /> */}
 
       {/* <Post
         width={0.15}

@@ -48,16 +48,16 @@ export function createMainRafterGeo(
     0, 0,           uTop, 0,      uTop, uL,
 
     // Back face
-    uBack, uL,  uTop, uL,    uTop, 0,
-    uTop, 0,           uBack, 0,     uBack, uL,
+    uBack, uL+o,  uTop, uL,    uTop, -o,
+    uTop, -o,           uBack, 0,     uBack, uL+o,
     
     // Bottom face
     uBottom, uL,  uBack, uL,   uBack, 0,
     uBack, 0,         uBottom, 0,      uBottom, uL,
 
     // Front face
-    uFront, uL, uBottom, uL,    uBottom, 0,
-    uBottom, 0,     uFront, 0,    uFront, uL,
+    uFront, uL-o, uBottom, uL,    uBottom, o,
+    uBottom, o,     uFront, 0,    uFront, uL-o,
   ]);
 
   geometry.setAttribute("position", new THREE.BufferAttribute(tris, 3));
