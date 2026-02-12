@@ -50,6 +50,8 @@ function Scene() {
   //   }),
   // });
 
+  // TODO: set up leva to move about objects...
+
   return (
     <>
       {/* <Rafter
@@ -60,25 +62,38 @@ function Scene() {
         // cheekAngle={Math.PI / 2}
       /> */}
 
-      <Rafter
+      {Array(12)
+        .fill(null)
+        .map((_, i) => (
+          <Rafter
+            height={0.1}
+            depth={0.015}
+            angle={Math.PI / 6}
+            run={1.5}
+            cheekAngle={Math.PI / 4}
+            position={[0, 0, i * 0.15 - 0.35]}
+            mouthSize={0.1}
+          />
+        ))}
+
+      <Plate
+        length={2}
         height={0.1}
-        depth={0.015}
-        angle={Math.PI / 6}
-        // angle={0}
-        run={2}
-        cheekAngle={Math.PI / 4}
-        // cheekAngle={0}
-        position={[-0.25, 1.18, 2]}
+        depth={0.1}
+        leftEnd="block"
+        rightEnd="block"
+        position={[-0.05, -0.1, 0.5]}
+        rotation-y={Math.PI / 2}
       />
 
-      <mesh
+      {/* <mesh
         position={[1.075, 0.84, 0.075]}
         rotation-x={Math.PI / 2}
         rotation-z={Math.PI / 4}
       >
         <boxGeometry args={[0.2, 2, 0.2]} />
         <meshStandardMaterial color="sandybrown" />
-      </mesh>
+      </mesh> */}
 
       {/* <group position={[-0.5, 0, 0]}>
         <RafterCSG length={2} height={0.15} depth={0.15} />

@@ -7,6 +7,9 @@ import { createMainRafterGeo } from "@/lib/geometry/bodies/rafter";
 import { clampRafterDimensions } from "@/lib/validation/clamp-dimensions";
 import { resolveRafterGeometry } from "@/lib/geometry/utils/resolve-rafter-geometry";
 
+import { createBirdsMouthEndGeo } from "@/lib/geometry/caps_joints/birds-mouth-cap";
+import { applyPlanarUVs } from "@/lib/geometry/utils/uvUtils";
+
 type WithRunAndRise = { run: number; rise: number; angle?: never };
 type WithRunAndAngle = { run: number; angle: number; rise?: never };
 type WithRiseAndAngle = { rise: number; angle: number; run?: never };
@@ -20,32 +23,43 @@ type RafterBaseProps = {
   height: number;
   depth: number;
   cheekAngle?: number;
+  mouthSize?: number;
 };
 
 export default function Rafter({
   height: rawHeight,
   depth: rawDepth,
   cheekAngle: rawCheekAngle = 0,
+  mouthSize: rawMouthSize = 0.05,
   rise: rawRise,
   run: rawRun,
   angle: rawAngle,
   ...meshProps
 }: RafterBaseProps & RafterGeometryProps & JSX.IntrinsicElements["mesh"]) {
   // const texture = useTexture("/textures/oak_veneer_01_diff_1k.jpg");
-  const texture = useTexture("/textures/uv_texture_color.webp");
+  const texture = useTexture("/textures/oak_texture_1k.png");
+  // const texture = useTexture("/textures/uv_texture_color.webp");
   texture.wrapS = texture.wrapT = THREE.RepeatWrapping;
   texture.colorSpace = THREE.SRGBColorSpace;
 
   // Validate/clamp dimensions
-  const { height, depth, cheekAngle, clampedRise, clampedRun, clampedAngle } =
-    clampRafterDimensions(
-      rawHeight,
-      rawDepth,
-      rawCheekAngle,
-      rawRise,
-      rawRun,
-      rawAngle,
-    );
+  const {
+    height,
+    depth,
+    cheekAngle,
+    mouthSize,
+    clampedRise,
+    clampedRun,
+    clampedAngle,
+  } = clampRafterDimensions(
+    rawHeight,
+    rawDepth,
+    rawCheekAngle,
+    rawMouthSize,
+    rawRise,
+    rawRun,
+    rawAngle,
+  );
 
   const { run, rise, angle, length } = resolveRafterGeometry({
     run: clampedRun,
@@ -66,13 +80,35 @@ export default function Rafter({
       rise,
       length,
     );
-    // mainRafterGeo.rotateZ(angle);
+
+    const birdsMouthGeo = createBirdsMouthEndGeo(
+      mouthSize,
+      height,
+      depth,
+      angle,
+      run,
+      rise,
+    );
+    birdsMouthGeo.translate(-mouthSize, 0, 0);
+
+    console.log({ angle });
+
+    const angleOffset = Math.PI / 2 + angle;
 
     // prettier-ignore
     // biome-ignore reason: want to switch these on and off easily
     const merged = mergeGeometries([
       mainRafterGeo,
+      birdsMouthGeo,
     ]);
+
+    applyPlanarUVs(
+      merged,
+      0.2,
+      new THREE.Vector3(Math.cos(angle), Math.sin(angle), 0),
+      { side: { flipV: true, swapUV: true } },
+    );
+
     merged.computeBoundingSphere();
     merged.computeBoundingBox();
 
@@ -80,6 +116,11 @@ export default function Rafter({
     // clear and set new groups
     merged.clearGroups();
     merged.addGroup(0, mainRafterGeo.attributes.position.count, 0);
+    merged.addGroup(
+      mainRafterGeo.attributes.position.count,
+      birdsMouthGeo.attributes.position.count,
+      1,
+    );
     // merged.addGroup(
     //   mainRafterGeo.attributes.position.count,
     //   topPostGeo.attributes.position.count,
@@ -93,12 +134,16 @@ export default function Rafter({
     // );
 
     const bodyTexture = texture.clone();
+    const birdsMouthTexture = texture.clone();
 
     return {
       geometry: merged,
-      materials: [new THREE.MeshStandardMaterial({ map: bodyTexture })],
+      materials: [
+        new THREE.MeshStandardMaterial({ map: bodyTexture }),
+        new THREE.MeshStandardMaterial({ map: birdsMouthTexture }),
+      ],
     };
-  }, [length, height, depth, texture, angle, rise, run, cheekAngle]);
+  }, [length, height, depth, texture, angle, rise, run, cheekAngle, mouthSize]);
 
   // dispose of cloned textures on updates
   useEffect(() => {

@@ -107,6 +107,7 @@ export function clampRafterDimensions(
   height: number,
   depth: number,
   cheekAngle: number,
+  mouthSize: number,
   rise?: number,
   run?: number,
   angle?: number,
@@ -114,6 +115,7 @@ export function clampRafterDimensions(
   height: number;
   depth: number;
   cheekAngle: number;
+  mouthSize: number;
   clampedRise?: number;
   clampedRun?: number;
   clampedAngle?: number;
@@ -124,6 +126,8 @@ export function clampRafterDimensions(
     Math.max(cheekAngle, -Math.PI / 3),
     Math.PI / 4,
   );
+  // TODO: needs to take angle into consideration (deeper will need a smaller maximum)
+  const clampedMouthSize = Math.min(Math.max(mouthSize, 0), 0.15);
   const clampedRise = rise !== undefined ? Math.max(rise, 0) : undefined;
   const clampedRun = run !== undefined ? Math.max(run, 0) : undefined;
   const clampedAngle =
@@ -141,7 +145,12 @@ export function clampRafterDimensions(
   }
   if (cheekAngle !== clampedCheekAngle) {
     console.warn(
-      `Rafter cheek angle ${cheekAngle} clamped to ${clampedCheekAngle} (-${Math.PI / 4} - ${Math.PI / 4})`,
+      `Rafter cheek angle ${cheekAngle} clamped to ${clampedCheekAngle} (-${Math.PI / 3} - ${Math.PI / 4})`,
+    );
+  }
+  if (mouthSize !== clampedMouthSize) {
+    console.warn(
+      `Rafter mouth size ${mouthSize} clamped to ${clampedMouthSize} (0 - 0.15)`,
     );
   }
   if (rise !== clampedRise) {
@@ -160,6 +169,7 @@ export function clampRafterDimensions(
     height: clampedHeight,
     depth: clampedDepth,
     cheekAngle: clampedCheekAngle,
+    mouthSize: clampedMouthSize,
     clampedRise,
     clampedRun,
     clampedAngle,

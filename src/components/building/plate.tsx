@@ -122,11 +122,11 @@ export default function Plate({
       2,
     );
 
-    const bodyTexture = texture3.clone();
+    const bodyTexture = texture.clone();
 
     const leftCapTexture = applyEndTextures(
-      texture3,
-      // texture,
+      // texture3,
+      texture,
       leftEnd,
       "left",
       length,
@@ -136,8 +136,8 @@ export default function Plate({
     );
 
     const rightCapTexture = applyEndTextures(
-      texture3,
-      // texture,
+      // texture3,
+      texture,
       rightEnd,
       "right",
       length,

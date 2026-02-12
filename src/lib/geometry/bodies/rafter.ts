@@ -12,7 +12,7 @@ export function createMainRafterGeo(
   const geometry = new THREE.BufferGeometry();
 
   const d = depth / 2;
-  const l = run / 2;
+  const l = run;
   const h = height;
   const r = rise;
   const rh = rise + height;
@@ -42,53 +42,56 @@ export function createMainRafterGeo(
   // biome-ignore format: buffer array
   const tris = new Float32Array([
     // Top face
-    -l, h, -d,        -l, h, d,     l+c, rh+co, d,
-    l+c, rh+co, d,  l-c, rh-co, -d,  -l, h, -d,
+    0, h, -d,        0, h, d,     l+c, rh+co, d,
+    l+c, rh+co, d,  l-c, rh-co, -d,  0, h, -d,
 
     // Back face
-    -l, 0, -d,        -l, h, -d,    l-c, rh-co, -d,
-    l-c, rh-co, -d,   l-c, r-co, -d,   -l, 0, -d,
+    0, 0, -d,        0, h, -d,    l-c, rh-co, -d,
+    l-c, rh-co, -d,   l-c, r-co, -d,   0, 0, -d,
 
     // Bottom face
-    -l, 0, d, -l, 0, -d, l-c, r-co, -d,
-    l-c, r-co, -d, l+c, r+co, d, -l, 0, d,
+    0, 0, d, 0, 0, -d, l-c, r-co, -d,
+    l-c, r-co, -d, l+c, r+co, d, 0, 0, d,
 
     // Front face
-    -l, h, d, -l, 0, d, l+c, r+co, d,
-    l+c, r+co, d, l+c, rh+co, d, -l, h, d,
+    0, h, d, 0, 0, d, l+c, r+co, d,
+    l+c, r+co, d, l+c, rh+co, d, 0, h, d,
 
     // End face
-    l+c, rh + co, d, l+c, r + co, d, l-c, r - co, -d,
-    l-c, r - co, -d, l-c, rh - co, -d, l+c, rh + co, d
+    l+c, rh+co, d, l+c, r+co, d, l-c, r - co, -d,
+    l-c, r - co, -d, l-c, rh - co, -d, l+c, rh+co, d
 
   ]);
 
   // prettier-ignore
   // biome-ignore format: buffer array
-  const UVs = new Float32Array([
-    // Top face
-    uTop, uLength,   0, uLength,    0, -uC,
-    0, -uC,           uTop, uC,      uTop, uLength,
+  // const UVs = new Float32Array([
+  //   // Top face
+  //   uTop, uLength,   0, uLength,    0, -uC,
+  //   0, -uC,           uTop, uC,      uTop, uLength,
 
-    // Back face
-    uBack, uLength,  uTop, uLength - uOffset,    uTop, 0,
-    uTop, 0,           uBack, uOffset,     uBack, uLength,
-    
-    // Bottom face
-    uBottom, uLength,  uBack, uLength,   uBack, uC,
-    uBack, uC,         uBottom, -uC,      uBottom, uLength,
+  //   // Back face
+  //   uBack, uLength,  uTop, uLength - uOffset,    uTop, 0,
+  //   uTop, 0,           uBack, uOffset,     uBack, uLength,
 
-    // Front face
-    uFront, uLength, uBottom, uLength + uOffset,    uBottom, c,
-    uBottom, c,     uFront, -uOffset,    uFront, uLength,
+  //   // Bottom face
+  //   uBottom, uLength,  uBack, uLength,   uBack, uC,
+  //   uBack, uC,         uBottom, -uC,      uBottom, uLength,
 
-    // End face
-    0, 0, run, 0, run, uBack,
-    run, uBack, 0, uBack, 0, 0,
-  ]);
+  //   // Front face
+  //   uFront, uLength, uBottom, uLength+uOffset,    uBottom, c,
+  //   uBottom, c,     uFront, -uOffset,    uFront, uLength,
+
+  //   // End face
+  //   0, 0, run, 0, run, uBack,
+  //   run, uBack, 0, uBack, 0, 0,
+  // ]);
 
   geometry.setAttribute("position", new THREE.BufferAttribute(tris, 3));
-  geometry.setAttribute("uv", new THREE.BufferAttribute(UVs, 2));
+  geometry.setAttribute(
+    "uv",
+    new THREE.BufferAttribute(new Float32Array([]), 2),
+  );
   geometry.computeVertexNormals();
 
   return geometry;
