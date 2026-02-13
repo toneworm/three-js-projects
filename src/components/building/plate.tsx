@@ -21,6 +21,7 @@ export default function Plate({
   rightEnd = "block",
   jointSize: rawJointSize = 0.05,
   bevelOffset = 0.015,
+  randomiseTextureOffset = true,
   ...meshProps
 }: PlateProps & JSX.IntrinsicElements["mesh"]) {
   const texture = useTexture("/textures/oak_texture_1k.png");
@@ -29,6 +30,14 @@ export default function Plate({
   texture.wrapS = THREE.RepeatWrapping;
   texture.wrapT = THREE.RepeatWrapping;
   texture.colorSpace = THREE.SRGBColorSpace;
+
+  const textureOffset = useMemo(
+    () => ({
+      x: randomiseTextureOffset ? Math.random() : 0,
+      y: randomiseTextureOffset ? Math.random() : 0,
+    }),
+    [randomiseTextureOffset],
+  );
 
   // Validate/clamp dimensions
   const { length, height, depth } = clampPlateDimensions(
@@ -125,18 +134,17 @@ export default function Plate({
     );
 
     // apply random offsets to texture
-    const textureOffsetX = Math.random();
-    const textureOffsetY = Math.random();
-
-    bodyTexture.offset.set(textureOffsetX, textureOffsetY);
-    leftCapTexture.offset.set(
-      textureOffsetX + leftCapTexture.offset.x,
-      textureOffsetY + leftCapTexture.offset.y,
-    );
-    rightCapTexture.offset.set(
-      textureOffsetX + rightCapTexture.offset.x,
-      textureOffsetY + rightCapTexture.offset.y,
-    );
+    if (randomiseTextureOffset) {
+      bodyTexture.offset.set(textureOffset.x, textureOffset.y);
+      leftCapTexture.offset.set(
+        textureOffset.x + leftCapTexture.offset.x,
+        textureOffset.y + leftCapTexture.offset.y,
+      );
+      rightCapTexture.offset.set(
+        textureOffset.x + rightCapTexture.offset.x,
+        textureOffset.y + rightCapTexture.offset.y,
+      );
+    }
 
     return {
       geometry: merged,
@@ -155,6 +163,8 @@ export default function Plate({
     rightEnd,
     bevelOffset,
     texture,
+    randomiseTextureOffset,
+    textureOffset,
   ]);
 
   // dispose of cloned textures on updates
@@ -203,7 +213,6 @@ function applyEndGeoTransformations(
     // TODO: lots of repetition here can probs be done better
     case "block":
       if (end === "left") {
-        geometry.rotateY(Math.PI / 2);
         geometry.rotateZ(Math.PI / 2);
         geometry.translate(-length / 2 + jointSize, height / 2, 0);
       } else {
@@ -263,11 +272,14 @@ function applyEndTextures(
   switch (style) {
     case "block":
       if (end === "left") {
-        // TODO: Fix plate length issues (it's not using the joint size)
         clonedTexture.offset.set(
-          0,
+          -height / circumference,
           ((length - jointSize * 2) / circumference) % 1,
         );
+        // console.log({ length, height, depth, jointSize, circumference });
+
+        // console.log(0.167 * circumference);
+        // clonedTexture.offset.set(-0.167, 0.167);
       } else {
         clonedTexture.rotation = Math.PI;
       }

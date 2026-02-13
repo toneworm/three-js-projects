@@ -19,6 +19,7 @@ export default function Rafter({
   rise: rawRise,
   run: rawRun,
   angle: rawAngle,
+  randomiseTextureOffset = true,
   ...meshProps
 }: RafterProps & JSX.IntrinsicElements["mesh"]) {
   const texture = useTexture("/textures/oak_texture_1k.png");
@@ -26,6 +27,14 @@ export default function Rafter({
 
   texture.wrapS = texture.wrapT = THREE.RepeatWrapping;
   texture.colorSpace = THREE.SRGBColorSpace;
+
+  const textureOffset = useMemo(
+    () => ({
+      x: randomiseTextureOffset ? Math.random() : 0,
+      y: randomiseTextureOffset ? Math.random() : 0,
+    }),
+    [randomiseTextureOffset],
+  );
 
   // Validate/clamp dimensions
   const {
@@ -104,10 +113,10 @@ export default function Rafter({
     const birdsMouthTexture = texture.clone();
 
     // random offsets to vary the grain
-    const textureOffsetX = Math.random();
-    const textureOffsetY = Math.random();
-    bodyTexture.offset.set(textureOffsetX, textureOffsetY);
-    birdsMouthTexture.offset.set(textureOffsetX, textureOffsetY);
+    if (randomiseTextureOffset) {
+      bodyTexture.offset.set(textureOffset.x, textureOffset.y);
+      birdsMouthTexture.offset.set(textureOffset.x, textureOffset.y);
+    }
 
     return {
       geometry: merged,
@@ -116,7 +125,7 @@ export default function Rafter({
         new THREE.MeshStandardMaterial({ map: birdsMouthTexture }),
       ],
     };
-  }, [length, height, depth, texture, angle, rise, run, cheekAngle, mouthSize]);
+  }, [length, height, depth, texture, angle, rise, run, cheekAngle, mouthSize, randomiseTextureOffset, textureOffset]);
 
   // dispose of cloned textures on updates
   useEffect(() => {

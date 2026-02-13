@@ -103,14 +103,15 @@ function Scene() {
         scale={[10, 20, 10]}
       /> */}
 
-      {/* <Plate
+      <Plate
         length={2}
         height={0.1}
-        depth={0.1}
-        leftEnd="bottom"
-        rightEnd="top"
-        position={[-1, 0, 0]}
-      /> */}
+        depth={0.3}
+        leftEnd="block"
+        rightEnd="block"
+        position={[-1, 1, 0]}
+        randomiseTextureOffset={false}
+      />
 
       {/* <Post
         width={0.15}

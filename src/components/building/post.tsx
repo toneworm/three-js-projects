@@ -25,6 +25,7 @@ export default function Post({
   tenonHeight: rawTenonHeight = 0.1,
   tenonWidth: rawTenonWidth = 0.08,
   tenonDepth: rawTenonDepth = 0.06,
+  randomiseTextureOffset = true,
   ...meshProps
 }: PostProps & JSX.IntrinsicElements["mesh"]) {
   const texture = useTexture("/textures/oak_texture_1k.png");
@@ -32,6 +33,14 @@ export default function Post({
 
   texture.wrapS = texture.wrapT = THREE.RepeatWrapping;
   texture.colorSpace = THREE.SRGBColorSpace;
+
+  const textureOffset = useMemo(
+    () => ({
+      x: randomiseTextureOffset ? Math.random() : 0,
+      y: randomiseTextureOffset ? Math.random() : 0,
+    }),
+    [randomiseTextureOffset],
+  );
 
   // Validate/clamp dimensions
   const { width, height, depth } = clampPostDimensions(
@@ -137,18 +146,17 @@ export default function Post({
     );
 
     // apply random offsets to texture
-    const textureOffsetX = Math.random();
-    const textureOffsetY = Math.random();
-
-    bodyTexture.offset.set(textureOffsetX, textureOffsetY);
-    topCapTexture.offset.set(
-      textureOffsetX + topCapTexture.offset.x,
-      textureOffsetY + topCapTexture.offset.y,
-    );
-    bottomCapTexture.offset.set(
-      textureOffsetX + bottomCapTexture.offset.x,
-      textureOffsetY + bottomCapTexture.offset.y,
-    );
+    if (randomiseTextureOffset) {
+      bodyTexture.offset.set(textureOffset.x, textureOffset.y);
+      topCapTexture.offset.set(
+        textureOffset.x + topCapTexture.offset.x,
+        textureOffset.y + topCapTexture.offset.y,
+      );
+      bottomCapTexture.offset.set(
+        textureOffset.x + bottomCapTexture.offset.x,
+        textureOffset.y + bottomCapTexture.offset.y,
+      );
+    }
 
     return {
       geometry: merged,
@@ -169,6 +177,8 @@ export default function Post({
     tenonDepth,
     topEnd,
     bottomEnd,
+    randomiseTextureOffset,
+    textureOffset,
   ]);
 
   // dispose of cloned textures on updates

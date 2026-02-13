@@ -22,6 +22,7 @@ export type PostProps = {
   tenonHeight?: number;
   tenonWidth?: number;
   tenonDepth?: number;
+  randomiseTextureOffset?: boolean;
 };
 
 export type PlateProps = {
@@ -32,6 +33,7 @@ export type PlateProps = {
   rightEnd?: PlateEndStyle;
   jointSize?: number;
   bevelOffset?: number;
+  randomiseTextureOffset?: boolean;
 };
 
 export type RafterProps = {
@@ -42,6 +44,7 @@ export type RafterProps = {
   angle?: number;
   cheekAngle?: number;
   mouthSize?: number;
+  randomiseTextureOffset?: boolean;
 };
 
 // --- Collection configs (props + type discriminant) ---
