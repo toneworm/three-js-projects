@@ -1,0 +1,153 @@
+{
+  "name": "Basic Hip Roof Garage",
+  "description": "4 posts, interlocking eaves plates, king beam, and 4 hip rafters",
+  "components": [
+    {
+      "id": "post-fl",
+      "type": "post",
+      "position": [0, 0, 0],
+      "width": 0.2,
+      "height": 2.4,
+      "depth": 0.2,
+      "topEnd": "tenon",
+      "bottomEnd": "bevel"
+    },
+    {
+      "id": "post-fr",
+      "type": "post",
+      "position": [6, 0, 0],
+      "width": 0.2,
+      "height": 2.4,
+      "depth": 0.2,
+      "topEnd": "tenon",
+      "bottomEnd": "bevel"
+    },
+    {
+      "id": "post-bl",
+      "type": "post",
+      "position": [0, 0, -4],
+      "width": 0.2,
+      "height": 2.4,
+      "depth": 0.2,
+      "topEnd": "tenon",
+      "bottomEnd": "bevel"
+    },
+    {
+      "id": "post-br",
+      "type": "post",
+      "position": [6, 0, -4],
+      "width": 0.2,
+      "height": 2.4,
+      "depth": 0.2,
+      "topEnd": "tenon",
+      "bottomEnd": "bevel"
+    },
+
+    {
+      "id": "plate-front",
+      "type": "plate",
+      "position": [3, 2.4, 0],
+      "length": 6,
+      "height": 0.2,
+      "depth": 0.2,
+      "leftEnd": "bottom",
+      "rightEnd": "bottom",
+      "jointSize": 0.2
+    },
+    {
+      "id": "plate-back",
+      "type": "plate",
+      "position": [3, 2.4, -4],
+      "length": 6,
+      "height": 0.2,
+      "depth": 0.2,
+      "leftEnd": "bottom",
+      "rightEnd": "bottom",
+      "jointSize": 0.2
+    },
+    {
+      "id": "plate-left",
+      "type": "plate",
+      "position": [0, 2.4, -2],
+      "rotation": [0, -1.5708, 0],
+      "length": 4,
+      "height": 0.2,
+      "depth": 0.2,
+      "leftEnd": "top",
+      "rightEnd": "top",
+      "jointSize": 0.2
+    },
+    {
+      "id": "plate-right",
+      "type": "plate",
+      "position": [6, 2.4, -2],
+      "rotation": [0, -1.5708, 0],
+      "length": 4,
+      "height": 0.2,
+      "depth": 0.2,
+      "leftEnd": "top",
+      "rightEnd": "top",
+      "jointSize": 0.2
+    },
+
+    {
+      "id": "king-beam",
+      "type": "plate",
+      "position": [2, 3.8, -2],
+      "length": 2,
+      "height": 0.2,
+      "depth": 0.15,
+      "leftEnd": "block",
+      "rightEnd": "block"
+    },
+
+    {
+      "id": "hip-rafter-fl",
+      "type": "rafter",
+      "position": [0, 2.6, 0],
+      "rotation": [0, 0.7854, 0],
+      "height": 0.18,
+      "depth": 0.12,
+      "run": 2,
+      "rise": 1.2,
+      "cheekAngle": 0.7854,
+      "mouthSize": 0.05
+    },
+    {
+      "id": "hip-rafter-fr",
+      "type": "rafter",
+      "position": [6, 2.6, 0],
+      "rotation": [0, -0.7854, 0],
+      "height": 0.18,
+      "depth": 0.12,
+      "run": 2,
+      "rise": 1.2,
+      "cheekAngle": 0.7854,
+      "mouthSize": 0.05
+    },
+    {
+      "id": "hip-rafter-bl",
+      "type": "rafter",
+      "position": [0, 2.6, -4],
+      "rotation": [0, 2.3562, 0],
+      "height": 0.18,
+      "depth": 0.12,
+      "run": 2,
+      "rise": 1.2,
+      "cheekAngle": 0.7854,
+      "mouthSize": 0.05
+    },
+    {
+      "id": "hip-rafter-br",
+      "type": "rafter",
+      "position": [6, 2.6, -4],
+      "rotation": [0, -2.3562, 0],
+      "height": 0.18,
+      "depth": 0.12,
+      "run": 2,
+      "rise": 1.2,
+      "cheekAngle": 0.7854,
+      "mouthSize": 0.05
+    }
+  ]
+}

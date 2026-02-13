@@ -8,7 +8,7 @@ import { clampRafterDimensions } from "@/lib/validation/clamp-dimensions";
 import { resolveRafterGeometry } from "@/lib/geometry/utils/resolve-rafter-geometry";
 
 import { createBirdsMouthEndGeo } from "@/lib/geometry/caps_joints/birds-mouth-cap";
-import { applyPlanarUVs } from "@/lib/geometry/utils/uvUtils";
+import { applyPlanarUVs } from "@/lib/geometry/utils/uv-utils";
 import { type RafterProps } from "@/types/building";
 
 export default function Rafter({
