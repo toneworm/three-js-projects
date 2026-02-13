@@ -1,4 +1,4 @@
-import { type RafterGeometryProps } from "@/components/building/rafter";
+import { type RafterProps } from "@/types/building";
 
 type ResolvedRafterGeometry = {
   run: number;
@@ -11,7 +11,7 @@ export function resolveRafterGeometry({
   run: rawRun,
   rise: rawRise,
   angle: rawAngle,
-}: RafterGeometryProps): ResolvedRafterGeometry {
+}: Partial<RafterProps>): ResolvedRafterGeometry {
   if (rawRun !== undefined && rawRise !== undefined) {
     // run + rise → derive angle and length
     const angle = Math.atan2(rawRise, rawRun);
@@ -26,8 +26,14 @@ export function resolveRafterGeometry({
     return { run: rawRun, rise, angle: rawAngle, length };
   }
 
-  // rise + angle → derive run and length
-  const run = rawRise / Math.tan(rawAngle);
-  const length = rawRise / Math.sin(rawAngle);
-  return { run, rise: rawRise, angle: rawAngle, length };
+  if (rawRise !== undefined && rawAngle !== undefined) {
+    // rise + angle → derive run and length
+    const run = rawRise / Math.tan(rawAngle);
+    const length = rawRise / Math.sin(rawAngle);
+    return { run, rise: rawRise, angle: rawAngle, length };
+  }
+
+  throw new Error(
+    "At least two of run, rise, and angle must be provided to resolve rafter geometry.",
+  );
 }
