@@ -2,7 +2,7 @@ import type {
   GarageComponentWithMaterial,
   GarageFormState,
   MaterialType,
-} from "@/types";
+} from "@/types/poc";
 
 export function resolveGarageComponents(
   state: GarageFormState,

@@ -9,22 +9,7 @@ import { resolveRafterGeometry } from "@/lib/geometry/utils/resolve-rafter-geome
 
 import { createBirdsMouthEndGeo } from "@/lib/geometry/caps_joints/birds-mouth-cap";
 import { applyPlanarUVs } from "@/lib/geometry/utils/uvUtils";
-
-type WithRunAndRise = { run: number; rise: number; angle?: never };
-type WithRunAndAngle = { run: number; angle: number; rise?: never };
-type WithRiseAndAngle = { rise: number; angle: number; run?: never };
-
-export type RafterGeometryProps =
-  | WithRunAndRise
-  | WithRunAndAngle
-  | WithRiseAndAngle;
-
-type RafterBaseProps = {
-  height: number;
-  depth: number;
-  cheekAngle?: number;
-  mouthSize?: number;
-};
+import { type RafterProps } from "@/types/building";
 
 export default function Rafter({
   height: rawHeight,
@@ -35,10 +20,10 @@ export default function Rafter({
   run: rawRun,
   angle: rawAngle,
   ...meshProps
-}: RafterBaseProps & RafterGeometryProps & JSX.IntrinsicElements["mesh"]) {
-  // const texture = useTexture("/textures/oak_veneer_01_diff_1k.jpg");
+}: RafterProps & JSX.IntrinsicElements["mesh"]) {
   const texture = useTexture("/textures/oak_texture_1k.png");
   // const texture = useTexture("/textures/uv_texture_color.webp");
+
   texture.wrapS = texture.wrapT = THREE.RepeatWrapping;
   texture.colorSpace = THREE.SRGBColorSpace;
 
@@ -65,7 +50,7 @@ export default function Rafter({
     run: clampedRun,
     rise: clampedRise,
     angle: clampedAngle,
-  } as RafterGeometryProps);
+  } as Partial<RafterProps>);
 
   // console.log({ run, rise, angle, length });
 
@@ -74,26 +59,19 @@ export default function Rafter({
     const mainRafterGeo = createMainRafterGeo(
       height,
       depth,
-      angle,
       cheekAngle,
       run,
       rise,
-      length,
     );
 
     const birdsMouthGeo = createBirdsMouthEndGeo(
       mouthSize,
       height,
       depth,
-      angle,
       run,
       rise,
     );
     birdsMouthGeo.translate(-mouthSize, 0, 0);
-
-    console.log({ angle });
-
-    const angleOffset = Math.PI / 2 + angle;
 
     // prettier-ignore
     // biome-ignore reason: want to switch these on and off easily
@@ -121,20 +99,15 @@ export default function Rafter({
       birdsMouthGeo.attributes.position.count,
       1,
     );
-    // merged.addGroup(
-    //   mainRafterGeo.attributes.position.count,
-    //   topPostGeo.attributes.position.count,
-    //   1,
-    // );
-    // merged.addGroup(
-    //   mainRafterGeo.attributes.position.count +
-    //     topPostGeo.attributes.position.count,
-    //   bottomPostGeo.attributes.position.count,
-    //   2,
-    // );
 
     const bodyTexture = texture.clone();
     const birdsMouthTexture = texture.clone();
+
+    // random offsets to vary the grain
+    const textureOffsetX = Math.random();
+    const textureOffsetY = Math.random();
+    bodyTexture.offset.set(textureOffsetX, textureOffsetY);
+    birdsMouthTexture.offset.set(textureOffsetX, textureOffsetY);
 
     return {
       geometry: merged,

@@ -68,8 +68,8 @@ export function clampPlateDimensions(
   depth: number,
 ): { length: number; height: number; depth: number } {
   const clampedLength = Math.min(Math.max(length, 1.0), 5.0);
-  const clampedDepth = Math.min(Math.max(depth, 0.05), 0.3);
-  const clampedHeight = Math.min(Math.max(height, 0.05), 0.3);
+  const clampedDepth = Math.min(Math.max(depth, 0.01), 0.3);
+  const clampedHeight = Math.min(Math.max(height, 0.01), 0.3);
 
   if (length !== clampedLength) {
     console.warn(

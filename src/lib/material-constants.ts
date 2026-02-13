@@ -1,4 +1,4 @@
-import type { MaterialType } from "@/types";
+import type { MaterialType } from "@/types/poc";
 
 export const MATERIAL_COLORS: Partial<Record<MaterialType, string>> = {
   default: "#c9a86a",

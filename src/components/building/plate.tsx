@@ -11,19 +11,7 @@ import {
   clampPlateDimensions,
   clampEndSize,
 } from "@/lib/validation/clamp-dimensions";
-
-type PlateProps = {
-  length: number;
-  height: number;
-  depth: number;
-  leftEnd?: PlateEndStyle;
-  rightEnd?: PlateEndStyle;
-  jointSize?: number;
-  bevelOffset?: number;
-};
-
-type PlateEnd = "left" | "right";
-type PlateEndStyle = "top" | "bottom" | "block" | "bevel";
+import { type PlateProps, PlateEndStyle, PlateEnd } from "@/types/building";
 
 export default function Plate({
   length: rawLength,
@@ -35,20 +23,12 @@ export default function Plate({
   bevelOffset = 0.015,
   ...meshProps
 }: PlateProps & JSX.IntrinsicElements["mesh"]) {
-  const texture = useTexture("/textures/oak_veneer_01_diff_1k.jpg");
-  const texture2 = useTexture("/textures/uv_texture.jpg");
-  const texture3 = useTexture("/textures/uv_texture_color.webp");
+  const texture = useTexture("/textures/oak_texture_1k.png");
+  // const texture = useTexture("/textures/uv_texture_color.webp");
 
   texture.wrapS = THREE.RepeatWrapping;
   texture.wrapT = THREE.RepeatWrapping;
   texture.colorSpace = THREE.SRGBColorSpace;
-
-  texture2.wrapS = THREE.RepeatWrapping;
-  texture2.wrapT = THREE.RepeatWrapping;
-
-  texture3.wrapS = THREE.RepeatWrapping;
-  texture3.wrapT = THREE.RepeatWrapping;
-  texture3.colorSpace = THREE.SRGBColorSpace;
 
   // Validate/clamp dimensions
   const { length, height, depth } = clampPlateDimensions(
@@ -125,7 +105,6 @@ export default function Plate({
     const bodyTexture = texture.clone();
 
     const leftCapTexture = applyEndTextures(
-      // texture3,
       texture,
       leftEnd,
       "left",
@@ -136,7 +115,6 @@ export default function Plate({
     );
 
     const rightCapTexture = applyEndTextures(
-      // texture3,
       texture,
       rightEnd,
       "right",
@@ -144,6 +122,20 @@ export default function Plate({
       height,
       depth,
       jointSize,
+    );
+
+    // apply random offsets to texture
+    const textureOffsetX = Math.random();
+    const textureOffsetY = Math.random();
+
+    bodyTexture.offset.set(textureOffsetX, textureOffsetY);
+    leftCapTexture.offset.set(
+      textureOffsetX + leftCapTexture.offset.x,
+      textureOffsetY + leftCapTexture.offset.y,
+    );
+    rightCapTexture.offset.set(
+      textureOffsetX + rightCapTexture.offset.x,
+      textureOffsetY + rightCapTexture.offset.y,
     );
 
     return {
@@ -163,8 +155,6 @@ export default function Plate({
     rightEnd,
     bevelOffset,
     texture,
-    texture2,
-    texture3,
   ]);
 
   // dispose of cloned textures on updates

@@ -54,25 +54,19 @@ function Scene() {
 
   return (
     <>
-      {/* <Rafter
-        height={0.3}
-        depth={0.1}
-        angle={Math.PI / 6}
-        run={2}
-        // cheekAngle={Math.PI / 2}
-      /> */}
-
       {Array(12)
         .fill(null)
         .map((_, i) => (
           <Rafter
+            key={i}
             height={0.1}
             depth={0.015}
-            angle={Math.PI / 6}
+            angle={Math.PI / 5}
+            // rise={1.5}
             run={1.5}
             cheekAngle={Math.PI / 4}
             position={[0, 0, i * 0.15 - 0.35]}
-            mouthSize={0.1}
+            mouthSize={0.05}
           />
         ))}
 
@@ -80,9 +74,9 @@ function Scene() {
         length={2}
         height={0.1}
         depth={0.1}
-        leftEnd="block"
-        rightEnd="block"
-        position={[-0.05, -0.1, 0.5]}
+        leftEnd="bevel"
+        rightEnd="bevel"
+        position={[0, -0.1, 0.5]}
         rotation-y={Math.PI / 2}
       />
 
@@ -216,7 +210,7 @@ function Scene() {
         <Post width={0.2} depth={0.05} height={1.5} position={[-0.5, 1, 0]} />
 
         <Post width={0.2} depth={0.2} height={1.5} position={[-1, 1.5, 0]} />
-      </group> */}
+      </group>*/}
     </>
   );
 }

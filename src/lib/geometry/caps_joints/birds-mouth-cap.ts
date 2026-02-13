@@ -4,7 +4,6 @@ export function createBirdsMouthEndGeo(
   mouthSize: number,
   height: number,
   depth: number,
-  angle: number,
   run: number,
   rise: number,
 ) {
@@ -22,19 +21,6 @@ export function createBirdsMouthEndGeo(
   const hm = h - (lm + l) * slopeRatio;
   const hml = hm - h;
   const he = h - 2 * l * slopeRatio;
-
-  console.log({
-    hs,
-    ho,
-    hsl,
-    h,
-    slopeRatio,
-    l,
-    angle,
-    run,
-    rise,
-    mouthSize,
-  });
 
   // prettier-ignore
   // biome-ignore format: buffer array
@@ -100,53 +86,6 @@ export function createBirdsMouthEndGeo(
     l, h, d,   l, h, -d,   -l, he, -d,
   ]
 
-  const perimeter = 2 * (depth + height);
-  const uLength = mouthSize / perimeter;
-  const uTop = depth / perimeter;
-  const uBack = (depth + height) / perimeter;
-  const uBottom = (2 * depth + height) / perimeter;
-  const uFront = 1;
-  const uRise = rise / perimeter;
-  const uRun = run / perimeter;
-  const uOffset = Math.tan(angle) * (height / perimeter);
-
-  const uH = h / perimeter;
-  const uHo = ho / perimeter;
-  const uHs = hs / perimeter;
-  const uHsl = hsl / perimeter;
-
-  const uLm = lm / perimeter;
-  const uHm = hm / perimeter;
-  const uHml = hml / perimeter;
-  const uHe = he / perimeter;
-
-  const uSlope1 = Math.sqrt((h - hs) ** 2 + l ** 2) / perimeter;
-
-  // prettier-ignore
-  // biome-ignore format: buffer array
-  const uvsMouth = [
-    // Back face
-    uBack, uSlope1, uBack + 0.05, uSlope1 + 0.05, uBottom, uSlope1 / 4,
-    // uBottom, uSlope1 / 3, uBack + 0.05, uSlope1 + 0.05, uBack, uSlope1,
-
-    // Bottom face
-    
-
-    // Front face
-  ];
-
-  // prettier-ignore
-  // biome-ignore format: buffer array
-  const uvsMiddle: number[] = [];
-
-  // prettier-ignore
-  // biome-ignore format: buffer array
-  const uvsEnd: number[] = [];
-
-  // prettier-ignore
-  // biome-ignore format: buffer array
-  const uvsTop: number[] = [];
-
   geometry.setAttribute(
     "position",
     new THREE.BufferAttribute(
@@ -154,13 +93,9 @@ export function createBirdsMouthEndGeo(
       3,
     ),
   );
-  geometry.setAttribute(
-    "uv",
-    new THREE.BufferAttribute(
-      new Float32Array([...uvsMouth, ...uvsMiddle, ...uvsEnd, ...uvsTop]),
-      2,
-    ),
-  );
+
+  // UVs handled by planar mapping
+  geometry.setAttribute("uv", new THREE.BufferAttribute(new Float32Array(), 2));
   geometry.computeVertexNormals();
 
   return geometry;

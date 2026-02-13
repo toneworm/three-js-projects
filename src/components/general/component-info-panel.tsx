@@ -3,7 +3,7 @@ import { Eye, EyeOff } from "lucide-react";
 
 import { Button } from "@/components/ui/button";
 import { cn } from "@/lib/utils";
-import type { ComponentInfo } from "@/types";
+import type { ComponentInfo } from "@/types/poc";
 
 interface ComponentInfoPanelProps {
   info: ComponentInfo | null;

@@ -8,7 +8,7 @@ import {
   explosionIndividualOffsets,
   explosionMultiplier,
 } from "@/data/positions";
-import type { ComponentInfo } from "@/types";
+import type { ComponentInfo } from "@/types/poc";
 
 export function cn(...inputs: ClassValue[]) {
   return twMerge(clsx(inputs));

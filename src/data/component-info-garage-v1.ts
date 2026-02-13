@@ -1,4 +1,4 @@
-import type { ComponentInfo } from "@/types";
+import type { ComponentInfo } from "@/types/poc";
 
 export const componentData: Record<string, ComponentInfo> = {
   Wall_Brick_Plinth: {

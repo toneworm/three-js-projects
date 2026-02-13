@@ -12,22 +12,7 @@ import {
   clampPostDimensions,
   clampEndSize,
 } from "@/lib/validation/clamp-dimensions";
-
-type PostProps = {
-  width: number;
-  height: number;
-  depth: number;
-  topEnd?: PostEndStyle;
-  bottomEnd?: PostEndStyle;
-  endSize?: number;
-  bevelOffset?: number;
-  tenonHeight?: number;
-  tenonWidth?: number;
-  tenonDepth?: number;
-};
-
-type PostEnd = "top" | "bottom";
-type PostEndStyle = "block" | "bevel" | "tenon";
+import { type PostProps, PostEnd, PostEndStyle } from "@/types/building";
 
 export default function Post({
   width: rawWidth,
@@ -42,8 +27,9 @@ export default function Post({
   tenonDepth: rawTenonDepth = 0.06,
   ...meshProps
 }: PostProps & JSX.IntrinsicElements["mesh"]) {
-  // const texture = useTexture("/textures/oak_veneer_01_diff_1k.jpg");
-  const texture = useTexture("/textures/uv_texture_color.webp");
+  const texture = useTexture("/textures/oak_texture_1k.png");
+  // const texture = useTexture("/textures/uv_texture_color.webp");
+
   texture.wrapS = texture.wrapT = THREE.RepeatWrapping;
   texture.colorSpace = THREE.SRGBColorSpace;
 
@@ -148,6 +134,20 @@ export default function Post({
       height,
       depth,
       endSize,
+    );
+
+    // apply random offsets to texture
+    const textureOffsetX = Math.random();
+    const textureOffsetY = Math.random();
+
+    bodyTexture.offset.set(textureOffsetX, textureOffsetY);
+    topCapTexture.offset.set(
+      textureOffsetX + topCapTexture.offset.x,
+      textureOffsetY + topCapTexture.offset.y,
+    );
+    bottomCapTexture.offset.set(
+      textureOffsetX + bottomCapTexture.offset.x,
+      textureOffsetY + bottomCapTexture.offset.y,
     );
 
     return {

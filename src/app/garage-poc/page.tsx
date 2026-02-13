@@ -23,7 +23,7 @@ import type {
   GarageComponentWithMaterial,
   GarageFormState,
   MaterialType,
-} from "@/types";
+} from "@/types/poc";
 
 const garageModelUrl = "/models/garage_poc_v3.glb";
 

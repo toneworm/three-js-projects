@@ -7,7 +7,7 @@ import { Checkbox } from "@/components/ui/checkbox";
 import { Label } from "@/components/ui/label";
 import { RadioGroup, RadioGroupItem } from "@/components/ui/radio-group";
 import { cn } from "@/lib/utils";
-import type { Config } from "@/types";
+import type { Config } from "@/types/poc";
 
 interface ConfigurablePanelProps<
   TState = Record<string, string | boolean>,
