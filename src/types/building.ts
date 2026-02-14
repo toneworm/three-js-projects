@@ -10,6 +10,7 @@ export type PlateEnd = "left" | "right";
 export type PlateEndStyle = "top" | "bottom" | "block" | "bevel";
 
 // --- Component props ---
+export type ComponentType = "post" | "plate" | "rafter";
 
 export type PostProps = {
   width: number;
