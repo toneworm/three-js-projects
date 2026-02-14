@@ -162,9 +162,9 @@ export default function Plate({
     leftEnd,
     rightEnd,
     bevelOffset,
-    texture,
     randomiseTextureOffset,
     textureOffset,
+    texture,
   ]);
 
   // dispose of cloned textures on updates

@@ -1,3 +1,4 @@
+// biome-ignore-all lint: Testing CSG (not used)
 import { useTexture } from "@react-three/drei";
 import { useEffect, useMemo } from "react";
 import * as THREE from "three";

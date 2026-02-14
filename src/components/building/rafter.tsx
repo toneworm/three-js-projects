@@ -83,7 +83,7 @@ export default function Rafter({
     birdsMouthGeo.translate(-mouthSize, 0, 0);
 
     // prettier-ignore
-    // biome-ignore reason: want to switch these on and off easily
+    // biome-ignore format: want to switch these on and off easily
     const merged = mergeGeometries([
       mainRafterGeo,
       birdsMouthGeo,
@@ -125,7 +125,19 @@ export default function Rafter({
         new THREE.MeshStandardMaterial({ map: birdsMouthTexture }),
       ],
     };
-  }, [length, height, depth, texture, angle, rise, run, cheekAngle, mouthSize, randomiseTextureOffset, textureOffset]);
+  }, [
+    length,
+    height,
+    depth,
+    angle,
+    rise,
+    run,
+    cheekAngle,
+    mouthSize,
+    randomiseTextureOffset,
+    textureOffset,
+    texture,
+  ]);
 
   // dispose of cloned textures on updates
   useEffect(() => {

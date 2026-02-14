@@ -98,7 +98,7 @@ export default function Post({
     );
 
     // prettier-ignore
-    // biome-ignore reason: want to switch these on and off easily
+    // biome-ignore format: want to switch these on and off easily
     const merged = mergeGeometries([
       mainPostGeo,
       topPostGeo,
@@ -179,6 +179,7 @@ export default function Post({
     bottomEnd,
     randomiseTextureOffset,
     textureOffset,
+    texture,
   ]);
 
   // dispose of cloned textures on updates
