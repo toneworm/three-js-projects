@@ -1,8 +1,9 @@
 // biome-ignore-all lint: Testing CSG (not used)
-import { useTexture } from "@react-three/drei";
+
 import { useEffect, useMemo } from "react";
+import { useTexture } from "@react-three/drei";
 import * as THREE from "three";
-import { SUBTRACTION, Brush, Evaluator } from "three-bvh-csg";
+import { Brush, Evaluator, SUBTRACTION } from "three-bvh-csg";
 
 type RafterCSGProps = {
   length?: number;

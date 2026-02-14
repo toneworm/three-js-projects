@@ -1,5 +1,5 @@
-import { useTexture } from "@react-three/drei";
 import { useEffect, useMemo } from "react";
+import { useTexture } from "@react-three/drei";
 import * as THREE from "three";
 import { mergeGeometries } from "three/addons/utils/BufferGeometryUtils.js";
 
@@ -8,10 +8,10 @@ import { createBevelEndGeo } from "@/lib/geometry/caps_joints/bevel-cap";
 import { createBlockCapGeo } from "@/lib/geometry/caps_joints/block-cap";
 import { createHalfLapJoint } from "@/lib/geometry/caps_joints/half-lap-joint";
 import {
-  clampPlateDimensions,
   clampEndSize,
+  clampPlateDimensions,
 } from "@/lib/validation/clamp-dimensions";
-import { type PlateProps, PlateEndStyle, PlateEnd } from "@/types/building";
+import type { PlateEnd, PlateEndStyle, PlateProps } from "@/types/building";
 
 export default function Plate({
   length: rawLength,

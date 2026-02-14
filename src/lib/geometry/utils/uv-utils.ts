@@ -1,6 +1,6 @@
 // lib/geometry/uvUtils.ts
 
-import { BufferGeometry, BufferAttribute, Vector3 } from "three";
+import { BufferAttribute, type BufferGeometry, Vector3 } from "three";
 
 interface FaceUVConfig {
   swapUV?: boolean; // swap U and V axes (90 deg rotation)

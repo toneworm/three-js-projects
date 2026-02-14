@@ -3,10 +3,11 @@
 import { Suspense } from "react";
 import { Environment, OrbitControls } from "@react-three/drei";
 import { Canvas, useThree } from "@react-three/fiber";
+
 // import { useControls, button } from "leva";
 
-import Post from "@/components/building/post";
 import Plate from "@/components/building/plate";
+import Post from "@/components/building/post";
 import Rafter from "@/components/building/rafter";
 import { Loader } from "@/components/general/loader";
 

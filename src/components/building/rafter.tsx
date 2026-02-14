@@ -1,15 +1,14 @@
-import { useTexture } from "@react-three/drei";
 import { useEffect, useMemo } from "react";
+import { useTexture } from "@react-three/drei";
 import * as THREE from "three";
 import { mergeGeometries } from "three/addons/utils/BufferGeometryUtils.js";
 
 import { createMainRafterGeo } from "@/lib/geometry/bodies/rafter";
-import { clampRafterDimensions } from "@/lib/validation/clamp-dimensions";
-import { resolveRafterGeometry } from "@/lib/geometry/utils/resolve-rafter-geometry";
-
 import { createBirdsMouthEndGeo } from "@/lib/geometry/caps_joints/birds-mouth-cap";
+import { resolveRafterGeometry } from "@/lib/geometry/utils/resolve-rafter-geometry";
 import { applyPlanarUVs } from "@/lib/geometry/utils/uv-utils";
-import { type RafterProps } from "@/types/building";
+import { clampRafterDimensions } from "@/lib/validation/clamp-dimensions";
+import type { RafterProps } from "@/types/building";
 
 export default function Rafter({
   height: rawHeight,

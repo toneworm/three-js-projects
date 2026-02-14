@@ -1,18 +1,18 @@
-import { useTexture } from "@react-three/drei";
 import { useEffect, useMemo } from "react";
+import { useTexture } from "@react-three/drei";
 import * as THREE from "three";
 import { mergeGeometries } from "three/addons/utils/BufferGeometryUtils.js";
 
 import { createMainPostGeo } from "@/lib/geometry/bodies/post";
 import { createBevelEndGeo } from "@/lib/geometry/caps_joints/bevel-cap";
-import { createTenonEndGeo } from "@/lib/geometry/caps_joints/tenon-cap";
 import { createBlockCapGeo } from "@/lib/geometry/caps_joints/block-cap";
+import { createTenonEndGeo } from "@/lib/geometry/caps_joints/tenon-cap";
 import {
-  clampTenonDimensions,
-  clampPostDimensions,
   clampEndSize,
+  clampPostDimensions,
+  clampTenonDimensions,
 } from "@/lib/validation/clamp-dimensions";
-import { type PostProps, PostEnd, PostEndStyle } from "@/types/building";
+import type { PostEnd, PostEndStyle, PostProps } from "@/types/building";
 
 export default function Post({
   width: rawWidth,

@@ -1,4 +1,4 @@
-import { type RafterProps } from "@/types/building";
+import type { RafterProps } from "@/types/building";
 
 type ResolvedRafterGeometry = {
   run: number;

@@ -1,13 +1,13 @@
 "use client";
 
 import { Suspense, useEffect, useState } from "react";
+import { useParams } from "next/navigation";
 import { Environment, OrbitControls } from "@react-three/drei";
 import { Canvas } from "@react-three/fiber";
-import { useParams } from "next/navigation";
 
-import { Loader } from "@/components/general/loader";
-import { Collection } from "@/types/building";
 import { CollectionRenderer } from "@/components/collections/collection-renderer";
+import { Loader } from "@/components/general/loader";
+import type { Collection } from "@/types/building";
 
 export default function CollectionPage() {
   const params = useParams();
