@@ -65,9 +65,9 @@ export const PLATE_DEFAULT_BEVEL_OFFSET = DEFAULT_BEVEL_OFFSET;
 // Rafter defaults
 export const RAFTER_DEFAULT_HEIGHT = 0.25;
 export const RAFTER_DEFAULT_DEPTH = 0.05;
-export const RAFTER_DEFAULT_RUN = 2.5;
-export const RAFTER_DEFAULT_RISE = 1.5;
-export const RAFTER_DEFAULT_CHEEK_ANGLE = 0;
-export const RAFTER_DEFAULT_MOUTH_SIZE = 0.15;
+export const RAFTER_DEFAULT_RUN = 2.25;
+export const RAFTER_DEFAULT_RISE = 1.25;
+export const RAFTER_DEFAULT_CHEEK_ANGLE = Math.PI / 4;
+export const RAFTER_DEFAULT_MOUTH_SIZE = 0.25;
 export const RAFTER_DEFAULT_UV_SCALE = 0.2;
 export const BIRDSMOUTH_MAX_RATIO = 0.75;

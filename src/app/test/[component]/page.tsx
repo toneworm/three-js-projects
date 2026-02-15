@@ -98,7 +98,12 @@ export default function TestComponentPage() {
 
   const [, setLevaValues] = useControls(
     componentType ?? "post",
-    () => buildControls(componentType, isStoreReady ? props : initialProps, updateProps),
+    () =>
+      buildControls(
+        componentType,
+        isStoreReady ? props : initialProps,
+        updateProps,
+      ),
     [componentType, props, isStoreReady],
   );
 
@@ -177,7 +182,7 @@ export default function TestComponentPage() {
         </div>
       ) : (
         <Canvas
-          camera={{ position: [-2.77, 3.68, 6.23], fov: 50 }}
+          camera={{ position: [-3.27, 3.68, 4.23], fov: 50 }}
           className="bg-background"
         >
           <Suspense fallback={<Loader />}>
@@ -185,7 +190,10 @@ export default function TestComponentPage() {
               <Environment preset="sunset" background={false} />
             </Suspense>
 
-            <Scene componentType={componentType} props={isStoreReady ? props : initialProps} />
+            <Scene
+              componentType={componentType}
+              props={isStoreReady ? props : initialProps}
+            />
 
             <OrbitControls target={[0, 1, 0]} />
           </Suspense>
