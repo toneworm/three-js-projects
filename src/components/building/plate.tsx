@@ -22,7 +22,7 @@ export default function Plate({
   rightEnd: rawRightEnd,
   jointSize: rawJointSize = PLATE_DEFAULT_JOINT_SIZE,
   bevelOffset: rawBevelOffset = PLATE_DEFAULT_BEVEL_OFFSET,
-  randomiseTextureOffset = true,
+  randomiseTextureOffset = false,
   ...meshProps
 }: PlateProps & JSX.IntrinsicElements["mesh"]) {
   const texture = useTexture("/textures/oak_texture_1k.png");
@@ -291,7 +291,7 @@ function applyEndTextures(
         );
       } else {
         clonedTexture.rotation = Math.PI;
-        clonedTexture.offset.set(0.75, 1);
+        clonedTexture.offset.set((2 * depth + height) / circumference, 0);
       }
       break;
     case "bottom":
@@ -302,6 +302,7 @@ function applyEndTextures(
         );
       } else {
         clonedTexture.rotation = Math.PI;
+        clonedTexture.offset.set(depth / circumference, 0);
       }
       break;
     case "bevel":

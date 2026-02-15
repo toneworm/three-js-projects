@@ -118,7 +118,7 @@ export default function TestComponentPage() {
   // Reset sync flag when component type changes
   useEffect(() => {
     hasSyncedParams.current = false;
-  }, [componentType]);
+  }, []);
 
   return (
     <div className="h-screen w-full relative">
