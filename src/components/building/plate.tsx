@@ -195,7 +195,7 @@ function createEndGeo(
       return createBlockCapGeo(height, jointSize, depth);
     case "top":
     case "bottom":
-      return createHalfLapJoint(height, jointSize, depth);
+      return createHalfLapJoint(depth, jointSize, height);
     case "bevel":
       return createBevelEndGeo(height, jointSize, depth, bevelOffset);
   }
@@ -245,7 +245,6 @@ function applyEndGeoTransformations(
       break;
     case "bevel":
       if (end === "left") {
-        geometry.rotateY(Math.PI / 2);
         geometry.rotateZ(Math.PI / 2);
         geometry.translate(-length / 2 + jointSize, height / 2, 0);
       } else {
@@ -308,7 +307,7 @@ function applyEndTextures(
     case "bevel":
       if (end === "left") {
         clonedTexture.offset.set(
-          0,
+          -height / circumference,
           ((length - jointSize * 2) / circumference) % 1,
         );
       } else {
