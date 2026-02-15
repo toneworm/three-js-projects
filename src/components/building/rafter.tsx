@@ -10,10 +10,12 @@ import {
 } from "@/lib/constants";
 import { createMainRafterGeo } from "@/lib/geometry/bodies/rafter";
 import { createBirdsMouthEndGeo } from "@/lib/geometry/caps_joints/birds-mouth-cap";
-import { resolveRafterGeometry } from "@/lib/geometry/utils/resolve-rafter-geometry";
 import { applyPlanarUVs } from "@/lib/geometry/utils/uv-utils";
-import { clampRafterDimensions } from "@/lib/validation/clamp-dimensions";
-import type { RafterProps } from "@/types/building";
+import {
+  clampRafterDimensions,
+  resolveRafterGeometry,
+} from "@/lib/geometry/utils/resolve-geometry";
+import type { RafterProps, ResolvedRafterGeometry } from "@/types/building";
 
 export default function Rafter({
   height: rawHeight,
@@ -40,30 +42,16 @@ export default function Rafter({
     [randomiseTextureOffset],
   );
 
-  // Validate/clamp dimensions
-  const {
-    height,
-    depth,
-    cheekAngle,
-    mouthSize,
-    clampedRise,
-    clampedRun,
-    clampedAngle,
-  } = clampRafterDimensions(
-    rawHeight,
-    rawDepth,
-    rawCheekAngle,
-    rawMouthSize,
-    rawRise,
-    rawRun,
-    rawAngle,
-  );
-
-  const { run, rise, angle } = resolveRafterGeometry({
-    run: clampedRun,
-    rise: clampedRise,
-    angle: clampedAngle,
-  } as Partial<RafterProps>);
+  const { run, rise, angle, depth, height, cheekAngle, mouthSize } =
+    resolveRafterGeometry({
+      run: rawRun,
+      rise: rawRise,
+      angle: rawAngle,
+      depth: rawDepth,
+      height: rawHeight,
+      cheekAngle: rawCheekAngle,
+      mouthSize: rawMouthSize,
+    } as ResolvedRafterGeometry);
 
   const { geometry, materials } = useMemo(() => {
     // Main rafter

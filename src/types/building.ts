@@ -48,6 +48,38 @@ export type RafterProps = {
   randomiseTextureOffset?: boolean;
 };
 
+// Resolved props (after clamping and calculations)
+
+export type ResolvedPostGeometry = {
+  width: number;
+  height: number;
+  depth: number;
+  endSize: number;
+  tenonWidth: number;
+  tenonDepth: number;
+  tenonHeight: number;
+  bevelOffset: number;
+};
+
+export type ResolvedPlateGeometry = {
+  length: number;
+  height: number;
+  depth: number;
+  jointSize: number;
+  bevelOffset: number;
+};
+
+export type ResolvedRafterGeometry = {
+  run: number;
+  rise: number;
+  angle: number;
+  length: number;
+  height: number;
+  depth: number;
+  cheekAngle: number;
+  mouthSize: number;
+};
+
 // --- Collection configs (props + type discriminant) ---
 
 export type PostConfig = { type: "post" } & PostProps;

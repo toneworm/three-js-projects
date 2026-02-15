@@ -19,7 +19,8 @@ import {
   clampEndSize,
   clampPostDimensions,
   clampTenonDimensions,
-} from "@/lib/validation/clamp-dimensions";
+  resolvePostGeometry,
+} from "@/lib/geometry/utils/resolve-geometry";
 import type { PostEnd, PostEndStyle, PostProps } from "@/types/building";
 
 export default function Post({
@@ -29,7 +30,7 @@ export default function Post({
   topEnd = "block",
   bottomEnd = "block",
   endSize: rawEndSize = POST_DEFAULT_END_SIZE,
-  bevelOffset = POST_DEFAULT_BEVEL_OFFSET,
+  bevelOffset: rawBevelOffset = POST_DEFAULT_BEVEL_OFFSET,
   tenonHeight: rawTenonHeight = POST_DEFAULT_TENON_HEIGHT,
   tenonWidth: rawTenonWidth = POST_DEFAULT_TENON_WIDTH,
   tenonDepth: rawTenonDepth = POST_DEFAULT_TENON_DEPTH,
@@ -51,23 +52,25 @@ export default function Post({
   );
 
   // Validate/clamp dimensions
-  const { width, height, depth } = clampPostDimensions(
-    rawWidth,
-    rawHeight,
-    rawDepth,
-  );
-
-  const endSize = clampEndSize(height, rawEndSize);
-
-  const { tenonWidth, tenonDepth, tenonHeight } = clampTenonDimensions(
+  const {
     width,
+    height,
     depth,
     endSize,
-    rawTenonWidth,
-    rawTenonDepth,
-    rawTenonHeight,
-    TENON_MAX_RATIO,
-  );
+    tenonWidth,
+    tenonDepth,
+    tenonHeight,
+    bevelOffset,
+  } = resolvePostGeometry({
+    width: rawWidth,
+    height: rawHeight,
+    depth: rawDepth,
+    endSize: rawEndSize,
+    bevelOffset: rawBevelOffset,
+    tenonHeight: rawTenonHeight,
+    tenonWidth: rawTenonWidth,
+    tenonDepth: rawTenonDepth,
+  });
 
   const { geometry, materials } = useMemo(() => {
     // Main post body

@@ -14,7 +14,8 @@ import { createHalfLapJoint } from "@/lib/geometry/caps_joints/half-lap-joint";
 import {
   clampEndSize,
   clampPlateDimensions,
-} from "@/lib/validation/clamp-dimensions";
+  resolvePlateGeometry,
+} from "@/lib/geometry/utils/resolve-geometry";
 import type { PlateEnd, PlateEndStyle, PlateProps } from "@/types/building";
 
 export default function Plate({
@@ -24,7 +25,7 @@ export default function Plate({
   leftEnd = "block",
   rightEnd = "block",
   jointSize: rawJointSize = PLATE_DEFAULT_JOINT_SIZE,
-  bevelOffset = PLATE_DEFAULT_BEVEL_OFFSET,
+  bevelOffset: rawBevelOffset = PLATE_DEFAULT_BEVEL_OFFSET,
   randomiseTextureOffset = true,
   ...meshProps
 }: PlateProps & JSX.IntrinsicElements["mesh"]) {
@@ -44,13 +45,14 @@ export default function Plate({
   );
 
   // Validate/clamp dimensions
-  const { length, height, depth } = clampPlateDimensions(
-    rawLength,
-    rawHeight,
-    rawDepth,
-  );
-
-  const jointSize = clampEndSize(length, rawJointSize);
+  const { length, height, depth, jointSize, bevelOffset } =
+    resolvePlateGeometry({
+      length: rawLength,
+      height: rawHeight,
+      depth: rawDepth,
+      jointSize: rawJointSize,
+      bevelOffset: rawBevelOffset,
+    });
 
   const { geometry, materials } = useMemo(() => {
     // geometry
@@ -279,10 +281,6 @@ function applyEndTextures(
           -height / circumference,
           ((length - jointSize * 2) / circumference) % 1,
         );
-        // console.log({ length, height, depth, jointSize, circumference });
-
-        // console.log(0.167 * circumference);
-        // clonedTexture.offset.set(-0.167, 0.167);
       } else {
         clonedTexture.rotation = Math.PI;
       }

@@ -3,10 +3,12 @@
 import type { Schema } from "leva/dist/declarations/src/types";
 
 import {
+  END_SIZE_MIN_MATERIAL,
   PLATE_DEPTH_MAX,
   PLATE_DEPTH_MIN,
   PLATE_HEIGHT_MAX,
   PLATE_HEIGHT_MIN,
+  PLATE_DEFAULT_JOINT_SIZE,
   PLATE_LENGTH_MAX,
   // Plate constraints
   PLATE_LENGTH_MIN,
@@ -68,6 +70,36 @@ export function buildControls(
         height: num("height", p.height, POST_HEIGHT_MIN, POST_HEIGHT_MAX),
         depth: num("depth", p.depth, POST_DEPTH_MIN, POST_DEPTH_MAX),
         width: num("width", p.width, POST_WIDTH_MIN, POST_WIDTH_MAX),
+        endSize: num(
+          "endSize",
+          p.endSize ?? END_SIZE_MIN_MATERIAL,
+          END_SIZE_MIN_MATERIAL,
+          POST_HEIGHT_MAX / 2,
+        ),
+        tenonHeight: num(
+          "tenonHeight",
+          p.tenonHeight ?? END_SIZE_MIN_MATERIAL,
+          END_SIZE_MIN_MATERIAL,
+          POST_HEIGHT_MAX / 2,
+        ),
+        tenonWidth: num(
+          "tenonWidth",
+          p.tenonWidth ?? END_SIZE_MIN_MATERIAL,
+          END_SIZE_MIN_MATERIAL,
+          POST_WIDTH_MAX / 2,
+        ),
+        tenonDepth: num(
+          "tenonDepth",
+          p.tenonDepth ?? END_SIZE_MIN_MATERIAL,
+          END_SIZE_MIN_MATERIAL,
+          POST_DEPTH_MAX / 2,
+        ),
+        bevelOffset: num(
+          "bevelOffset",
+          p.bevelOffset ?? 0,
+          0,
+          Math.min(p.width, p.depth) / 2,
+        ),
         topEnd: {
           value: p.topEnd ?? "block",
           options: ["block", "bevel", "tenon"] as PostEndStyle[],
@@ -86,6 +118,18 @@ export function buildControls(
         height: num("height", p.height, PLATE_HEIGHT_MIN, PLATE_HEIGHT_MAX),
         depth: num("depth", p.depth, PLATE_DEPTH_MIN, PLATE_DEPTH_MAX),
         length: num("length", p.length, PLATE_LENGTH_MIN, PLATE_LENGTH_MAX),
+        jointSize: num(
+          "jointSize",
+          p.jointSize ?? PLATE_DEFAULT_JOINT_SIZE,
+          END_SIZE_MIN_MATERIAL,
+          PLATE_LENGTH_MAX,
+        ),
+        bevelOffset: num(
+          "bevelOffset",
+          p.bevelOffset ?? 0,
+          0,
+          Math.min(p.length, p.depth) / 2,
+        ),
         leftEnd: {
           value: p.leftEnd ?? "block",
           options: ["block", "bevel", "top", "bottom"] as PlateEndStyle[],
@@ -105,6 +149,7 @@ export function buildControls(
         depth: num("depth", p.depth, RAFTER_DEPTH_MIN, RAFTER_DEPTH_MAX),
         run: num("run", p.run ?? RAFTER_DEFAULT_RUN, RAFTER_RUN_MIN, 10),
         rise: num("rise", p.rise ?? RAFTER_DEFAULT_RISE, RAFTER_RISE_MIN, 5),
+        // angle: num("angle", p.angle ?? RAFTER_DEFAULT_ANGLE, RAFTER_ANGLE_MIN, RAFTER_ANGLE_MAX),
         mouthSize: num(
           "mouthSize",
           p.mouthSize ?? RAFTER_DEFAULT_MOUTH_SIZE,

@@ -1,6 +1,6 @@
 "use client";
 
-import { Suspense, useEffect } from "react";
+import { Suspense, useLayoutEffect, useMemo } from "react";
 import Link from "next/link";
 import { useParams, useSearchParams } from "next/navigation";
 import { Environment, OrbitControls } from "@react-three/drei";
@@ -59,7 +59,7 @@ function getExampleQuery(componentType: ComponentType): string {
     case "plate":
       return "?length=3&height=0.2&depth=0.2&leftEnd=top&rightEnd=bottom";
     case "rafter":
-      return "?height=0.15&depth=0.1&run=2&rise=1&mouthSize=0.1";
+      return "?height=0.15&depth=0.05&run=2&rise=1&mouthSize=0.1";
   }
 }
 
@@ -70,22 +70,34 @@ export default function TestComponentPage() {
 
   const setComponent = useComponentStore((state) => state.setComponent);
   const updateProps = useComponentStore((state) => state.updateProps);
+  const storeComponentType = useComponentStore((state) => state.componentType);
   const props = useComponentStore((state) => state.props);
-
-  useControls(
-    componentType ?? "post",
-    () => buildControls(componentType, props, updateProps),
-    [componentType, props],
-  );
 
   const isValidType = COMPONENT_TYPES.includes(componentType);
 
-  useEffect(() => {
+  // Parse initial props synchronously
+  const initialProps = useMemo(() => {
     if (isValidType) {
-      const parsed = parseQueryParams(searchParams, componentType);
-      setComponent(componentType, parsed);
+      return parseQueryParams(searchParams, componentType);
     }
-  }, [isValidType, componentType, searchParams, setComponent]);
+    return COMPONENT_DEFAULTS[componentType];
+  }, [isValidType, componentType, searchParams]);
+
+  // Initialize store synchronously before first paint
+  useLayoutEffect(() => {
+    if (isValidType) {
+      setComponent(componentType, initialProps);
+    }
+  }, [isValidType, componentType, initialProps, setComponent]);
+
+  // Only render controls once store is initialized with correct component type
+  const isStoreReady = storeComponentType === componentType;
+
+  useControls(
+    componentType ?? "post",
+    () => buildControls(componentType, isStoreReady ? props : initialProps, updateProps),
+    [componentType, props, isStoreReady],
+  );
 
   return (
     <div className="h-screen w-full relative">
@@ -157,7 +169,7 @@ export default function TestComponentPage() {
               <Environment preset="sunset" background={false} />
             </Suspense>
 
-            <Scene componentType={componentType} props={props!} />
+            <Scene componentType={componentType} props={isStoreReady ? props : initialProps} />
 
             <OrbitControls target={[0, 1, 0]} />
           </Suspense>

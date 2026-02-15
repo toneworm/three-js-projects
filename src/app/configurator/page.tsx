@@ -4,8 +4,6 @@ import { Suspense } from "react";
 import { Environment, OrbitControls } from "@react-three/drei";
 import { Canvas } from "@react-three/fiber";
 
-// import { useControls, button } from "leva";
-
 import Plate from "@/components/building/plate";
 import Post from "@/components/building/post";
 import Rafter from "@/components/building/rafter";
@@ -35,22 +33,6 @@ export default function ConfiguratorPage() {
 }
 
 function Scene() {
-  // const { camera, controls } = useThree();
-
-  // useControls("Camera Debug", {
-  //   "Copy Camera Setup": button(() => {
-  //     const pos = camera.position.toArray().map((n) => n.toFixed(2));
-  //     const tgt = ((controls as any)?.target?.toArray() || [0, 0, 0]).map(
-  //       (n: number) => n.toFixed(2),
-  //     );
-
-  //     console.log(`camera={{ position: [${pos.join(", ")}], fov: 50 }}`);
-  //     console.log(`target={[${tgt.join(", ")}]}`);
-  //   }),
-  // });
-
-  // TODO: set up leva to move about objects...
-
   return (
     <>
       {Array(12)
@@ -68,6 +50,17 @@ function Scene() {
             mouthSize={0.05}
           />
         ))}
+
+      <Rafter
+        height={0.1}
+        depth={0.015}
+        angle={(Math.PI * 60) / 180}
+        // rise={1.5}
+        run={1}
+        cheekAngle={Math.PI / 4}
+        position={[-2, 2, 0]}
+        mouthSize={0.05}
+      />
 
       <Plate
         length={2}

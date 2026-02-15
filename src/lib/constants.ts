@@ -14,7 +14,7 @@ export const POST_HEIGHT_MAX = 5.0;
 
 // Plate dimension constraints
 export const PLATE_LENGTH_MIN = 1.0;
-export const PLATE_LENGTH_MAX = 5.0;
+export const PLATE_LENGTH_MAX = 10.0;
 export const PLATE_DEPTH_MIN = 0.01;
 export const PLATE_DEPTH_MAX = 0.3;
 export const PLATE_HEIGHT_MIN = 0.01;
@@ -31,8 +31,8 @@ export const RAFTER_CHEEK_ANGLE_MIN = -Math.PI / 3; // -60 degrees
 export const RAFTER_CHEEK_ANGLE_MAX = Math.PI / 4; // 45 degrees
 export const RAFTER_ANGLE_MIN = 0;
 export const RAFTER_ANGLE_MAX = Math.PI / 3; // 60 degrees
-export const RAFTER_RISE_MIN = 0;
-export const RAFTER_RUN_MIN = 0;
+export const RAFTER_RISE_MIN = 0.5;
+export const RAFTER_RUN_MIN = 0.5;
 
 // Joint/End constraints
 export const END_SIZE_MIN_MATERIAL = 0.05; // Minimum material on either side of joint
@@ -61,9 +61,10 @@ export const PLATE_DEFAULT_BEVEL_OFFSET = 0.015;
 
 // Rafter defaults
 export const RAFTER_DEFAULT_HEIGHT = 0.15;
-export const RAFTER_DEFAULT_DEPTH = 0.1;
+export const RAFTER_DEFAULT_DEPTH = 0.05;
 export const RAFTER_DEFAULT_RUN = 2;
 export const RAFTER_DEFAULT_RISE = 1;
 export const RAFTER_DEFAULT_CHEEK_ANGLE = 0;
 export const RAFTER_DEFAULT_MOUTH_SIZE = 0.05;
 export const RAFTER_DEFAULT_UV_SCALE = 0.2;
+export const BIRDSMOUTH_MAX_RATIO = 0.75;
