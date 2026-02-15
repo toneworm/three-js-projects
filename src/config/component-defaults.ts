@@ -1,11 +1,18 @@
 // src/config/component-defaults.ts
 
 import {
+  PLATE_DEFAULT_BEVEL_OFFSET,
   PLATE_DEFAULT_DEPTH,
   PLATE_DEFAULT_HEIGHT,
+  PLATE_DEFAULT_JOINT_SIZE,
   PLATE_DEFAULT_LENGTH,
+  POST_DEFAULT_BEVEL_OFFSET,
   POST_DEFAULT_DEPTH,
+  POST_DEFAULT_END_SIZE,
   POST_DEFAULT_HEIGHT,
+  POST_DEFAULT_TENON_DEPTH,
+  POST_DEFAULT_TENON_HEIGHT,
+  POST_DEFAULT_TENON_WIDTH,
   POST_DEFAULT_WIDTH,
   RAFTER_DEFAULT_DEPTH,
   RAFTER_DEFAULT_HEIGHT,
@@ -23,16 +30,23 @@ export const DEFAULT_POST_PROPS: PostProps = {
   width: POST_DEFAULT_WIDTH,
   height: POST_DEFAULT_HEIGHT,
   depth: POST_DEFAULT_DEPTH,
-  topEnd: "block",
-  bottomEnd: "block",
+  topEnd: "tenon",
+  bottomEnd: "bevel",
+  endSize: POST_DEFAULT_END_SIZE,
+  tenonHeight: POST_DEFAULT_TENON_HEIGHT,
+  tenonWidth: POST_DEFAULT_TENON_WIDTH,
+  tenonDepth: POST_DEFAULT_TENON_DEPTH,
+  bevelOffset: POST_DEFAULT_BEVEL_OFFSET,
 };
 
 export const DEFAULT_PLATE_PROPS: PlateProps = {
   length: PLATE_DEFAULT_LENGTH,
   height: PLATE_DEFAULT_HEIGHT,
   depth: PLATE_DEFAULT_DEPTH,
-  leftEnd: "block",
-  rightEnd: "block",
+  leftEnd: "top",
+  rightEnd: "bottom",
+  jointSize: PLATE_DEFAULT_JOINT_SIZE,
+  bevelOffset: PLATE_DEFAULT_BEVEL_OFFSET,
 };
 
 export const DEFAULT_RAFTER_PROPS: RafterProps = {

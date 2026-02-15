@@ -1,6 +1,6 @@
 "use client";
 
-import { Suspense, useLayoutEffect, useMemo } from "react";
+import { Suspense, useLayoutEffect, useMemo, useEffect, useRef } from "react";
 import Link from "next/link";
 import { useParams, useSearchParams } from "next/navigation";
 import { Environment, OrbitControls } from "@react-three/drei";
@@ -93,11 +93,27 @@ export default function TestComponentPage() {
   // Only render controls once store is initialized with correct component type
   const isStoreReady = storeComponentType === componentType;
 
-  useControls(
+  // Track if we've synced the initial params to Leva
+  const hasSyncedParams = useRef(false);
+
+  const [, setLevaValues] = useControls(
     componentType ?? "post",
     () => buildControls(componentType, isStoreReady ? props : initialProps, updateProps),
     [componentType, props, isStoreReady],
   );
+
+  // Sync search params to Leva controls once store is ready
+  useEffect(() => {
+    if (isStoreReady && !hasSyncedParams.current && initialProps) {
+      setLevaValues(initialProps);
+      hasSyncedParams.current = true;
+    }
+  }, [isStoreReady, initialProps, setLevaValues]);
+
+  // Reset sync flag when component type changes
+  useEffect(() => {
+    hasSyncedParams.current = false;
+  }, [componentType]);
 
   return (
     <div className="h-screen w-full relative">
