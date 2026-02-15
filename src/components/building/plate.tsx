@@ -11,6 +11,10 @@ import {
   clampEndSize,
   clampPlateDimensions,
 } from "@/lib/validation/clamp-dimensions";
+import {
+  PLATE_DEFAULT_JOINT_SIZE,
+  PLATE_DEFAULT_BEVEL_OFFSET,
+} from "@/lib/constants";
 import type { PlateEnd, PlateEndStyle, PlateProps } from "@/types/building";
 
 export default function Plate({
@@ -19,8 +23,8 @@ export default function Plate({
   depth: rawDepth,
   leftEnd = "block",
   rightEnd = "block",
-  jointSize: rawJointSize = 0.05,
-  bevelOffset = 0.015,
+  jointSize: rawJointSize = PLATE_DEFAULT_JOINT_SIZE,
+  bevelOffset = PLATE_DEFAULT_BEVEL_OFFSET,
   randomiseTextureOffset = true,
   ...meshProps
 }: PlateProps & JSX.IntrinsicElements["mesh"]) {

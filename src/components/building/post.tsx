@@ -12,6 +12,14 @@ import {
   clampPostDimensions,
   clampTenonDimensions,
 } from "@/lib/validation/clamp-dimensions";
+import {
+  POST_DEFAULT_END_SIZE,
+  POST_DEFAULT_BEVEL_OFFSET,
+  POST_DEFAULT_TENON_HEIGHT,
+  POST_DEFAULT_TENON_WIDTH,
+  POST_DEFAULT_TENON_DEPTH,
+  TENON_MAX_RATIO,
+} from "@/lib/constants";
 import type { PostEnd, PostEndStyle, PostProps } from "@/types/building";
 
 export default function Post({
@@ -20,11 +28,11 @@ export default function Post({
   depth: rawDepth,
   topEnd = "block",
   bottomEnd = "block",
-  endSize: rawEndSize = 0.15,
-  bevelOffset = 0.015,
-  tenonHeight: rawTenonHeight = 0.1,
-  tenonWidth: rawTenonWidth = 0.08,
-  tenonDepth: rawTenonDepth = 0.06,
+  endSize: rawEndSize = POST_DEFAULT_END_SIZE,
+  bevelOffset = POST_DEFAULT_BEVEL_OFFSET,
+  tenonHeight: rawTenonHeight = POST_DEFAULT_TENON_HEIGHT,
+  tenonWidth: rawTenonWidth = POST_DEFAULT_TENON_WIDTH,
+  tenonDepth: rawTenonDepth = POST_DEFAULT_TENON_DEPTH,
   randomiseTextureOffset = true,
   ...meshProps
 }: PostProps & JSX.IntrinsicElements["mesh"]) {
@@ -58,7 +66,7 @@ export default function Post({
     rawTenonWidth,
     rawTenonDepth,
     rawTenonHeight,
-    0.8, // Max 80% of post dimensions
+    TENON_MAX_RATIO,
   );
 
   const { geometry, materials } = useMemo(() => {

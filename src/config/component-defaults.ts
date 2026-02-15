@@ -5,28 +5,40 @@ import type {
   RafterProps,
   ComponentType,
 } from "@/types/building";
+import {
+  POST_DEFAULT_WIDTH,
+  POST_DEFAULT_HEIGHT,
+  POST_DEFAULT_DEPTH,
+  PLATE_DEFAULT_LENGTH,
+  PLATE_DEFAULT_HEIGHT,
+  PLATE_DEFAULT_DEPTH,
+  RAFTER_DEFAULT_HEIGHT,
+  RAFTER_DEFAULT_DEPTH,
+  RAFTER_DEFAULT_RUN,
+  RAFTER_DEFAULT_RISE,
+} from "@/lib/constants";
 
 export const DEFAULT_POST_PROPS: PostProps = {
-  width: 0.2,
-  height: 2.4,
-  depth: 0.2,
+  width: POST_DEFAULT_WIDTH,
+  height: POST_DEFAULT_HEIGHT,
+  depth: POST_DEFAULT_DEPTH,
   topEnd: "block",
   bottomEnd: "block",
 };
 
 export const DEFAULT_PLATE_PROPS: PlateProps = {
-  length: 3,
-  height: 0.2,
-  depth: 0.2,
+  length: PLATE_DEFAULT_LENGTH,
+  height: PLATE_DEFAULT_HEIGHT,
+  depth: PLATE_DEFAULT_DEPTH,
   leftEnd: "block",
   rightEnd: "block",
 };
 
 export const DEFAULT_RAFTER_PROPS: RafterProps = {
-  height: 0.15,
-  depth: 0.1,
-  run: 2,
-  rise: 1,
+  height: RAFTER_DEFAULT_HEIGHT,
+  depth: RAFTER_DEFAULT_DEPTH,
+  run: RAFTER_DEFAULT_RUN,
+  rise: RAFTER_DEFAULT_RISE,
 };
 
 export const COMPONENT_DEFAULTS: Record<

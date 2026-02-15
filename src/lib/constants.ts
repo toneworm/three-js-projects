@@ -1,1 +1,69 @@
 export const TIMBER_TEXEL_SCALE = 0.15;
+
+// ============================================================================
+// DIMENSION CONSTRAINTS (mins and maxes for clamping)
+// ============================================================================
+
+// Post dimension constraints
+export const POST_WIDTH_MIN = 0.05;
+export const POST_WIDTH_MAX = 0.3;
+export const POST_DEPTH_MIN = 0.05;
+export const POST_DEPTH_MAX = 0.3;
+export const POST_HEIGHT_MIN = 1.5;
+export const POST_HEIGHT_MAX = 5.0;
+
+// Plate dimension constraints
+export const PLATE_LENGTH_MIN = 1.0;
+export const PLATE_LENGTH_MAX = 5.0;
+export const PLATE_DEPTH_MIN = 0.01;
+export const PLATE_DEPTH_MAX = 0.3;
+export const PLATE_HEIGHT_MIN = 0.01;
+export const PLATE_HEIGHT_MAX = 0.3;
+
+// Rafter dimension constraints
+export const RAFTER_DEPTH_MIN = 0.015;
+export const RAFTER_DEPTH_MAX = 0.3;
+export const RAFTER_HEIGHT_MIN = 0.05;
+export const RAFTER_HEIGHT_MAX = 0.5;
+export const RAFTER_MOUTH_SIZE_MIN = 0;
+export const RAFTER_MOUTH_SIZE_MAX = 0.15;
+export const RAFTER_CHEEK_ANGLE_MIN = -Math.PI / 3; // -60 degrees
+export const RAFTER_CHEEK_ANGLE_MAX = Math.PI / 4; // 45 degrees
+export const RAFTER_ANGLE_MIN = 0;
+export const RAFTER_ANGLE_MAX = Math.PI / 3; // 60 degrees
+export const RAFTER_RISE_MIN = 0;
+export const RAFTER_RUN_MIN = 0;
+
+// Joint/End constraints
+export const END_SIZE_MIN_MATERIAL = 0.05; // Minimum material on either side of joint
+export const TENON_MAX_RATIO = 0.8; // Tenon max 80% of post dimension
+
+// ============================================================================
+// DEFAULT VALUES (used in components)
+// ============================================================================
+
+// Post defaults
+export const POST_DEFAULT_WIDTH = 0.2;
+export const POST_DEFAULT_HEIGHT = 2.4;
+export const POST_DEFAULT_DEPTH = 0.2;
+export const POST_DEFAULT_END_SIZE = 0.15;
+export const POST_DEFAULT_BEVEL_OFFSET = 0.015;
+export const POST_DEFAULT_TENON_HEIGHT = 0.1;
+export const POST_DEFAULT_TENON_WIDTH = 0.08;
+export const POST_DEFAULT_TENON_DEPTH = 0.06;
+
+// Plate defaults
+export const PLATE_DEFAULT_LENGTH = 3;
+export const PLATE_DEFAULT_HEIGHT = 0.2;
+export const PLATE_DEFAULT_DEPTH = 0.2;
+export const PLATE_DEFAULT_JOINT_SIZE = 0.05;
+export const PLATE_DEFAULT_BEVEL_OFFSET = 0.015;
+
+// Rafter defaults
+export const RAFTER_DEFAULT_HEIGHT = 0.15;
+export const RAFTER_DEFAULT_DEPTH = 0.1;
+export const RAFTER_DEFAULT_RUN = 2;
+export const RAFTER_DEFAULT_RISE = 1;
+export const RAFTER_DEFAULT_CHEEK_ANGLE = 0;
+export const RAFTER_DEFAULT_MOUTH_SIZE = 0.05;
+export const RAFTER_DEFAULT_UV_SCALE = 0.2;

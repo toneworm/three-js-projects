@@ -8,13 +8,18 @@ import { createBirdsMouthEndGeo } from "@/lib/geometry/caps_joints/birds-mouth-c
 import { resolveRafterGeometry } from "@/lib/geometry/utils/resolve-rafter-geometry";
 import { applyPlanarUVs } from "@/lib/geometry/utils/uv-utils";
 import { clampRafterDimensions } from "@/lib/validation/clamp-dimensions";
+import {
+  RAFTER_DEFAULT_CHEEK_ANGLE,
+  RAFTER_DEFAULT_MOUTH_SIZE,
+  RAFTER_DEFAULT_UV_SCALE,
+} from "@/lib/constants";
 import type { RafterProps } from "@/types/building";
 
 export default function Rafter({
   height: rawHeight,
   depth: rawDepth,
-  cheekAngle: rawCheekAngle = 0,
-  mouthSize: rawMouthSize = 0.05,
+  cheekAngle: rawCheekAngle = RAFTER_DEFAULT_CHEEK_ANGLE,
+  mouthSize: rawMouthSize = RAFTER_DEFAULT_MOUTH_SIZE,
   rise: rawRise,
   run: rawRun,
   angle: rawAngle,
@@ -90,7 +95,7 @@ export default function Rafter({
 
     applyPlanarUVs(
       merged,
-      0.2,
+      RAFTER_DEFAULT_UV_SCALE,
       new THREE.Vector3(Math.cos(angle), Math.sin(angle), 0),
       { side: { flipV: true, swapUV: true } },
     );
