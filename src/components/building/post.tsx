@@ -9,26 +9,20 @@ import {
   POST_DEFAULT_TENON_DEPTH,
   POST_DEFAULT_TENON_HEIGHT,
   POST_DEFAULT_TENON_WIDTH,
-  TENON_MAX_RATIO,
 } from "@/lib/constants";
 import { createMainPostGeo } from "@/lib/geometry/bodies/post";
 import { createBevelEndGeo } from "@/lib/geometry/caps_joints/bevel-cap";
 import { createBlockCapGeo } from "@/lib/geometry/caps_joints/block-cap";
 import { createTenonEndGeo } from "@/lib/geometry/caps_joints/tenon-cap";
-import {
-  clampEndSize,
-  clampPostDimensions,
-  clampTenonDimensions,
-  resolvePostGeometry,
-} from "@/lib/geometry/utils/resolve-geometry";
+import { resolvePostGeometry } from "@/lib/geometry/utils/resolve-geometry";
 import type { PostEnd, PostEndStyle, PostProps } from "@/types/building";
 
 export default function Post({
   width: rawWidth,
   height: rawHeight,
   depth: rawDepth,
-  topEnd = "block",
-  bottomEnd = "block",
+  topEnd: rawTopEnd,
+  bottomEnd: rawBottomEnd,
   endSize: rawEndSize = POST_DEFAULT_END_SIZE,
   bevelOffset: rawBevelOffset = POST_DEFAULT_BEVEL_OFFSET,
   tenonHeight: rawTenonHeight = POST_DEFAULT_TENON_HEIGHT,
@@ -51,11 +45,13 @@ export default function Post({
     [randomiseTextureOffset],
   );
 
-  // Validate/clamp dimensions
+  // Resolve Geometry
   const {
     width,
     height,
     depth,
+    topEnd,
+    bottomEnd,
     endSize,
     tenonWidth,
     tenonDepth,
@@ -65,6 +61,8 @@ export default function Post({
     width: rawWidth,
     height: rawHeight,
     depth: rawDepth,
+    topEnd: rawTopEnd,
+    bottomEnd: rawBottomEnd,
     endSize: rawEndSize,
     bevelOffset: rawBevelOffset,
     tenonHeight: rawTenonHeight,

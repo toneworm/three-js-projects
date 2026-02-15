@@ -11,19 +11,15 @@ import { createMainPlateGeo } from "@/lib/geometry/bodies/plate";
 import { createBevelEndGeo } from "@/lib/geometry/caps_joints/bevel-cap";
 import { createBlockCapGeo } from "@/lib/geometry/caps_joints/block-cap";
 import { createHalfLapJoint } from "@/lib/geometry/caps_joints/half-lap-joint";
-import {
-  clampEndSize,
-  clampPlateDimensions,
-  resolvePlateGeometry,
-} from "@/lib/geometry/utils/resolve-geometry";
+import { resolvePlateGeometry } from "@/lib/geometry/utils/resolve-geometry";
 import type { PlateEnd, PlateEndStyle, PlateProps } from "@/types/building";
 
 export default function Plate({
   length: rawLength,
   height: rawHeight,
   depth: rawDepth,
-  leftEnd = "block",
-  rightEnd = "block",
+  leftEnd: rawLeftEnd,
+  rightEnd: rawRightEnd,
   jointSize: rawJointSize = PLATE_DEFAULT_JOINT_SIZE,
   bevelOffset: rawBevelOffset = PLATE_DEFAULT_BEVEL_OFFSET,
   randomiseTextureOffset = true,
@@ -44,12 +40,14 @@ export default function Plate({
     [randomiseTextureOffset],
   );
 
-  // Validate/clamp dimensions
-  const { length, height, depth, jointSize, bevelOffset } =
+  // Resolve Geometry
+  const { length, height, depth, leftEnd, rightEnd, jointSize, bevelOffset } =
     resolvePlateGeometry({
       length: rawLength,
       height: rawHeight,
       depth: rawDepth,
+      leftEnd: rawLeftEnd,
+      rightEnd: rawRightEnd,
       jointSize: rawJointSize,
       bevelOffset: rawBevelOffset,
     });

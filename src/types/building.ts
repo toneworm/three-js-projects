@@ -54,6 +54,8 @@ export type ResolvedPostGeometry = {
   width: number;
   height: number;
   depth: number;
+  topEnd: PostEndStyle;
+  bottomEnd: PostEndStyle;
   endSize: number;
   tenonWidth: number;
   tenonDepth: number;
@@ -65,6 +67,8 @@ export type ResolvedPlateGeometry = {
   length: number;
   height: number;
   depth: number;
+  leftEnd: PlateEndStyle;
+  rightEnd: PlateEndStyle;
   jointSize: number;
   bevelOffset: number;
 };

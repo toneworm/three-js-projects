@@ -32,7 +32,9 @@ import {
   TENON_MAX_RATIO,
 } from "@/lib/constants";
 import type {
+  PlateEndStyle,
   PlateProps,
+  PostEndStyle,
   PostProps,
   RafterProps,
   ResolvedPlateGeometry,
@@ -47,16 +49,20 @@ export function resolvePostGeometry(raw: PostProps): ResolvedPostGeometry {
   const height = clamp(raw.height, POST_HEIGHT_MIN, POST_HEIGHT_MAX);
   const depth = clamp(raw.depth, POST_DEPTH_MIN, POST_DEPTH_MAX);
 
-  // ── Step 2: End size (depends on height) ──
+  // ── Step 2: End styles ──
+  const topEnd: PostEndStyle = raw.topEnd ?? "block";
+  const bottomEnd: PostEndStyle = raw.bottomEnd ?? "block";
+
+  // ── Step 3: End size (depends on height) ──
   const maxEndSize = height / 2 - END_SIZE_MIN_MATERIAL;
   const endSize = clamp(raw.endSize!, 0, maxEndSize);
 
-  // ── Step 3: Tenon (depends on body dims + endSize) ──
+  // ── Step 4: Tenon (depends on body dims + endSize) ──
   const tenonWidth = clamp(raw.tenonWidth!, 0, width * TENON_MAX_RATIO);
   const tenonDepth = clamp(raw.tenonDepth!, 0, depth * TENON_MAX_RATIO);
   const tenonHeight = clamp(raw.tenonHeight!, 0, endSize);
 
-  // ── Step 4: Bevel — 0 (square block) to half the narrowest face ──
+  // ── Step 5: Bevel — 0 (square block) to half the narrowest face ──
   const maxBevel = Math.min(width, depth) / 2;
   const bevelOffset = clamp(raw.bevelOffset ?? 0, 0, maxBevel);
 
@@ -64,6 +70,8 @@ export function resolvePostGeometry(raw: PostProps): ResolvedPostGeometry {
     width,
     height,
     depth,
+    topEnd,
+    bottomEnd,
     endSize,
     tenonWidth,
     tenonDepth,
@@ -76,6 +84,10 @@ export function resolvePlateGeometry(raw: PlateProps): ResolvedPlateGeometry {
   const length = clamp(raw.length, PLATE_LENGTH_MIN, PLATE_LENGTH_MAX);
   const height = clamp(raw.height, PLATE_HEIGHT_MIN, PLATE_HEIGHT_MAX);
   const depth = clamp(raw.depth, PLATE_DEPTH_MIN, PLATE_DEPTH_MAX);
+
+  // End styles
+  const leftEnd: PlateEndStyle = raw.leftEnd ?? "block";
+  const rightEnd: PlateEndStyle = raw.rightEnd ?? "block";
 
   const maxJointSize = length / 2 - END_SIZE_MIN_MATERIAL;
   const jointSize = clamp(
@@ -91,7 +103,7 @@ export function resolvePlateGeometry(raw: PlateProps): ResolvedPlateGeometry {
     maxBevel,
   );
 
-  return { length, height, depth, jointSize, bevelOffset };
+  return { length, height, depth, leftEnd, rightEnd, jointSize, bevelOffset };
 }
 
 export function resolveRafterGeometry({
