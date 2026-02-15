@@ -1,29 +1,29 @@
 import {
-  POST_WIDTH_MIN,
-  POST_WIDTH_MAX,
-  POST_DEPTH_MIN,
-  POST_DEPTH_MAX,
-  POST_HEIGHT_MIN,
-  POST_HEIGHT_MAX,
-  PLATE_LENGTH_MIN,
-  PLATE_LENGTH_MAX,
-  PLATE_DEPTH_MIN,
+  END_SIZE_MIN_MATERIAL,
   PLATE_DEPTH_MAX,
-  PLATE_HEIGHT_MIN,
+  PLATE_DEPTH_MIN,
   PLATE_HEIGHT_MAX,
-  RAFTER_DEPTH_MIN,
-  RAFTER_DEPTH_MAX,
-  RAFTER_HEIGHT_MIN,
-  RAFTER_HEIGHT_MAX,
-  RAFTER_MOUTH_SIZE_MIN,
-  RAFTER_MOUTH_SIZE_MAX,
-  RAFTER_CHEEK_ANGLE_MIN,
-  RAFTER_CHEEK_ANGLE_MAX,
-  RAFTER_ANGLE_MIN,
+  PLATE_HEIGHT_MIN,
+  PLATE_LENGTH_MAX,
+  PLATE_LENGTH_MIN,
+  POST_DEPTH_MAX,
+  POST_DEPTH_MIN,
+  POST_HEIGHT_MAX,
+  POST_HEIGHT_MIN,
+  POST_WIDTH_MAX,
+  POST_WIDTH_MIN,
   RAFTER_ANGLE_MAX,
+  RAFTER_ANGLE_MIN,
+  RAFTER_CHEEK_ANGLE_MAX,
+  RAFTER_CHEEK_ANGLE_MIN,
+  RAFTER_DEPTH_MAX,
+  RAFTER_DEPTH_MIN,
+  RAFTER_HEIGHT_MAX,
+  RAFTER_HEIGHT_MIN,
+  RAFTER_MOUTH_SIZE_MAX,
+  RAFTER_MOUTH_SIZE_MIN,
   RAFTER_RISE_MIN,
   RAFTER_RUN_MIN,
-  END_SIZE_MIN_MATERIAL,
   TENON_MAX_RATIO,
 } from "@/lib/constants";
 
@@ -72,15 +72,28 @@ export function clampPostDimensions(
   height: number,
   depth: number,
 ): { width: number; height: number; depth: number } {
-  const clampedWidth = Math.min(Math.max(width, POST_WIDTH_MIN), POST_WIDTH_MAX);
-  const clampedDepth = Math.min(Math.max(depth, POST_DEPTH_MIN), POST_DEPTH_MAX);
-  const clampedHeight = Math.min(Math.max(height, POST_HEIGHT_MIN), POST_HEIGHT_MAX);
+  const clampedWidth = Math.min(
+    Math.max(width, POST_WIDTH_MIN),
+    POST_WIDTH_MAX,
+  );
+  const clampedDepth = Math.min(
+    Math.max(depth, POST_DEPTH_MIN),
+    POST_DEPTH_MAX,
+  );
+  const clampedHeight = Math.min(
+    Math.max(height, POST_HEIGHT_MIN),
+    POST_HEIGHT_MAX,
+  );
 
   if (width !== clampedWidth) {
-    console.warn(`Post width ${width} clamped to ${clampedWidth} (${POST_WIDTH_MIN} - ${POST_WIDTH_MAX})`);
+    console.warn(
+      `Post width ${width} clamped to ${clampedWidth} (${POST_WIDTH_MIN} - ${POST_WIDTH_MAX})`,
+    );
   }
   if (depth !== clampedDepth) {
-    console.warn(`Post depth ${depth} clamped to ${clampedDepth} (${POST_DEPTH_MIN} - ${POST_DEPTH_MAX})`);
+    console.warn(
+      `Post depth ${depth} clamped to ${clampedDepth} (${POST_DEPTH_MIN} - ${POST_DEPTH_MAX})`,
+    );
   }
   if (height !== clampedHeight) {
     console.warn(
@@ -96,9 +109,18 @@ export function clampPlateDimensions(
   height: number,
   depth: number,
 ): { length: number; height: number; depth: number } {
-  const clampedLength = Math.min(Math.max(length, PLATE_LENGTH_MIN), PLATE_LENGTH_MAX);
-  const clampedDepth = Math.min(Math.max(depth, PLATE_DEPTH_MIN), PLATE_DEPTH_MAX);
-  const clampedHeight = Math.min(Math.max(height, PLATE_HEIGHT_MIN), PLATE_HEIGHT_MAX);
+  const clampedLength = Math.min(
+    Math.max(length, PLATE_LENGTH_MIN),
+    PLATE_LENGTH_MAX,
+  );
+  const clampedDepth = Math.min(
+    Math.max(depth, PLATE_DEPTH_MIN),
+    PLATE_DEPTH_MAX,
+  );
+  const clampedHeight = Math.min(
+    Math.max(height, PLATE_HEIGHT_MIN),
+    PLATE_HEIGHT_MAX,
+  );
 
   if (length !== clampedLength) {
     console.warn(
@@ -149,18 +171,31 @@ export function clampRafterDimensions(
   clampedRun?: number;
   clampedAngle?: number;
 } {
-  const clampedDepth = Math.min(Math.max(depth, RAFTER_DEPTH_MIN), RAFTER_DEPTH_MAX);
-  const clampedHeight = Math.min(Math.max(height, RAFTER_HEIGHT_MIN), RAFTER_HEIGHT_MAX);
+  const clampedDepth = Math.min(
+    Math.max(depth, RAFTER_DEPTH_MIN),
+    RAFTER_DEPTH_MAX,
+  );
+  const clampedHeight = Math.min(
+    Math.max(height, RAFTER_HEIGHT_MIN),
+    RAFTER_HEIGHT_MAX,
+  );
   const clampedCheekAngle = Math.min(
     Math.max(cheekAngle, RAFTER_CHEEK_ANGLE_MIN),
     RAFTER_CHEEK_ANGLE_MAX,
   );
   // TODO: needs to take angle into consideration (deeper will need a smaller maximum)
-  const clampedMouthSize = Math.min(Math.max(mouthSize, RAFTER_MOUTH_SIZE_MIN), RAFTER_MOUTH_SIZE_MAX);
-  const clampedRise = rise !== undefined ? Math.max(rise, RAFTER_RISE_MIN) : undefined;
-  const clampedRun = run !== undefined ? Math.max(run, RAFTER_RUN_MIN) : undefined;
+  const clampedMouthSize = Math.min(
+    Math.max(mouthSize, RAFTER_MOUTH_SIZE_MIN),
+    RAFTER_MOUTH_SIZE_MAX,
+  );
+  const clampedRise =
+    rise !== undefined ? Math.max(rise, RAFTER_RISE_MIN) : undefined;
+  const clampedRun =
+    run !== undefined ? Math.max(run, RAFTER_RUN_MIN) : undefined;
   const clampedAngle =
-    angle !== undefined ? Math.min(Math.max(angle, RAFTER_ANGLE_MIN), RAFTER_ANGLE_MAX) : undefined;
+    angle !== undefined
+      ? Math.min(Math.max(angle, RAFTER_ANGLE_MIN), RAFTER_ANGLE_MAX)
+      : undefined;
 
   if (depth !== clampedDepth) {
     console.warn(
@@ -183,10 +218,14 @@ export function clampRafterDimensions(
     );
   }
   if (rise !== clampedRise) {
-    console.warn(`Rafter rise ${rise} clamped to ${clampedRise} (min ${RAFTER_RISE_MIN})`);
+    console.warn(
+      `Rafter rise ${rise} clamped to ${clampedRise} (min ${RAFTER_RISE_MIN})`,
+    );
   }
   if (run !== clampedRun) {
-    console.warn(`Rafter run ${run} clamped to ${clampedRun} (min ${RAFTER_RUN_MIN})`);
+    console.warn(
+      `Rafter run ${run} clamped to ${clampedRun} (min ${RAFTER_RUN_MIN})`,
+    );
   }
   if (angle !== clampedAngle) {
     console.warn(

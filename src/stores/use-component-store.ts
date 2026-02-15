@@ -1,13 +1,14 @@
 "use client";
 
 import { create } from "zustand";
+
+import { COMPONENT_DEFAULTS } from "@/config/component-defaults";
 import type {
   ComponentType,
-  PostProps,
   PlateProps,
+  PostProps,
   RafterProps,
 } from "@/types/building";
-import { COMPONENT_DEFAULTS } from "@/config/component-defaults";
 
 type ComponentProps = PostProps | PlateProps | RafterProps;
 

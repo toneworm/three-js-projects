@@ -1,17 +1,18 @@
 "use client";
 
-import { Suspense, useEffect, useMemo } from "react";
+import { Suspense, useEffect } from "react";
 import Link from "next/link";
 import { useParams, useSearchParams } from "next/navigation";
 import { Environment, OrbitControls } from "@react-three/drei";
 import { Canvas } from "@react-three/fiber";
-import useComponentStore from "@/stores/use-component-store";
 import { useControls } from "leva";
 
 import Plate from "@/components/building/plate";
 import Post from "@/components/building/post";
 import Rafter from "@/components/building/rafter";
 import { Loader } from "@/components/general/loader";
+import { COMPONENT_DEFAULTS } from "@/config/component-defaults";
+import useComponentStore from "@/stores/use-component-store";
 import type {
   ComponentType,
   PlateProps,
@@ -19,7 +20,6 @@ import type {
   RafterProps,
 } from "@/types/building";
 import { buildControls } from "./build-controls";
-import { COMPONENT_DEFAULTS } from "@/config/component-defaults";
 
 const COMPONENT_TYPES: ComponentType[] = ["post", "plate", "rafter"];
 

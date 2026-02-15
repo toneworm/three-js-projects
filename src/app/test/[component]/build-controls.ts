@@ -1,43 +1,44 @@
 // In your page.tsx, above the component
 
 import type { Schema } from "leva/dist/declarations/src/types";
-import type {
-  ComponentType,
-  PlateProps,
-  PostProps,
-  PostEndStyle,
-  PlateEndStyle,
-  RafterProps,
-} from "@/types/building";
+
 import {
-  // Post constraints
-  POST_WIDTH_MIN,
-  POST_WIDTH_MAX,
-  POST_DEPTH_MIN,
-  POST_DEPTH_MAX,
-  POST_HEIGHT_MIN,
-  POST_HEIGHT_MAX,
+  PLATE_DEPTH_MAX,
+  PLATE_DEPTH_MIN,
+  PLATE_HEIGHT_MAX,
+  PLATE_HEIGHT_MIN,
+  PLATE_LENGTH_MAX,
   // Plate constraints
   PLATE_LENGTH_MIN,
-  PLATE_LENGTH_MAX,
-  PLATE_DEPTH_MIN,
-  PLATE_DEPTH_MAX,
-  PLATE_HEIGHT_MIN,
-  PLATE_HEIGHT_MAX,
-  // Rafter constraints
-  RAFTER_DEPTH_MIN,
-  RAFTER_DEPTH_MAX,
-  RAFTER_HEIGHT_MIN,
-  RAFTER_HEIGHT_MAX,
-  RAFTER_MOUTH_SIZE_MIN,
-  RAFTER_MOUTH_SIZE_MAX,
-  RAFTER_RISE_MIN,
-  RAFTER_RUN_MIN,
+  POST_DEPTH_MAX,
+  POST_DEPTH_MIN,
+  POST_HEIGHT_MAX,
+  POST_HEIGHT_MIN,
+  POST_WIDTH_MAX,
+  // Post constraints
+  POST_WIDTH_MIN,
+  RAFTER_DEFAULT_MOUTH_SIZE,
+  RAFTER_DEFAULT_RISE,
   // Defaults
   RAFTER_DEFAULT_RUN,
-  RAFTER_DEFAULT_RISE,
-  RAFTER_DEFAULT_MOUTH_SIZE,
+  RAFTER_DEPTH_MAX,
+  // Rafter constraints
+  RAFTER_DEPTH_MIN,
+  RAFTER_HEIGHT_MAX,
+  RAFTER_HEIGHT_MIN,
+  RAFTER_MOUTH_SIZE_MAX,
+  RAFTER_MOUTH_SIZE_MIN,
+  RAFTER_RISE_MIN,
+  RAFTER_RUN_MIN,
 } from "@/lib/constants";
+import type {
+  ComponentType,
+  PlateEndStyle,
+  PlateProps,
+  PostEndStyle,
+  PostProps,
+  RafterProps,
+} from "@/types/building";
 
 type ComponentProps = PostProps | PlateProps | RafterProps;
 
@@ -104,7 +105,12 @@ export function buildControls(
         depth: num("depth", p.depth, RAFTER_DEPTH_MIN, RAFTER_DEPTH_MAX),
         run: num("run", p.run ?? RAFTER_DEFAULT_RUN, RAFTER_RUN_MIN, 10),
         rise: num("rise", p.rise ?? RAFTER_DEFAULT_RISE, RAFTER_RISE_MIN, 5),
-        mouthSize: num("mouthSize", p.mouthSize ?? RAFTER_DEFAULT_MOUTH_SIZE, RAFTER_MOUTH_SIZE_MIN, RAFTER_MOUTH_SIZE_MAX),
+        mouthSize: num(
+          "mouthSize",
+          p.mouthSize ?? RAFTER_DEFAULT_MOUTH_SIZE,
+          RAFTER_MOUTH_SIZE_MIN,
+          RAFTER_MOUTH_SIZE_MAX,
+        ),
       };
     }
   }

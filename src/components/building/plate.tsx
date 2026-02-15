@@ -3,6 +3,10 @@ import { useTexture } from "@react-three/drei";
 import * as THREE from "three";
 import { mergeGeometries } from "three/addons/utils/BufferGeometryUtils.js";
 
+import {
+  PLATE_DEFAULT_BEVEL_OFFSET,
+  PLATE_DEFAULT_JOINT_SIZE,
+} from "@/lib/constants";
 import { createMainPlateGeo } from "@/lib/geometry/bodies/plate";
 import { createBevelEndGeo } from "@/lib/geometry/caps_joints/bevel-cap";
 import { createBlockCapGeo } from "@/lib/geometry/caps_joints/block-cap";
@@ -11,10 +15,6 @@ import {
   clampEndSize,
   clampPlateDimensions,
 } from "@/lib/validation/clamp-dimensions";
-import {
-  PLATE_DEFAULT_JOINT_SIZE,
-  PLATE_DEFAULT_BEVEL_OFFSET,
-} from "@/lib/constants";
 import type { PlateEnd, PlateEndStyle, PlateProps } from "@/types/building";
 
 export default function Plate({

@@ -1,22 +1,23 @@
 // src/config/component-defaults.ts
-import type {
-  PostProps,
-  PlateProps,
-  RafterProps,
-  ComponentType,
-} from "@/types/building";
+
 import {
-  POST_DEFAULT_WIDTH,
-  POST_DEFAULT_HEIGHT,
-  POST_DEFAULT_DEPTH,
-  PLATE_DEFAULT_LENGTH,
-  PLATE_DEFAULT_HEIGHT,
   PLATE_DEFAULT_DEPTH,
-  RAFTER_DEFAULT_HEIGHT,
+  PLATE_DEFAULT_HEIGHT,
+  PLATE_DEFAULT_LENGTH,
+  POST_DEFAULT_DEPTH,
+  POST_DEFAULT_HEIGHT,
+  POST_DEFAULT_WIDTH,
   RAFTER_DEFAULT_DEPTH,
-  RAFTER_DEFAULT_RUN,
+  RAFTER_DEFAULT_HEIGHT,
   RAFTER_DEFAULT_RISE,
+  RAFTER_DEFAULT_RUN,
 } from "@/lib/constants";
+import type {
+  ComponentType,
+  PlateProps,
+  PostProps,
+  RafterProps,
+} from "@/types/building";
 
 export const DEFAULT_POST_PROPS: PostProps = {
   width: POST_DEFAULT_WIDTH,

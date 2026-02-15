@@ -3,16 +3,16 @@ import { useTexture } from "@react-three/drei";
 import * as THREE from "three";
 import { mergeGeometries } from "three/addons/utils/BufferGeometryUtils.js";
 
-import { createMainRafterGeo } from "@/lib/geometry/bodies/rafter";
-import { createBirdsMouthEndGeo } from "@/lib/geometry/caps_joints/birds-mouth-cap";
-import { resolveRafterGeometry } from "@/lib/geometry/utils/resolve-rafter-geometry";
-import { applyPlanarUVs } from "@/lib/geometry/utils/uv-utils";
-import { clampRafterDimensions } from "@/lib/validation/clamp-dimensions";
 import {
   RAFTER_DEFAULT_CHEEK_ANGLE,
   RAFTER_DEFAULT_MOUTH_SIZE,
   RAFTER_DEFAULT_UV_SCALE,
 } from "@/lib/constants";
+import { createMainRafterGeo } from "@/lib/geometry/bodies/rafter";
+import { createBirdsMouthEndGeo } from "@/lib/geometry/caps_joints/birds-mouth-cap";
+import { resolveRafterGeometry } from "@/lib/geometry/utils/resolve-rafter-geometry";
+import { applyPlanarUVs } from "@/lib/geometry/utils/uv-utils";
+import { clampRafterDimensions } from "@/lib/validation/clamp-dimensions";
 import type { RafterProps } from "@/types/building";
 
 export default function Rafter({
@@ -59,13 +59,11 @@ export default function Rafter({
     rawAngle,
   );
 
-  const { run, rise, angle, length } = resolveRafterGeometry({
+  const { run, rise, angle } = resolveRafterGeometry({
     run: clampedRun,
     rise: clampedRise,
     angle: clampedAngle,
   } as Partial<RafterProps>);
-
-  // console.log({ run, rise, angle, length });
 
   const { geometry, materials } = useMemo(() => {
     // Main rafter
@@ -130,7 +128,6 @@ export default function Rafter({
       ],
     };
   }, [
-    length,
     height,
     depth,
     angle,

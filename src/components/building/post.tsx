@@ -3,6 +3,14 @@ import { useTexture } from "@react-three/drei";
 import * as THREE from "three";
 import { mergeGeometries } from "three/addons/utils/BufferGeometryUtils.js";
 
+import {
+  POST_DEFAULT_BEVEL_OFFSET,
+  POST_DEFAULT_END_SIZE,
+  POST_DEFAULT_TENON_DEPTH,
+  POST_DEFAULT_TENON_HEIGHT,
+  POST_DEFAULT_TENON_WIDTH,
+  TENON_MAX_RATIO,
+} from "@/lib/constants";
 import { createMainPostGeo } from "@/lib/geometry/bodies/post";
 import { createBevelEndGeo } from "@/lib/geometry/caps_joints/bevel-cap";
 import { createBlockCapGeo } from "@/lib/geometry/caps_joints/block-cap";
@@ -12,14 +20,6 @@ import {
   clampPostDimensions,
   clampTenonDimensions,
 } from "@/lib/validation/clamp-dimensions";
-import {
-  POST_DEFAULT_END_SIZE,
-  POST_DEFAULT_BEVEL_OFFSET,
-  POST_DEFAULT_TENON_HEIGHT,
-  POST_DEFAULT_TENON_WIDTH,
-  POST_DEFAULT_TENON_DEPTH,
-  TENON_MAX_RATIO,
-} from "@/lib/constants";
 import type { PostEnd, PostEndStyle, PostProps } from "@/types/building";
 
 export default function Post({
