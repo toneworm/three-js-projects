@@ -155,9 +155,10 @@ export function resolveRafterGeometry({
 
   // ── Step 5: Birdsmouth — dynamic max from resolved height ──
   const maxMouthSize = Math.min(
-    height * BIRDSMOUTH_MAX_RATIO,
+    Math.tan(Math.PI / 2 - angle) * height * BIRDSMOUTH_MAX_RATIO,
     RAFTER_MOUTH_SIZE_MAX,
   );
+
   const mouthSize = clamp(rawMouthSize, RAFTER_MOUTH_SIZE_MIN, maxMouthSize);
 
   // ── Step 6: Cheek angle (isolated, top end) ──
