@@ -9,7 +9,7 @@ export const POST_WIDTH_MIN = 0.05;
 export const POST_WIDTH_MAX = 0.3;
 export const POST_DEPTH_MIN = 0.05;
 export const POST_DEPTH_MAX = 0.3;
-export const POST_HEIGHT_MIN = 1.5;
+export const POST_HEIGHT_MIN = 1;
 export const POST_HEIGHT_MAX = 5.0;
 
 // Plate dimension constraints

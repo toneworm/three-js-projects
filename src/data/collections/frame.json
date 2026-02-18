@@ -1,0 +1,43 @@
+{
+  "name": "Basic Frame",
+  "description": "Two posts with a connecting plate using half-lap joints",
+  "components": [
+    {
+      "id": "post-left",
+      "type": "post",
+      "position": [-1, 0, 0],
+      "width": 0.05,
+      "height": 1.05,
+      "depth": 0.05,
+      "endSize": 0.05,
+      "tenonWidth": 0.03,
+      "tenonDepth": 0.02,
+      "topEnd": "tenon",
+      "bottomEnd": "block"
+    },
+    {
+      "id": "post-right",
+      "type": "post",
+      "position": [1, 0, 0],
+      "width": 0.05,
+      "height": 1.05,
+      "depth": 0.05,
+      "endSize": 0.05,
+      "tenonWidth": 0.03,
+      "tenonDepth": 0.02,
+      "topEnd": "tenon",
+      "bottomEnd": "block"
+    },
+    {
+      "id": "plate-1",
+      "type": "plate",
+      "position": [0, 1, 0],
+      "length": 2.05,
+      "height": 0.05,
+      "depth": 0.05,
+      "jointSize": 0.05,
+      "leftEnd": "bottom",
+      "rightEnd": "bottom"
+    }
+  ]
+}
