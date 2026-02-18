@@ -10,7 +10,7 @@ export type PlateEnd = "left" | "right";
 export type PlateEndStyle = "top" | "bottom" | "block" | "bevel";
 
 // --- Component props ---
-export type ComponentType = "post" | "plate" | "rafter";
+export type ComponentType = "post" | "plate" | "rafter" | "plinth";
 
 export type PostProps = {
   width: number;
@@ -45,6 +45,11 @@ export type RafterProps = {
   angle?: number;
   cheekAngle?: number;
   mouthSize?: number;
+  randomiseTextureOffset?: boolean;
+};
+
+export type PlinthProps = {
+  width: number;
   randomiseTextureOffset?: boolean;
 };
 
@@ -84,13 +89,21 @@ export type ResolvedRafterGeometry = {
   mouthSize: number;
 };
 
+export type ResolvedPlinthGeometry = {
+  width: number;
+  depth: number;
+  thickness: number;
+  height: number;
+};
+
 // --- Collection configs (props + type discriminant) ---
 
 export type PostConfig = { type: "post" } & PostProps;
 export type PlateConfig = { type: "plate" } & PlateProps;
 export type RafterConfig = { type: "rafter" } & RafterProps;
+export type PlinthConfig = { type: "plinth" } & PlinthProps;
 
-export type ComponentConfig = PostConfig | PlateConfig | RafterConfig;
+export type ComponentConfig = PostConfig | PlateConfig | RafterConfig | PlinthConfig;
 
 // --- Collection item: config + placement ---
 

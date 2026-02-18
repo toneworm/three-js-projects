@@ -6,6 +6,7 @@ import {
   PLATE_DEFAULT_HEIGHT,
   PLATE_DEFAULT_JOINT_SIZE,
   PLATE_DEFAULT_LENGTH,
+  PLINTH_DEFAULT_WIDTH,
   POST_DEFAULT_BEVEL_OFFSET,
   POST_DEFAULT_DEPTH,
   POST_DEFAULT_END_SIZE,
@@ -22,6 +23,7 @@ import {
 import type {
   ComponentType,
   PlateProps,
+  PlinthProps,
   PostProps,
   RafterProps,
 } from "@/types/building";
@@ -56,11 +58,16 @@ export const DEFAULT_RAFTER_PROPS: RafterProps = {
   rise: RAFTER_DEFAULT_RISE,
 };
 
+export const DEFAULT_PLINTH_PROPS: PlinthProps = {
+  width: PLINTH_DEFAULT_WIDTH,
+};
+
 export const COMPONENT_DEFAULTS: Record<
   ComponentType,
-  PostProps | PlateProps | RafterProps
+  PostProps | PlateProps | RafterProps | PlinthProps
 > = {
   post: DEFAULT_POST_PROPS,
   plate: DEFAULT_PLATE_PROPS,
   rafter: DEFAULT_RAFTER_PROPS,
+  plinth: DEFAULT_PLINTH_PROPS,
 };

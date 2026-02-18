@@ -9,6 +9,11 @@ import {
   PLATE_HEIGHT_MIN,
   PLATE_LENGTH_MAX,
   PLATE_LENGTH_MIN,
+  PLINTH_DEPTH,
+  PLINTH_HEIGHT,
+  PLINTH_THICKNESS,
+  PLINTH_WIDTH_MAX,
+  PLINTH_WIDTH_MIN,
   POST_DEPTH_MAX,
   POST_DEPTH_MIN,
   POST_HEIGHT_MAX,
@@ -34,10 +39,12 @@ import {
 import type {
   PlateEndStyle,
   PlateProps,
+  PlinthProps,
   PostEndStyle,
   PostProps,
   RafterProps,
   ResolvedPlateGeometry,
+  ResolvedPlinthGeometry,
   ResolvedPostGeometry,
   ResolvedRafterGeometry,
 } from "@/types/building";
@@ -181,4 +188,16 @@ export function resolveRafterGeometry({
   );
 
   return { run, rise, angle, length, height, depth, mouthSize, cheekAngle };
+}
+
+export function resolvePlinthGeometry(raw: PlinthProps): ResolvedPlinthGeometry {
+  // Width is the only dynamic dimension, clamped between 5 and 20
+  const width = clamp(raw.width, PLINTH_WIDTH_MIN, PLINTH_WIDTH_MAX);
+
+  // Fixed dimensions
+  const depth = PLINTH_DEPTH;
+  const thickness = PLINTH_THICKNESS;
+  const height = PLINTH_HEIGHT;
+
+  return { width, depth, thickness, height };
 }

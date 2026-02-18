@@ -1,6 +1,7 @@
 // components/collections/collection-renderer.tsx
 
 import Plate from "@/components/building/plate";
+import Plinth from "@/components/building/plinth";
 import Post from "@/components/building/post";
 import Rafter from "@/components/building/rafter";
 import type { Collection, CollectionItem, Vec3 } from "@/types/building";
@@ -23,6 +24,10 @@ function CollectionComponent(item: CollectionItem) {
     case "rafter": {
       const { id, type, position, rotation, ...config } = item;
       return <Rafter {...mesh} {...config} />;
+    }
+    case "plinth": {
+      const { id, type, position, rotation, ...config } = item;
+      return <Plinth {...mesh} {...config} />;
     }
   }
 }

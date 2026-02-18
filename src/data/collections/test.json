@@ -44,6 +44,12 @@
       "run": 2,
       "rise": 1,
       "mouthSize": 0.15
+    },
+    {
+      "id": "plinth-1",
+      "type": "plinth",
+      "position": [0, 0, -4],
+      "width": 10
     }
   ]
 }

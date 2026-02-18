@@ -12,6 +12,9 @@ import {
   PLATE_LENGTH_MAX,
   // Plate constraints
   PLATE_LENGTH_MIN,
+  // Plinth constraints
+  PLINTH_WIDTH_MAX,
+  PLINTH_WIDTH_MIN,
   POST_DEPTH_MAX,
   POST_DEPTH_MIN,
   POST_HEIGHT_MAX,
@@ -37,12 +40,13 @@ import type {
   ComponentType,
   PlateEndStyle,
   PlateProps,
+  PlinthProps,
   PostEndStyle,
   PostProps,
   RafterProps,
 } from "@/types/building";
 
-type ComponentProps = PostProps | PlateProps | RafterProps;
+type ComponentProps = PostProps | PlateProps | RafterProps | PlinthProps;
 
 export function buildControls(
   componentType: ComponentType,
@@ -156,6 +160,12 @@ export function buildControls(
           RAFTER_MOUTH_SIZE_MIN,
           RAFTER_MOUTH_SIZE_MAX,
         ),
+      };
+    }
+    case "plinth": {
+      const p = props as PlinthProps;
+      return {
+        width: num("width", p.width, PLINTH_WIDTH_MIN, PLINTH_WIDTH_MAX, 0.1),
       };
     }
   }

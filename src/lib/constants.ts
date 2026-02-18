@@ -71,3 +71,15 @@ export const RAFTER_DEFAULT_CHEEK_ANGLE = Math.PI / 4;
 export const RAFTER_DEFAULT_MOUTH_SIZE = 0.25;
 export const RAFTER_DEFAULT_UV_SCALE = 0.2;
 export const BIRDSMOUTH_MAX_RATIO = 0.75;
+
+// Plinth dimension constraints
+export const PLINTH_WIDTH_MIN = 5;
+export const PLINTH_WIDTH_MAX = 20;
+
+// Plinth fixed dimensions (constants)
+export const PLINTH_DEPTH = 5.85;
+export const PLINTH_THICKNESS = 0.215;
+export const PLINTH_HEIGHT = 0.3;
+
+// Plinth defaults
+export const PLINTH_DEFAULT_WIDTH = 10;

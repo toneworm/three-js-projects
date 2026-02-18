@@ -8,6 +8,7 @@ import { Canvas } from "@react-three/fiber";
 import { useControls } from "leva";
 
 import Plate from "@/components/building/plate";
+import Plinth from "@/components/building/plinth";
 import Post from "@/components/building/post";
 import Rafter from "@/components/building/rafter";
 import { Loader } from "@/components/general/loader";
@@ -16,12 +17,13 @@ import useComponentStore from "@/stores/use-component-store";
 import type {
   ComponentType,
   PlateProps,
+  PlinthProps,
   PostProps,
   RafterProps,
 } from "@/types/building";
 import { buildControls } from "./build-controls";
 
-const COMPONENT_TYPES: ComponentType[] = ["post", "plate", "rafter"];
+const COMPONENT_TYPES: ComponentType[] = ["post", "plate", "rafter", "plinth"];
 
 // Parse query parameters into component props
 function parseQueryParams(
@@ -60,6 +62,8 @@ function getExampleQuery(componentType: ComponentType): string {
       return "?length=3&height=0.2&depth=0.2&leftEnd=top&rightEnd=bottom";
     case "rafter":
       return "?height=0.15&depth=0.05&run=2&rise=1&mouthSize=0.1";
+    case "plinth":
+      return "?width=10";
   }
 }
 
@@ -208,7 +212,7 @@ function Scene({
   props,
 }: {
   componentType: ComponentType;
-  props: PostProps | PlateProps | RafterProps;
+  props: PostProps | PlateProps | RafterProps | PlinthProps;
 }) {
   if (!componentType || !props) return null;
 
@@ -219,5 +223,7 @@ function Scene({
       return <Plate {...(props as PlateProps)} />;
     case "rafter":
       return <Rafter {...(props as RafterProps)} />;
+    case "plinth":
+      return <Plinth {...(props as PlinthProps)} />;
   }
 }
