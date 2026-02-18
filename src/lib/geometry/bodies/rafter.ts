@@ -40,7 +40,6 @@ export function createMainRafterGeo(
     // End face
     l+c, rh+co, d, l+c, r+co, d, l-c, r - co, -d,
     l-c, r - co, -d, l-c, rh - co, -d, l+c, rh+co, d
-
   ]);
 
   geometry.setAttribute("position", new THREE.BufferAttribute(tris, 3));

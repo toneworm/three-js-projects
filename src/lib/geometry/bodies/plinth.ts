@@ -1,9 +1,5 @@
 import * as THREE from "three";
 
-/**
- * Creates a plinth geometry (cuboid with no ends - open on left and right sides)
- * The plinth has 4 faces: front, back, top, bottom (no left/right end caps)
- */
 export function createMainPlinthGeo(
   width: number,
   depth: number,
@@ -14,60 +10,96 @@ export function createMainPlinthGeo(
 
   const w = width / 2;
   const d = depth / 2;
-  const t = thickness / 2;
+  const t = thickness;
+  const h = height;
+  const wt = w - t;
+  const dt = -d + t;
 
-  // UV calculations based on perimeter of cross-section (height x depth)
-  const perimeter = 2 * (height + depth);
-  const uFront = depth / perimeter;
-  const uBottom = (depth + height) / perimeter;
-  const uBack = (2 * depth + height) / perimeter;
-  const uTop = 1;
-  const vWidth = width / perimeter;
+  // const perimeter = 2 * (height + depth);
+  // const uFront = depth / perimeter;
+  // const uBottom = (depth + height) / perimeter;
+  // const uBack = (2 * depth + height) / perimeter;
+  // const uTop = 1;
+  // const vWidth = width / perimeter;
 
-  // 4 faces: front, bottom, back, top (no ends)
-  // Each face has 2 triangles = 6 vertices
   // prettier-ignore
   // biome-ignore format: buffer array
-  const tris = new Float32Array([
-    // Front face (facing +z)
-    -w, 0, d,  w, 0, d,  w, height, d,
-    w, height, d,  -w, height, d,  -w, 0, d,
+  const mainTris = [
+    // Front face
+    -wt, h, dt,   -wt, 0, dt,   wt, 0, dt,
+    wt, 0, dt,    wt, h, dt,    -wt, h, dt,
 
-    // Bottom face (facing -y)
-    -w, 0, -d,  w, 0, -d,  w, 0, d,
-    w, 0, d,  -w, 0, d,  -w, 0, -d,
+    // Top face
+    -wt, h, -d,   -wt, h, dt,   wt, h, dt,
+    wt, h, dt,    wt, h, -d,    -wt, h, -d,
 
-    // Back face (facing -z)
-    w, 0, -d,  -w, 0, -d,  -w, height, -d,
-    -w, height, -d,  w, height, -d,  w, 0, -d,
+    // Back face
+    -wt, 0, -d,   -wt, h, -d,   wt, h, -d,
+    wt, h, -d,    wt, 0, -d,    -wt, 0, -d,
+  ];
 
-    // Top face (facing +y)
-    -w, height, d,  w, height, d,  w, height, -d,
-    w, height, -d,  -w, height, -d,  -w, height, d,
-  ]);
+  // prettier-ignore
+  // biome-ignore format: buffer array
+  const leftTris = [
+    // Right face
+    -wt, h, d,    -wt, 0, d,   -wt, 0, -d,
+    -wt, 0, -d,   -wt, h, -d,   -wt, h, d,
 
-  // UVs - grain runs along the width (x-axis)
+    // Top face
+    -w, h, d,     -wt, h, d,    -wt, h, -d,
+    -wt, h, -d,   -w, h, -d,    -w, h, d,
+
+    // Left face
+    -w, 0, d,     -w, h, d,    -w, h, -d,
+    -w, h, -d,   -w, 0, -d,    -w, 0, d,
+
+    // Front face
+    -w, h, d,   -w, 0, d,   -wt, 0, d,
+    -wt, 0, d,   -wt, h, d,   -w, h, d,
+
+    // Back face
+    -wt, h, -d,  -wt, 0, -d,  -w, 0, -d,
+    -w, 0, -d,   -w, h, -d,   -wt, h, -d,
+  ]
+
+  // prettier-ignore
+  // biome-ignore format: buffer array
+  const rightTris = [
+    // Right face
+    w, h, d,    w, 0, d,   w, 0, -d,
+    w, 0, -d,   w, h, -d,   w, h, d,
+
+    // Top face
+    wt, h, d,   w, h, d,   w, h, -d,
+    w, h, -d,   wt, h, -d,   wt, h, d,
+
+    // Left face
+    wt, 0, d,   wt, h, d,   wt, h, -d,
+    wt, h, -d,  wt, 0, -d,  wt, 0, d,
+
+    // Front face
+    wt, h, d,   wt, 0, d,   w, 0, d,
+    w, 0, d,    w, h, d,    wt, h, d,
+
+    // Back face
+    w, h, -d,   w, 0, -d,   wt, 0, -d,
+    wt, 0, -d,   wt, h, -d,   w, h, -d,
+  ]
+
+  // UVs
   // prettier-ignore
   // biome-ignore format: buffer array
   const uvs = new Float32Array([
-    // Front face
-    0, 0,  vWidth, 0,  vWidth, uFront,
-    vWidth, uFront,  0, uFront,  0, 0,
-
-    // Bottom face
-    0, uFront,  vWidth, uFront,  vWidth, uBottom,
-    vWidth, uBottom,  0, uBottom,  0, uFront,
-
-    // Back face
-    0, uBottom,  vWidth, uBottom,  vWidth, uBack,
-    vWidth, uBack,  0, uBack,  0, uBottom,
-
-    // Top face
-    0, uBack,  vWidth, uBack,  vWidth, uTop,
-    vWidth, uTop,  0, uTop,  0, uBack,
+    
   ]);
 
-  geometry.setAttribute("position", new THREE.BufferAttribute(tris, 3));
+  geometry.setAttribute(
+    "position",
+    new THREE.BufferAttribute(
+      new Float32Array([...mainTris, ...leftTris, ...rightTris]),
+      3,
+    ),
+  );
   geometry.setAttribute("uv", new THREE.BufferAttribute(uvs, 2));
   geometry.computeVertexNormals();
 
