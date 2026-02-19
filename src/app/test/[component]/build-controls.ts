@@ -3,6 +3,9 @@
 import type { Schema } from "leva/dist/declarations/src/types";
 
 import {
+  // Base constraints
+  BASE_WIDTH_MAX,
+  BASE_WIDTH_MIN,
   END_SIZE_MIN_MATERIAL,
   PLATE_DEPTH_MAX,
   PLATE_DEPTH_MIN,
@@ -37,6 +40,7 @@ import {
   RAFTER_RUN_MIN,
 } from "@/lib/constants";
 import type {
+  BaseProps,
   ComponentType,
   PlateEndStyle,
   PlateProps,
@@ -46,7 +50,7 @@ import type {
   RafterProps,
 } from "@/types/building";
 
-type ComponentProps = PostProps | PlateProps | RafterProps | PlinthProps;
+type ComponentProps = PostProps | PlateProps | RafterProps | PlinthProps | BaseProps;
 
 export function buildControls(
   componentType: ComponentType,
@@ -166,6 +170,12 @@ export function buildControls(
       const p = props as PlinthProps;
       return {
         width: num("width", p.width, PLINTH_WIDTH_MIN, PLINTH_WIDTH_MAX, 0.1),
+      };
+    }
+    case "base": {
+      const p = props as BaseProps;
+      return {
+        width: num("width", p.width, BASE_WIDTH_MIN, BASE_WIDTH_MAX, 0.1),
       };
     }
   }

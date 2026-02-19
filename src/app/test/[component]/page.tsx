@@ -7,6 +7,7 @@ import { Environment, OrbitControls } from "@react-three/drei";
 import { Canvas } from "@react-three/fiber";
 import { useControls } from "leva";
 
+import Base from "@/components/building/base";
 import Plate from "@/components/building/plate";
 import Plinth from "@/components/building/plinth";
 import Post from "@/components/building/post";
@@ -15,6 +16,7 @@ import { Loader } from "@/components/general/loader";
 import { COMPONENT_DEFAULTS } from "@/config/component-defaults";
 import useComponentStore from "@/stores/use-component-store";
 import type {
+  BaseProps,
   ComponentType,
   PlateProps,
   PlinthProps,
@@ -23,13 +25,13 @@ import type {
 } from "@/types/building";
 import { buildControls } from "./build-controls";
 
-const COMPONENT_TYPES: ComponentType[] = ["post", "plate", "rafter", "plinth"];
+const COMPONENT_TYPES: ComponentType[] = ["post", "plate", "rafter", "plinth", "base"];
 
 // Parse query parameters into component props
 function parseQueryParams(
   searchParams: URLSearchParams,
   componentType: ComponentType,
-): PostProps | PlateProps | RafterProps | PlinthProps {
+): PostProps | PlateProps | RafterProps | PlinthProps | BaseProps {
   const params: Record<string, string | number | boolean> = {};
 
   searchParams.forEach((value, key) => {
@@ -63,6 +65,8 @@ function getExampleQuery(componentType: ComponentType): string {
     case "rafter":
       return "?height=0.15&depth=0.05&run=2&rise=1&mouthSize=0.1";
     case "plinth":
+      return "?width=10";
+    case "base":
       return "?width=10";
   }
 }
@@ -212,7 +216,7 @@ function Scene({
   props,
 }: {
   componentType: ComponentType;
-  props: PostProps | PlateProps | RafterProps | PlinthProps;
+  props: PostProps | PlateProps | RafterProps | PlinthProps | BaseProps;
 }) {
   if (!componentType || !props) return null;
 
@@ -225,5 +229,7 @@ function Scene({
       return <Rafter {...(props as RafterProps)} />;
     case "plinth":
       return <Plinth {...(props as PlinthProps)} />;
+    case "base":
+      return <Base {...(props as BaseProps)} />;
   }
 }

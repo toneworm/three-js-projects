@@ -10,7 +10,7 @@ export type PlateEnd = "left" | "right";
 export type PlateEndStyle = "top" | "bottom" | "block" | "bevel";
 
 // --- Component props ---
-export type ComponentType = "post" | "plate" | "rafter" | "plinth";
+export type ComponentType = "post" | "plate" | "rafter" | "plinth" | "base";
 
 export type PostProps = {
   width: number;
@@ -51,6 +51,10 @@ export type RafterProps = {
 export type PlinthProps = {
   width: number;
   randomiseTextureOffset?: boolean;
+};
+
+export type BaseProps = {
+  width: number;
 };
 
 // Resolved props (after clamping and calculations)
@@ -102,8 +106,9 @@ export type PostConfig = { type: "post" } & PostProps;
 export type PlateConfig = { type: "plate" } & PlateProps;
 export type RafterConfig = { type: "rafter" } & RafterProps;
 export type PlinthConfig = { type: "plinth" } & PlinthProps;
+export type BaseConfig = { type: "base" } & BaseProps;
 
-export type ComponentConfig = PostConfig | PlateConfig | RafterConfig | PlinthConfig;
+export type ComponentConfig = PostConfig | PlateConfig | RafterConfig | PlinthConfig | BaseConfig;
 
 // --- Collection item: config + placement ---
 

@@ -83,3 +83,14 @@ export const PLINTH_HEIGHT = 0.3;
 
 // Plinth defaults
 export const PLINTH_DEFAULT_WIDTH = 10;
+
+// Base dimension constraints (same as plinth width)
+export const BASE_WIDTH_MIN = 5;
+export const BASE_WIDTH_MAX = 20;
+
+// Base fixed dimensions
+export const BASE_DEPTH = 5.85;
+export const BASE_HEIGHT = 0.05;
+
+// Base defaults
+export const BASE_DEFAULT_WIDTH = 10;
