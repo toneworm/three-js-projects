@@ -29,7 +29,7 @@ const COMPONENT_TYPES: ComponentType[] = ["post", "plate", "rafter", "plinth"];
 function parseQueryParams(
   searchParams: URLSearchParams,
   componentType: ComponentType,
-): PostProps | PlateProps | RafterProps {
+): PostProps | PlateProps | RafterProps | PlinthProps {
   const params: Record<string, string | number | boolean> = {};
 
   searchParams.forEach((value, key) => {

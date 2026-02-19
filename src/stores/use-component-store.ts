@@ -6,11 +6,12 @@ import { COMPONENT_DEFAULTS } from "@/config/component-defaults";
 import type {
   ComponentType,
   PlateProps,
+  PlinthProps,
   PostProps,
   RafterProps,
 } from "@/types/building";
 
-type ComponentProps = PostProps | PlateProps | RafterProps;
+type ComponentProps = PostProps | PlateProps | RafterProps | PlinthProps;
 
 interface ComponentStore {
   componentType: ComponentType;
