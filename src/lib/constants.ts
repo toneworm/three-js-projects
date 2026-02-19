@@ -78,7 +78,7 @@ export const PLINTH_WIDTH_MAX = 20;
 
 // Plinth fixed dimensions (constants)
 export const PLINTH_DEPTH = 5.85;
-export const PLINTH_THICKNESS = 0.215;
+export const PLINTH_THICKNESS = 0.15;
 export const PLINTH_HEIGHT = 0.3;
 
 // Plinth defaults
