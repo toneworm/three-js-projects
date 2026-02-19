@@ -8,6 +8,7 @@ import { Canvas } from "@react-three/fiber";
 import { useControls } from "leva";
 
 import Base from "@/components/building/base";
+import KneeBrace from "@/components/building/knee-brace";
 import Plate from "@/components/building/plate";
 import Plinth from "@/components/building/plinth";
 import Post from "@/components/building/post";
@@ -18,6 +19,7 @@ import useComponentStore from "@/stores/use-component-store";
 import type {
   BaseProps,
   ComponentType,
+  KneeBraceProps,
   PlateProps,
   PlinthProps,
   PostProps,
@@ -25,7 +27,7 @@ import type {
 } from "@/types/building";
 import { buildControls } from "./build-controls";
 
-const COMPONENT_TYPES: ComponentType[] = ["post", "plate", "rafter", "plinth", "base"];
+const COMPONENT_TYPES: ComponentType[] = ["post", "plate", "rafter", "plinth", "base", "knee-brace"];
 
 // Parse query parameters into component props
 function parseQueryParams(
@@ -68,6 +70,8 @@ function getExampleQuery(componentType: ComponentType): string {
       return "?width=10";
     case "base":
       return "?width=10";
+    case "knee-brace":
+      return "?scale=1";
   }
 }
 
@@ -216,7 +220,7 @@ function Scene({
   props,
 }: {
   componentType: ComponentType;
-  props: PostProps | PlateProps | RafterProps | PlinthProps | BaseProps;
+  props: PostProps | PlateProps | RafterProps | PlinthProps | BaseProps | KneeBraceProps;
 }) {
   if (!componentType || !props) return null;
 
@@ -231,5 +235,7 @@ function Scene({
       return <Plinth {...(props as PlinthProps)} />;
     case "base":
       return <Base {...(props as BaseProps)} />;
+    case "knee-brace":
+      return <KneeBrace {...(props as KneeBraceProps)} />;
   }
 }

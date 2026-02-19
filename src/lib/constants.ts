@@ -94,3 +94,10 @@ export const BASE_HEIGHT = 0.05;
 
 // Base defaults
 export const BASE_DEFAULT_WIDTH = 10;
+
+// Knee brace scale constraints
+export const KNEE_BRACE_SCALE_MIN = 0.8;
+export const KNEE_BRACE_SCALE_MAX = 2;
+
+// Knee brace defaults
+export const KNEE_BRACE_DEFAULT_SCALE = 1;

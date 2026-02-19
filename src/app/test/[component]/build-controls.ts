@@ -7,6 +7,10 @@ import {
   BASE_WIDTH_MAX,
   BASE_WIDTH_MIN,
   END_SIZE_MIN_MATERIAL,
+  // Knee brace constraints
+  KNEE_BRACE_DEFAULT_SCALE,
+  KNEE_BRACE_SCALE_MAX,
+  KNEE_BRACE_SCALE_MIN,
   PLATE_DEPTH_MAX,
   PLATE_DEPTH_MIN,
   PLATE_HEIGHT_MAX,
@@ -42,6 +46,7 @@ import {
 import type {
   BaseProps,
   ComponentType,
+  KneeBraceProps,
   PlateEndStyle,
   PlateProps,
   PlinthProps,
@@ -50,7 +55,7 @@ import type {
   RafterProps,
 } from "@/types/building";
 
-type ComponentProps = PostProps | PlateProps | RafterProps | PlinthProps | BaseProps;
+type ComponentProps = PostProps | PlateProps | RafterProps | PlinthProps | BaseProps | KneeBraceProps;
 
 export function buildControls(
   componentType: ComponentType,
@@ -176,6 +181,12 @@ export function buildControls(
       const p = props as BaseProps;
       return {
         width: num("width", p.width, BASE_WIDTH_MIN, BASE_WIDTH_MAX, 0.1),
+      };
+    }
+    case "knee-brace": {
+      const p = props as KneeBraceProps;
+      return {
+        scale: num("scale", p.scale ?? KNEE_BRACE_DEFAULT_SCALE, KNEE_BRACE_SCALE_MIN, KNEE_BRACE_SCALE_MAX, 0.1),
       };
     }
   }

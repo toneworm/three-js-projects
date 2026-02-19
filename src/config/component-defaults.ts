@@ -2,6 +2,7 @@
 
 import {
   BASE_DEFAULT_WIDTH,
+  KNEE_BRACE_DEFAULT_SCALE,
   PLATE_DEFAULT_BEVEL_OFFSET,
   PLATE_DEFAULT_DEPTH,
   PLATE_DEFAULT_HEIGHT,
@@ -24,6 +25,7 @@ import {
 import type {
   BaseProps,
   ComponentType,
+  KneeBraceProps,
   PlateProps,
   PlinthProps,
   PostProps,
@@ -68,13 +70,18 @@ export const DEFAULT_BASE_PROPS: BaseProps = {
   width: BASE_DEFAULT_WIDTH,
 };
 
+export const DEFAULT_KNEE_BRACE_PROPS: KneeBraceProps = {
+  scale: KNEE_BRACE_DEFAULT_SCALE,
+};
+
 export const COMPONENT_DEFAULTS: Record<
   ComponentType,
-  PostProps | PlateProps | RafterProps | PlinthProps | BaseProps
+  PostProps | PlateProps | RafterProps | PlinthProps | BaseProps | KneeBraceProps
 > = {
   post: DEFAULT_POST_PROPS,
   plate: DEFAULT_PLATE_PROPS,
   rafter: DEFAULT_RAFTER_PROPS,
   plinth: DEFAULT_PLINTH_PROPS,
   base: DEFAULT_BASE_PROPS,
+  "knee-brace": DEFAULT_KNEE_BRACE_PROPS,
 };
