@@ -19,6 +19,7 @@ import useComponentStore from "@/stores/use-component-store";
 import type {
   BaseProps,
   ComponentType,
+  ComponentProps,
   KneeBraceProps,
   PlateProps,
   PlinthProps,
@@ -27,13 +28,20 @@ import type {
 } from "@/types/building";
 import { buildControls } from "./build-controls";
 
-const COMPONENT_TYPES: ComponentType[] = ["post", "plate", "rafter", "plinth", "base", "knee-brace"];
+const COMPONENT_TYPES: ComponentType[] = [
+  "post",
+  "plate",
+  "rafter",
+  "plinth",
+  "base",
+  "knee-brace",
+];
 
 // Parse query parameters into component props
 function parseQueryParams(
   searchParams: URLSearchParams,
   componentType: ComponentType,
-): PostProps | PlateProps | RafterProps | PlinthProps | BaseProps {
+): ComponentProps {
   const params: Record<string, string | number | boolean> = {};
 
   searchParams.forEach((value, key) => {
@@ -220,7 +228,7 @@ function Scene({
   props,
 }: {
   componentType: ComponentType;
-  props: PostProps | PlateProps | RafterProps | PlinthProps | BaseProps | KneeBraceProps;
+  props: ComponentProps;
 }) {
   if (!componentType || !props) return null;
 

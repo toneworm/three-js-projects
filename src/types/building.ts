@@ -11,6 +11,7 @@ export type PlateEndStyle = "top" | "bottom" | "block" | "bevel";
 
 // --- Component props ---
 export type ComponentType = "post" | "plate" | "rafter" | "plinth" | "base" | "knee-brace";
+export type ComponentProps = PostProps | PlateProps | RafterProps | PlinthProps | BaseProps | KneeBraceProps;
 
 export type PostProps = {
   width: number;

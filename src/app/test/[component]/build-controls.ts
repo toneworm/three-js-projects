@@ -46,6 +46,7 @@ import {
 import type {
   BaseProps,
   ComponentType,
+  ComponentProps,
   KneeBraceProps,
   PlateEndStyle,
   PlateProps,
@@ -54,8 +55,6 @@ import type {
   PostProps,
   RafterProps,
 } from "@/types/building";
-
-type ComponentProps = PostProps | PlateProps | RafterProps | PlinthProps | BaseProps | KneeBraceProps;
 
 export function buildControls(
   componentType: ComponentType,
@@ -186,7 +185,13 @@ export function buildControls(
     case "knee-brace": {
       const p = props as KneeBraceProps;
       return {
-        scale: num("scale", p.scale ?? KNEE_BRACE_DEFAULT_SCALE, KNEE_BRACE_SCALE_MIN, KNEE_BRACE_SCALE_MAX, 0.1),
+        scale: num(
+          "scale",
+          p.scale ?? KNEE_BRACE_DEFAULT_SCALE,
+          KNEE_BRACE_SCALE_MIN,
+          KNEE_BRACE_SCALE_MAX,
+          0.1,
+        ),
       };
     }
   }

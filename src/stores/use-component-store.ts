@@ -3,15 +3,7 @@
 import { create } from "zustand";
 
 import { COMPONENT_DEFAULTS } from "@/config/component-defaults";
-import type {
-  ComponentType,
-  PlateProps,
-  PlinthProps,
-  PostProps,
-  RafterProps,
-} from "@/types/building";
-
-type ComponentProps = PostProps | PlateProps | RafterProps | PlinthProps;
+import type { ComponentType, ComponentProps } from "@/types/building";
 
 interface ComponentStore {
   componentType: ComponentType;
