@@ -21,6 +21,11 @@ import {
   RAFTER_DEFAULT_HEIGHT,
   RAFTER_DEFAULT_RISE,
   RAFTER_DEFAULT_RUN,
+  STUDDING_DEFAULT_BOTTOM_PLUMB_CUT_ANGLE,
+  STUDDING_DEFAULT_HEIGHT,
+  STUDDING_DEFAULT_THICKNESS,
+  STUDDING_DEFAULT_TOP_PLUMB_CUT_ANGLE,
+  STUDDING_DEFAULT_WIDTH,
 } from "@/lib/constants";
 import type {
   BaseProps,
@@ -30,6 +35,7 @@ import type {
   PlinthProps,
   PostProps,
   RafterProps,
+  StuddingProps,
 } from "@/types/building";
 
 export const DEFAULT_POST_PROPS: PostProps = {
@@ -74,9 +80,17 @@ export const DEFAULT_KNEE_BRACE_PROPS: KneeBraceProps = {
   scale: KNEE_BRACE_DEFAULT_SCALE,
 };
 
+export const DEFAULT_STUDDING_PROPS: StuddingProps = {
+  width: STUDDING_DEFAULT_WIDTH,
+  height: STUDDING_DEFAULT_HEIGHT,
+  thickness: STUDDING_DEFAULT_THICKNESS,
+  bottomPlumbCutAngle: STUDDING_DEFAULT_BOTTOM_PLUMB_CUT_ANGLE,
+  topPlumbCutAngle: STUDDING_DEFAULT_TOP_PLUMB_CUT_ANGLE,
+};
+
 export const COMPONENT_DEFAULTS: Record<
   ComponentType,
-  PostProps | PlateProps | RafterProps | PlinthProps | BaseProps | KneeBraceProps
+  PostProps | PlateProps | RafterProps | PlinthProps | BaseProps | KneeBraceProps | StuddingProps
 > = {
   post: DEFAULT_POST_PROPS,
   plate: DEFAULT_PLATE_PROPS,
@@ -84,4 +98,5 @@ export const COMPONENT_DEFAULTS: Record<
   plinth: DEFAULT_PLINTH_PROPS,
   base: DEFAULT_BASE_PROPS,
   "knee-brace": DEFAULT_KNEE_BRACE_PROPS,
+  studding: DEFAULT_STUDDING_PROPS,
 };

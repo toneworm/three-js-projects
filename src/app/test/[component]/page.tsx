@@ -13,6 +13,7 @@ import Plate from "@/components/building/plate";
 import Plinth from "@/components/building/plinth";
 import Post from "@/components/building/post";
 import Rafter from "@/components/building/rafter";
+import Studding from "@/components/building/studding";
 import { Loader } from "@/components/general/loader";
 import { COMPONENT_DEFAULTS } from "@/config/component-defaults";
 import useComponentStore from "@/stores/use-component-store";
@@ -25,6 +26,7 @@ import type {
   PlinthProps,
   PostProps,
   RafterProps,
+  StuddingProps,
 } from "@/types/building";
 import { buildControls } from "./build-controls";
 
@@ -35,6 +37,7 @@ const COMPONENT_TYPES: ComponentType[] = [
   "plinth",
   "base",
   "knee-brace",
+  "studding",
 ];
 
 // Parse query parameters into component props
@@ -80,6 +83,8 @@ function getExampleQuery(componentType: ComponentType): string {
       return "?width=10";
     case "knee-brace":
       return "?scale=1";
+    case "studding":
+      return "?width=0.05&height=2.4&thickness=0.038&bottomPlumbCutAngle=0&topPlumbCutAngle=0";
   }
 }
 
@@ -245,5 +250,7 @@ function Scene({
       return <Base {...(props as BaseProps)} />;
     case "knee-brace":
       return <KneeBrace {...(props as KneeBraceProps)} />;
+    case "studding":
+      return <Studding {...(props as StuddingProps)} />;
   }
 }

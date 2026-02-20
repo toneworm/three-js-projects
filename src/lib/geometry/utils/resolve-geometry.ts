@@ -34,6 +34,16 @@ import {
   RAFTER_MOUTH_SIZE_MIN,
   RAFTER_RISE_MIN,
   RAFTER_RUN_MIN,
+  STUDDING_DEFAULT_BOTTOM_PLUMB_CUT_ANGLE,
+  STUDDING_DEFAULT_TOP_PLUMB_CUT_ANGLE,
+  STUDDING_HEIGHT_MAX,
+  STUDDING_HEIGHT_MIN,
+  STUDDING_PLUMB_CUT_ANGLE_MAX,
+  STUDDING_PLUMB_CUT_ANGLE_MIN,
+  STUDDING_THICKNESS_MAX,
+  STUDDING_THICKNESS_MIN,
+  STUDDING_WIDTH_MAX,
+  STUDDING_WIDTH_MIN,
   TENON_MAX_RATIO,
 } from "@/lib/constants";
 import type {
@@ -47,6 +57,8 @@ import type {
   ResolvedPlinthGeometry,
   ResolvedPostGeometry,
   ResolvedRafterGeometry,
+  ResolvedStuddingGeometry,
+  StuddingProps,
 } from "@/types/building";
 import { clamp } from "./general";
 
@@ -190,8 +202,9 @@ export function resolveRafterGeometry({
   return { run, rise, angle, length, height, depth, mouthSize, cheekAngle };
 }
 
-export function resolvePlinthGeometry(raw: PlinthProps): ResolvedPlinthGeometry {
-  // Width is the only dynamic dimension, clamped between 5 and 20
+export function resolvePlinthGeometry(
+  raw: PlinthProps,
+): ResolvedPlinthGeometry {
   const width = clamp(raw.width, PLINTH_WIDTH_MIN, PLINTH_WIDTH_MAX);
 
   // Fixed dimensions
@@ -200,4 +213,30 @@ export function resolvePlinthGeometry(raw: PlinthProps): ResolvedPlinthGeometry 
   const height = PLINTH_HEIGHT;
 
   return { width, depth, thickness, height };
+}
+
+export function resolveStuddingGeometry(
+  raw: StuddingProps,
+): ResolvedStuddingGeometry {
+  const width = clamp(raw.width, STUDDING_WIDTH_MIN, STUDDING_WIDTH_MAX);
+  const height = clamp(raw.height, STUDDING_HEIGHT_MIN, STUDDING_HEIGHT_MAX);
+  const thickness = clamp(
+    raw.thickness,
+    STUDDING_THICKNESS_MIN,
+    STUDDING_THICKNESS_MAX,
+  );
+
+  const bottomPlumbCutAngle = clamp(
+    raw.bottomPlumbCutAngle ?? STUDDING_DEFAULT_BOTTOM_PLUMB_CUT_ANGLE,
+    STUDDING_PLUMB_CUT_ANGLE_MIN,
+    STUDDING_PLUMB_CUT_ANGLE_MAX,
+  );
+
+  const topPlumbCutAngle = clamp(
+    raw.topPlumbCutAngle ?? STUDDING_DEFAULT_TOP_PLUMB_CUT_ANGLE,
+    STUDDING_PLUMB_CUT_ANGLE_MIN,
+    STUDDING_PLUMB_CUT_ANGLE_MAX,
+  );
+
+  return { width, height, thickness, bottomPlumbCutAngle, topPlumbCutAngle };
 }

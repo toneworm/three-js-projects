@@ -42,6 +42,20 @@ import {
   RAFTER_MOUTH_SIZE_MIN,
   RAFTER_RISE_MIN,
   RAFTER_RUN_MIN,
+  // Studding constraints
+  STUDDING_DEFAULT_BOTTOM_PLUMB_CUT_ANGLE,
+  STUDDING_DEFAULT_HEIGHT,
+  STUDDING_DEFAULT_THICKNESS,
+  STUDDING_DEFAULT_TOP_PLUMB_CUT_ANGLE,
+  STUDDING_DEFAULT_WIDTH,
+  STUDDING_HEIGHT_MAX,
+  STUDDING_HEIGHT_MIN,
+  STUDDING_PLUMB_CUT_ANGLE_MAX,
+  STUDDING_PLUMB_CUT_ANGLE_MIN,
+  STUDDING_THICKNESS_MAX,
+  STUDDING_THICKNESS_MIN,
+  STUDDING_WIDTH_MAX,
+  STUDDING_WIDTH_MIN,
 } from "@/lib/constants";
 import type {
   BaseProps,
@@ -54,6 +68,7 @@ import type {
   PostEndStyle,
   PostProps,
   RafterProps,
+  StuddingProps,
 } from "@/types/building";
 
 export function buildControls(
@@ -191,6 +206,41 @@ export function buildControls(
           KNEE_BRACE_SCALE_MIN,
           KNEE_BRACE_SCALE_MAX,
           0.1,
+        ),
+      };
+    }
+    case "studding": {
+      const p = props as StuddingProps;
+      return {
+        width: num(
+          "width",
+          p.width ?? STUDDING_DEFAULT_WIDTH,
+          STUDDING_WIDTH_MIN,
+          STUDDING_WIDTH_MAX,
+        ),
+        height: num(
+          "height",
+          p.height ?? STUDDING_DEFAULT_HEIGHT,
+          STUDDING_HEIGHT_MIN,
+          STUDDING_HEIGHT_MAX,
+        ),
+        thickness: num(
+          "thickness",
+          p.thickness ?? STUDDING_DEFAULT_THICKNESS,
+          STUDDING_THICKNESS_MIN,
+          STUDDING_THICKNESS_MAX,
+        ),
+        bottomPlumbCutAngle: num(
+          "bottomPlumbCutAngle",
+          p.bottomPlumbCutAngle ?? STUDDING_DEFAULT_BOTTOM_PLUMB_CUT_ANGLE,
+          STUDDING_PLUMB_CUT_ANGLE_MIN,
+          STUDDING_PLUMB_CUT_ANGLE_MAX,
+        ),
+        topPlumbCutAngle: num(
+          "topPlumbCutAngle",
+          p.topPlumbCutAngle ?? STUDDING_DEFAULT_TOP_PLUMB_CUT_ANGLE,
+          STUDDING_PLUMB_CUT_ANGLE_MIN,
+          STUDDING_PLUMB_CUT_ANGLE_MAX,
         ),
       };
     }

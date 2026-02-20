@@ -10,8 +10,8 @@ export type PlateEnd = "left" | "right";
 export type PlateEndStyle = "top" | "bottom" | "block" | "bevel";
 
 // --- Component props ---
-export type ComponentType = "post" | "plate" | "rafter" | "plinth" | "base" | "knee-brace";
-export type ComponentProps = PostProps | PlateProps | RafterProps | PlinthProps | BaseProps | KneeBraceProps;
+export type ComponentType = "post" | "plate" | "rafter" | "plinth" | "base" | "knee-brace" | "studding";
+export type ComponentProps = PostProps | PlateProps | RafterProps | PlinthProps | BaseProps | KneeBraceProps | StuddingProps;
 
 export type PostProps = {
   width: number;
@@ -62,6 +62,15 @@ export type KneeBraceProps = {
   scale?: number;
 };
 
+export type StuddingProps = {
+  width: number;
+  height: number;
+  thickness: number;
+  bottomPlumbCutAngle?: number;
+  topPlumbCutAngle?: number;
+  randomiseTextureOffset?: boolean;
+};
+
 // Resolved props (after clamping and calculations)
 
 export type ResolvedPostGeometry = {
@@ -105,6 +114,14 @@ export type ResolvedPlinthGeometry = {
   height: number;
 };
 
+export type ResolvedStuddingGeometry = {
+  width: number;
+  height: number;
+  thickness: number;
+  bottomPlumbCutAngle: number;
+  topPlumbCutAngle: number;
+};
+
 // --- Collection configs (props + type discriminant) ---
 
 export type PostConfig = { type: "post" } & PostProps;
@@ -113,8 +130,9 @@ export type RafterConfig = { type: "rafter" } & RafterProps;
 export type PlinthConfig = { type: "plinth" } & PlinthProps;
 export type BaseConfig = { type: "base" } & BaseProps;
 export type KneeBraceConfig = { type: "knee-brace" } & KneeBraceProps;
+export type StuddingConfig = { type: "studding" } & StuddingProps;
 
-export type ComponentConfig = PostConfig | PlateConfig | RafterConfig | PlinthConfig | BaseConfig | KneeBraceConfig;
+export type ComponentConfig = PostConfig | PlateConfig | RafterConfig | PlinthConfig | BaseConfig | KneeBraceConfig | StuddingConfig;
 
 // --- Collection item: config + placement ---
 
