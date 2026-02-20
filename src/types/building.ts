@@ -9,9 +9,30 @@ export type PostEndStyle = "block" | "bevel" | "tenon";
 export type PlateEnd = "left" | "right";
 export type PlateEndStyle = "top" | "bottom" | "block" | "bevel";
 
+export enum CladdingMaterial {
+  Oak = "oak",
+  UVCheck = "uv-check",
+}
+
 // --- Component props ---
-export type ComponentType = "post" | "plate" | "rafter" | "plinth" | "base" | "knee-brace" | "studding" | "cladding";
-export type ComponentProps = PostProps | PlateProps | RafterProps | PlinthProps | BaseProps | KneeBraceProps | StuddingProps | CladdingProps;
+export type ComponentType =
+  | "post"
+  | "plate"
+  | "rafter"
+  | "plinth"
+  | "base"
+  | "knee-brace"
+  | "studding"
+  | "cladding";
+export type ComponentProps =
+  | PostProps
+  | PlateProps
+  | RafterProps
+  | PlinthProps
+  | BaseProps
+  | KneeBraceProps
+  | StuddingProps
+  | CladdingProps;
 
 export type PostProps = {
   width: number;
@@ -76,7 +97,7 @@ export type CladdingProps = {
   thickness: number;
   length: number;
   count: number;
-  materialUrl: string;
+  textureKey?: CladdingMaterial;
 };
 
 // Resolved props (after clamping and calculations)
@@ -135,7 +156,6 @@ export type ResolvedCladdingGeometry = {
   thickness: number;
   length: number;
   count: number;
-  materialUrl: string;
 };
 
 // --- Collection configs (props + type discriminant) ---
@@ -149,7 +169,15 @@ export type KneeBraceConfig = { type: "knee-brace" } & KneeBraceProps;
 export type StuddingConfig = { type: "studding" } & StuddingProps;
 export type CladdingConfig = { type: "cladding" } & CladdingProps;
 
-export type ComponentConfig = PostConfig | PlateConfig | RafterConfig | PlinthConfig | BaseConfig | KneeBraceConfig | StuddingConfig | CladdingConfig;
+export type ComponentConfig =
+  | PostConfig
+  | PlateConfig
+  | RafterConfig
+  | PlinthConfig
+  | BaseConfig
+  | KneeBraceConfig
+  | StuddingConfig
+  | CladdingConfig;
 
 // --- Collection item: config + placement ---
 

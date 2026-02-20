@@ -12,7 +12,6 @@ import {
   CLADDING_DEFAULT_COUNT,
   CLADDING_DEFAULT_HEIGHT,
   CLADDING_DEFAULT_LENGTH,
-  CLADDING_DEFAULT_MATERIAL_URL,
   CLADDING_DEFAULT_THICKNESS,
   CLADDING_HEIGHT_MAX,
   CLADDING_HEIGHT_MIN,
@@ -71,19 +70,20 @@ import {
   STUDDING_WIDTH_MAX,
   STUDDING_WIDTH_MIN,
 } from "@/lib/constants";
-import type {
-  BaseProps,
-  CladdingProps,
-  ComponentType,
-  ComponentProps,
-  KneeBraceProps,
-  PlateEndStyle,
-  PlateProps,
-  PlinthProps,
-  PostEndStyle,
-  PostProps,
-  RafterProps,
-  StuddingProps,
+import {
+  type BaseProps,
+  type CladdingProps,
+  CladdingMaterial,
+  type ComponentType,
+  type ComponentProps,
+  type KneeBraceProps,
+  type PlateEndStyle,
+  type PlateProps,
+  type PlinthProps,
+  type PostEndStyle,
+  type PostProps,
+  type RafterProps,
+  type StuddingProps,
 } from "@/types/building";
 
 export function buildControls(
@@ -287,9 +287,10 @@ export function buildControls(
           CLADDING_COUNT_MAX,
           1,
         ),
-        materialUrl: {
-          value: p.materialUrl ?? CLADDING_DEFAULT_MATERIAL_URL,
-          onChange: (v: string) => updateProps({ materialUrl: v }),
+        material: {
+          value: p.textureKey ?? CladdingMaterial.Oak,
+          options: [CladdingMaterial.Oak, CladdingMaterial.UVCheck],
+          onChange: (v: CladdingMaterial) => updateProps({ textureKey: v }),
         },
       };
     }

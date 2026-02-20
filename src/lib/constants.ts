@@ -1,3 +1,5 @@
+import { CladdingMaterial } from "@/types/building";
+
 export const TIMBER_TEXEL_SCALE = 0.15;
 
 // ============================================================================
@@ -135,4 +137,12 @@ export const CLADDING_DEFAULT_HEIGHT = 0.05;
 export const CLADDING_DEFAULT_THICKNESS = 0.01;
 export const CLADDING_DEFAULT_LENGTH = 2.0;
 export const CLADDING_DEFAULT_COUNT = 1;
-export const CLADDING_DEFAULT_MATERIAL_URL = "oak_texture_1k.png";
+
+// Cladding material texture paths (full paths for useTexture)
+export const CLADDING_TEXTURES: Record<CladdingMaterial, string> = {
+  [CladdingMaterial.Oak]: "/textures/oak_texture_1k.png",
+  [CladdingMaterial.UVCheck]: "/textures/uv_texture_color.webp",
+};
+
+// Default cladding material (use the enum value string)
+export const CLADDING_DEFAULT_MATERIAL: CladdingMaterial = CladdingMaterial.Oak;

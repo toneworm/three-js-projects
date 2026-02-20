@@ -2,6 +2,7 @@ import { useEffect, useMemo } from "react";
 import { useTexture } from "@react-three/drei";
 import * as THREE from "three";
 
+import { CLADDING_TEXTURES, CLADDING_DEFAULT_MATERIAL } from "@/lib/constants";
 import { createCladdingGeo } from "@/lib/geometry/bodies/cladding";
 import { resolveCladdingGeometry } from "@/lib/geometry/utils/resolve-geometry";
 import type { CladdingProps } from "@/types/building";
@@ -11,21 +12,21 @@ export default function Cladding({
   thickness: rawThickness,
   length: rawLength,
   count: rawCount,
-  materialUrl: rawMaterialUrl,
+  textureKey = CLADDING_DEFAULT_MATERIAL,
   ...meshProps
 }: CladdingProps & JSX.IntrinsicElements["mesh"]) {
-  const { height, thickness, length, count, materialUrl } =
-    resolveCladdingGeometry({
-      height: rawHeight,
-      thickness: rawThickness,
-      length: rawLength,
-      count: rawCount,
-      materialUrl: rawMaterialUrl,
-    });
+  const { height, thickness, length, count } = resolveCladdingGeometry({
+    height: rawHeight,
+    thickness: rawThickness,
+    length: rawLength,
+    count: rawCount,
+  });
 
   console.log("Cladding count:", count);
 
-  const texture = useTexture(`/textures/${materialUrl}`);
+  console.log(textureKey);
+
+  const texture = useTexture(CLADDING_TEXTURES[textureKey]);
 
   texture.wrapS = texture.wrapT = THREE.RepeatWrapping;
   texture.colorSpace = THREE.SRGBColorSpace;

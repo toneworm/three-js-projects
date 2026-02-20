@@ -5,7 +5,6 @@ import {
   CLADDING_DEFAULT_COUNT,
   CLADDING_DEFAULT_HEIGHT,
   CLADDING_DEFAULT_LENGTH,
-  CLADDING_DEFAULT_MATERIAL_URL,
   CLADDING_DEFAULT_THICKNESS,
   CLADDING_HEIGHT_MAX,
   CLADDING_HEIGHT_MIN,
@@ -75,6 +74,7 @@ import type {
   ResolvedStuddingGeometry,
   StuddingProps,
 } from "@/types/building";
+import { CladdingMaterial } from "@/types/building";
 import { clamp } from "./general";
 
 export function resolvePostGeometry(raw: PostProps): ResolvedPostGeometry {
@@ -279,7 +279,6 @@ export function resolveCladdingGeometry(
     CLADDING_COUNT_MIN,
     CLADDING_COUNT_MAX,
   );
-  const materialUrl = raw.materialUrl ?? CLADDING_DEFAULT_MATERIAL_URL;
 
-  return { height, thickness, length, count, materialUrl };
+  return { height, thickness, length, count };
 }

@@ -5,7 +5,6 @@ import {
   CLADDING_DEFAULT_COUNT,
   CLADDING_DEFAULT_HEIGHT,
   CLADDING_DEFAULT_LENGTH,
-  CLADDING_DEFAULT_MATERIAL_URL,
   CLADDING_DEFAULT_THICKNESS,
   KNEE_BRACE_DEFAULT_SCALE,
   PLATE_DEFAULT_BEVEL_OFFSET,
@@ -32,16 +31,17 @@ import {
   STUDDING_DEFAULT_TOP_PLUMB_CUT_ANGLE,
   STUDDING_DEFAULT_WIDTH,
 } from "@/lib/constants";
-import type {
-  BaseProps,
-  CladdingProps,
-  ComponentType,
-  KneeBraceProps,
-  PlateProps,
-  PlinthProps,
-  PostProps,
-  RafterProps,
-  StuddingProps,
+import {
+  type BaseProps,
+  type CladdingProps,
+  CladdingMaterial,
+  type ComponentType,
+  type KneeBraceProps,
+  type PlateProps,
+  type PlinthProps,
+  type PostProps,
+  type RafterProps,
+  type StuddingProps,
 } from "@/types/building";
 
 export const DEFAULT_POST_PROPS: PostProps = {
@@ -99,7 +99,7 @@ export const DEFAULT_CLADDING_PROPS: CladdingProps = {
   thickness: CLADDING_DEFAULT_THICKNESS,
   length: CLADDING_DEFAULT_LENGTH,
   count: CLADDING_DEFAULT_COUNT,
-  materialUrl: CLADDING_DEFAULT_MATERIAL_URL,
+  material: CladdingMaterial.Oak,
 };
 
 export const COMPONENT_DEFAULTS: Record<
