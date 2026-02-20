@@ -8,6 +8,7 @@ import { Canvas } from "@react-three/fiber";
 import { useControls } from "leva";
 
 import Base from "@/components/building/base";
+import Cladding from "@/components/building/cladding";
 import KneeBrace from "@/components/building/knee-brace";
 import Plate from "@/components/building/plate";
 import Plinth from "@/components/building/plinth";
@@ -19,6 +20,7 @@ import { COMPONENT_DEFAULTS } from "@/config/component-defaults";
 import useComponentStore from "@/stores/use-component-store";
 import type {
   BaseProps,
+  CladdingProps,
   ComponentType,
   ComponentProps,
   KneeBraceProps,
@@ -38,6 +40,7 @@ const COMPONENT_TYPES: ComponentType[] = [
   "base",
   "knee-brace",
   "studding",
+  "cladding",
 ];
 
 // Parse query parameters into component props
@@ -85,6 +88,8 @@ function getExampleQuery(componentType: ComponentType): string {
       return "?scale=1";
     case "studding":
       return "?width=0.05&height=2.4&thickness=0.038&bottomPlumbCutAngle=0&topPlumbCutAngle=0";
+    case "cladding":
+      return "?height=2&thickness=0.02&length=1&count=1&materialUrl=oak_texture_1k.png";
   }
 }
 
@@ -252,5 +257,7 @@ function Scene({
       return <KneeBrace {...(props as KneeBraceProps)} />;
     case "studding":
       return <Studding {...(props as StuddingProps)} />;
+    case "cladding":
+      return <Cladding {...(props as CladdingProps)} />;
   }
 }

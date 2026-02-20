@@ -6,6 +6,20 @@ import {
   // Base constraints
   BASE_WIDTH_MAX,
   BASE_WIDTH_MIN,
+  // Cladding constraints
+  CLADDING_COUNT_MAX,
+  CLADDING_COUNT_MIN,
+  CLADDING_DEFAULT_COUNT,
+  CLADDING_DEFAULT_HEIGHT,
+  CLADDING_DEFAULT_LENGTH,
+  CLADDING_DEFAULT_MATERIAL_URL,
+  CLADDING_DEFAULT_THICKNESS,
+  CLADDING_HEIGHT_MAX,
+  CLADDING_HEIGHT_MIN,
+  CLADDING_LENGTH_MAX,
+  CLADDING_LENGTH_MIN,
+  CLADDING_THICKNESS_MAX,
+  CLADDING_THICKNESS_MIN,
   END_SIZE_MIN_MATERIAL,
   // Knee brace constraints
   KNEE_BRACE_DEFAULT_SCALE,
@@ -59,6 +73,7 @@ import {
 } from "@/lib/constants";
 import type {
   BaseProps,
+  CladdingProps,
   ComponentType,
   ComponentProps,
   KneeBraceProps,
@@ -242,6 +257,40 @@ export function buildControls(
           STUDDING_PLUMB_CUT_ANGLE_MIN,
           STUDDING_PLUMB_CUT_ANGLE_MAX,
         ),
+      };
+    }
+    case "cladding": {
+      const p = props as CladdingProps;
+      return {
+        height: num(
+          "height",
+          p.height ?? CLADDING_DEFAULT_HEIGHT,
+          CLADDING_HEIGHT_MIN,
+          CLADDING_HEIGHT_MAX,
+        ),
+        thickness: num(
+          "thickness",
+          p.thickness ?? CLADDING_DEFAULT_THICKNESS,
+          CLADDING_THICKNESS_MIN,
+          CLADDING_THICKNESS_MAX,
+        ),
+        length: num(
+          "length",
+          p.length ?? CLADDING_DEFAULT_LENGTH,
+          CLADDING_LENGTH_MIN,
+          CLADDING_LENGTH_MAX,
+        ),
+        count: num(
+          "count",
+          p.count ?? CLADDING_DEFAULT_COUNT,
+          CLADDING_COUNT_MIN,
+          CLADDING_COUNT_MAX,
+          1,
+        ),
+        materialUrl: {
+          value: p.materialUrl ?? CLADDING_DEFAULT_MATERIAL_URL,
+          onChange: (v: string) => updateProps({ materialUrl: v }),
+        },
       };
     }
   }

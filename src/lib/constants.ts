@@ -118,3 +118,21 @@ export const STUDDING_DEFAULT_HEIGHT = 1.5;
 export const STUDDING_DEFAULT_THICKNESS = 0.015;
 export const STUDDING_DEFAULT_BOTTOM_PLUMB_CUT_ANGLE = 0;
 export const STUDDING_DEFAULT_TOP_PLUMB_CUT_ANGLE = 0;
+
+// Cladding dimension constraints
+export const CLADDING_HEIGHT_MIN = 0.1;
+export const CLADDING_HEIGHT_MAX = 0.1;
+export const CLADDING_THICKNESS_MIN = 0.005;
+export const CLADDING_THICKNESS_MAX = 0.025;
+export const CLADDING_LENGTH_MIN = 0.5;
+export const CLADDING_LENGTH_MAX = 5.0;
+export const CLADDING_COUNT_MIN = 1;
+export const CLADDING_COUNT_MAX = 10;
+export const CLADDING_WEDGE_RATIO = 0.4;
+
+// Cladding defaults
+export const CLADDING_DEFAULT_HEIGHT = 0.05;
+export const CLADDING_DEFAULT_THICKNESS = 0.01;
+export const CLADDING_DEFAULT_LENGTH = 2.0;
+export const CLADDING_DEFAULT_COUNT = 1;
+export const CLADDING_DEFAULT_MATERIAL_URL = "oak_texture_1k.png";

@@ -10,8 +10,8 @@ export type PlateEnd = "left" | "right";
 export type PlateEndStyle = "top" | "bottom" | "block" | "bevel";
 
 // --- Component props ---
-export type ComponentType = "post" | "plate" | "rafter" | "plinth" | "base" | "knee-brace" | "studding";
-export type ComponentProps = PostProps | PlateProps | RafterProps | PlinthProps | BaseProps | KneeBraceProps | StuddingProps;
+export type ComponentType = "post" | "plate" | "rafter" | "plinth" | "base" | "knee-brace" | "studding" | "cladding";
+export type ComponentProps = PostProps | PlateProps | RafterProps | PlinthProps | BaseProps | KneeBraceProps | StuddingProps | CladdingProps;
 
 export type PostProps = {
   width: number;
@@ -71,6 +71,14 @@ export type StuddingProps = {
   randomiseTextureOffset?: boolean;
 };
 
+export type CladdingProps = {
+  height: number;
+  thickness: number;
+  length: number;
+  count: number;
+  materialUrl: string;
+};
+
 // Resolved props (after clamping and calculations)
 
 export type ResolvedPostGeometry = {
@@ -122,6 +130,14 @@ export type ResolvedStuddingGeometry = {
   topPlumbCutAngle: number;
 };
 
+export type ResolvedCladdingGeometry = {
+  height: number;
+  thickness: number;
+  length: number;
+  count: number;
+  materialUrl: string;
+};
+
 // --- Collection configs (props + type discriminant) ---
 
 export type PostConfig = { type: "post" } & PostProps;
@@ -131,8 +147,9 @@ export type PlinthConfig = { type: "plinth" } & PlinthProps;
 export type BaseConfig = { type: "base" } & BaseProps;
 export type KneeBraceConfig = { type: "knee-brace" } & KneeBraceProps;
 export type StuddingConfig = { type: "studding" } & StuddingProps;
+export type CladdingConfig = { type: "cladding" } & CladdingProps;
 
-export type ComponentConfig = PostConfig | PlateConfig | RafterConfig | PlinthConfig | BaseConfig | KneeBraceConfig | StuddingConfig;
+export type ComponentConfig = PostConfig | PlateConfig | RafterConfig | PlinthConfig | BaseConfig | KneeBraceConfig | StuddingConfig | CladdingConfig;
 
 // --- Collection item: config + placement ---
 

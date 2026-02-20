@@ -1,5 +1,18 @@
 import {
   BIRDSMOUTH_MAX_RATIO,
+  CLADDING_COUNT_MAX,
+  CLADDING_COUNT_MIN,
+  CLADDING_DEFAULT_COUNT,
+  CLADDING_DEFAULT_HEIGHT,
+  CLADDING_DEFAULT_LENGTH,
+  CLADDING_DEFAULT_MATERIAL_URL,
+  CLADDING_DEFAULT_THICKNESS,
+  CLADDING_HEIGHT_MAX,
+  CLADDING_HEIGHT_MIN,
+  CLADDING_LENGTH_MAX,
+  CLADDING_LENGTH_MIN,
+  CLADDING_THICKNESS_MAX,
+  CLADDING_THICKNESS_MIN,
   END_SIZE_MIN_MATERIAL,
   PLATE_DEFAULT_BEVEL_OFFSET,
   PLATE_DEFAULT_JOINT_SIZE,
@@ -47,12 +60,14 @@ import {
   TENON_MAX_RATIO,
 } from "@/lib/constants";
 import type {
+  CladdingProps,
   PlateEndStyle,
   PlateProps,
   PlinthProps,
   PostEndStyle,
   PostProps,
   RafterProps,
+  ResolvedCladdingGeometry,
   ResolvedPlateGeometry,
   ResolvedPlinthGeometry,
   ResolvedPostGeometry,
@@ -239,4 +254,32 @@ export function resolveStuddingGeometry(
   );
 
   return { width, height, thickness, bottomPlumbCutAngle, topPlumbCutAngle };
+}
+
+export function resolveCladdingGeometry(
+  raw: CladdingProps,
+): ResolvedCladdingGeometry {
+  const height = clamp(
+    raw.height ?? CLADDING_DEFAULT_HEIGHT,
+    CLADDING_HEIGHT_MIN,
+    CLADDING_HEIGHT_MAX,
+  );
+  const thickness = clamp(
+    raw.thickness ?? CLADDING_DEFAULT_THICKNESS,
+    CLADDING_THICKNESS_MIN,
+    CLADDING_THICKNESS_MAX,
+  );
+  const length = clamp(
+    raw.length ?? CLADDING_DEFAULT_LENGTH,
+    CLADDING_LENGTH_MIN,
+    CLADDING_LENGTH_MAX,
+  );
+  const count = clamp(
+    raw.count ?? CLADDING_DEFAULT_COUNT,
+    CLADDING_COUNT_MIN,
+    CLADDING_COUNT_MAX,
+  );
+  const materialUrl = raw.materialUrl ?? CLADDING_DEFAULT_MATERIAL_URL;
+
+  return { height, thickness, length, count, materialUrl };
 }
