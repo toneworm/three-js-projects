@@ -10,6 +10,7 @@ interface ComponentStore {
   props: ComponentProps;
   setComponent: (type: ComponentType, props: ComponentProps) => void;
   updateProps: (partial: Partial<ComponentProps>) => void;
+  resetProps: () => void;
 }
 
 const useComponentStore = create<ComponentStore>()((set) => ({
@@ -21,7 +22,7 @@ const useComponentStore = create<ComponentStore>()((set) => ({
   updateProps: (partial) =>
     set((state) => {
       if (!state.props) return state;
-      return { props: { ...state.props, ...partial } };
+      return { props: { ...state.props, ...partial } as ComponentProps };
     }),
 
   resetProps: () =>

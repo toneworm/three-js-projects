@@ -112,7 +112,7 @@ export function buildControls(
     value: number,
     min: number,
     max: number,
-    step = 0.01,
+    step = 0.005,
   ) => ({
     value,
     min,
@@ -289,6 +289,7 @@ export function buildControls(
           p.thickness ?? CLADDING_DEFAULT_THICKNESS,
           CLADDING_THICKNESS_MIN,
           CLADDING_THICKNESS_MAX,
+          0.001,
         ),
         length: num(
           "length",

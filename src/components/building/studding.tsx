@@ -54,13 +54,14 @@ export default function Studding({
     geo.computeBoundingSphere();
     geo.computeBoundingBox();
 
+    const clonedTexture = texture.clone();
     if (randomiseTextureOffset) {
-      texture.offset.set(textureOffset.x, textureOffset.y);
+      clonedTexture.offset.set(textureOffset.x, textureOffset.y);
     }
 
     return {
       geometry: geo,
-      material: new THREE.MeshStandardMaterial({ map: texture }),
+      material: new THREE.MeshStandardMaterial({ map: clonedTexture }),
     };
   }, [
     width,

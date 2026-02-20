@@ -105,6 +105,7 @@ export type CladdingProps = {
   length: number;
   count: number;
   textureKey?: CladdingTexture;
+  randomiseTextureOffset?: boolean;
 };
 
 export type StaddleStoneProps = {

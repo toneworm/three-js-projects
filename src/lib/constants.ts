@@ -1,4 +1,8 @@
-import { CladdingTexture, StaddleStoneTexture, Texture } from "@/types/building";
+import {
+  CladdingTexture,
+  StaddleStoneTexture,
+  Texture,
+} from "@/types/building";
 
 export const TIMBER_TEXEL_SCALE = 0.15;
 
@@ -122,7 +126,7 @@ export const STUDDING_DEFAULT_BOTTOM_PLUMB_CUT_ANGLE = 0;
 export const STUDDING_DEFAULT_TOP_PLUMB_CUT_ANGLE = 0;
 
 // Cladding dimension constraints
-export const CLADDING_HEIGHT_MIN = 0.1;
+export const CLADDING_HEIGHT_MIN = 0.08;
 export const CLADDING_HEIGHT_MAX = 0.1;
 export const CLADDING_THICKNESS_MIN = 0.005;
 export const CLADDING_THICKNESS_MAX = 0.025;
@@ -136,7 +140,10 @@ export const CLADDING_WEDGE_RATIO = 0.4;
 export const CLADDING_DEFAULT_HEIGHT = 0.05;
 export const CLADDING_DEFAULT_THICKNESS = 0.01;
 export const CLADDING_DEFAULT_LENGTH = 2.0;
-export const CLADDING_DEFAULT_COUNT = 1;
+export const CLADDING_DEFAULT_COUNT = 5;
+
+export const CLADDING_OVERLAP = 0.9;
+export const CLADDING_TILT = -0.05;
 
 // Cladding texture paths (full paths for useTexture)
 export const CLADDING_TEXTURES: Record<CladdingTexture, string> = {
@@ -170,4 +177,5 @@ export const STADDLE_STONE_TEXTURES: Record<StaddleStoneTexture, string> = {
 };
 
 // Default staddle stone texture
-export const STADDLE_STONE_DEFAULT_TEXTURE: StaddleStoneTexture = Texture.BrushedConcrete;
+export const STADDLE_STONE_DEFAULT_TEXTURE: StaddleStoneTexture =
+  Texture.BrushedConcrete;
