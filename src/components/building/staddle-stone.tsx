@@ -2,37 +2,33 @@ import { useEffect, useMemo } from "react";
 import { useTexture } from "@react-three/drei";
 import * as THREE from "three";
 
-import { CLADDING_TEXTURES, CLADDING_DEFAULT_TEXTURE } from "@/lib/constants";
-import { createCladdingGeo } from "@/lib/geometry/bodies/cladding";
-import { resolveCladdingGeometry } from "@/lib/geometry/utils/resolve-geometry";
-import type { CladdingProps } from "@/types/building";
+import { STADDLE_STONE_TEXTURES, STADDLE_STONE_DEFAULT_TEXTURE } from "@/lib/constants";
+import { createStaddleStoneGeo } from "@/lib/geometry/bodies/staddle-stone";
+import { resolveStaddleStoneGeometry } from "@/lib/geometry/utils/resolve-geometry";
+import type { StaddleStoneProps } from "@/types/building";
 
-export default function Cladding({
+export default function StaddleStone({
   height: rawHeight,
-  thickness: rawThickness,
+  depth: rawDepth,
   length: rawLength,
-  count: rawCount,
-  textureKey = CLADDING_DEFAULT_TEXTURE,
+  taperRatio: rawTaperRatio,
+  textureKey = STADDLE_STONE_DEFAULT_TEXTURE,
   ...meshProps
-}: CladdingProps & JSX.IntrinsicElements["mesh"]) {
-  const { height, thickness, length, count } = resolveCladdingGeometry({
+}: StaddleStoneProps & JSX.IntrinsicElements["mesh"]) {
+  const { height, depth, length, taperRatio } = resolveStaddleStoneGeometry({
     height: rawHeight,
-    thickness: rawThickness,
+    depth: rawDepth,
     length: rawLength,
-    count: rawCount,
+    taperRatio: rawTaperRatio,
   });
 
-  console.log("Cladding count:", count);
-
-  console.log(textureKey);
-
-  const texture = useTexture(CLADDING_TEXTURES[textureKey]);
+  const texture = useTexture(STADDLE_STONE_TEXTURES[textureKey]);
 
   texture.wrapS = texture.wrapT = THREE.RepeatWrapping;
   texture.colorSpace = THREE.SRGBColorSpace;
 
   const { geometry, material } = useMemo(() => {
-    const geo = createCladdingGeo(length, height, thickness);
+    const geo = createStaddleStoneGeo(length, height, depth, taperRatio);
 
     geo.computeBoundingSphere();
     geo.computeBoundingBox();
@@ -41,7 +37,7 @@ export default function Cladding({
       geometry: geo,
       material: new THREE.MeshStandardMaterial({ map: texture }),
     };
-  }, [length, height, thickness, texture]);
+  }, [length, height, depth, taperRatio, texture]);
 
   useEffect(() => {
     return () => {

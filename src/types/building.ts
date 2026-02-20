@@ -9,10 +9,15 @@ export type PostEndStyle = "block" | "bevel" | "tenon";
 export type PlateEnd = "left" | "right";
 export type PlateEndStyle = "top" | "bottom" | "block" | "bevel";
 
-export enum CladdingMaterial {
+export enum Texture {
   Oak = "oak",
   UVCheck = "uv-check",
+  RedBrick = "red-brick",
+  BrushedConcrete = "brushed-concrete",
 }
+
+export type CladdingTexture = Texture.Oak | Texture.UVCheck;
+export type StaddleStoneTexture = Texture.RedBrick | Texture.BrushedConcrete;
 
 // --- Component props ---
 export type ComponentType =
@@ -23,7 +28,8 @@ export type ComponentType =
   | "base"
   | "knee-brace"
   | "studding"
-  | "cladding";
+  | "cladding"
+  | "staddle-stone";
 export type ComponentProps =
   | PostProps
   | PlateProps
@@ -32,7 +38,8 @@ export type ComponentProps =
   | BaseProps
   | KneeBraceProps
   | StuddingProps
-  | CladdingProps;
+  | CladdingProps
+  | StaddleStoneProps;
 
 export type PostProps = {
   width: number;
@@ -97,7 +104,15 @@ export type CladdingProps = {
   thickness: number;
   length: number;
   count: number;
-  textureKey?: CladdingMaterial;
+  textureKey?: CladdingTexture;
+};
+
+export type StaddleStoneProps = {
+  height: number;
+  depth: number;
+  length: number;
+  taperRatio?: number;
+  textureKey?: StaddleStoneTexture;
 };
 
 // Resolved props (after clamping and calculations)
@@ -158,6 +173,13 @@ export type ResolvedCladdingGeometry = {
   count: number;
 };
 
+export type ResolvedStaddleStoneGeometry = {
+  height: number;
+  depth: number;
+  length: number;
+  taperRatio: number;
+};
+
 // --- Collection configs (props + type discriminant) ---
 
 export type PostConfig = { type: "post" } & PostProps;
@@ -168,6 +190,7 @@ export type BaseConfig = { type: "base" } & BaseProps;
 export type KneeBraceConfig = { type: "knee-brace" } & KneeBraceProps;
 export type StuddingConfig = { type: "studding" } & StuddingProps;
 export type CladdingConfig = { type: "cladding" } & CladdingProps;
+export type StaddleStoneConfig = { type: "staddle-stone" } & StaddleStoneProps;
 
 export type ComponentConfig =
   | PostConfig
@@ -177,7 +200,8 @@ export type ComponentConfig =
   | BaseConfig
   | KneeBraceConfig
   | StuddingConfig
-  | CladdingConfig;
+  | CladdingConfig
+  | StaddleStoneConfig;
 
 // --- Collection item: config + placement ---
 

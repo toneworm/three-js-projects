@@ -1,4 +1,4 @@
-import { CladdingMaterial } from "@/types/building";
+import { CladdingTexture, StaddleStoneTexture, Texture } from "@/types/building";
 
 export const TIMBER_TEXEL_SCALE = 0.15;
 
@@ -138,11 +138,36 @@ export const CLADDING_DEFAULT_THICKNESS = 0.01;
 export const CLADDING_DEFAULT_LENGTH = 2.0;
 export const CLADDING_DEFAULT_COUNT = 1;
 
-// Cladding material texture paths (full paths for useTexture)
-export const CLADDING_TEXTURES: Record<CladdingMaterial, string> = {
-  [CladdingMaterial.Oak]: "/textures/oak_texture_1k.png",
-  [CladdingMaterial.UVCheck]: "/textures/uv_texture_color.webp",
+// Cladding texture paths (full paths for useTexture)
+export const CLADDING_TEXTURES: Record<CladdingTexture, string> = {
+  [Texture.Oak]: "/textures/oak_texture_1k.png",
+  [Texture.UVCheck]: "/textures/uv_texture_color.webp",
 };
 
-// Default cladding material (use the enum value string)
-export const CLADDING_DEFAULT_MATERIAL: CladdingMaterial = CladdingMaterial.Oak;
+// Default cladding texture
+export const CLADDING_DEFAULT_TEXTURE: CladdingTexture = Texture.Oak;
+
+// Staddle stone dimension constraints
+export const STADDLE_STONE_HEIGHT_MIN = 0.1;
+export const STADDLE_STONE_HEIGHT_MAX = 0.3;
+export const STADDLE_STONE_DEPTH_MIN = 0.1;
+export const STADDLE_STONE_DEPTH_MAX = 0.3;
+export const STADDLE_STONE_LENGTH_MIN = 0.1;
+export const STADDLE_STONE_LENGTH_MAX = 0.3;
+export const STADDLE_STONE_TAPER_RATIO_MIN = 0.5;
+export const STADDLE_STONE_TAPER_RATIO_MAX = 1.0;
+
+// Staddle stone defaults
+export const STADDLE_STONE_DEFAULT_HEIGHT = 0.2;
+export const STADDLE_STONE_DEFAULT_DEPTH = 0.15;
+export const STADDLE_STONE_DEFAULT_LENGTH = 0.15;
+export const STADDLE_STONE_DEFAULT_TAPER_RATIO = 0.8;
+
+// Staddle stone texture paths
+export const STADDLE_STONE_TEXTURES: Record<StaddleStoneTexture, string> = {
+  [Texture.RedBrick]: "/textures/red_brick_diff_1k.jpg",
+  [Texture.BrushedConcrete]: "/textures/brushed_concrete_rough_1k.jpg",
+};
+
+// Default staddle stone texture
+export const STADDLE_STONE_DEFAULT_TEXTURE: StaddleStoneTexture = Texture.BrushedConcrete;

@@ -25,6 +25,10 @@ import {
   RAFTER_DEFAULT_HEIGHT,
   RAFTER_DEFAULT_RISE,
   RAFTER_DEFAULT_RUN,
+  STADDLE_STONE_DEFAULT_DEPTH,
+  STADDLE_STONE_DEFAULT_HEIGHT,
+  STADDLE_STONE_DEFAULT_LENGTH,
+  STADDLE_STONE_DEFAULT_TAPER_RATIO,
   STUDDING_DEFAULT_BOTTOM_PLUMB_CUT_ANGLE,
   STUDDING_DEFAULT_HEIGHT,
   STUDDING_DEFAULT_THICKNESS,
@@ -34,14 +38,15 @@ import {
 import {
   type BaseProps,
   type CladdingProps,
-  CladdingMaterial,
   type ComponentType,
   type KneeBraceProps,
   type PlateProps,
   type PlinthProps,
   type PostProps,
   type RafterProps,
+  type StaddleStoneProps,
   type StuddingProps,
+  Texture,
 } from "@/types/building";
 
 export const DEFAULT_POST_PROPS: PostProps = {
@@ -99,12 +104,20 @@ export const DEFAULT_CLADDING_PROPS: CladdingProps = {
   thickness: CLADDING_DEFAULT_THICKNESS,
   length: CLADDING_DEFAULT_LENGTH,
   count: CLADDING_DEFAULT_COUNT,
-  material: CladdingMaterial.Oak,
+  textureKey: Texture.Oak,
+};
+
+export const DEFAULT_STADDLE_STONE_PROPS: StaddleStoneProps = {
+  height: STADDLE_STONE_DEFAULT_HEIGHT,
+  depth: STADDLE_STONE_DEFAULT_DEPTH,
+  length: STADDLE_STONE_DEFAULT_LENGTH,
+  taperRatio: STADDLE_STONE_DEFAULT_TAPER_RATIO,
+  textureKey: Texture.BrushedConcrete,
 };
 
 export const COMPONENT_DEFAULTS: Record<
   ComponentType,
-  PostProps | PlateProps | RafterProps | PlinthProps | BaseProps | KneeBraceProps | StuddingProps | CladdingProps
+  PostProps | PlateProps | RafterProps | PlinthProps | BaseProps | KneeBraceProps | StuddingProps | CladdingProps | StaddleStoneProps
 > = {
   post: DEFAULT_POST_PROPS,
   plate: DEFAULT_PLATE_PROPS,
@@ -114,4 +127,5 @@ export const COMPONENT_DEFAULTS: Record<
   "knee-brace": DEFAULT_KNEE_BRACE_PROPS,
   studding: DEFAULT_STUDDING_PROPS,
   cladding: DEFAULT_CLADDING_PROPS,
+  "staddle-stone": DEFAULT_STADDLE_STONE_PROPS,
 };

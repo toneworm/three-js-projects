@@ -14,6 +14,7 @@ import Plate from "@/components/building/plate";
 import Plinth from "@/components/building/plinth";
 import Post from "@/components/building/post";
 import Rafter from "@/components/building/rafter";
+import StaddleStone from "@/components/building/staddle-stone";
 import Studding from "@/components/building/studding";
 import { Loader } from "@/components/general/loader";
 import { COMPONENT_DEFAULTS } from "@/config/component-defaults";
@@ -28,6 +29,7 @@ import type {
   PlinthProps,
   PostProps,
   RafterProps,
+  StaddleStoneProps,
   StuddingProps,
 } from "@/types/building";
 import { buildControls } from "./build-controls";
@@ -41,6 +43,7 @@ const COMPONENT_TYPES: ComponentType[] = [
   "knee-brace",
   "studding",
   "cladding",
+  "staddle-stone",
 ];
 
 // Parse query parameters into component props
@@ -90,6 +93,8 @@ function getExampleQuery(componentType: ComponentType): string {
       return "?width=0.05&height=2.4&thickness=0.038&bottomPlumbCutAngle=0&topPlumbCutAngle=0";
     case "cladding":
       return "?height=0.05&thickness=0.01&length=2&count=1&material=oak";
+    case "staddle-stone":
+      return "?height=0.2&depth=0.15&length=0.15&taperRatio=0.8&material=brushed-concrete";
   }
 }
 
@@ -259,5 +264,7 @@ function Scene({
       return <Studding {...(props as StuddingProps)} />;
     case "cladding":
       return <Cladding {...(props as CladdingProps)} />;
+    case "staddle-stone":
+      return <StaddleStone {...(props as StaddleStoneProps)} />;
   }
 }

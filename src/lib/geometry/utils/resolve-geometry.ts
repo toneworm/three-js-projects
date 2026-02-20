@@ -46,6 +46,18 @@ import {
   RAFTER_MOUTH_SIZE_MIN,
   RAFTER_RISE_MIN,
   RAFTER_RUN_MIN,
+  STADDLE_STONE_DEFAULT_DEPTH,
+  STADDLE_STONE_DEFAULT_HEIGHT,
+  STADDLE_STONE_DEFAULT_LENGTH,
+  STADDLE_STONE_DEFAULT_TAPER_RATIO,
+  STADDLE_STONE_DEPTH_MAX,
+  STADDLE_STONE_DEPTH_MIN,
+  STADDLE_STONE_HEIGHT_MAX,
+  STADDLE_STONE_HEIGHT_MIN,
+  STADDLE_STONE_LENGTH_MAX,
+  STADDLE_STONE_LENGTH_MIN,
+  STADDLE_STONE_TAPER_RATIO_MAX,
+  STADDLE_STONE_TAPER_RATIO_MIN,
   STUDDING_DEFAULT_BOTTOM_PLUMB_CUT_ANGLE,
   STUDDING_DEFAULT_TOP_PLUMB_CUT_ANGLE,
   STUDDING_HEIGHT_MAX,
@@ -71,10 +83,11 @@ import type {
   ResolvedPlinthGeometry,
   ResolvedPostGeometry,
   ResolvedRafterGeometry,
+  ResolvedStaddleStoneGeometry,
   ResolvedStuddingGeometry,
+  StaddleStoneProps,
   StuddingProps,
 } from "@/types/building";
-import { CladdingMaterial } from "@/types/building";
 import { clamp } from "./general";
 
 export function resolvePostGeometry(raw: PostProps): ResolvedPostGeometry {
@@ -281,4 +294,31 @@ export function resolveCladdingGeometry(
   );
 
   return { height, thickness, length, count };
+}
+
+export function resolveStaddleStoneGeometry(
+  raw: StaddleStoneProps,
+): ResolvedStaddleStoneGeometry {
+  const height = clamp(
+    raw.height ?? STADDLE_STONE_DEFAULT_HEIGHT,
+    STADDLE_STONE_HEIGHT_MIN,
+    STADDLE_STONE_HEIGHT_MAX,
+  );
+  const depth = clamp(
+    raw.depth ?? STADDLE_STONE_DEFAULT_DEPTH,
+    STADDLE_STONE_DEPTH_MIN,
+    STADDLE_STONE_DEPTH_MAX,
+  );
+  const length = clamp(
+    raw.length ?? STADDLE_STONE_DEFAULT_LENGTH,
+    STADDLE_STONE_LENGTH_MIN,
+    STADDLE_STONE_LENGTH_MAX,
+  );
+  const taperRatio = clamp(
+    raw.taperRatio ?? STADDLE_STONE_DEFAULT_TAPER_RATIO,
+    STADDLE_STONE_TAPER_RATIO_MIN,
+    STADDLE_STONE_TAPER_RATIO_MAX,
+  );
+
+  return { height, depth, length, taperRatio };
 }

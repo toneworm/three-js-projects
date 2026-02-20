@@ -55,6 +55,19 @@ import {
   RAFTER_MOUTH_SIZE_MIN,
   RAFTER_RISE_MIN,
   RAFTER_RUN_MIN,
+  // Staddle stone constraints
+  STADDLE_STONE_DEFAULT_DEPTH,
+  STADDLE_STONE_DEFAULT_HEIGHT,
+  STADDLE_STONE_DEFAULT_LENGTH,
+  STADDLE_STONE_DEFAULT_TAPER_RATIO,
+  STADDLE_STONE_DEPTH_MAX,
+  STADDLE_STONE_DEPTH_MIN,
+  STADDLE_STONE_HEIGHT_MAX,
+  STADDLE_STONE_HEIGHT_MIN,
+  STADDLE_STONE_LENGTH_MAX,
+  STADDLE_STONE_LENGTH_MIN,
+  STADDLE_STONE_TAPER_RATIO_MAX,
+  STADDLE_STONE_TAPER_RATIO_MIN,
   // Studding constraints
   STUDDING_DEFAULT_BOTTOM_PLUMB_CUT_ANGLE,
   STUDDING_DEFAULT_HEIGHT,
@@ -73,7 +86,7 @@ import {
 import {
   type BaseProps,
   type CladdingProps,
-  CladdingMaterial,
+  type CladdingTexture,
   type ComponentType,
   type ComponentProps,
   type KneeBraceProps,
@@ -83,7 +96,10 @@ import {
   type PostEndStyle,
   type PostProps,
   type RafterProps,
+  type StaddleStoneProps,
+  type StaddleStoneTexture,
   type StuddingProps,
+  Texture,
 } from "@/types/building";
 
 export function buildControls(
@@ -287,10 +303,44 @@ export function buildControls(
           CLADDING_COUNT_MAX,
           1,
         ),
-        material: {
-          value: p.textureKey ?? CladdingMaterial.Oak,
-          options: [CladdingMaterial.Oak, CladdingMaterial.UVCheck],
-          onChange: (v: CladdingMaterial) => updateProps({ textureKey: v }),
+        textureKey: {
+          value: p.textureKey ?? Texture.Oak,
+          options: [Texture.Oak, Texture.UVCheck],
+          onChange: (v: CladdingTexture) => updateProps({ textureKey: v }),
+        },
+      };
+    }
+    case "staddle-stone": {
+      const p = props as StaddleStoneProps;
+      return {
+        height: num(
+          "height",
+          p.height ?? STADDLE_STONE_DEFAULT_HEIGHT,
+          STADDLE_STONE_HEIGHT_MIN,
+          STADDLE_STONE_HEIGHT_MAX,
+        ),
+        depth: num(
+          "depth",
+          p.depth ?? STADDLE_STONE_DEFAULT_DEPTH,
+          STADDLE_STONE_DEPTH_MIN,
+          STADDLE_STONE_DEPTH_MAX,
+        ),
+        length: num(
+          "length",
+          p.length ?? STADDLE_STONE_DEFAULT_LENGTH,
+          STADDLE_STONE_LENGTH_MIN,
+          STADDLE_STONE_LENGTH_MAX,
+        ),
+        taperRatio: num(
+          "taperRatio",
+          p.taperRatio ?? STADDLE_STONE_DEFAULT_TAPER_RATIO,
+          STADDLE_STONE_TAPER_RATIO_MIN,
+          STADDLE_STONE_TAPER_RATIO_MAX,
+        ),
+        textureKey: {
+          value: p.textureKey ?? Texture.BrushedConcrete,
+          options: [Texture.RedBrick, Texture.BrushedConcrete],
+          onChange: (v: StaddleStoneTexture) => updateProps({ textureKey: v }),
         },
       };
     }
