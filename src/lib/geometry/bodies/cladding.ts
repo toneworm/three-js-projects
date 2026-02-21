@@ -1,5 +1,6 @@
-import { CLADDING_WEDGE_RATIO } from "@/lib/constants";
 import * as THREE from "three";
+
+import { CLADDING_WEDGE_RATIO } from "@/lib/constants";
 
 export function createCladdingGeo(
   length: number,

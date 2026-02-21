@@ -44,7 +44,7 @@ export default function Base({
     });
 
     return { geometry: geo, material: mat };
-  }, [width, height, depth, diffuse]);
+  }, [width, diffuse]);
 
   useEffect(() => {
     return () => {

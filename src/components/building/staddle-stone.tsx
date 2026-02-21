@@ -2,7 +2,10 @@ import { useEffect, useMemo } from "react";
 import { useTexture } from "@react-three/drei";
 import * as THREE from "three";
 
-import { STADDLE_STONE_TEXTURES, STADDLE_STONE_DEFAULT_TEXTURE } from "@/lib/constants";
+import {
+  STADDLE_STONE_DEFAULT_TEXTURE,
+  STADDLE_STONE_TEXTURES,
+} from "@/lib/constants";
 import { createStaddleStoneGeo } from "@/lib/geometry/bodies/staddle-stone";
 import { resolveStaddleStoneGeometry } from "@/lib/geometry/utils/resolve-geometry";
 import type { StaddleStoneProps } from "@/types/building";

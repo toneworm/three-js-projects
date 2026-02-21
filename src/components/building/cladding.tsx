@@ -2,11 +2,15 @@ import { useEffect, useMemo } from "react";
 import { useTexture } from "@react-three/drei";
 import * as THREE from "three";
 
-import { CLADDING_TEXTURES, CLADDING_DEFAULT_TEXTURE } from "@/lib/constants";
+import {
+  CLADDING_DEFAULT_TEXTURE,
+  CLADDING_OVERLAP,
+  CLADDING_TEXTURES,
+  CLADDING_TILT,
+} from "@/lib/constants";
 import { createCladdingGeo } from "@/lib/geometry/bodies/cladding";
 import { resolveCladdingGeometry } from "@/lib/geometry/utils/resolve-geometry";
 import type { CladdingProps } from "@/types/building";
-import { CLADDING_OVERLAP, CLADDING_TILT } from "@/lib/constants";
 
 export default function Cladding({
   height: rawHeight,

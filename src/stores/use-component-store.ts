@@ -3,7 +3,7 @@
 import { create } from "zustand";
 
 import { COMPONENT_DEFAULTS } from "@/config/component-defaults";
-import type { ComponentType, ComponentProps } from "@/types/building";
+import type { ComponentProps, ComponentType } from "@/types/building";
 
 interface ComponentStore {
   componentType: ComponentType;

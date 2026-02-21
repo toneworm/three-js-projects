@@ -1,6 +1,6 @@
 import {
-  CladdingTexture,
-  StaddleStoneTexture,
+  type CladdingTexture,
+  type StaddleStoneTexture,
   Texture,
 } from "@/types/building";
 

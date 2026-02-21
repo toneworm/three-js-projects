@@ -1,6 +1,6 @@
 "use client";
 
-import { Suspense, useLayoutEffect, useMemo, useEffect, useRef } from "react";
+import { Suspense, useEffect, useLayoutEffect, useMemo, useRef } from "react";
 import Link from "next/link";
 import { useParams, useSearchParams } from "next/navigation";
 import { Environment, OrbitControls } from "@react-three/drei";
@@ -22,8 +22,8 @@ import useComponentStore from "@/stores/use-component-store";
 import type {
   BaseProps,
   CladdingProps,
-  ComponentType,
   ComponentProps,
+  ComponentType,
   KneeBraceProps,
   PlateProps,
   PlinthProps,

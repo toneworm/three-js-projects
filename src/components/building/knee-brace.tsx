@@ -1,8 +1,8 @@
 // components/building/KneeBrace.tsx
 "use client";
 
-import { useGLTF } from "@react-three/drei";
 import { useMemo } from "react";
+import { useGLTF } from "@react-three/drei";
 
 import {
   KNEE_BRACE_DEFAULT_SCALE,

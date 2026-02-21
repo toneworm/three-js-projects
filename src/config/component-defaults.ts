@@ -117,7 +117,15 @@ export const DEFAULT_STADDLE_STONE_PROPS: StaddleStoneProps = {
 
 export const COMPONENT_DEFAULTS: Record<
   ComponentType,
-  PostProps | PlateProps | RafterProps | PlinthProps | BaseProps | KneeBraceProps | StuddingProps | CladdingProps | StaddleStoneProps
+  | PostProps
+  | PlateProps
+  | RafterProps
+  | PlinthProps
+  | BaseProps
+  | KneeBraceProps
+  | StuddingProps
+  | CladdingProps
+  | StaddleStoneProps
 > = {
   post: DEFAULT_POST_PROPS,
   plate: DEFAULT_PLATE_PROPS,

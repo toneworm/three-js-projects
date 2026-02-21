@@ -10,8 +10,8 @@ import {
 } from "@/lib/constants";
 import { createMainRafterGeo } from "@/lib/geometry/bodies/rafter";
 import { createBirdsMouthEndGeo } from "@/lib/geometry/caps-joints/birds-mouth-cap";
-import { applyPlanarUVs } from "@/lib/geometry/utils/uv-utils";
 import { resolveRafterGeometry } from "@/lib/geometry/utils/resolve-geometry";
+import { applyPlanarUVs } from "@/lib/geometry/utils/uv-utils";
 import type { RafterProps, ResolvedRafterGeometry } from "@/types/building";
 
 export default function Rafter({
