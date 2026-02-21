@@ -8,9 +8,9 @@ import {
   PLATE_DEFAULT_JOINT_SIZE,
 } from "@/lib/constants";
 import { createMainPlateGeo } from "@/lib/geometry/bodies/plate";
-import { createBevelEndGeo } from "@/lib/geometry/caps_joints/bevel-cap";
-import { createBlockCapGeo } from "@/lib/geometry/caps_joints/block-cap";
-import { createHalfLapJoint } from "@/lib/geometry/caps_joints/half-lap-joint";
+import { createBevelEndGeo } from "@/lib/geometry/caps-joints/bevel-cap";
+import { createBlockCapGeo } from "@/lib/geometry/caps-joints/block-cap";
+import { createHalfLapJoint } from "@/lib/geometry/caps-joints/half-lap-joint";
 import { resolvePlateGeometry } from "@/lib/geometry/utils/resolve-geometry";
 import type { PlateEnd, PlateEndStyle, PlateProps } from "@/types/building";
 

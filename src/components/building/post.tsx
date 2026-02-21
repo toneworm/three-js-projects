@@ -11,9 +11,9 @@ import {
   POST_DEFAULT_TENON_WIDTH,
 } from "@/lib/constants";
 import { createMainPostGeo } from "@/lib/geometry/bodies/post";
-import { createBevelEndGeo } from "@/lib/geometry/caps_joints/bevel-cap";
-import { createBlockCapGeo } from "@/lib/geometry/caps_joints/block-cap";
-import { createTenonEndGeo } from "@/lib/geometry/caps_joints/tenon-cap";
+import { createBevelEndGeo } from "@/lib/geometry/caps-joints/bevel-cap";
+import { createBlockCapGeo } from "@/lib/geometry/caps-joints/block-cap";
+import { createTenonEndGeo } from "@/lib/geometry/caps-joints/tenon-cap";
 import { resolvePostGeometry } from "@/lib/geometry/utils/resolve-geometry";
 import type { PostEnd, PostEndStyle, PostProps } from "@/types/building";
 

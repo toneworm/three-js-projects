@@ -9,7 +9,7 @@ import {
   RAFTER_DEFAULT_UV_SCALE,
 } from "@/lib/constants";
 import { createMainRafterGeo } from "@/lib/geometry/bodies/rafter";
-import { createBirdsMouthEndGeo } from "@/lib/geometry/caps_joints/birds-mouth-cap";
+import { createBirdsMouthEndGeo } from "@/lib/geometry/caps-joints/birds-mouth-cap";
 import { applyPlanarUVs } from "@/lib/geometry/utils/uv-utils";
 import { resolveRafterGeometry } from "@/lib/geometry/utils/resolve-geometry";
 import type { RafterProps, ResolvedRafterGeometry } from "@/types/building";
