@@ -1,6 +1,6 @@
 {
-  "name": "Basic Frame",
-  "description": "Two posts with a connecting plate using half-lap joints",
+  "name": "Braced Frame",
+  "description": "Two posts with a connecting plate and knee braces at both top corners",
   "components": [
     {
       "id": "post-left",
@@ -38,6 +38,20 @@
       "jointSize": 0.05,
       "leftEnd": "bottom",
       "rightEnd": "bottom"
+    },
+    {
+      "id": "knee-brace-left",
+      "type": "kneeBrace",
+      "position": [-0.75, 0.75, 0],
+      "rotation": [1.5708, 0, 1.5708],
+      "scale": 1
+    },
+    {
+      "id": "knee-brace-right",
+      "type": "kneeBrace",
+      "position": [0.75, 0.75, 0],
+      "rotation": [1.5708, 0, 1.5708],
+      "scale": 1
     }
   ]
 }
