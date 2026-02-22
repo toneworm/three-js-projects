@@ -39,12 +39,36 @@ export default function Cladding({
     geo.computeBoundingSphere();
     geo.computeBoundingBox();
 
+    // test in Affinity to see different layer effects then update
+    const paintColor = new THREE.Color("#1a1a1a");
+    const paintOpacity = 0.25;
+
     const mats = Array.from({ length: count }, () => {
       const clonedTexture = texture.clone();
       if (randomiseTextureOffset) {
         clonedTexture.offset.set(Math.random(), Math.random());
       }
-      return new THREE.MeshStandardMaterial({ map: clonedTexture });
+
+      const mat = new THREE.MeshStandardMaterial({ map: clonedTexture });
+
+      mat.onBeforeCompile = (shader) => {
+        shader.uniforms.paintColor = { value: paintColor };
+        shader.uniforms.paintOpacity = { value: paintOpacity };
+
+        shader.fragmentShader = `
+          uniform vec3 paintColor;
+          uniform float paintOpacity;
+          ${shader.fragmentShader}
+        `.replace(
+          "#include <map_fragment>",
+          `
+            #include <map_fragment>
+            diffuseColor.rgb = mix(diffuseColor.rgb, paintColor, paintOpacity);
+          `,
+        );
+      };
+
+      return mat;
     });
 
     return { geometry: geo, materials: mats };
