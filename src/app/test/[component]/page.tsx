@@ -131,6 +131,8 @@ export default function TestComponentPage() {
   // Track if we've synced the initial params to Leva
   const hasSyncedParams = useRef(false);
 
+  const { showAxes } = useControls("Debug", { showAxes: true });
+
   const [, setLevaValues] = useControls(
     componentType ?? "post",
     () =>
@@ -228,6 +230,7 @@ export default function TestComponentPage() {
             <Scene
               componentType={componentType}
               props={isStoreReady ? props : initialProps}
+              showAxes={showAxes}
             />
 
             <OrbitControls target={[0, 1, 0]} />
@@ -241,30 +244,41 @@ export default function TestComponentPage() {
 function Scene({
   componentType,
   props,
+  showAxes,
 }: {
   componentType: ComponentType;
   props: ComponentProps;
+  showAxes: boolean;
 }) {
   if (!componentType || !props) return null;
 
-  switch (componentType) {
-    case "post":
-      return <Post {...(props as PostProps)} />;
-    case "plate":
-      return <Plate {...(props as PlateProps)} />;
-    case "rafter":
-      return <Rafter {...(props as RafterProps)} />;
-    case "plinth":
-      return <Plinth {...(props as PlinthProps)} />;
-    case "base":
-      return <Base {...(props as BaseProps)} />;
-    case "knee-brace":
-      return <KneeBrace {...(props as KneeBraceProps)} />;
-    case "studding":
-      return <Studding {...(props as StuddingProps)} />;
-    case "cladding":
-      return <Cladding {...(props as CladdingProps)} />;
-    case "staddle-stone":
-      return <StaddleStone {...(props as StaddleStoneProps)} />;
-  }
+  const Component = (() => {
+    switch (componentType) {
+      case "post":
+        return <Post {...(props as PostProps)} />;
+      case "plate":
+        return <Plate {...(props as PlateProps)} />;
+      case "rafter":
+        return <Rafter {...(props as RafterProps)} />;
+      case "plinth":
+        return <Plinth {...(props as PlinthProps)} />;
+      case "base":
+        return <Base {...(props as BaseProps)} />;
+      case "knee-brace":
+        return <KneeBrace {...(props as KneeBraceProps)} />;
+      case "studding":
+        return <Studding {...(props as StuddingProps)} />;
+      case "cladding":
+        return <Cladding {...(props as CladdingProps)} />;
+      case "staddle-stone":
+        return <StaddleStone {...(props as StaddleStoneProps)} />;
+    }
+  })();
+
+  return (
+    <>
+      {showAxes && <axesHelper args={[1]} />}
+      {Component}
+    </>
+  );
 }
