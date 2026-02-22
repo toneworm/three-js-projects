@@ -1,0 +1,198 @@
+{
+  "name": "3-Bay Open Front Frame",
+  "description": "Three bays, 9m wide × 4m deep, 2.4m wall height. Four posts across the front and back at 3m intervals. Wall plates on all four sides with interlocking corners. Knee braces on the two front corner posts only.",
+  "components": [
+    {
+      "id": "base",
+      "type": "base",
+      "position": [0, 0, 0],
+      "width": 9
+    },
+    {
+      "id": "post-front-left",
+      "type": "post",
+      "position": [-4.5, 0, 2],
+      "width": 0.15,
+      "height": 2.475,
+      "depth": 0.15,
+      "endSize": 0.15,
+      "tenonWidth": 0.05,
+      "tenonDepth": 0.07,
+      "tenonHeight": 0.075,
+      "topEnd": "tenon",
+      "bottomEnd": "block"
+    },
+    {
+      "id": "post-front-centre-left",
+      "type": "post",
+      "position": [-1.5, 0, 2],
+      "width": 0.15,
+      "height": 2.475,
+      "depth": 0.15,
+      "endSize": 0.15,
+      "tenonWidth": 0.05,
+      "tenonDepth": 0.07,
+      "tenonHeight": 0.075,
+      "topEnd": "tenon",
+      "bottomEnd": "block"
+    },
+    {
+      "id": "post-front-centre-right",
+      "type": "post",
+      "position": [1.5, 0, 2],
+      "width": 0.15,
+      "height": 2.475,
+      "depth": 0.15,
+      "endSize": 0.15,
+      "tenonWidth": 0.05,
+      "tenonDepth": 0.07,
+      "tenonHeight": 0.075,
+      "topEnd": "tenon",
+      "bottomEnd": "block"
+    },
+    {
+      "id": "post-front-right",
+      "type": "post",
+      "position": [4.5, 0, 2],
+      "width": 0.15,
+      "height": 2.475,
+      "depth": 0.15,
+      "endSize": 0.15,
+      "tenonWidth": 0.05,
+      "tenonDepth": 0.07,
+      "tenonHeight": 0.075,
+      "topEnd": "tenon",
+      "bottomEnd": "block"
+    },
+    {
+      "id": "post-back-left",
+      "type": "post",
+      "position": [-4.5, 0, -2],
+      "width": 0.15,
+      "height": 2.475,
+      "depth": 0.15,
+      "endSize": 0.15,
+      "tenonWidth": 0.05,
+      "tenonDepth": 0.07,
+      "tenonHeight": 0.075,
+      "topEnd": "tenon",
+      "bottomEnd": "block"
+    },
+    {
+      "id": "post-back-centre-left",
+      "type": "post",
+      "position": [-1.5, 0, -2],
+      "width": 0.15,
+      "height": 2.475,
+      "depth": 0.15,
+      "endSize": 0.15,
+      "tenonWidth": 0.05,
+      "tenonDepth": 0.07,
+      "tenonHeight": 0.075,
+      "topEnd": "tenon",
+      "bottomEnd": "block"
+    },
+    {
+      "id": "post-back-centre-right",
+      "type": "post",
+      "position": [1.5, 0, -2],
+      "width": 0.15,
+      "height": 2.475,
+      "depth": 0.15,
+      "endSize": 0.15,
+      "tenonWidth": 0.05,
+      "tenonDepth": 0.07,
+      "tenonHeight": 0.075,
+      "topEnd": "tenon",
+      "bottomEnd": "block"
+    },
+    {
+      "id": "post-back-right",
+      "type": "post",
+      "position": [4.5, 0, -2],
+      "width": 0.15,
+      "height": 2.475,
+      "depth": 0.15,
+      "endSize": 0.15,
+      "tenonWidth": 0.05,
+      "tenonDepth": 0.07,
+      "tenonHeight": 0.075,
+      "topEnd": "tenon",
+      "bottomEnd": "block"
+    },
+    {
+      "id": "plate-front",
+      "type": "plate",
+      "position": [0, 2.4, 2],
+      "length": 9.15,
+      "height": 0.15,
+      "depth": 0.15,
+      "jointSize": 0.15,
+      "leftEnd": "bottom",
+      "rightEnd": "bottom"
+    },
+    {
+      "id": "plate-back",
+      "type": "plate",
+      "position": [0, 2.4, -2],
+      "length": 9.15,
+      "height": 0.15,
+      "depth": 0.15,
+      "jointSize": 0.15,
+      "leftEnd": "bottom",
+      "rightEnd": "bottom"
+    },
+    {
+      "id": "plate-left",
+      "type": "plate",
+      "position": [-4.5, 2.4, 0],
+      "rotation": [0, 1.5708, 0],
+      "length": 4.15,
+      "height": 0.15,
+      "depth": 0.15,
+      "jointSize": 0.15,
+      "leftEnd": "top",
+      "rightEnd": "top"
+    },
+    {
+      "id": "plate-right",
+      "type": "plate",
+      "position": [4.5, 2.4, 0],
+      "rotation": [0, 1.5708, 0],
+      "length": 4.15,
+      "height": 0.15,
+      "depth": 0.15,
+      "jointSize": 0.15,
+      "leftEnd": "top",
+      "rightEnd": "top"
+    },
+    {
+      "id": "brace-front-left-x",
+      "type": "knee-brace",
+      "position": [-4.2875, 2.2375, 2],
+      "rotation": [0, -1.5708, 1.5708],
+      "scale": 1
+    },
+    {
+      "id": "brace-front-left-z",
+      "type": "knee-brace",
+      "position": [-4.5, 2.2375, 1.7875],
+      "rotation": [0, 0, 1.5708],
+      "scale": 1
+    },
+    {
+      "id": "brace-front-right-x",
+      "type": "knee-brace",
+      "position": [4.2875, 2.2375, 2],
+      "rotation": [0, 1.5708, 1.5708],
+      "scale": 1
+    },
+    {
+      "id": "brace-front-right-z",
+      "type": "knee-brace",
+      "position": [4.5, 2.2375, 1.7875],
+      "rotation": [0, 0, 1.5708],
+      "scale": 1
+    }
+  ]
+}
