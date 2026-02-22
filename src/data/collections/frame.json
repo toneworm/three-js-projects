@@ -41,17 +41,17 @@
     },
     {
       "id": "knee-brace-left",
-      "type": "kneeBrace",
-      "position": [-0.75, 0.75, 0],
-      "rotation": [1.5708, 0, 1.5708],
-      "scale": 1
+      "type": "knee-brace",
+      "position": [-0.915, 0.935, 0],
+      "rotation": [0, -1.5708, 1.5708],
+      "scale": 0.4
     },
     {
       "id": "knee-brace-right",
-      "type": "kneeBrace",
-      "position": [0.75, 0.75, 0],
-      "rotation": [1.5708, 0, 1.5708],
-      "scale": 1
+      "type": "knee-brace",
+      "position": [0.915, 0.935, 0],
+      "rotation": [0, 1.5708, 1.5708],
+      "scale": 0.4
     }
   ]
 }
