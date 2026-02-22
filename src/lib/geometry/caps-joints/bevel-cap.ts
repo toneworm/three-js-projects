@@ -10,12 +10,14 @@ export function createBevelEndGeo(
 
   const w = width / 2;
   const d = depth / 2;
+  const h = endSize;
+  const bh = endSize - bevelOffset;
 
   const perimeter = 2 * (width + depth);
 
   const uWidth = width / perimeter;
   const uDepth = depth / perimeter;
-  const uHeight = endSize / perimeter;
+  const uHeight = (endSize - bevelOffset) / perimeter;
   const uBv = bevelOffset / perimeter;
 
   const uFront = uWidth;
@@ -27,40 +29,40 @@ export function createBevelEndGeo(
   // biome-ignore format: buffer array
   const tris = new Float32Array([
     // Front strip
-    -w, endSize, d, -w, 0, d, w, 0, d,
-    w, 0, d, w, endSize, d, -w, endSize, d,
+    -w, bh, d, -w, 0, d, w, 0, d,
+    w, 0, d, w, bh, d, -w, bh, d,
 
     // Right strip
-    w, endSize, d, w, 0, d, w, 0, -d,
-    w, 0, -d, w, endSize, -d, w, endSize, d,
+    w, bh, d, w, 0, d, w, 0, -d,
+    w, 0, -d, w, bh, -d, w, bh, d,
     
     // Back strip
-    w, endSize, -d, w, 0, -d, -w, 0, -d,
-    -w, 0, -d, -w, endSize, -d, w, endSize, -d,
+    w, bh, -d, w, 0, -d, -w, 0, -d,
+    -w, 0, -d, -w, bh, -d, w, bh, -d,
 
     // Left strip
-    -w, endSize, -d, -w, 0, -d, -w, 0, d,
-    -w, 0, d, -w, endSize, d, -w, endSize, -d,
+    -w, bh, -d, -w, 0, -d, -w, 0, d,
+    -w, 0, d, -w, bh, d, -w, bh, -d,
 
     // Front bevel
-    -w + bevelOffset, endSize + bevelOffset, d - bevelOffset, -w, endSize, d, w, endSize, d,
-    w, endSize, d, w - bevelOffset, endSize + bevelOffset, d - bevelOffset, -w + bevelOffset, endSize + bevelOffset, d - bevelOffset,
+    -w + bevelOffset, h, d - bevelOffset, -w, bh, d, w, bh, d,
+    w, bh, d, w - bevelOffset, h, d - bevelOffset, -w + bevelOffset, h, d - bevelOffset,
     
     // Right bevel
-    w - bevelOffset, endSize + bevelOffset, d - bevelOffset, w, endSize, d, w, endSize, -d,
-    w, endSize, -d, w - bevelOffset, endSize + bevelOffset, -d + bevelOffset, w - bevelOffset, endSize + bevelOffset, d - bevelOffset,
+    w - bevelOffset, h, d - bevelOffset, w, bh, d, w, bh, -d,
+    w, bh, -d, w - bevelOffset, h, -d + bevelOffset, w - bevelOffset, h, d - bevelOffset,
 
     // Back bevel
-    w - bevelOffset, endSize + bevelOffset, -d + bevelOffset, w, endSize, -d, -w, endSize, -d,
-    -w, endSize, -d, -w + bevelOffset, endSize + bevelOffset, -d + bevelOffset, w - bevelOffset, endSize + bevelOffset, -d + bevelOffset,
+    w - bevelOffset, h, -d + bevelOffset, w, bh, -d, -w, bh, -d,
+    -w, bh, -d, -w + bevelOffset, h, -d + bevelOffset, w - bevelOffset, h, -d + bevelOffset,
 
     // Left bevel
-    -w + bevelOffset, endSize + bevelOffset, -d + bevelOffset, -w, endSize, -d, -w, endSize, d,
-    -w, endSize, d, -w + bevelOffset, endSize + bevelOffset, d - bevelOffset, -w + bevelOffset, endSize + bevelOffset, -d + bevelOffset,
+    -w + bevelOffset, h, -d + bevelOffset, -w, bh, -d, -w, bh, d,
+    -w, bh, d, -w + bevelOffset, h, d - bevelOffset, -w + bevelOffset, h, -d + bevelOffset,
 
     // Top face
-    -w + bevelOffset, endSize + bevelOffset, -d + bevelOffset, -w + bevelOffset, endSize + bevelOffset, d - bevelOffset, w - bevelOffset, endSize + bevelOffset, d - bevelOffset,
-    w - bevelOffset, endSize + bevelOffset, d - bevelOffset, w - bevelOffset, endSize + bevelOffset, -d + bevelOffset, -w + bevelOffset, endSize + bevelOffset, -d + bevelOffset,
+    -w + bevelOffset, h, -d + bevelOffset, -w + bevelOffset, h, d - bevelOffset, w - bevelOffset, h, d - bevelOffset,
+    w - bevelOffset, h, d - bevelOffset, w - bevelOffset, h, -d + bevelOffset, -w + bevelOffset, h, -d + bevelOffset,
     
   ]);
 
