@@ -52,29 +52,29 @@ export const TENON_MAX_RATIO = 0.8; // Tenon max 80% of post dimension
 export const DEFAULT_BEVEL_OFFSET = 0.015;
 
 // Post defaults
-export const POST_DEFAULT_WIDTH = 0.2;
+export const POST_DEFAULT_WIDTH = 0.15;
 export const POST_DEFAULT_HEIGHT = 2.4;
-export const POST_DEFAULT_DEPTH = 0.2;
-export const POST_DEFAULT_END_SIZE = 0.15;
+export const POST_DEFAULT_DEPTH = 0.15;
+export const POST_DEFAULT_END_SIZE = 0.075;
 export const POST_DEFAULT_BEVEL_OFFSET = DEFAULT_BEVEL_OFFSET;
-export const POST_DEFAULT_TENON_HEIGHT = 0.1;
-export const POST_DEFAULT_TENON_WIDTH = 0.1;
-export const POST_DEFAULT_TENON_DEPTH = 0.08;
+export const POST_DEFAULT_TENON_HEIGHT = 0.075;
+export const POST_DEFAULT_TENON_WIDTH = 0.05;
+export const POST_DEFAULT_TENON_DEPTH = 0.07;
 
 // Plate defaults
-export const PLATE_DEFAULT_LENGTH = 3;
+export const PLATE_DEFAULT_LENGTH = 3.1;
 export const PLATE_DEFAULT_HEIGHT = 0.15;
-export const PLATE_DEFAULT_DEPTH = 0.2;
+export const PLATE_DEFAULT_DEPTH = 0.15;
 export const PLATE_DEFAULT_JOINT_SIZE = 0.15;
 export const PLATE_DEFAULT_BEVEL_OFFSET = DEFAULT_BEVEL_OFFSET;
 
 // Rafter defaults
-export const RAFTER_DEFAULT_HEIGHT = 0.25;
-export const RAFTER_DEFAULT_DEPTH = 0.05;
-export const RAFTER_DEFAULT_RUN = 2.25;
-export const RAFTER_DEFAULT_RISE = 1.25;
+export const RAFTER_DEFAULT_HEIGHT = 0.17;
+export const RAFTER_DEFAULT_DEPTH = 0.04;
+export const RAFTER_DEFAULT_RUN = 2.0;
+export const RAFTER_DEFAULT_RISE = 1.15;
 export const RAFTER_DEFAULT_CHEEK_ANGLE = Math.PI / 4;
-export const RAFTER_DEFAULT_MOUTH_SIZE = 0.25;
+export const RAFTER_DEFAULT_MOUTH_SIZE = 0.15;
 export const RAFTER_DEFAULT_UV_SCALE = 0.2;
 export const BIRDSMOUTH_MAX_RATIO = 0.75;
 
@@ -84,7 +84,7 @@ export const PLINTH_WIDTH_MAX = 20;
 
 // Plinth fixed dimensions (constants)
 export const PLINTH_DEPTH = 5.85;
-export const PLINTH_THICKNESS = 0.15;
+export const PLINTH_THICKNESS = 0.225;
 export const PLINTH_HEIGHT = 0.3;
 
 // Plinth defaults
@@ -120,8 +120,8 @@ export const STUDDING_PLUMB_CUT_ANGLE_MAX = Math.PI / 4;
 
 // Studding defaults
 export const STUDDING_DEFAULT_WIDTH = 0.1;
-export const STUDDING_DEFAULT_HEIGHT = 1.5;
-export const STUDDING_DEFAULT_THICKNESS = 0.015;
+export const STUDDING_DEFAULT_HEIGHT = 1.75;
+export const STUDDING_DEFAULT_THICKNESS = 0.05;
 export const STUDDING_DEFAULT_BOTTOM_PLUMB_CUT_ANGLE = 0;
 export const STUDDING_DEFAULT_TOP_PLUMB_CUT_ANGLE = 0;
 
@@ -137,10 +137,10 @@ export const CLADDING_COUNT_MAX = 10;
 export const CLADDING_WEDGE_RATIO = 0.4;
 
 // Cladding defaults
-export const CLADDING_DEFAULT_HEIGHT = 0.05;
-export const CLADDING_DEFAULT_THICKNESS = 0.01;
+export const CLADDING_DEFAULT_HEIGHT = 0.2;
+export const CLADDING_DEFAULT_THICKNESS = 0.02;
 export const CLADDING_DEFAULT_LENGTH = 2.0;
-export const CLADDING_DEFAULT_COUNT = 5;
+export const CLADDING_DEFAULT_COUNT = 10;
 
 export const CLADDING_OVERLAP = 0.9;
 export const CLADDING_TILT = -0.05;
@@ -165,7 +165,7 @@ export const STADDLE_STONE_TAPER_RATIO_MIN = 0.5;
 export const STADDLE_STONE_TAPER_RATIO_MAX = 1.0;
 
 // Staddle stone defaults
-export const STADDLE_STONE_DEFAULT_HEIGHT = 0.2;
+export const STADDLE_STONE_DEFAULT_HEIGHT = 0.3;
 export const STADDLE_STONE_DEFAULT_DEPTH = 0.15;
 export const STADDLE_STONE_DEFAULT_LENGTH = 0.15;
 export const STADDLE_STONE_DEFAULT_TAPER_RATIO = 0.8;
