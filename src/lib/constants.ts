@@ -37,8 +37,8 @@ export const RAFTER_CHEEK_ANGLE_MIN = -Math.PI / 3; // -60 degrees
 export const RAFTER_CHEEK_ANGLE_MAX = Math.PI / 4; // 45 degrees
 export const RAFTER_ANGLE_MIN = 0;
 export const RAFTER_ANGLE_MAX = Math.PI / 3; // 60 degrees
-export const RAFTER_RISE_MIN = 0.5;
-export const RAFTER_RUN_MIN = 0.5;
+export const RAFTER_RISE_MIN = 0.15;
+export const RAFTER_RUN_MIN = 0.15;
 
 // Joint/End constraints
 export const END_SIZE_MIN_MATERIAL = 0.05; // Minimum material on either side of joint

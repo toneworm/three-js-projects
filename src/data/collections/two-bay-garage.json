@@ -340,7 +340,18 @@
       "cheekAngle": -0.7854,
       "randomiseTextureOffset": false
     },
-
+    {
+      "id": "jack-left-0",
+      "type": "rafter",
+      "position": [-2.925, 2.55, 1.8],
+      "height": 0.17,
+      "depth": 0.04,
+      "run": 0.346,
+      "rise": 0.255,
+      "mouthSize": 0.15,
+      "cheekAngle": 0.7854,
+      "randomiseTextureOffset": false
+    },
     {
       "id": "jack-left-1",
       "type": "rafter",
@@ -397,6 +408,18 @@
       "depth": 0.04,
       "run": 0.953,
       "rise": 0.677,
+      "mouthSize": 0.15,
+      "cheekAngle": -0.7854,
+      "randomiseTextureOffset": false
+    },
+    {
+      "id": "jack-left-6",
+      "type": "rafter",
+      "position": [-2.925, 2.55, -1.8],
+      "height": 0.17,
+      "depth": 0.04,
+      "run": 0.346,
+      "rise": 0.255,
       "mouthSize": 0.15,
       "cheekAngle": -0.7854,
       "randomiseTextureOffset": false
