@@ -13,27 +13,27 @@
       "id": "staddle-front-left",
       "type": "staddle-stone",
       "position": [-1.5, 0, 1.5],
-      "height": 0.3,
+      "height": 0.2,
       "depth": 0.15,
       "length": 0.15,
-      "taperRatio": 0.8
+      "taperRatio": 0.9
     },
     {
       "id": "staddle-front-right",
       "type": "staddle-stone",
       "position": [1.5, 0, 1.5],
-      "height": 0.3,
+      "height": 0.2,
       "depth": 0.15,
       "length": 0.15,
-      "taperRatio": 0.8
+      "taperRatio": 0.9
     },
 
     {
       "id": "post-front-left",
       "type": "post",
-      "position": [-1.5, 0.3, 1.5],
+      "position": [-1.5, 0.2, 1.5],
       "width": 0.15,
-      "height": 2.175,
+      "height": 2.275,
       "depth": 0.15,
       "endSize": 0.15,
       "tenonWidth": 0.05,
@@ -45,9 +45,9 @@
     {
       "id": "post-front-right",
       "type": "post",
-      "position": [1.5, 0.3, 1.5],
+      "position": [1.5, 0.2, 1.5],
       "width": 0.15,
-      "height": 2.175,
+      "height": 2.275,
       "depth": 0.15,
       "endSize": 0.15,
       "tenonWidth": 0.05,

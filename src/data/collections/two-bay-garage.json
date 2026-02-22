@@ -1,0 +1,344 @@
+{
+  "name": "Two-Bay Garage",
+  "description": "2-bay garage with hip roof: 6 posts (front 3 on staddle stones), 6 plates, 12 knee braces, king beam, and 4 hip rafters with 45° cheek cuts",
+  "components": [
+    {
+      "id": "base",
+      "type": "base",
+      "position": [0, 0, 0],
+      "width": 6.15
+    },
+
+    {
+      "id": "staddle-front-left",
+      "type": "staddle-stone",
+      "position": [-3, 0, 2.25],
+      "height": 0.2,
+      "depth": 0.15,
+      "length": 0.15,
+      "taperRatio": 0.9
+    },
+    {
+      "id": "staddle-front-centre",
+      "type": "staddle-stone",
+      "position": [0, 0, 2.25],
+      "height": 0.2,
+      "depth": 0.15,
+      "length": 0.15,
+      "taperRatio": 0.9
+    },
+    {
+      "id": "staddle-front-right",
+      "type": "staddle-stone",
+      "position": [3, 0, 2.25],
+      "height": 0.2,
+      "depth": 0.15,
+      "length": 0.15,
+      "taperRatio": 0.9
+    },
+
+    {
+      "id": "post-front-left",
+      "type": "post",
+      "position": [-3, 0.2, 2.25],
+      "width": 0.15,
+      "height": 2.275,
+      "depth": 0.15,
+      "endSize": 0.15,
+      "tenonWidth": 0.05,
+      "tenonDepth": 0.07,
+      "tenonHeight": 0.075,
+      "topEnd": "tenon",
+      "bottomEnd": "block"
+    },
+    {
+      "id": "post-front-centre",
+      "type": "post",
+      "position": [0, 0.2, 2.25],
+      "width": 0.15,
+      "height": 2.275,
+      "depth": 0.15,
+      "endSize": 0.15,
+      "tenonWidth": 0.05,
+      "tenonDepth": 0.07,
+      "tenonHeight": 0.075,
+      "topEnd": "tenon",
+      "bottomEnd": "block"
+    },
+    {
+      "id": "post-front-right",
+      "type": "post",
+      "position": [3, 0.2, 2.25],
+      "width": 0.15,
+      "height": 2.275,
+      "depth": 0.15,
+      "endSize": 0.15,
+      "tenonWidth": 0.05,
+      "tenonDepth": 0.07,
+      "tenonHeight": 0.075,
+      "topEnd": "tenon",
+      "bottomEnd": "block"
+    },
+    {
+      "id": "post-back-left",
+      "type": "post",
+      "position": [-3, 0, -2.25],
+      "width": 0.15,
+      "height": 2.475,
+      "depth": 0.15,
+      "endSize": 0.15,
+      "tenonWidth": 0.05,
+      "tenonDepth": 0.07,
+      "tenonHeight": 0.075,
+      "topEnd": "tenon",
+      "bottomEnd": "block"
+    },
+    {
+      "id": "post-back-centre",
+      "type": "post",
+      "position": [0, 0, -2.25],
+      "width": 0.15,
+      "height": 2.475,
+      "depth": 0.15,
+      "endSize": 0.15,
+      "tenonWidth": 0.05,
+      "tenonDepth": 0.07,
+      "tenonHeight": 0.075,
+      "topEnd": "tenon",
+      "bottomEnd": "block"
+    },
+    {
+      "id": "post-back-right",
+      "type": "post",
+      "position": [3, 0, -2.25],
+      "width": 0.15,
+      "height": 2.475,
+      "depth": 0.15,
+      "endSize": 0.15,
+      "tenonWidth": 0.05,
+      "tenonDepth": 0.07,
+      "tenonHeight": 0.075,
+      "topEnd": "tenon",
+      "bottomEnd": "block"
+    },
+
+    {
+      "id": "plate-front-left",
+      "type": "plate",
+      "position": [-1.5, 2.4, 2.25],
+      "length": 3.15,
+      "height": 0.15,
+      "depth": 0.15,
+      "jointSize": 0.15,
+      "leftEnd": "bottom",
+      "rightEnd": "block"
+    },
+    {
+      "id": "plate-front-right",
+      "type": "plate",
+      "position": [1.5, 2.4, 2.25],
+      "length": 3.15,
+      "height": 0.15,
+      "depth": 0.15,
+      "jointSize": 0.15,
+      "leftEnd": "block",
+      "rightEnd": "bottom"
+    },
+    {
+      "id": "plate-back-left",
+      "type": "plate",
+      "position": [-1.5, 2.4, -2.25],
+      "length": 3.15,
+      "height": 0.15,
+      "depth": 0.15,
+      "jointSize": 0.15,
+      "leftEnd": "bottom",
+      "rightEnd": "block"
+    },
+    {
+      "id": "plate-back-right",
+      "type": "plate",
+      "position": [1.5, 2.4, -2.25],
+      "length": 3.15,
+      "height": 0.15,
+      "depth": 0.15,
+      "jointSize": 0.15,
+      "leftEnd": "block",
+      "rightEnd": "bottom"
+    },
+    {
+      "id": "plate-side-left",
+      "type": "plate",
+      "position": [-3, 2.4, 0],
+      "rotation": [0, 1.5708, 0],
+      "length": 4.65,
+      "height": 0.15,
+      "depth": 0.15,
+      "jointSize": 0.15,
+      "leftEnd": "top",
+      "rightEnd": "top"
+    },
+    {
+      "id": "plate-side-right",
+      "type": "plate",
+      "position": [3, 2.4, 0],
+      "rotation": [0, 1.5708, 0],
+      "length": 4.65,
+      "height": 0.15,
+      "depth": 0.15,
+      "jointSize": 0.15,
+      "leftEnd": "top",
+      "rightEnd": "top"
+    },
+
+    {
+      "id": "brace-front-left-plate-left",
+      "type": "knee-brace",
+      "position": [-2.7875, 2.2375, 2.25],
+      "rotation": [0, -1.5708, 1.5708],
+      "scale": 1
+    },
+    {
+      "id": "brace-front-left-plate-right",
+      "type": "knee-brace",
+      "position": [-0.2125, 2.2375, 2.25],
+      "rotation": [0, 1.5708, 1.5708],
+      "scale": 1
+    },
+    {
+      "id": "brace-front-right-plate-left",
+      "type": "knee-brace",
+      "position": [0.2125, 2.2375, 2.25],
+      "rotation": [0, -1.5708, 1.5708],
+      "scale": 1
+    },
+    {
+      "id": "brace-front-right-plate-right",
+      "type": "knee-brace",
+      "position": [2.7875, 2.2375, 2.25],
+      "rotation": [0, 1.5708, 1.5708],
+      "scale": 1
+    },
+    {
+      "id": "brace-back-left-plate-left",
+      "type": "knee-brace",
+      "position": [-2.7875, 2.2375, -2.25],
+      "rotation": [0, -1.5708, 1.5708],
+      "scale": 1
+    },
+    {
+      "id": "brace-back-left-plate-right",
+      "type": "knee-brace",
+      "position": [-0.2125, 2.2375, -2.25],
+      "rotation": [0, 1.5708, 1.5708],
+      "scale": 1
+    },
+    {
+      "id": "brace-back-right-plate-left",
+      "type": "knee-brace",
+      "position": [0.2125, 2.2375, -2.25],
+      "rotation": [0, -1.5708, 1.5708],
+      "scale": 1
+    },
+    {
+      "id": "brace-back-right-plate-right",
+      "type": "knee-brace",
+      "position": [2.7875, 2.2375, -2.25],
+      "rotation": [0, 1.5708, 1.5708],
+      "scale": 1
+    },
+    {
+      "id": "brace-side-left-front",
+      "type": "knee-brace",
+      "position": [-3, 2.2375, 2.0375],
+      "rotation": [0, 0, 1.5708],
+      "scale": 1
+    },
+    {
+      "id": "brace-side-left-back",
+      "type": "knee-brace",
+      "position": [-3, 2.2375, -2.0375],
+      "rotation": [0, -3.1416, 1.5708],
+      "scale": 1
+    },
+    {
+      "id": "brace-side-right-front",
+      "type": "knee-brace",
+      "position": [3, 2.2375, 2.0375],
+      "rotation": [0, 0, 1.5708],
+      "scale": 1
+    },
+    {
+      "id": "brace-side-right-back",
+      "type": "knee-brace",
+      "position": [3, 2.2375, -2.0375],
+      "rotation": [0, 3.1416, 1.5708],
+      "scale": 1
+    },
+
+    {
+      "id": "king-beam",
+      "type": "plate",
+      "position": [0, 4.055, 0],
+      "length": 1.6,
+      "height": 0.18,
+      "depth": 0.05,
+      "jointSize": 0.15,
+      "leftEnd": "block",
+      "rightEnd": "block"
+    },
+
+    {
+      "id": "hip-rafter-front-left",
+      "type": "rafter",
+      "position": [-2.925, 2.55, 2.175],
+      "rotation": [0, 0.7854, 0],
+      "height": 0.17,
+      "depth": 0.04,
+      "rise": 1.51,
+      "run": 3.04,
+      "mouthSize": 0.17,
+      "cheekAngle": -0.7854,
+      "randomiseTextureOffset": false
+    },
+    {
+      "id": "hip-rafter-front-right",
+      "type": "rafter",
+      "position": [2.925, 2.55, 2.175],
+      "rotation": [0, 2.3562, 0],
+      "height": 0.17,
+      "depth": 0.04,
+      "rise": 1.51,
+      "run": 3.04,
+      "mouthSize": 0.17,
+      "cheekAngle": 0.7854,
+      "randomiseTextureOffset": false
+    },
+    {
+      "id": "hip-rafter-back-left",
+      "type": "rafter",
+      "position": [-2.925, 2.55, -2.175],
+      "rotation": [0, -0.7854, 0],
+      "height": 0.17,
+      "depth": 0.04,
+      "rise": 1.51,
+      "run": 3.04,
+      "mouthSize": 0.17,
+      "cheekAngle": 0.7854,
+      "randomiseTextureOffset": false
+    },
+    {
+      "id": "hip-rafter-back-right",
+      "type": "rafter",
+      "position": [2.925, 2.55, -2.175],
+      "rotation": [0, -2.3562, 0],
+      "height": 0.17,
+      "depth": 0.04,
+      "rise": 1.51,
+      "run": 3.04,
+      "mouthSize": 0.17,
+      "cheekAngle": -0.7854,
+      "randomiseTextureOffset": false
+    }
+  ]
+}
