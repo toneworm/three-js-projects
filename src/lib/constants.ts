@@ -95,8 +95,9 @@ export const BASE_WIDTH_MIN = 4.5;
 export const BASE_WIDTH_MAX = 20;
 
 // Base fixed dimensions
-export const BASE_DEPTH = 5.85;
+export const BASE_DEPTH = 6;
 export const BASE_HEIGHT = 0.05;
+export const BASE_DEPTH_OFFSET = (BASE_DEPTH - PLINTH_DEPTH) / 2;
 
 // Base defaults
 export const BASE_DEFAULT_WIDTH = 10;

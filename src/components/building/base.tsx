@@ -10,6 +10,7 @@ import {
   BASE_HEIGHT,
   BASE_WIDTH_MAX,
   BASE_WIDTH_MIN,
+  BASE_DEPTH_OFFSET,
 } from "@/lib/constants";
 import type { BaseProps } from "@/types/building";
 
@@ -35,7 +36,7 @@ export default function Base({
 
   const { geometry, material } = useMemo(() => {
     const geo = new THREE.BoxGeometry(width, height, depth);
-    geo.translate(0, -height / 2, 0);
+    geo.translate(0, -height / 2, BASE_DEPTH_OFFSET);
 
     const mat = new THREE.MeshStandardMaterial({
       map: diffuse,
