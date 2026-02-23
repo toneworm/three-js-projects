@@ -1,0 +1,278 @@
+{
+  "name": "Three Bay Garage Frame - Corrected Z Alignment",
+  "description": "Three bay garage frame with posts and plates shifted +0.075 on Z to align outer faces with foundation edges.",
+  "components": [
+    {
+      "id": "plinth",
+      "type": "plinth",
+      "position": [0, 0, 0],
+      "width": 9.0
+    },
+    {
+      "id": "base",
+      "type": "base",
+      "position": [0, 0, 0],
+      "width": 9.0
+    },
+    {
+      "id": "plate-left-sole",
+      "type": "plate",
+      "position": [-4.3925, 0.3, 0],
+      "rotation": [0, 1.5708, 0],
+      "length": 5.85,
+      "height": 0.05,
+      "depth": 0.215,
+      "leftEnd": "block",
+      "rightEnd": "block"
+    },
+    {
+      "id": "plate-back-left-sole",
+      "type": "plate",
+      "position": [-2.1425, 0.3, -2.8175],
+      "length": 4.285,
+      "height": 0.05,
+      "depth": 0.215,
+      "leftEnd": "block",
+      "rightEnd": "block"
+    },
+    {
+      "id": "plate-back-right-sole",
+      "type": "plate",
+      "position": [2.1425, 0.3, -2.8175],
+      "length": 4.285,
+      "height": 0.05,
+      "depth": 0.215,
+      "leftEnd": "block",
+      "rightEnd": "block"
+    },
+    {
+      "id": "plate-right-sole",
+      "type": "plate",
+      "position": [4.3925, 0.3, 0],
+      "rotation": [0, 1.5708, 0],
+      "length": 5.85,
+      "height": 0.05,
+      "depth": 0.215,
+      "leftEnd": "block",
+      "rightEnd": "block"
+    },
+    {
+      "id": "post-f-1",
+      "type": "post",
+      "position": [-4.425, 0, 3.0],
+      "width": 0.15,
+      "height": 2.475,
+      "depth": 0.15,
+      "topEnd": "tenon",
+      "bottomEnd": "block",
+      "endSize": 0.15
+    },
+    {
+      "id": "post-f-2",
+      "type": "post",
+      "position": [-1.475, 0, 3.0],
+      "width": 0.15,
+      "height": 2.475,
+      "depth": 0.15,
+      "topEnd": "tenon",
+      "bottomEnd": "block",
+      "endSize": 0.15
+    },
+    {
+      "id": "post-f-3",
+      "type": "post",
+      "position": [1.475, 0, 3.0],
+      "width": 0.15,
+      "height": 2.475,
+      "depth": 0.15,
+      "topEnd": "tenon",
+      "bottomEnd": "block",
+      "endSize": 0.15
+    },
+    {
+      "id": "post-f-4",
+      "type": "post",
+      "position": [4.425, 0, 3.0],
+      "width": 0.15,
+      "height": 2.475,
+      "depth": 0.15,
+      "topEnd": "tenon",
+      "bottomEnd": "block",
+      "endSize": 0.15
+    },
+    {
+      "id": "post-b-1",
+      "type": "post",
+      "position": [-4.425, 0.35, -2.85],
+      "width": 0.15,
+      "height": 2.125,
+      "depth": 0.15,
+      "topEnd": "tenon",
+      "bottomEnd": "block",
+      "endSize": 0.15
+    },
+    {
+      "id": "post-b-2",
+      "type": "post",
+      "position": [-1.475, 0.35, -2.85],
+      "width": 0.15,
+      "height": 2.125,
+      "depth": 0.15,
+      "topEnd": "tenon",
+      "bottomEnd": "block",
+      "endSize": 0.15
+    },
+    {
+      "id": "post-b-3",
+      "type": "post",
+      "position": [1.475, 0.35, -2.85],
+      "width": 0.15,
+      "height": 2.125,
+      "depth": 0.15,
+      "topEnd": "tenon",
+      "bottomEnd": "block",
+      "endSize": 0.15
+    },
+    {
+      "id": "post-b-4",
+      "type": "post",
+      "position": [4.425, 0.35, -2.85],
+      "width": 0.15,
+      "height": 2.125,
+      "depth": 0.15,
+      "topEnd": "tenon",
+      "bottomEnd": "block",
+      "endSize": 0.15
+    },
+    {
+      "id": "plate-f-left",
+      "type": "plate",
+      "position": [-2.95, 2.4, 3.0],
+      "length": 3.1,
+      "height": 0.15,
+      "depth": 0.15,
+      "leftEnd": "bottom",
+      "rightEnd": "bottom"
+    },
+    {
+      "id": "plate-f-mid",
+      "type": "plate",
+      "position": [0, 2.4, 3.0],
+      "length": 3.1,
+      "height": 0.15,
+      "depth": 0.15,
+      "leftEnd": "top",
+      "rightEnd": "bottom"
+    },
+    {
+      "id": "plate-f-right",
+      "type": "plate",
+      "position": [2.95, 2.4, 3.0],
+      "length": 3.1,
+      "height": 0.15,
+      "depth": 0.15,
+      "leftEnd": "top",
+      "rightEnd": "bottom"
+    },
+    {
+      "id": "plate-b-left",
+      "type": "plate",
+      "position": [-2.95, 2.4, -2.85],
+      "length": 3.1,
+      "height": 0.15,
+      "depth": 0.15,
+      "leftEnd": "bottom",
+      "rightEnd": "bottom"
+    },
+    {
+      "id": "plate-b-mid",
+      "type": "plate",
+      "position": [0, 2.4, -2.85],
+      "length": 3.1,
+      "height": 0.15,
+      "depth": 0.15,
+      "leftEnd": "top",
+      "rightEnd": "bottom"
+    },
+    {
+      "id": "plate-b-right",
+      "type": "plate",
+      "position": [2.95, 2.4, -2.85],
+      "length": 3.1,
+      "height": 0.15,
+      "depth": 0.15,
+      "leftEnd": "top",
+      "rightEnd": "bottom"
+    },
+    {
+      "id": "plate-side-left",
+      "type": "plate",
+      "position": [-4.425, 2.4, 0.075],
+      "rotation": [0, 1.5708, 0],
+      "length": 6.0,
+      "height": 0.15,
+      "depth": 0.15,
+      "leftEnd": "top",
+      "rightEnd": "top"
+    },
+    {
+      "id": "plate-side-right",
+      "type": "plate",
+      "position": [4.425, 2.4, 0.075],
+      "rotation": [0, 1.5708, 0],
+      "length": 6.0,
+      "height": 0.15,
+      "depth": 0.15,
+      "leftEnd": "top",
+      "rightEnd": "top"
+    },
+    {
+      "id": "brace-f-l-x",
+      "type": "knee-brace",
+      "position": [-4.2125, 2.2375, 3.0],
+      "rotation": [0, -1.5708, 1.5708]
+    },
+    {
+      "id": "brace-f-l-z",
+      "type": "knee-brace",
+      "position": [-4.425, 2.2375, 2.7875],
+      "rotation": [0, 0, 1.5708]
+    },
+    {
+      "id": "brace-f-r-x",
+      "type": "knee-brace",
+      "position": [4.2125, 2.2375, 3.0],
+      "rotation": [0, 1.5708, 1.5708]
+    },
+    {
+      "id": "brace-f-r-z",
+      "type": "knee-brace",
+      "position": [4.425, 2.2375, 2.7875],
+      "rotation": [0, 0, 1.5708]
+    },
+    {
+      "id": "brace-b-l-x",
+      "type": "knee-brace",
+      "position": [-4.2125, 2.2375, -2.85],
+      "rotation": [0, -1.5708, 1.5708]
+    },
+    {
+      "id": "brace-b-l-z",
+      "type": "knee-brace",
+      "position": [-4.425, 2.2375, -2.6375],
+      "rotation": [0, -3.1416, 1.5708]
+    },
+    {
+      "id": "brace-b-r-x",
+      "type": "knee-brace",
+      "position": [4.2125, 2.2375, -2.85],
+      "rotation": [0, 1.5708, 1.5708]
+    },
+    {
+      "id": "brace-b-r-z",
+      "type": "knee-brace",
+      "position": [4.425, 2.2375, -2.6375],
+      "rotation": [0, 3.1416, 1.5708]
+    }
+  ]
+}
