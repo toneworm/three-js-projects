@@ -1,0 +1,54 @@
+{
+  "name": "Base One Bay Garage",
+  "description": "Single bay garage foundation with plinth, base slab, and sole plates on three sides (open front at +Z)",
+  "components": [
+    {
+      "id": "plinth",
+      "type": "plinth",
+      "position": [0, 0, 0],
+      "width": 4.5
+    },
+    {
+      "id": "base",
+      "type": "base",
+      "position": [0, 0, 0],
+      "width": 4.5
+    },
+
+    {
+      "id": "plate-left",
+      "type": "plate",
+      "position": [-2.1375, 0.3, 0],
+      "rotation": [0, 1.5708, 0],
+      "length": 5.85,
+      "height": 0.05,
+      "depth": 0.225,
+      "jointSize": 0.15,
+      "leftEnd": "block",
+      "rightEnd": "block"
+    },
+    {
+      "id": "plate-back",
+      "type": "plate",
+      "position": [0, 0.3, -2.8125],
+      "length": 4.05,
+      "height": 0.05,
+      "depth": 0.225,
+      "jointSize": 0.15,
+      "leftEnd": "block",
+      "rightEnd": "block"
+    },
+    {
+      "id": "plate-right",
+      "type": "plate",
+      "position": [2.1375, 0.3, 0],
+      "rotation": [0, 1.5708, 0],
+      "length": 5.85,
+      "height": 0.05,
+      "depth": 0.225,
+      "jointSize": 0.15,
+      "leftEnd": "block",
+      "rightEnd": "block"
+    }
+  ]
+}

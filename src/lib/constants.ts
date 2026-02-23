@@ -79,7 +79,7 @@ export const RAFTER_DEFAULT_UV_SCALE = 0.2;
 export const BIRDSMOUTH_MAX_RATIO = 0.75;
 
 // Plinth dimension constraints
-export const PLINTH_WIDTH_MIN = 5;
+export const PLINTH_WIDTH_MIN = 4.5;
 export const PLINTH_WIDTH_MAX = 20;
 
 // Plinth fixed dimensions (constants)
@@ -91,7 +91,7 @@ export const PLINTH_HEIGHT = 0.3;
 export const PLINTH_DEFAULT_WIDTH = 10;
 
 // Base dimension constraints (same as plinth width)
-export const BASE_WIDTH_MIN = 5;
+export const BASE_WIDTH_MIN = 4.5;
 export const BASE_WIDTH_MAX = 20;
 
 // Base fixed dimensions
