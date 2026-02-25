@@ -1,6 +1,6 @@
 {
   "name": "Three Bay Garage Frame",
-  "description": "Three bay garage frame with front, middle, and back post rows, wall plates, side plates, tie beams on columns 2 and 3, and knee braces.",
+  "description": "Three bay garage frame with staddle stones under front posts, studding on back and right walls, hip rafters, king beam, and jack/common rafters on back and right slopes.",
   "components": [
     {
       "id": "plinth",
@@ -58,11 +58,48 @@
     },
 
     {
+      "id": "staddle-f-1",
+      "type": "staddle-stone",
+      "position": [-4.425, 0, 3.0],
+      "height": 0.215,
+      "depth": 0.15,
+      "length": 0.15,
+      "taperRatio": 0.95
+    },
+    {
+      "id": "staddle-f-2",
+      "type": "staddle-stone",
+      "position": [-1.475, 0, 3.0],
+      "height": 0.215,
+      "depth": 0.15,
+      "length": 0.15,
+      "taperRatio": 0.95
+    },
+    {
+      "id": "staddle-f-3",
+      "type": "staddle-stone",
+      "position": [1.475, 0, 3.0],
+      "height": 0.215,
+      "depth": 0.15,
+      "length": 0.15,
+      "taperRatio": 0.95
+    },
+    {
+      "id": "staddle-f-4",
+      "type": "staddle-stone",
+      "position": [4.425, 0, 3.0],
+      "height": 0.215,
+      "depth": 0.15,
+      "length": 0.15,
+      "taperRatio": 0.95
+    },
+
+    {
       "id": "post-f-1",
       "type": "post",
-      "position": [-4.425, 0, 3.0],
+      "position": [-4.425, 0.215, 3.0],
       "width": 0.15,
-      "height": 2.475,
+      "height": 2.26,
       "depth": 0.15,
       "topEnd": "tenon",
       "bottomEnd": "block",
@@ -71,9 +108,9 @@
     {
       "id": "post-f-2",
       "type": "post",
-      "position": [-1.475, 0, 3.0],
+      "position": [-1.475, 0.215, 3.0],
       "width": 0.15,
-      "height": 2.475,
+      "height": 2.26,
       "depth": 0.15,
       "topEnd": "tenon",
       "bottomEnd": "block",
@@ -82,9 +119,9 @@
     {
       "id": "post-f-3",
       "type": "post",
-      "position": [1.475, 0, 3.0],
+      "position": [1.475, 0.215, 3.0],
       "width": 0.15,
-      "height": 2.475,
+      "height": 2.26,
       "depth": 0.15,
       "topEnd": "tenon",
       "bottomEnd": "block",
@@ -93,9 +130,9 @@
     {
       "id": "post-f-4",
       "type": "post",
-      "position": [4.425, 0, 3.0],
+      "position": [4.425, 0.215, 3.0],
       "width": 0.15,
-      "height": 2.475,
+      "height": 2.26,
       "depth": 0.15,
       "topEnd": "tenon",
       "bottomEnd": "block",
@@ -309,7 +346,7 @@
       "height": 0.17,
       "depth": 0.06,
       "run": 3.995,
-      "angle": 0.5236,
+      "angle": 0.366519,
       "mouthSize": 0.225,
       "cheekAngle": -0.7854
     },
@@ -321,7 +358,7 @@
       "height": 0.17,
       "depth": 0.06,
       "run": 3.995,
-      "angle": 0.5236,
+      "angle": 0.366519,
       "mouthSize": 0.225,
       "cheekAngle": 0.7854
     },
@@ -333,7 +370,7 @@
       "height": 0.17,
       "depth": 0.06,
       "run": 3.995,
-      "angle": 0.5236,
+      "angle": 0.366519,
       "mouthSize": 0.225,
       "cheekAngle": 0.7854
     },
@@ -345,15 +382,15 @@
       "height": 0.17,
       "depth": 0.06,
       "run": 3.995,
-      "angle": 0.5236,
+      "angle": 0.366519,
       "mouthSize": 0.225,
       "cheekAngle": -0.7854
     },
     {
       "id": "king-beam",
       "type": "plate",
-      "position": [0, 4.89, 0.075],
-      "length": 3.12,
+      "position": [0, 4.115, 0.075],
+      "length": 3.14,
       "height": 0.15,
       "depth": 0.05,
       "leftEnd": "block",
@@ -455,6 +492,438 @@
       "type": "knee-brace",
       "position": [4.425, 2.2375, -2.6375],
       "rotation": [0, 3.1416, 1.5708]
+    },
+
+    {
+      "id": "stud-b-1",
+      "type": "studding",
+      "position": [-3.835, 0.35, -2.85],
+      "rotation": [0, 1.5708, 0],
+      "width": 0.1,
+      "height": 2.05,
+      "thickness": 0.05,
+      "bottomPlumbCutAngle": 0,
+      "topPlumbCutAngle": 0
+    },
+    {
+      "id": "stud-b-2",
+      "type": "studding",
+      "position": [-3.245, 0.35, -2.85],
+      "rotation": [0, 1.5708, 0],
+      "width": 0.1,
+      "height": 2.05,
+      "thickness": 0.05,
+      "bottomPlumbCutAngle": 0,
+      "topPlumbCutAngle": 0
+    },
+    {
+      "id": "stud-b-3",
+      "type": "studding",
+      "position": [-2.655, 0.35, -2.85],
+      "rotation": [0, 1.5708, 0],
+      "width": 0.1,
+      "height": 2.05,
+      "thickness": 0.05,
+      "bottomPlumbCutAngle": 0,
+      "topPlumbCutAngle": 0
+    },
+    {
+      "id": "stud-b-4",
+      "type": "studding",
+      "position": [-2.065, 0.35, -2.85],
+      "rotation": [0, 1.5708, 0],
+      "width": 0.1,
+      "height": 2.05,
+      "thickness": 0.05,
+      "bottomPlumbCutAngle": 0,
+      "topPlumbCutAngle": 0
+    },
+    {
+      "id": "stud-b-5",
+      "type": "studding",
+      "position": [-0.885, 0.35, -2.85],
+      "rotation": [0, 1.5708, 0],
+      "width": 0.1,
+      "height": 2.05,
+      "thickness": 0.05,
+      "bottomPlumbCutAngle": 0,
+      "topPlumbCutAngle": 0
+    },
+    {
+      "id": "stud-b-6",
+      "type": "studding",
+      "position": [-0.295, 0.35, -2.85],
+      "rotation": [0, 1.5708, 0],
+      "width": 0.1,
+      "height": 2.05,
+      "thickness": 0.05,
+      "bottomPlumbCutAngle": 0,
+      "topPlumbCutAngle": 0
+    },
+    {
+      "id": "stud-b-7",
+      "type": "studding",
+      "position": [0.295, 0.35, -2.85],
+      "rotation": [0, 1.5708, 0],
+      "width": 0.1,
+      "height": 2.05,
+      "thickness": 0.05,
+      "bottomPlumbCutAngle": 0,
+      "topPlumbCutAngle": 0
+    },
+    {
+      "id": "stud-b-8",
+      "type": "studding",
+      "position": [0.885, 0.35, -2.85],
+      "rotation": [0, 1.5708, 0],
+      "width": 0.1,
+      "height": 2.05,
+      "thickness": 0.05,
+      "bottomPlumbCutAngle": 0,
+      "topPlumbCutAngle": 0
+    },
+    {
+      "id": "stud-b-9",
+      "type": "studding",
+      "position": [2.065, 0.35, -2.85],
+      "rotation": [0, 1.5708, 0],
+      "width": 0.1,
+      "height": 2.05,
+      "thickness": 0.05,
+      "bottomPlumbCutAngle": 0,
+      "topPlumbCutAngle": 0
+    },
+    {
+      "id": "stud-b-10",
+      "type": "studding",
+      "position": [2.655, 0.35, -2.85],
+      "rotation": [0, 1.5708, 0],
+      "width": 0.1,
+      "height": 2.05,
+      "thickness": 0.05,
+      "bottomPlumbCutAngle": 0,
+      "topPlumbCutAngle": 0
+    },
+    {
+      "id": "stud-b-11",
+      "type": "studding",
+      "position": [3.245, 0.35, -2.85],
+      "rotation": [0, 1.5708, 0],
+      "width": 0.1,
+      "height": 2.05,
+      "thickness": 0.05,
+      "bottomPlumbCutAngle": 0,
+      "topPlumbCutAngle": 0
+    },
+    {
+      "id": "stud-b-12",
+      "type": "studding",
+      "position": [3.835, 0.35, -2.85],
+      "rotation": [0, 1.5708, 0],
+      "width": 0.1,
+      "height": 2.05,
+      "thickness": 0.05,
+      "bottomPlumbCutAngle": 0,
+      "topPlumbCutAngle": 0
+    },
+
+    {
+      "id": "stud-r-1",
+      "type": "studding",
+      "position": [4.425, 0.35, 2.415],
+      "width": 0.1,
+      "height": 2.05,
+      "thickness": 0.05,
+      "bottomPlumbCutAngle": 0,
+      "topPlumbCutAngle": 0
+    },
+    {
+      "id": "stud-r-2",
+      "type": "studding",
+      "position": [4.425, 0.35, 1.83],
+      "width": 0.1,
+      "height": 2.05,
+      "thickness": 0.05,
+      "bottomPlumbCutAngle": 0,
+      "topPlumbCutAngle": 0
+    },
+    {
+      "id": "stud-r-3",
+      "type": "studding",
+      "position": [4.425, 0.35, 1.245],
+      "width": 0.1,
+      "height": 2.05,
+      "thickness": 0.05,
+      "bottomPlumbCutAngle": 0,
+      "topPlumbCutAngle": 0
+    },
+    {
+      "id": "stud-r-4",
+      "type": "studding",
+      "position": [4.425, 0.35, 0.66],
+      "width": 0.1,
+      "height": 2.05,
+      "thickness": 0.05,
+      "bottomPlumbCutAngle": 0,
+      "topPlumbCutAngle": 0
+    },
+    {
+      "id": "stud-r-5",
+      "type": "studding",
+      "position": [4.425, 0.35, -0.51],
+      "width": 0.1,
+      "height": 2.05,
+      "thickness": 0.05,
+      "bottomPlumbCutAngle": 0,
+      "topPlumbCutAngle": 0
+    },
+    {
+      "id": "stud-r-6",
+      "type": "studding",
+      "position": [4.425, 0.35, -1.095],
+      "width": 0.1,
+      "height": 2.05,
+      "thickness": 0.05,
+      "bottomPlumbCutAngle": 0,
+      "topPlumbCutAngle": 0
+    },
+    {
+      "id": "stud-r-7",
+      "type": "studding",
+      "position": [4.425, 0.35, -1.68],
+      "width": 0.1,
+      "height": 2.05,
+      "thickness": 0.05,
+      "bottomPlumbCutAngle": 0,
+      "topPlumbCutAngle": 0
+    },
+    {
+      "id": "stud-r-8",
+      "type": "studding",
+      "position": [4.425, 0.35, -2.265],
+      "width": 0.1,
+      "height": 2.05,
+      "thickness": 0.05,
+      "bottomPlumbCutAngle": 0,
+      "topPlumbCutAngle": 0
+    },
+
+    {
+      "id": "rafter-b-jack-l1",
+      "type": "rafter",
+      "position": [-3.75, 2.55, -2.775],
+      "rotation": [0, -1.5708, 0],
+      "height": 0.17,
+      "depth": 0.04,
+      "run": 0.56,
+      "angle": 0.5,
+      "mouthSize": 0.15,
+      "cheekAngle": 0.7854
+    },
+    {
+      "id": "rafter-b-jack-l2",
+      "type": "rafter",
+      "position": [-3.0, 2.55, -2.775],
+      "rotation": [0, -1.5708, 0],
+      "height": 0.17,
+      "depth": 0.04,
+      "run": 1.31,
+      "angle": 0.5,
+      "mouthSize": 0.15,
+      "cheekAngle": 0.7854
+    },
+    {
+      "id": "rafter-b-jack-l3",
+      "type": "rafter",
+      "position": [-2.25, 2.55, -2.775],
+      "rotation": [0, -1.5708, 0],
+      "height": 0.17,
+      "depth": 0.04,
+      "run": 2.06,
+      "angle": 0.5,
+      "mouthSize": 0.15,
+      "cheekAngle": 0.7854
+    },
+    {
+      "id": "rafter-b-common-1",
+      "type": "rafter",
+      "position": [-1.3725, 2.55, -2.775],
+      "rotation": [0, -1.5708, 0],
+      "height": 0.17,
+      "depth": 0.04,
+      "run": 2.825,
+      "angle": 0.5,
+      "mouthSize": 0.15,
+      "cheekAngle": 0
+    },
+    {
+      "id": "rafter-b-common-2",
+      "type": "rafter",
+      "position": [-0.75, 2.55, -2.775],
+      "rotation": [0, -1.5708, 0],
+      "height": 0.17,
+      "depth": 0.04,
+      "run": 2.825,
+      "angle": 0.5,
+      "mouthSize": 0.15,
+      "cheekAngle": 0
+    },
+    {
+      "id": "rafter-b-common-3",
+      "type": "rafter",
+      "position": [0, 2.55, -2.775],
+      "rotation": [0, -1.5708, 0],
+      "height": 0.17,
+      "depth": 0.04,
+      "run": 2.825,
+      "angle": 0.5,
+      "mouthSize": 0.15,
+      "cheekAngle": 0
+    },
+    {
+      "id": "rafter-b-common-4",
+      "type": "rafter",
+      "position": [0.75, 2.55, -2.775],
+      "rotation": [0, -1.5708, 0],
+      "height": 0.17,
+      "depth": 0.04,
+      "run": 2.825,
+      "angle": 0.5,
+      "mouthSize": 0.15,
+      "cheekAngle": 0
+    },
+    {
+      "id": "rafter-b-common-5",
+      "type": "rafter",
+      "position": [1.3725, 2.55, -2.775],
+      "rotation": [0, -1.5708, 0],
+      "height": 0.17,
+      "depth": 0.04,
+      "run": 2.825,
+      "angle": 0.5,
+      "mouthSize": 0.15,
+      "cheekAngle": 0
+    },
+    {
+      "id": "rafter-b-jack-r1",
+      "type": "rafter",
+      "position": [2.25, 2.55, -2.775],
+      "rotation": [0, -1.5708, 0],
+      "height": 0.17,
+      "depth": 0.04,
+      "run": 2.06,
+      "angle": 0.5,
+      "mouthSize": 0.15,
+      "cheekAngle": -0.7854
+    },
+    {
+      "id": "rafter-b-jack-r2",
+      "type": "rafter",
+      "position": [3.0, 2.55, -2.775],
+      "rotation": [0, -1.5708, 0],
+      "height": 0.17,
+      "depth": 0.04,
+      "run": 1.31,
+      "angle": 0.5,
+      "mouthSize": 0.15,
+      "cheekAngle": -0.7854
+    },
+    {
+      "id": "rafter-b-jack-r3",
+      "type": "rafter",
+      "position": [3.75, 2.55, -2.775],
+      "rotation": [0, -1.5708, 0],
+      "height": 0.17,
+      "depth": 0.04,
+      "run": 0.56,
+      "angle": 0.5,
+      "mouthSize": 0.15,
+      "cheekAngle": -0.7854
+    },
+
+    {
+      "id": "rafter-r-jack-f1",
+      "type": "rafter",
+      "position": [4.35, 2.55, 2.325],
+      "rotation": [0, 3.1416, 0],
+      "height": 0.17,
+      "depth": 0.04,
+      "run": 0.56,
+      "angle": 0.5,
+      "mouthSize": 0.15,
+      "cheekAngle": -0.7854
+    },
+    {
+      "id": "rafter-r-jack-f2",
+      "type": "rafter",
+      "position": [4.35, 2.55, 1.575],
+      "rotation": [0, 3.1416, 0],
+      "height": 0.17,
+      "depth": 0.04,
+      "run": 1.31,
+      "angle": 0.5,
+      "mouthSize": 0.15,
+      "cheekAngle": -0.7854
+    },
+    {
+      "id": "rafter-r-jack-f3",
+      "type": "rafter",
+      "position": [4.35, 2.55, 0.825],
+      "rotation": [0, 3.1416, 0],
+      "height": 0.17,
+      "depth": 0.04,
+      "run": 2.06,
+      "angle": 0.5,
+      "mouthSize": 0.15,
+      "cheekAngle": -0.7854
+    },
+    {
+      "id": "rafter-r-common-1",
+      "type": "rafter",
+      "position": [4.35, 2.55, 0.075],
+      "rotation": [0, 3.1416, 0],
+      "height": 0.17,
+      "depth": 0.04,
+      "run": 2.78,
+      "angle": 0.5,
+      "mouthSize": 0.15,
+      "cheekAngle": 0
+    },
+    {
+      "id": "rafter-r-jack-b1",
+      "type": "rafter",
+      "position": [4.35, 2.55, -0.675],
+      "rotation": [0, 3.1416, 0],
+      "height": 0.17,
+      "depth": 0.04,
+      "run": 2.06,
+      "angle": 0.5,
+      "mouthSize": 0.15,
+      "cheekAngle": 0.7854
+    },
+    {
+      "id": "rafter-r-jack-b2",
+      "type": "rafter",
+      "position": [4.35, 2.55, -1.425],
+      "rotation": [0, 3.1416, 0],
+      "height": 0.17,
+      "depth": 0.04,
+      "run": 1.31,
+      "angle": 0.5,
+      "mouthSize": 0.15,
+      "cheekAngle": 0.7854
+    },
+    {
+      "id": "rafter-r-jack-b3",
+      "type": "rafter",
+      "position": [4.35, 2.55, -2.175],
+      "rotation": [0, 3.1416, 0],
+      "height": 0.17,
+      "depth": 0.04,
+      "run": 0.56,
+      "angle": 0.5,
+      "mouthSize": 0.15,
+      "cheekAngle": 0.7854
     }
   ]
 }
