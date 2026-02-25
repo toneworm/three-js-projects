@@ -7,10 +7,10 @@ import * as THREE from "three";
 
 import {
   BASE_DEPTH,
+  BASE_DEPTH_OFFSET,
   BASE_HEIGHT,
   BASE_WIDTH_MAX,
   BASE_WIDTH_MIN,
-  BASE_DEPTH_OFFSET,
 } from "@/lib/constants";
 import type { BaseProps } from "@/types/building";
 
