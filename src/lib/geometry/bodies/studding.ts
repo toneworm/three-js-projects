@@ -12,15 +12,17 @@ export function createStuddingGeo(
   const w = width / 2;
   const t = thickness / 2;
   const h = height;
-  const bo = Math.tan(bottomAngle) * t;
-  const to = Math.tan(topAngle) * t;
+  // Angles now affect left/right (X direction) instead of back/front (Z)
+  const bo = Math.tan(bottomAngle) * w;
+  const to = Math.tan(topAngle) * w;
 
-  const bottomFrontY = bo;
-  const bottomBackY = -bo;
+  // Bottom Y values vary from left (-w) to right (+w)
+  const bottomLeftY = -bo;
+  const bottomRightY = bo;
 
-  // Top vertices (y = height, adjusted for top plumb cut)
-  const topFrontY = h + to;
-  const topBackY = h - to;
+  // Top Y values vary from left (-w) to right (+w)
+  const topLeftY = h - to;
+  const topRightY = h + to;
 
   // UV calculations based on perimeter wrapping (like post)
   const perimeter = 2 * (width + thickness);
@@ -29,41 +31,43 @@ export function createStuddingGeo(
   const uBack = (2 * width + thickness) / perimeter;
 
   // Calculate UV v coordinates accounting for actual face heights
-  // Front face height varies due to plumb cuts
-  const frontHeight = Math.abs(topFrontY - bo);
-  const backHeight = Math.abs(topBackY + bo);
+  const leftHeight = Math.abs(topLeftY - bottomLeftY);
+  const rightHeight = Math.abs(topRightY - bottomRightY);
 
-  const vFront = frontHeight / perimeter;
-  const vBack = backHeight / perimeter;
-  const vSide = h / perimeter;
+  const vFront = h / perimeter;
+  const vBack = h / perimeter;
+  const vLeft = leftHeight / perimeter;
+  const vRight = rightHeight / perimeter;
 
   // prettier-ignore
   // biome-ignore format: buffer array
   const tris = new Float32Array([
-    // Front face (-z to +z is forward)
-    -w, topFrontY, t,       -w, bottomFrontY, t,    w, bottomFrontY, t,
-    w, bottomFrontY, t,     w, topFrontY, t,        -w, topFrontY, t,
+    // Front face (-z to +z is forward) - angles affect left/right
+    -w, topLeftY, t,        -w, bottomLeftY, t,     w, bottomRightY, t,
+    w, bottomRightY, t,     w, topRightY, t,        -w, topLeftY, t,
 
-    // Right face
-    w, topFrontY, t,        w, bottomFrontY, t,     w, bottomBackY, -t,
-    w, bottomBackY, -t,     w, topBackY, -t,        w, topFrontY, t,
+    // Right face - constant height on right side
+    w, topRightY, t,        w, bottomRightY, t,     w, bottomRightY, -t,
+    w, bottomRightY, -t,    w, topRightY, -t,       w, topRightY, t,
 
-    // Back face
-    w, topBackY, -t,        w, bottomBackY, -t,     -w, bottomBackY, -t,
-    -w, bottomBackY, -t,    -w, topBackY, -t,       w, topBackY, -t,
+    // Back face - angles affect left/right (mirrored)
+    w, topRightY, -t,       w, bottomRightY, -t,    -w, bottomLeftY, -t,
+    -w, bottomLeftY, -t,    -w, topLeftY, -t,       w, topRightY, -t,
 
-    // Left face
-    -w, topBackY, -t,       -w, bottomBackY, -t,    -w, bottomFrontY, t,
-    -w, bottomFrontY, t,    -w, topFrontY, t,       -w, topBackY, -t,
+    // Left face - constant height on left side
+    -w, topLeftY, -t,       -w, bottomLeftY, -t,    -w, bottomLeftY, t,
+    -w, bottomLeftY, t,     -w, topLeftY, t,        -w, topLeftY, -t,
 
-    // Top face (angled based on topPlumbCutAngle)
-    -w, topBackY, -t,       -w, topFrontY, t,       w, topFrontY, t,
-    w, topFrontY, t,        w, topBackY, -t,        -w, topBackY, -t,
+    // Top face (angled from left to right based on topPlumbCutAngle)
+    -w, topLeftY, -t,       -w, topLeftY, t,        w, topRightY, t,
+    w, topRightY, t,        w, topRightY, -t,       -w, topLeftY, -t,
 
-    // Bottom face (angled based on bottomPlumbCutAngle)
-    -w, bottomFrontY, t,    -w, bottomBackY, -t,    w, bottomBackY, -t,
-    w, bottomBackY, -t,     w, bottomFrontY, t,     -w, bottomFrontY, t,
+    // Bottom face (angled from left to right based on bottomPlumbCutAngle)
+    -w, bottomLeftY, t,     -w, bottomLeftY, -t,    w, bottomRightY, -t,
+    w, bottomRightY, -t,    w, bottomRightY, t,     -w, bottomLeftY, t,
   ]);
+
+  // TODO: fix this texture when angles are adjusted (calculate heights correctly for each face)
 
   // prettier-ignore
   // biome-ignore format: buffer array
@@ -73,16 +77,16 @@ export function createStuddingGeo(
     uFront, 0,    uFront, vFront,  0, vFront,
 
     // Right face
-    uFront, vSide,   uFront, 0,    uRight, 0,
-    uRight, 0,       uRight, vSide, uFront, vSide,
+    uFront, vRight,  uFront, 0,    uRight, 0,
+    uRight, 0,       uRight, vRight, uFront, vRight,
 
     // Back face
     uRight, vBack,   uRight, 0,    uBack, 0,
     uBack, 0,        uBack, vBack,  uRight, vBack,
 
     // Left face
-    uBack, vSide,    uBack, 0,     1, 0,
-    1, 0,            1, vSide,     uBack, vSide,
+    uBack, vLeft,    uBack, 0,     1, 0,
+    1, 0,            1, vLeft,     uBack, vLeft,
 
     // Top face (end grain - use simple planar projection)
     0, 0,            0, 1,         1, 1,
