@@ -91,9 +91,9 @@ export type KneeBraceProps = {
 };
 
 export type StuddingProps = {
-  width: number;
-  height: number;
   thickness: number;
+  depth: number;
+  height: number;
   bottomPlumbCutAngle?: number;
   topPlumbCutAngle?: number;
   randomiseTextureOffset?: boolean;
@@ -160,9 +160,9 @@ export type ResolvedPlinthGeometry = {
 };
 
 export type ResolvedStuddingGeometry = {
-  width: number;
-  height: number;
   thickness: number;
+  depth: number;
+  height: number;
   bottomPlumbCutAngle: number;
   topPlumbCutAngle: number;
 };

@@ -11,9 +11,9 @@ import { resolveStuddingGeometry } from "@/lib/geometry/utils/resolve-geometry";
 import type { StuddingProps } from "@/types/building";
 
 export default function Studding({
-  width: rawWidth,
-  height: rawHeight,
   thickness: rawThickness,
+  depth: rawDepth,
+  height: rawHeight,
   bottomPlumbCutAngle:
     rawBottomPlumbCutAngle = STUDDING_DEFAULT_BOTTOM_PLUMB_CUT_ANGLE,
   topPlumbCutAngle: rawTopPlumbCutAngle = STUDDING_DEFAULT_TOP_PLUMB_CUT_ANGLE,
@@ -33,20 +33,20 @@ export default function Studding({
     [randomiseTextureOffset],
   );
 
-  const { width, height, thickness, bottomPlumbCutAngle, topPlumbCutAngle } =
+  const { thickness, depth, height, bottomPlumbCutAngle, topPlumbCutAngle } =
     resolveStuddingGeometry({
-      width: rawWidth,
-      height: rawHeight,
       thickness: rawThickness,
+      depth: rawDepth,
+      height: rawHeight,
       bottomPlumbCutAngle: rawBottomPlumbCutAngle,
       topPlumbCutAngle: rawTopPlumbCutAngle,
     });
 
   const { geometry, material } = useMemo(() => {
     const geo = createStuddingGeo(
-      width,
-      height,
       thickness,
+      height,
+      depth,
       bottomPlumbCutAngle,
       topPlumbCutAngle,
     );
@@ -64,9 +64,9 @@ export default function Studding({
       material: new THREE.MeshStandardMaterial({ map: clonedTexture }),
     };
   }, [
-    width,
-    height,
     thickness,
+    depth,
+    height,
     bottomPlumbCutAngle,
     topPlumbCutAngle,
     randomiseTextureOffset,

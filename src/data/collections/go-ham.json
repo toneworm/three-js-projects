@@ -519,53 +519,53 @@
       "id": "t1-studding-back-left",
       "type": "studding",
       "position": [-1, 0.35, -2],
-      "width": 1.85,
-      "height": 2.35,
-      "thickness": 0.05
+      "thickness": 1.85,
+      "depth": 0.05,
+      "height": 2.35
     },
     {
       "id": "t1-studding-back-right",
       "type": "studding",
       "position": [1, 0.35, -2],
-      "width": 1.85,
-      "height": 2.35,
-      "thickness": 0.05
+      "thickness": 1.85,
+      "depth": 0.05,
+      "height": 2.35
     },
     {
       "id": "t1-studding-left-back",
       "type": "studding",
       "position": [-2, 0.35, -1],
       "rotation": [0, 1.5708, 0],
-      "width": 1.85,
-      "height": 2.35,
-      "thickness": 0.05
+      "thickness": 1.85,
+      "depth": 0.05,
+      "height": 2.35
     },
     {
       "id": "t1-studding-left-front",
       "type": "studding",
       "position": [-2, 0.35, 1],
       "rotation": [0, 1.5708, 0],
-      "width": 1.85,
-      "height": 2.35,
-      "thickness": 0.05
+      "thickness": 1.85,
+      "depth": 0.05,
+      "height": 2.35
     },
     {
       "id": "t1-studding-right-back",
       "type": "studding",
       "position": [2, 0.35, -1],
       "rotation": [0, 1.5708, 0],
-      "width": 1.85,
-      "height": 2.35,
-      "thickness": 0.05
+      "thickness": 1.85,
+      "depth": 0.05,
+      "height": 2.35
     },
     {
       "id": "t1-studding-right-front",
       "type": "studding",
       "position": [2, 0.35, 1],
       "rotation": [0, 1.5708, 0],
-      "width": 1.85,
-      "height": 2.35,
-      "thickness": 0.05
+      "thickness": 1.85,
+      "depth": 0.05,
+      "height": 2.35
     },
     {
       "id": "t1-cladding-back-left",
@@ -1027,35 +1027,35 @@
       "id": "t2-studding-front",
       "type": "studding",
       "position": [0, 2.85, 1],
-      "width": 1.85,
-      "height": 1.8,
-      "thickness": 0.05
+      "thickness": 1.85,
+      "depth": 0.05,
+      "height": 1.8
     },
     {
       "id": "t2-studding-back",
       "type": "studding",
       "position": [0, 2.85, -1],
-      "width": 1.85,
-      "height": 1.8,
-      "thickness": 0.05
+      "thickness": 1.85,
+      "depth": 0.05,
+      "height": 1.8
     },
     {
       "id": "t2-studding-left",
       "type": "studding",
       "position": [-1, 2.85, 0],
       "rotation": [0, 1.5708, 0],
-      "width": 1.85,
-      "height": 1.8,
-      "thickness": 0.05
+      "thickness": 1.85,
+      "depth": 0.05,
+      "height": 1.8
     },
     {
       "id": "t2-studding-right",
       "type": "studding",
       "position": [1, 2.85, 0],
       "rotation": [0, 1.5708, 0],
-      "width": 1.85,
-      "height": 1.8,
-      "thickness": 0.05
+      "thickness": 1.85,
+      "depth": 0.05,
+      "height": 1.8
     },
     {
       "id": "t2-cladding-front",
@@ -1257,35 +1257,35 @@
       "id": "t3-studding-front",
       "type": "studding",
       "position": [0, 4.8, 0.5],
-      "width": 0.85,
-      "height": 1.2,
-      "thickness": 0.04
+      "thickness": 0.85,
+      "depth": 0.04,
+      "height": 1.2
     },
     {
       "id": "t3-studding-back",
       "type": "studding",
       "position": [0, 4.8, -0.5],
-      "width": 0.85,
-      "height": 1.2,
-      "thickness": 0.04
+      "thickness": 0.85,
+      "depth": 0.04,
+      "height": 1.2
     },
     {
       "id": "t3-studding-left",
       "type": "studding",
       "position": [-0.5, 4.8, 0],
       "rotation": [0, 1.5708, 0],
-      "width": 0.85,
-      "height": 1.2,
-      "thickness": 0.04
+      "thickness": 0.85,
+      "depth": 0.04,
+      "height": 1.2
     },
     {
       "id": "t3-studding-right",
       "type": "studding",
       "position": [0.5, 4.8, 0],
       "rotation": [0, 1.5708, 0],
-      "width": 0.85,
-      "height": 1.2,
-      "thickness": 0.04
+      "thickness": 0.85,
+      "depth": 0.04,
+      "height": 1.2
     },
     {
       "id": "t3-cladding-front",

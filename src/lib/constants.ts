@@ -110,19 +110,19 @@ export const KNEE_BRACE_SCALE_MAX = 2;
 export const KNEE_BRACE_DEFAULT_SCALE = 1;
 
 // Studding dimension constraints
-export const STUDDING_WIDTH_MIN = 0.025;
-export const STUDDING_WIDTH_MAX = 0.15;
+export const STUDDING_THICKNESS_MIN = 0.025;
+export const STUDDING_THICKNESS_MAX = 0.15;
+export const STUDDING_DEPTH_MIN = 0.015;
+export const STUDDING_DEPTH_MAX = 0.1;
 export const STUDDING_HEIGHT_MIN = 0.3;
 export const STUDDING_HEIGHT_MAX = 4.0;
-export const STUDDING_THICKNESS_MIN = 0.015;
-export const STUDDING_THICKNESS_MAX = 0.1;
 export const STUDDING_PLUMB_CUT_ANGLE_MIN = -Math.PI / 4;
 export const STUDDING_PLUMB_CUT_ANGLE_MAX = Math.PI / 4;
 
 // Studding defaults
-export const STUDDING_DEFAULT_WIDTH = 0.1;
+export const STUDDING_DEFAULT_THICKNESS = 0.1;
+export const STUDDING_DEFAULT_DEPTH = 0.05;
 export const STUDDING_DEFAULT_HEIGHT = 1.75;
-export const STUDDING_DEFAULT_THICKNESS = 0.05;
 export const STUDDING_DEFAULT_BOTTOM_PLUMB_CUT_ANGLE = 0;
 export const STUDDING_DEFAULT_TOP_PLUMB_CUT_ANGLE = 0;
 

@@ -70,18 +70,18 @@ import {
   STADDLE_STONE_TAPER_RATIO_MIN,
   // Studding constraints
   STUDDING_DEFAULT_BOTTOM_PLUMB_CUT_ANGLE,
+  STUDDING_DEFAULT_DEPTH,
   STUDDING_DEFAULT_HEIGHT,
   STUDDING_DEFAULT_THICKNESS,
   STUDDING_DEFAULT_TOP_PLUMB_CUT_ANGLE,
-  STUDDING_DEFAULT_WIDTH,
+  STUDDING_DEPTH_MAX,
+  STUDDING_DEPTH_MIN,
   STUDDING_HEIGHT_MAX,
   STUDDING_HEIGHT_MIN,
   STUDDING_PLUMB_CUT_ANGLE_MAX,
   STUDDING_PLUMB_CUT_ANGLE_MIN,
   STUDDING_THICKNESS_MAX,
   STUDDING_THICKNESS_MIN,
-  STUDDING_WIDTH_MAX,
-  STUDDING_WIDTH_MIN,
 } from "@/lib/constants";
 import {
   type BaseProps,
@@ -243,23 +243,23 @@ export function buildControls(
     case "studding": {
       const p = props as StuddingProps;
       return {
-        width: num(
-          "width",
-          p.width ?? STUDDING_DEFAULT_WIDTH,
-          STUDDING_WIDTH_MIN,
-          STUDDING_WIDTH_MAX,
+        thickness: num(
+          "thickness",
+          p.thickness ?? STUDDING_DEFAULT_THICKNESS,
+          STUDDING_THICKNESS_MIN,
+          STUDDING_THICKNESS_MAX,
+        ),
+        depth: num(
+          "depth",
+          p.depth ?? STUDDING_DEFAULT_DEPTH,
+          STUDDING_DEPTH_MIN,
+          STUDDING_DEPTH_MAX,
         ),
         height: num(
           "height",
           p.height ?? STUDDING_DEFAULT_HEIGHT,
           STUDDING_HEIGHT_MIN,
           STUDDING_HEIGHT_MAX,
-        ),
-        thickness: num(
-          "thickness",
-          p.thickness ?? STUDDING_DEFAULT_THICKNESS,
-          STUDDING_THICKNESS_MIN,
-          STUDDING_THICKNESS_MAX,
         ),
         bottomPlumbCutAngle: num(
           "bottomPlumbCutAngle",

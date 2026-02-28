@@ -60,14 +60,14 @@ import {
   STADDLE_STONE_TAPER_RATIO_MIN,
   STUDDING_DEFAULT_BOTTOM_PLUMB_CUT_ANGLE,
   STUDDING_DEFAULT_TOP_PLUMB_CUT_ANGLE,
+  STUDDING_DEPTH_MAX,
+  STUDDING_DEPTH_MIN,
   STUDDING_HEIGHT_MAX,
   STUDDING_HEIGHT_MIN,
   STUDDING_PLUMB_CUT_ANGLE_MAX,
   STUDDING_PLUMB_CUT_ANGLE_MIN,
   STUDDING_THICKNESS_MAX,
   STUDDING_THICKNESS_MIN,
-  STUDDING_WIDTH_MAX,
-  STUDDING_WIDTH_MIN,
   TENON_MAX_RATIO,
 } from "@/lib/constants";
 import type {
@@ -246,13 +246,13 @@ export function resolvePlinthGeometry(
 export function resolveStuddingGeometry(
   raw: StuddingProps,
 ): ResolvedStuddingGeometry {
-  const width = clamp(raw.width, STUDDING_WIDTH_MIN, STUDDING_WIDTH_MAX);
-  const height = clamp(raw.height, STUDDING_HEIGHT_MIN, STUDDING_HEIGHT_MAX);
   const thickness = clamp(
     raw.thickness,
     STUDDING_THICKNESS_MIN,
     STUDDING_THICKNESS_MAX,
   );
+  const depth = clamp(raw.depth, STUDDING_DEPTH_MIN, STUDDING_DEPTH_MAX);
+  const height = clamp(raw.height, STUDDING_HEIGHT_MIN, STUDDING_HEIGHT_MAX);
 
   const bottomPlumbCutAngle = clamp(
     raw.bottomPlumbCutAngle ?? STUDDING_DEFAULT_BOTTOM_PLUMB_CUT_ANGLE,
@@ -266,7 +266,7 @@ export function resolveStuddingGeometry(
     STUDDING_PLUMB_CUT_ANGLE_MAX,
   );
 
-  return { width, height, thickness, bottomPlumbCutAngle, topPlumbCutAngle };
+  return { thickness, depth, height, bottomPlumbCutAngle, topPlumbCutAngle };
 }
 
 export function resolveCladdingGeometry(
