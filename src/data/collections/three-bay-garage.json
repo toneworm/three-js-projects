@@ -924,6 +924,50 @@
       "angle": 0.5,
       "mouthSize": 0.15,
       "cheekAngle": 0.7854
+    },
+    {
+      "id": "diag-b-left",
+      "type": "studding",
+      "position": [-3.245, 0.35, -2.85],
+      "rotation": [0, 0, 0.7854],
+      "width": 0.1,
+      "height": 1.669,
+      "thickness": 0.05,
+      "bottomPlumbCutAngle": 0.7854,
+      "topPlumbCutAngle": 0.7854
+    },
+    {
+      "id": "diag-b-right",
+      "type": "studding",
+      "position": [3.245, 0.35, -2.85],
+      "rotation": [0, 0, -0.7854],
+      "width": 0.1,
+      "height": 1.669,
+      "thickness": 0.05,
+      "bottomPlumbCutAngle": 0.7854,
+      "topPlumbCutAngle": 0.7854
+    },
+    {
+      "id": "diag-r-front",
+      "type": "studding",
+      "position": [4.425, 0.35, 1.83],
+      "rotation": [0, 1.5708, -0.7854],
+      "width": 0.1,
+      "height": 1.655,
+      "thickness": 0.05,
+      "bottomPlumbCutAngle": 0.7854,
+      "topPlumbCutAngle": 0.7854
+    },
+    {
+      "id": "diag-r-back",
+      "type": "studding",
+      "position": [4.425, 0.35, -1.68],
+      "rotation": [0, 1.5708, 0.7854],
+      "width": 0.1,
+      "height": 1.655,
+      "thickness": 0.05,
+      "bottomPlumbCutAngle": 0.7854,
+      "topPlumbCutAngle": 0.7854
     }
   ]
 }
