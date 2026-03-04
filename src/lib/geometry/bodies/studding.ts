@@ -30,14 +30,10 @@ export function createStuddingGeo(
   const uRight = (width + thickness) / perimeter;
   const uBack = (2 * width + thickness) / perimeter;
 
-  // Calculate UV v coordinates accounting for actual face heights
-  const leftHeight = Math.abs(topLeftY - bottomLeftY);
-  const rightHeight = Math.abs(topRightY - bottomRightY);
-
-  const vFront = h / perimeter;
-  const vBack = h / perimeter;
-  const vLeft = leftHeight / perimeter;
-  const vRight = rightHeight / perimeter;
+  const vTopLeft = topLeftY / perimeter;
+  const vTopRight = topRightY / perimeter;
+  const vBottomLeft = bottomLeftY / perimeter;
+  const vBottomRight = bottomRightY / perimeter;
 
   // prettier-ignore
   // biome-ignore format: buffer array
@@ -73,20 +69,20 @@ export function createStuddingGeo(
   // biome-ignore format: buffer array
   const uvs = new Float32Array([
     // Front face
-    0, vFront,    0, 0,         uFront, 0,
-    uFront, 0,    uFront, vFront,  0, vFront,
+    0, vTopLeft,    0, vBottomLeft,         uFront, vBottomRight,
+    uFront, vBottomRight,    uFront, vTopRight,  0, vTopLeft,
 
     // Right face
-    uFront, vRight,  uFront, 0,    uRight, 0,
-    uRight, 0,       uRight, vRight, uFront, vRight,
+    uFront, vTopRight,  uFront, vBottomRight,    uRight, vBottomRight,
+    uRight, vBottomRight,       uRight, vTopRight, uFront, vTopRight,
 
     // Back face
-    uRight, vBack,   uRight, 0,    uBack, 0,
-    uBack, 0,        uBack, vBack,  uRight, vBack,
+    uRight, vTopRight,   uRight, vBottomRight,    uBack, vBottomLeft,
+    uBack, vBottomLeft,        uBack, vTopLeft,  uRight, vTopRight,
 
     // Left face
-    uBack, vLeft,    uBack, 0,     1, 0,
-    1, 0,            1, vLeft,     uBack, vLeft,
+    uBack, vTopLeft,    uBack, vBottomLeft,     1, vBottomLeft,
+    1, vBottomLeft,            1, vTopLeft,     uBack, vTopLeft,
 
     // Top face (end grain - use simple planar projection)
     0, 0,            0, 1,         1, 1,

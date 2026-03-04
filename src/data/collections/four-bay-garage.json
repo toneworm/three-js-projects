@@ -1,14 +1,14 @@
 {
-  "name": "Two Bay Garage Frame",
-  "description": "Two bay garage frame with staddle stones under front posts, studding on back and right walls, hip rafters, king beam, and jack/common rafters on back and right slopes. Bay width 2.95m × 2 bays, post columns at x = ±2.95, 0.",
+  "name": "Four Bay Garage Frame",
+  "description": "Four bay garage frame with staddle stones under front posts, studding on back and right walls, hip rafters, king beam, and jack/common rafters on back and right slopes. Bay width 2.95m × 4 bays, posts at x = ±5.9, ±2.95, 0.",
   "components": [
-    { "id": "plinth", "type": "plinth", "position": [0, 0, 0], "width": 6.05 },
-    { "id": "base", "type": "base", "position": [0, 0, 0], "width": 6.05 },
+    { "id": "plinth", "type": "plinth", "position": [0, 0, 0], "width": 11.95 },
+    { "id": "base", "type": "base", "position": [0, 0, 0], "width": 11.95 },
 
     {
       "id": "plate-left-sole",
       "type": "plate",
-      "position": [-2.9175, 0.3, 0],
+      "position": [-5.8675, 0.3, 0],
       "rotation": [0, 1.5708, 0],
       "length": 5.85,
       "height": 0.05,
@@ -19,8 +19,8 @@
     {
       "id": "plate-back-left-sole",
       "type": "plate",
-      "position": [-1.475, 0.3, -2.8175],
-      "length": 3.1,
+      "position": [-2.9875, 0.3, -2.8175],
+      "length": 5.975,
       "height": 0.05,
       "depth": 0.215,
       "leftEnd": "block",
@@ -29,8 +29,8 @@
     {
       "id": "plate-back-right-sole",
       "type": "plate",
-      "position": [1.475, 0.3, -2.8175],
-      "length": 3.1,
+      "position": [2.9875, 0.3, -2.8175],
+      "length": 5.975,
       "height": 0.05,
       "depth": 0.215,
       "leftEnd": "block",
@@ -39,7 +39,7 @@
     {
       "id": "plate-right-sole",
       "type": "plate",
-      "position": [2.9175, 0.3, 0],
+      "position": [5.8675, 0.3, 0],
       "rotation": [0, 1.5708, 0],
       "length": 5.85,
       "height": 0.05,
@@ -51,7 +51,7 @@
     {
       "id": "staddle-f-1",
       "type": "staddle-stone",
-      "position": [-2.95, 0, 3.0],
+      "position": [-5.9, 0, 3.0],
       "height": 0.215,
       "depth": 0.15,
       "length": 0.15,
@@ -60,7 +60,7 @@
     {
       "id": "staddle-f-2",
       "type": "staddle-stone",
-      "position": [0, 0, 3.0],
+      "position": [-2.95, 0, 3.0],
       "height": 0.215,
       "depth": 0.15,
       "length": 0.15,
@@ -69,7 +69,25 @@
     {
       "id": "staddle-f-3",
       "type": "staddle-stone",
+      "position": [0, 0, 3.0],
+      "height": 0.215,
+      "depth": 0.15,
+      "length": 0.15,
+      "taperRatio": 0.95
+    },
+    {
+      "id": "staddle-f-4",
+      "type": "staddle-stone",
       "position": [2.95, 0, 3.0],
+      "height": 0.215,
+      "depth": 0.15,
+      "length": 0.15,
+      "taperRatio": 0.95
+    },
+    {
+      "id": "staddle-f-5",
+      "type": "staddle-stone",
+      "position": [5.9, 0, 3.0],
       "height": 0.215,
       "depth": 0.15,
       "length": 0.15,
@@ -79,7 +97,7 @@
     {
       "id": "post-f-1",
       "type": "post",
-      "position": [-2.95, 0.215, 3.0],
+      "position": [-5.9, 0.215, 3.0],
       "width": 0.15,
       "height": 2.26,
       "depth": 0.15,
@@ -90,7 +108,7 @@
     {
       "id": "post-f-2",
       "type": "post",
-      "position": [0, 0.215, 3.0],
+      "position": [-2.95, 0.215, 3.0],
       "width": 0.15,
       "height": 2.26,
       "depth": 0.15,
@@ -101,7 +119,29 @@
     {
       "id": "post-f-3",
       "type": "post",
+      "position": [0, 0.215, 3.0],
+      "width": 0.15,
+      "height": 2.26,
+      "depth": 0.15,
+      "topEnd": "tenon",
+      "bottomEnd": "block",
+      "endSize": 0.15
+    },
+    {
+      "id": "post-f-4",
+      "type": "post",
       "position": [2.95, 0.215, 3.0],
+      "width": 0.15,
+      "height": 2.26,
+      "depth": 0.15,
+      "topEnd": "tenon",
+      "bottomEnd": "block",
+      "endSize": 0.15
+    },
+    {
+      "id": "post-f-5",
+      "type": "post",
+      "position": [5.9, 0.215, 3.0],
       "width": 0.15,
       "height": 2.26,
       "depth": 0.15,
@@ -113,7 +153,7 @@
     {
       "id": "post-m-1",
       "type": "post",
-      "position": [-2.95, 0.35, 0.075],
+      "position": [-5.9, 0.35, 0.075],
       "width": 0.15,
       "height": 2.125,
       "depth": 0.15,
@@ -124,7 +164,7 @@
     {
       "id": "post-m-2",
       "type": "post",
-      "position": [0, 0, 0.075],
+      "position": [-2.95, 0, 0.075],
       "width": 0.15,
       "height": 2.55,
       "depth": 0.15,
@@ -135,7 +175,29 @@
     {
       "id": "post-m-3",
       "type": "post",
-      "position": [2.95, 0.35, 0.075],
+      "position": [0, 0, 0.075],
+      "width": 0.15,
+      "height": 2.55,
+      "depth": 0.15,
+      "topEnd": "tenon",
+      "bottomEnd": "block",
+      "endSize": 0.15
+    },
+    {
+      "id": "post-m-4",
+      "type": "post",
+      "position": [2.95, 0, 0.075],
+      "width": 0.15,
+      "height": 2.55,
+      "depth": 0.15,
+      "topEnd": "tenon",
+      "bottomEnd": "block",
+      "endSize": 0.15
+    },
+    {
+      "id": "post-m-5",
+      "type": "post",
+      "position": [5.9, 0.35, 0.075],
       "width": 0.15,
       "height": 2.125,
       "depth": 0.15,
@@ -147,7 +209,7 @@
     {
       "id": "post-b-1",
       "type": "post",
-      "position": [-2.95, 0.35, -2.85],
+      "position": [-5.9, 0.35, -2.85],
       "width": 0.15,
       "height": 2.125,
       "depth": 0.15,
@@ -158,7 +220,7 @@
     {
       "id": "post-b-2",
       "type": "post",
-      "position": [0, 0.35, -2.85],
+      "position": [-2.95, 0.35, -2.85],
       "width": 0.15,
       "height": 2.125,
       "depth": 0.15,
@@ -169,7 +231,29 @@
     {
       "id": "post-b-3",
       "type": "post",
+      "position": [0, 0.35, -2.85],
+      "width": 0.15,
+      "height": 2.125,
+      "depth": 0.15,
+      "topEnd": "tenon",
+      "bottomEnd": "block",
+      "endSize": 0.15
+    },
+    {
+      "id": "post-b-4",
+      "type": "post",
       "position": [2.95, 0.35, -2.85],
+      "width": 0.15,
+      "height": 2.125,
+      "depth": 0.15,
+      "topEnd": "tenon",
+      "bottomEnd": "block",
+      "endSize": 0.15
+    },
+    {
+      "id": "post-b-5",
+      "type": "post",
+      "position": [5.9, 0.35, -2.85],
       "width": 0.15,
       "height": 2.125,
       "depth": 0.15,
@@ -181,7 +265,7 @@
     {
       "id": "plate-f-1",
       "type": "plate",
-      "position": [-1.475, 2.4, 3.0],
+      "position": [-4.425, 2.4, 3.0],
       "length": 3.1,
       "height": 0.15,
       "depth": 0.15,
@@ -191,7 +275,27 @@
     {
       "id": "plate-f-2",
       "type": "plate",
+      "position": [-1.475, 2.4, 3.0],
+      "length": 3.1,
+      "height": 0.15,
+      "depth": 0.15,
+      "leftEnd": "top",
+      "rightEnd": "bottom"
+    },
+    {
+      "id": "plate-f-3",
+      "type": "plate",
       "position": [1.475, 2.4, 3.0],
+      "length": 3.1,
+      "height": 0.15,
+      "depth": 0.15,
+      "leftEnd": "top",
+      "rightEnd": "bottom"
+    },
+    {
+      "id": "plate-f-4",
+      "type": "plate",
+      "position": [4.425, 2.4, 3.0],
       "length": 3.1,
       "height": 0.15,
       "depth": 0.15,
@@ -202,7 +306,7 @@
     {
       "id": "plate-b-1",
       "type": "plate",
-      "position": [-1.475, 2.4, -2.85],
+      "position": [-4.425, 2.4, -2.85],
       "length": 3.1,
       "height": 0.15,
       "depth": 0.15,
@@ -212,7 +316,27 @@
     {
       "id": "plate-b-2",
       "type": "plate",
+      "position": [-1.475, 2.4, -2.85],
+      "length": 3.1,
+      "height": 0.15,
+      "depth": 0.15,
+      "leftEnd": "top",
+      "rightEnd": "bottom"
+    },
+    {
+      "id": "plate-b-3",
+      "type": "plate",
       "position": [1.475, 2.4, -2.85],
+      "length": 3.1,
+      "height": 0.15,
+      "depth": 0.15,
+      "leftEnd": "top",
+      "rightEnd": "bottom"
+    },
+    {
+      "id": "plate-b-4",
+      "type": "plate",
+      "position": [4.425, 2.4, -2.85],
       "length": 3.1,
       "height": 0.15,
       "depth": 0.15,
@@ -223,7 +347,7 @@
     {
       "id": "plate-side-left",
       "type": "plate",
-      "position": [-2.95, 2.4, 0.075],
+      "position": [-5.9, 2.4, 0.075],
       "rotation": [0, 1.5708, 0],
       "length": 6.0,
       "height": 0.15,
@@ -234,7 +358,7 @@
     {
       "id": "plate-side-right",
       "type": "plate",
-      "position": [2.95, 2.4, 0.075],
+      "position": [5.9, 2.4, 0.075],
       "rotation": [0, 1.5708, 0],
       "length": 6.0,
       "height": 0.15,
@@ -246,7 +370,31 @@
     {
       "id": "tie-beam-1",
       "type": "plate",
+      "position": [-2.95, 2.475, 0.075],
+      "rotation": [0, 1.5708, 0],
+      "length": 6.0,
+      "height": 0.15,
+      "depth": 0.15,
+      "jointSize": 0.15,
+      "leftEnd": "top",
+      "rightEnd": "top"
+    },
+    {
+      "id": "tie-beam-2",
+      "type": "plate",
       "position": [0, 2.475, 0.075],
+      "rotation": [0, 1.5708, 0],
+      "length": 6.0,
+      "height": 0.15,
+      "depth": 0.15,
+      "jointSize": 0.15,
+      "leftEnd": "top",
+      "rightEnd": "top"
+    },
+    {
+      "id": "tie-beam-3",
+      "type": "plate",
+      "position": [2.95, 2.475, 0.075],
       "rotation": [0, 1.5708, 0],
       "length": 6.0,
       "height": 0.15,
@@ -259,7 +407,7 @@
     {
       "id": "hip-rafter-front-left",
       "type": "rafter",
-      "position": [-2.875, 2.55, 2.925],
+      "position": [-5.825, 2.55, 2.925],
       "rotation": [0, 0.7854, 0],
       "height": 0.17,
       "depth": 0.06,
@@ -271,7 +419,7 @@
     {
       "id": "hip-rafter-front-right",
       "type": "rafter",
-      "position": [2.875, 2.55, 2.925],
+      "position": [5.825, 2.55, 2.925],
       "rotation": [0, 2.3562, 0],
       "height": 0.17,
       "depth": 0.06,
@@ -283,7 +431,7 @@
     {
       "id": "hip-rafter-back-left",
       "type": "rafter",
-      "position": [-2.875, 2.55, -2.775],
+      "position": [-5.825, 2.55, -2.775],
       "rotation": [0, -0.7854, 0],
       "height": 0.17,
       "depth": 0.06,
@@ -295,7 +443,7 @@
     {
       "id": "hip-rafter-back-right",
       "type": "rafter",
-      "position": [2.875, 2.55, -2.775],
+      "position": [5.825, 2.55, -2.775],
       "rotation": [0, -2.3562, 0],
       "height": 0.17,
       "depth": 0.06,
@@ -309,7 +457,7 @@
       "id": "king-beam",
       "type": "plate",
       "position": [0, 4.115, 0.075],
-      "length": 0.3,
+      "length": 5.95,
       "height": 0.15,
       "depth": 0.05,
       "leftEnd": "block",
@@ -319,81 +467,129 @@
     {
       "id": "brace-f-1-x",
       "type": "knee-brace",
-      "position": [-2.7375, 2.2375, 3.0],
+      "position": [-5.6875, 2.2375, 3.0],
       "rotation": [0, -1.5708, 1.5708]
     },
     {
       "id": "brace-f-1-z",
       "type": "knee-brace",
-      "position": [-2.95, 2.2375, 2.7875],
+      "position": [-5.9, 2.2375, 2.7875],
       "rotation": [0, 0, 1.5708]
     },
     {
       "id": "brace-f-2-l",
       "type": "knee-brace",
-      "position": [-0.2125, 2.2375, 3.0],
+      "position": [-3.1625, 2.2375, 3.0],
       "rotation": [0, 1.5708, 1.5708]
     },
     {
       "id": "brace-f-2-r",
       "type": "knee-brace",
+      "position": [-2.7375, 2.2375, 3.0],
+      "rotation": [0, -1.5708, 1.5708]
+    },
+    {
+      "id": "brace-f-3-l",
+      "type": "knee-brace",
+      "position": [-0.2125, 2.2375, 3.0],
+      "rotation": [0, 1.5708, 1.5708]
+    },
+    {
+      "id": "brace-f-3-r",
+      "type": "knee-brace",
       "position": [0.2125, 2.2375, 3.0],
       "rotation": [0, -1.5708, 1.5708]
     },
     {
-      "id": "brace-f-3-x",
+      "id": "brace-f-4-l",
       "type": "knee-brace",
       "position": [2.7375, 2.2375, 3.0],
       "rotation": [0, 1.5708, 1.5708]
     },
     {
-      "id": "brace-f-3-z",
+      "id": "brace-f-4-r",
       "type": "knee-brace",
-      "position": [2.95, 2.2375, 2.7875],
+      "position": [3.1625, 2.2375, 3.0],
+      "rotation": [0, -1.5708, 1.5708]
+    },
+    {
+      "id": "brace-f-5-x",
+      "type": "knee-brace",
+      "position": [5.6875, 2.2375, 3.0],
+      "rotation": [0, 1.5708, 1.5708]
+    },
+    {
+      "id": "brace-f-5-z",
+      "type": "knee-brace",
+      "position": [5.9, 2.2375, 2.7875],
       "rotation": [0, 0, 1.5708]
     },
 
     {
       "id": "brace-b-1-x",
       "type": "knee-brace",
-      "position": [-2.7375, 2.2375, -2.85],
+      "position": [-5.6875, 2.2375, -2.85],
       "rotation": [0, -1.5708, 1.5708]
     },
     {
       "id": "brace-b-1-z",
       "type": "knee-brace",
-      "position": [-2.95, 2.2375, -2.6375],
+      "position": [-5.9, 2.2375, -2.6375],
       "rotation": [0, -3.1416, 1.5708]
     },
     {
       "id": "brace-b-2-l",
       "type": "knee-brace",
-      "position": [-0.2125, 2.2375, -2.85],
+      "position": [-3.1625, 2.2375, -2.85],
       "rotation": [0, 1.5708, 1.5708]
     },
     {
       "id": "brace-b-2-r",
       "type": "knee-brace",
+      "position": [-2.7375, 2.2375, -2.85],
+      "rotation": [0, -1.5708, 1.5708]
+    },
+    {
+      "id": "brace-b-3-l",
+      "type": "knee-brace",
+      "position": [-0.2125, 2.2375, -2.85],
+      "rotation": [0, 1.5708, 1.5708]
+    },
+    {
+      "id": "brace-b-3-r",
+      "type": "knee-brace",
       "position": [0.2125, 2.2375, -2.85],
       "rotation": [0, -1.5708, 1.5708]
     },
     {
-      "id": "brace-b-3-x",
+      "id": "brace-b-4-l",
       "type": "knee-brace",
       "position": [2.7375, 2.2375, -2.85],
       "rotation": [0, 1.5708, 1.5708]
     },
     {
-      "id": "brace-b-3-z",
+      "id": "brace-b-4-r",
       "type": "knee-brace",
-      "position": [2.95, 2.2375, -2.6375],
+      "position": [3.1625, 2.2375, -2.85],
+      "rotation": [0, -1.5708, 1.5708]
+    },
+    {
+      "id": "brace-b-5-x",
+      "type": "knee-brace",
+      "position": [5.6875, 2.2375, -2.85],
+      "rotation": [0, 1.5708, 1.5708]
+    },
+    {
+      "id": "brace-b-5-z",
+      "type": "knee-brace",
+      "position": [5.9, 2.2375, -2.6375],
       "rotation": [0, 3.1416, 1.5708]
     },
 
     {
       "id": "stud-b-1",
       "type": "studding",
-      "position": [-2.36, 0.35, -2.85],
+      "position": [-5.265, 0.35, -2.85],
       "thickness": 0.05,
       "depth": 0.1,
       "height": 2.05,
@@ -403,7 +599,7 @@
     {
       "id": "stud-b-2",
       "type": "studding",
-      "position": [-1.77, 0.35, -2.85],
+      "position": [-4.705, 0.35, -2.85],
       "thickness": 0.05,
       "depth": 0.1,
       "height": 2.05,
@@ -413,7 +609,7 @@
     {
       "id": "stud-b-3",
       "type": "studding",
-      "position": [-1.18, 0.35, -2.85],
+      "position": [-4.145, 0.35, -2.85],
       "thickness": 0.05,
       "depth": 0.1,
       "height": 2.05,
@@ -423,7 +619,7 @@
     {
       "id": "stud-b-4",
       "type": "studding",
-      "position": [-0.59, 0.35, -2.85],
+      "position": [-3.585, 0.35, -2.85],
       "thickness": 0.05,
       "depth": 0.1,
       "height": 2.05,
@@ -433,7 +629,7 @@
     {
       "id": "stud-b-5",
       "type": "studding",
-      "position": [0.59, 0.35, -2.85],
+      "position": [-2.315, 0.35, -2.85],
       "thickness": 0.05,
       "depth": 0.1,
       "height": 2.05,
@@ -443,7 +639,7 @@
     {
       "id": "stud-b-6",
       "type": "studding",
-      "position": [1.18, 0.35, -2.85],
+      "position": [-1.755, 0.35, -2.85],
       "thickness": 0.05,
       "depth": 0.1,
       "height": 2.05,
@@ -453,7 +649,7 @@
     {
       "id": "stud-b-7",
       "type": "studding",
-      "position": [1.77, 0.35, -2.85],
+      "position": [-1.195, 0.35, -2.85],
       "thickness": 0.05,
       "depth": 0.1,
       "height": 2.05,
@@ -463,7 +659,87 @@
     {
       "id": "stud-b-8",
       "type": "studding",
-      "position": [2.36, 0.35, -2.85],
+      "position": [-0.635, 0.35, -2.85],
+      "thickness": 0.05,
+      "depth": 0.1,
+      "height": 2.05,
+      "bottomPlumbCutAngle": 0,
+      "topPlumbCutAngle": 0
+    },
+    {
+      "id": "stud-b-9",
+      "type": "studding",
+      "position": [0.635, 0.35, -2.85],
+      "thickness": 0.05,
+      "depth": 0.1,
+      "height": 2.05,
+      "bottomPlumbCutAngle": 0,
+      "topPlumbCutAngle": 0
+    },
+    {
+      "id": "stud-b-10",
+      "type": "studding",
+      "position": [1.195, 0.35, -2.85],
+      "thickness": 0.05,
+      "depth": 0.1,
+      "height": 2.05,
+      "bottomPlumbCutAngle": 0,
+      "topPlumbCutAngle": 0
+    },
+    {
+      "id": "stud-b-11",
+      "type": "studding",
+      "position": [1.755, 0.35, -2.85],
+      "thickness": 0.05,
+      "depth": 0.1,
+      "height": 2.05,
+      "bottomPlumbCutAngle": 0,
+      "topPlumbCutAngle": 0
+    },
+    {
+      "id": "stud-b-12",
+      "type": "studding",
+      "position": [2.315, 0.35, -2.85],
+      "thickness": 0.05,
+      "depth": 0.1,
+      "height": 2.05,
+      "bottomPlumbCutAngle": 0,
+      "topPlumbCutAngle": 0
+    },
+    {
+      "id": "stud-b-13",
+      "type": "studding",
+      "position": [3.585, 0.35, -2.85],
+      "thickness": 0.05,
+      "depth": 0.1,
+      "height": 2.05,
+      "bottomPlumbCutAngle": 0,
+      "topPlumbCutAngle": 0
+    },
+    {
+      "id": "stud-b-14",
+      "type": "studding",
+      "position": [4.145, 0.35, -2.85],
+      "thickness": 0.05,
+      "depth": 0.1,
+      "height": 2.05,
+      "bottomPlumbCutAngle": 0,
+      "topPlumbCutAngle": 0
+    },
+    {
+      "id": "stud-b-15",
+      "type": "studding",
+      "position": [4.705, 0.35, -2.85],
+      "thickness": 0.05,
+      "depth": 0.1,
+      "height": 2.05,
+      "bottomPlumbCutAngle": 0,
+      "topPlumbCutAngle": 0
+    },
+    {
+      "id": "stud-b-16",
+      "type": "studding",
+      "position": [5.265, 0.35, -2.85],
       "thickness": 0.05,
       "depth": 0.1,
       "height": 2.05,
@@ -474,7 +750,7 @@
     {
       "id": "stud-r-1",
       "type": "studding",
-      "position": [2.95, 0.35, 2.415],
+      "position": [5.9, 0.35, 2.415],
       "rotation": [0, 1.5708, 0],
       "thickness": 0.05,
       "depth": 0.1,
@@ -485,7 +761,7 @@
     {
       "id": "stud-r-2",
       "type": "studding",
-      "position": [2.95, 0.35, 1.83],
+      "position": [5.9, 0.35, 1.83],
       "rotation": [0, 1.5708, 0],
       "thickness": 0.05,
       "depth": 0.1,
@@ -496,7 +772,7 @@
     {
       "id": "stud-r-3",
       "type": "studding",
-      "position": [2.95, 0.35, 1.245],
+      "position": [5.9, 0.35, 1.245],
       "rotation": [0, 1.5708, 0],
       "thickness": 0.05,
       "depth": 0.1,
@@ -507,7 +783,7 @@
     {
       "id": "stud-r-4",
       "type": "studding",
-      "position": [2.95, 0.35, 0.66],
+      "position": [5.9, 0.35, 0.66],
       "rotation": [0, 1.5708, 0],
       "thickness": 0.05,
       "depth": 0.1,
@@ -518,7 +794,7 @@
     {
       "id": "stud-r-5",
       "type": "studding",
-      "position": [2.95, 0.35, -0.51],
+      "position": [5.9, 0.35, -0.51],
       "rotation": [0, 1.5708, 0],
       "thickness": 0.05,
       "depth": 0.1,
@@ -529,7 +805,7 @@
     {
       "id": "stud-r-6",
       "type": "studding",
-      "position": [2.95, 0.35, -1.095],
+      "position": [5.9, 0.35, -1.095],
       "rotation": [0, 1.5708, 0],
       "thickness": 0.05,
       "depth": 0.1,
@@ -540,7 +816,7 @@
     {
       "id": "stud-r-7",
       "type": "studding",
-      "position": [2.95, 0.35, -1.68],
+      "position": [5.9, 0.35, -1.68],
       "rotation": [0, 1.5708, 0],
       "thickness": 0.05,
       "depth": 0.1,
@@ -551,7 +827,7 @@
     {
       "id": "stud-r-8",
       "type": "studding",
-      "position": [2.95, 0.35, -2.265],
+      "position": [5.9, 0.35, -2.265],
       "rotation": [0, 1.5708, 0],
       "thickness": 0.05,
       "depth": 0.1,
@@ -563,11 +839,11 @@
     {
       "id": "rafter-b-jack-l1",
       "type": "rafter",
-      "position": [-2.2, 2.55, -2.775],
+      "position": [-5.15, 2.55, -2.775],
       "rotation": [0, -1.5708, 0],
       "height": 0.17,
       "depth": 0.04,
-      "run": 2.06,
+      "run": 0.65,
       "angle": 0.5,
       "mouthSize": 0.15,
       "cheekAngle": 0.7854
@@ -575,11 +851,11 @@
     {
       "id": "rafter-b-jack-l2",
       "type": "rafter",
-      "position": [-1.45, 2.55, -2.775],
+      "position": [-4.4, 2.55, -2.775],
       "rotation": [0, -1.5708, 0],
       "height": 0.17,
       "depth": 0.04,
-      "run": 1.31,
+      "run": 1.4,
       "angle": 0.5,
       "mouthSize": 0.15,
       "cheekAngle": 0.7854
@@ -587,17 +863,54 @@
     {
       "id": "rafter-b-jack-l3",
       "type": "rafter",
-      "position": [-0.7, 2.55, -2.775],
+      "position": [-3.65, 2.55, -2.775],
       "rotation": [0, -1.5708, 0],
       "height": 0.17,
       "depth": 0.04,
-      "run": 0.56,
+      "run": 2.15,
       "angle": 0.5,
       "mouthSize": 0.15,
       "cheekAngle": 0.7854
     },
+
     {
       "id": "rafter-b-common-1",
+      "type": "rafter",
+      "position": [-2.25, 2.55, -2.775],
+      "rotation": [0, -1.5708, 0],
+      "height": 0.17,
+      "depth": 0.04,
+      "run": 2.825,
+      "angle": 0.5,
+      "mouthSize": 0.15,
+      "cheekAngle": 0
+    },
+    {
+      "id": "rafter-b-common-2",
+      "type": "rafter",
+      "position": [-1.5, 2.55, -2.775],
+      "rotation": [0, -1.5708, 0],
+      "height": 0.17,
+      "depth": 0.04,
+      "run": 2.825,
+      "angle": 0.5,
+      "mouthSize": 0.15,
+      "cheekAngle": 0
+    },
+    {
+      "id": "rafter-b-common-3",
+      "type": "rafter",
+      "position": [-0.75, 2.55, -2.775],
+      "rotation": [0, -1.5708, 0],
+      "height": 0.17,
+      "depth": 0.04,
+      "run": 2.825,
+      "angle": 0.5,
+      "mouthSize": 0.15,
+      "cheekAngle": 0
+    },
+    {
+      "id": "rafter-b-common-4",
       "type": "rafter",
       "position": [0, 2.55, -2.775],
       "rotation": [0, -1.5708, 0],
@@ -609,13 +922,50 @@
       "cheekAngle": 0
     },
     {
-      "id": "rafter-b-jack-r1",
+      "id": "rafter-b-common-5",
       "type": "rafter",
-      "position": [0.7, 2.55, -2.775],
+      "position": [0.75, 2.55, -2.775],
       "rotation": [0, -1.5708, 0],
       "height": 0.17,
       "depth": 0.04,
-      "run": 0.56,
+      "run": 2.825,
+      "angle": 0.5,
+      "mouthSize": 0.15,
+      "cheekAngle": 0
+    },
+    {
+      "id": "rafter-b-common-6",
+      "type": "rafter",
+      "position": [1.5, 2.55, -2.775],
+      "rotation": [0, -1.5708, 0],
+      "height": 0.17,
+      "depth": 0.04,
+      "run": 2.825,
+      "angle": 0.5,
+      "mouthSize": 0.15,
+      "cheekAngle": 0
+    },
+    {
+      "id": "rafter-b-common-7",
+      "type": "rafter",
+      "position": [2.25, 2.55, -2.775],
+      "rotation": [0, -1.5708, 0],
+      "height": 0.17,
+      "depth": 0.04,
+      "run": 2.825,
+      "angle": 0.5,
+      "mouthSize": 0.15,
+      "cheekAngle": 0
+    },
+
+    {
+      "id": "rafter-b-jack-r1",
+      "type": "rafter",
+      "position": [3.65, 2.55, -2.775],
+      "rotation": [0, -1.5708, 0],
+      "height": 0.17,
+      "depth": 0.04,
+      "run": 2.15,
       "angle": 0.5,
       "mouthSize": 0.15,
       "cheekAngle": -0.7854
@@ -623,11 +973,11 @@
     {
       "id": "rafter-b-jack-r2",
       "type": "rafter",
-      "position": [1.45, 2.55, -2.775],
+      "position": [4.4, 2.55, -2.775],
       "rotation": [0, -1.5708, 0],
       "height": 0.17,
       "depth": 0.04,
-      "run": 1.31,
+      "run": 1.4,
       "angle": 0.5,
       "mouthSize": 0.15,
       "cheekAngle": -0.7854
@@ -635,11 +985,11 @@
     {
       "id": "rafter-b-jack-r3",
       "type": "rafter",
-      "position": [2.2, 2.55, -2.775],
+      "position": [5.15, 2.55, -2.775],
       "rotation": [0, -1.5708, 0],
       "height": 0.17,
       "depth": 0.04,
-      "run": 2.06,
+      "run": 0.65,
       "angle": 0.5,
       "mouthSize": 0.15,
       "cheekAngle": -0.7854
@@ -648,7 +998,7 @@
     {
       "id": "rafter-r-jack-f1",
       "type": "rafter",
-      "position": [2.875, 2.55, 2.325],
+      "position": [5.825, 2.55, 2.325],
       "rotation": [0, 3.1416, 0],
       "height": 0.17,
       "depth": 0.04,
@@ -660,7 +1010,7 @@
     {
       "id": "rafter-r-jack-f2",
       "type": "rafter",
-      "position": [2.875, 2.55, 1.575],
+      "position": [5.825, 2.55, 1.575],
       "rotation": [0, 3.1416, 0],
       "height": 0.17,
       "depth": 0.04,
@@ -672,7 +1022,7 @@
     {
       "id": "rafter-r-jack-f3",
       "type": "rafter",
-      "position": [2.875, 2.55, 0.825],
+      "position": [5.825, 2.55, 0.825],
       "rotation": [0, 3.1416, 0],
       "height": 0.17,
       "depth": 0.04,
@@ -684,7 +1034,7 @@
     {
       "id": "rafter-r-common-1",
       "type": "rafter",
-      "position": [2.875, 2.55, 0.075],
+      "position": [5.825, 2.55, 0.075],
       "rotation": [0, 3.1416, 0],
       "height": 0.17,
       "depth": 0.04,
@@ -696,7 +1046,7 @@
     {
       "id": "rafter-r-jack-b1",
       "type": "rafter",
-      "position": [2.875, 2.55, -0.675],
+      "position": [5.825, 2.55, -0.675],
       "rotation": [0, 3.1416, 0],
       "height": 0.17,
       "depth": 0.04,
@@ -708,7 +1058,7 @@
     {
       "id": "rafter-r-jack-b2",
       "type": "rafter",
-      "position": [2.875, 2.55, -1.425],
+      "position": [5.825, 2.55, -1.425],
       "rotation": [0, 3.1416, 0],
       "height": 0.17,
       "depth": 0.04,
@@ -720,7 +1070,7 @@
     {
       "id": "rafter-r-jack-b3",
       "type": "rafter",
-      "position": [2.875, 2.55, -2.175],
+      "position": [5.825, 2.55, -2.175],
       "rotation": [0, 3.1416, 0],
       "height": 0.17,
       "depth": 0.04,
@@ -733,7 +1083,7 @@
     {
       "id": "diag-b-left",
       "type": "studding",
-      "position": [-1.77, 0.35, -2.85],
+      "position": [-4.705, 0.35, -2.85],
       "rotation": [0, 0, 0.7854],
       "thickness": 0.05,
       "depth": 0.098,
@@ -744,7 +1094,7 @@
     {
       "id": "diag-b-right",
       "type": "studding",
-      "position": [1.77, 0.35, -2.85],
+      "position": [4.705, 0.35, -2.85],
       "rotation": [0, 0, -0.7854],
       "thickness": 0.05,
       "depth": 0.098,
@@ -755,7 +1105,7 @@
     {
       "id": "diag-r-front",
       "type": "studding",
-      "position": [2.95, 0.35, 1.85],
+      "position": [5.9, 0.35, 1.85],
       "rotation": [0, -1.5708, -0.7854],
       "thickness": 0.05,
       "depth": 0.098,
@@ -766,7 +1116,7 @@
     {
       "id": "diag-r-back",
       "type": "studding",
-      "position": [2.95, 0.35, -1.7],
+      "position": [5.9, 0.35, -1.7],
       "rotation": [0, -1.5708, 0.7854],
       "thickness": 0.05,
       "depth": 0.098,

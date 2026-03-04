@@ -60,7 +60,7 @@ function CollectionComponent(item: CollectionItem) {
 export function CollectionRenderer({ collection }: { collection: Collection }) {
   return (
     <group>
-      {collection.components.map((item) => (
+      {collection.components?.map((item) => (
         <CollectionComponent key={item.id} {...item} />
       ))}
     </group>
