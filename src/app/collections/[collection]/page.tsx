@@ -38,7 +38,7 @@ export default function CollectionPage() {
         </span>
       </div>
       <Canvas
-        camera={{ position: [-2.77, 3.68, 6.23], fov: 50 }}
+        camera={{ position: [-8.77, 5.68, 11.23], fov: 50 }}
         className="bg-background"
       >
         <Suspense fallback={<Loader />}>
