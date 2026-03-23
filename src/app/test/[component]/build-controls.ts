@@ -42,6 +42,9 @@ import {
   POST_WIDTH_MAX,
   // Post constraints
   POST_WIDTH_MIN,
+  RAFTER_CHEEK_ANGLE_MAX,
+  RAFTER_CHEEK_ANGLE_MIN,
+  RAFTER_DEFAULT_CHEEK_ANGLE,
   RAFTER_DEFAULT_MOUTH_SIZE,
   RAFTER_DEFAULT_RISE,
   // Defaults
@@ -207,7 +210,12 @@ export function buildControls(
         depth: num("depth", p.depth, RAFTER_DEPTH_MIN, RAFTER_DEPTH_MAX),
         run: num("run", p.run ?? RAFTER_DEFAULT_RUN, RAFTER_RUN_MIN, 10),
         rise: num("rise", p.rise ?? RAFTER_DEFAULT_RISE, RAFTER_RISE_MIN, 5),
-        // angle: num("angle", p.angle ?? RAFTER_DEFAULT_ANGLE, RAFTER_ANGLE_MIN, RAFTER_ANGLE_MAX),
+        cheekAngle: num(
+          "cheekAngle",
+          p.cheekAngle ?? RAFTER_DEFAULT_CHEEK_ANGLE,
+          RAFTER_CHEEK_ANGLE_MIN,
+          RAFTER_CHEEK_ANGLE_MAX,
+        ),
         mouthSize: num(
           "mouthSize",
           p.mouthSize ?? RAFTER_DEFAULT_MOUTH_SIZE,
