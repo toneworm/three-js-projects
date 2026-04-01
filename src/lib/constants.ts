@@ -20,7 +20,7 @@ export const POST_HEIGHT_MAX = 5.0;
 
 // Plate dimension constraints
 export const PLATE_LENGTH_MIN = 1.0;
-export const PLATE_LENGTH_MAX = 10.0;
+export const PLATE_LENGTH_MAX = 15.0;
 export const PLATE_DEPTH_MIN = 0.01;
 export const PLATE_DEPTH_MAX = 0.3;
 export const PLATE_HEIGHT_MIN = 0.01;
@@ -43,6 +43,14 @@ export const RAFTER_RUN_MIN = 0.15;
 // Joint/End constraints
 export const END_SIZE_MIN_MATERIAL = 0.05; // Minimum material on either side of joint
 export const TENON_MAX_RATIO = 0.8; // Tenon max 80% of post dimension
+
+// Plinth dimension constraints
+export const PLINTH_WIDTH_MIN = 3;
+export const PLINTH_WIDTH_MAX = 20;
+
+// Base dimension constraints (same as plinth width)
+export const BASE_WIDTH_MIN = 3;
+export const BASE_WIDTH_MAX = 20;
 
 // ============================================================================
 // DEFAULT VALUES (used in components)
@@ -78,10 +86,6 @@ export const RAFTER_DEFAULT_MOUTH_SIZE = 0.15;
 export const RAFTER_DEFAULT_UV_SCALE = 0.2;
 export const BIRDSMOUTH_MAX_RATIO = 0.75;
 
-// Plinth dimension constraints
-export const PLINTH_WIDTH_MIN = 4.5;
-export const PLINTH_WIDTH_MAX = 20;
-
 // Plinth fixed dimensions (constants)
 export const PLINTH_DEPTH = 5.85;
 export const PLINTH_THICKNESS = 0.215;
@@ -90,17 +94,13 @@ export const PLINTH_HEIGHT = 0.3;
 // Plinth defaults
 export const PLINTH_DEFAULT_WIDTH = 10;
 
-// Base dimension constraints (same as plinth width)
-export const BASE_WIDTH_MIN = 4.5;
-export const BASE_WIDTH_MAX = 20;
-
 // Base fixed dimensions
 export const BASE_DEPTH = 6;
 export const BASE_HEIGHT = 0.05;
 export const BASE_DEPTH_OFFSET = (BASE_DEPTH - PLINTH_DEPTH) / 2;
 
 // Base defaults
-export const BASE_DEFAULT_WIDTH = 10;
+export const BASE_DEFAULT_WIDTH = 9;
 
 // Knee brace scale constraints
 export const KNEE_BRACE_SCALE_MIN = 0.25;
