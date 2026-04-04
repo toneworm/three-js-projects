@@ -12,6 +12,7 @@ import type { PlinthProps } from "@/types/building";
 
 export default function Plinth({
   width: rawWidth,
+  depth: rawDepth,
   randomiseTextureOffset = false,
   ...meshProps
 }: PlinthProps & JSX.IntrinsicElements["mesh"]) {
@@ -38,6 +39,7 @@ export default function Plinth({
 
   const { width, depth, thickness, height } = resolvePlinthGeometry({
     width: rawWidth,
+    depth: rawDepth,
   });
 
   const { geometry, materials } = useMemo(() => {

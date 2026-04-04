@@ -21,7 +21,9 @@ import {
   PLATE_HEIGHT_MIN,
   PLATE_LENGTH_MAX,
   PLATE_LENGTH_MIN,
-  PLINTH_DEPTH,
+  PLINTH_DEFAULT_DEPTH,
+  PLINTH_DEPTH_MAX,
+  PLINTH_DEPTH_MIN,
   PLINTH_HEIGHT,
   PLINTH_THICKNESS,
   PLINTH_WIDTH_MAX,
@@ -234,9 +236,13 @@ export function resolvePlinthGeometry(
   raw: PlinthProps,
 ): ResolvedPlinthGeometry {
   const width = clamp(raw.width, PLINTH_WIDTH_MIN, PLINTH_WIDTH_MAX);
+  const depth = clamp(
+    raw.depth ?? PLINTH_DEFAULT_DEPTH,
+    PLINTH_DEPTH_MIN,
+    PLINTH_DEPTH_MAX,
+  );
 
   // Fixed dimensions
-  const depth = PLINTH_DEPTH;
   const thickness = PLINTH_THICKNESS;
   const height = PLINTH_HEIGHT;
 

@@ -47,6 +47,8 @@ export const TENON_MAX_RATIO = 0.8; // Tenon max 80% of post dimension
 // Plinth dimension constraints
 export const PLINTH_WIDTH_MIN = 3;
 export const PLINTH_WIDTH_MAX = 20;
+export const PLINTH_DEPTH_MIN = 5.6;
+export const PLINTH_DEPTH_MAX = 6;
 
 // Base dimension constraints (same as plinth width)
 export const BASE_WIDTH_MIN = 3;
@@ -87,17 +89,17 @@ export const RAFTER_DEFAULT_UV_SCALE = 0.2;
 export const BIRDSMOUTH_MAX_RATIO = 0.75;
 
 // Plinth fixed dimensions (constants)
-export const PLINTH_DEPTH = 5.85;
 export const PLINTH_THICKNESS = 0.215;
 export const PLINTH_HEIGHT = 0.3;
 
 // Plinth defaults
 export const PLINTH_DEFAULT_WIDTH = 10;
+export const PLINTH_DEFAULT_DEPTH = 6;
 
 // Base fixed dimensions
 export const BASE_DEPTH = 6;
 export const BASE_HEIGHT = 0.05;
-export const BASE_DEPTH_OFFSET = (BASE_DEPTH - PLINTH_DEPTH) / 2;
+export const BASE_DEPTH_OFFSET = (BASE_DEPTH - PLINTH_DEFAULT_DEPTH) / 2;
 
 // Base defaults
 export const BASE_DEFAULT_WIDTH = 9;

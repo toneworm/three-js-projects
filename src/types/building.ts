@@ -79,6 +79,7 @@ export type RafterProps = {
 
 export type PlinthProps = {
   width: number;
+  depth?: number;
   randomiseTextureOffset?: boolean;
 };
 

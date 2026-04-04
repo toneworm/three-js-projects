@@ -33,6 +33,9 @@ import {
   // Plate constraints
   PLATE_LENGTH_MIN,
   // Plinth constraints
+  PLINTH_DEFAULT_DEPTH,
+  PLINTH_DEPTH_MAX,
+  PLINTH_DEPTH_MIN,
   PLINTH_WIDTH_MAX,
   PLINTH_WIDTH_MIN,
   POST_DEPTH_MAX,
@@ -228,6 +231,13 @@ export function buildControls(
       const p = props as PlinthProps;
       return {
         width: num("width", p.width, PLINTH_WIDTH_MIN, PLINTH_WIDTH_MAX, 0.1),
+        depth: num(
+          "depth",
+          p.depth ?? PLINTH_DEFAULT_DEPTH,
+          PLINTH_DEPTH_MIN,
+          PLINTH_DEPTH_MAX,
+          0.1,
+        ),
       };
     }
     case "base": {
