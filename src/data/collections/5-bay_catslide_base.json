@@ -370,61 +370,122 @@
     {
       "id": "brace-f-1-x",
       "type": "knee-brace",
-      "position": [-7.1625, 2.2375, 3],
+      "position": [-7.1425, 2.24, 3],
       "rotation": [0, -1.5707963267948966, 1.5707963267948966]
     },
     {
       "id": "brace-f-2-left",
       "type": "knee-brace",
-      "position": [-4.6375, 2.2375, 3],
+      "position": [-4.6575, 2.24, 3],
       "rotation": [0, 1.5707963267948966, 1.5707963267948966]
     },
     {
       "id": "brace-f-2-right",
       "type": "knee-brace",
-      "position": [-4.2125, 2.2375, 3],
+      "position": [-4.1925, 2.24, 3],
       "rotation": [0, -1.5707963267948966, 1.5707963267948966]
     },
     {
       "id": "brace-f-3-left",
       "type": "knee-brace",
-      "position": [-1.6875, 2.2375, 3],
+      "position": [-1.7075, 2.24, 3],
       "rotation": [0, 1.5707963267948966, 1.5707963267948966]
     },
     {
       "id": "brace-f-3-right",
       "type": "knee-brace",
-      "position": [-1.2625, 2.2375, 3],
+      "position": [-1.2425, 2.24, 3],
       "rotation": [0, -1.5707963267948966, 1.5707963267948966]
     },
     {
       "id": "brace-f-4-left",
       "type": "knee-brace",
-      "position": [1.2625, 2.2375, 3],
+      "position": [1.2425, 2.24, 3],
       "rotation": [0, 1.5707963267948966, 1.5707963267948966]
     },
     {
       "id": "brace-f-4-right",
       "type": "knee-brace",
-      "position": [1.6875, 2.2375, 3],
+      "position": [1.7075, 2.24, 3],
       "rotation": [0, -1.5707963267948966, 1.5707963267948966]
     },
     {
       "id": "brace-f-5-left",
       "type": "knee-brace",
-      "position": [4.2125, 2.2375, 3],
+      "position": [4.1925, 2.24, 3],
       "rotation": [0, 1.5707963267948966, 1.5707963267948966]
     },
     {
       "id": "brace-f-5-right",
       "type": "knee-brace",
-      "position": [4.6375, 2.2375, 3],
+      "position": [4.6575, 2.24, 3],
       "rotation": [0, -1.5707963267948966, 1.5707963267948966]
     },
     {
       "id": "brace-f-6-x",
       "type": "knee-brace",
-      "position": [7.1625, 2.2375, 3],
+      "position": [7.1425, 2.24, 3],
+      "rotation": [0, 1.5707963267948966, 1.5707963267948966]
+    },
+
+    {
+      "id": "brace-b-1-x",
+      "type": "knee-brace",
+      "position": [-7.1425, 2.24, 3],
+      "rotation": [0, -1.5707963267948966, 1.5707963267948966]
+    },
+    {
+      "id": "brace-b-2-left",
+      "type": "knee-brace",
+      "position": [-4.6575, 2.24, -0.525],
+      "rotation": [0, 1.5707963267948966, 1.5707963267948966]
+    },
+    {
+      "id": "brace-b-2-right",
+      "type": "knee-brace",
+      "position": [-4.1925, 2.24, -0.525],
+      "rotation": [0, -1.5707963267948966, 1.5707963267948966]
+    },
+    {
+      "id": "brace-b-3-left",
+      "type": "knee-brace",
+      "position": [-1.7075, 2.24, -0.525],
+      "rotation": [0, 1.5707963267948966, 1.5707963267948966]
+    },
+    {
+      "id": "brace-b-3-right",
+      "type": "knee-brace",
+      "position": [-1.2425, 2.24, -0.525],
+      "rotation": [0, -1.5707963267948966, 1.5707963267948966]
+    },
+    {
+      "id": "brace-b-4-left",
+      "type": "knee-brace",
+      "position": [1.2425, 2.24, -0.525],
+      "rotation": [0, 1.5707963267948966, 1.5707963267948966]
+    },
+    {
+      "id": "brace-b-4-right",
+      "type": "knee-brace",
+      "position": [1.7075, 2.24, -0.525],
+      "rotation": [0, -1.5707963267948966, 1.5707963267948966]
+    },
+    {
+      "id": "brace-b-5-left",
+      "type": "knee-brace",
+      "position": [4.1925, 2.24, -0.525],
+      "rotation": [0, 1.5707963267948966, 1.5707963267948966]
+    },
+    {
+      "id": "brace-b-5-right",
+      "type": "knee-brace",
+      "position": [4.6575, 2.24, -0.525],
+      "rotation": [0, -1.5707963267948966, 1.5707963267948966]
+    },
+    {
+      "id": "brace-b-6-x",
+      "type": "knee-brace",
+      "position": [7.1425, 2.24, -0.525],
       "rotation": [0, 1.5707963267948966, 1.5707963267948966]
     },
 
@@ -434,7 +495,7 @@
       "position": [-7.425, 0.35, -2.875],
       "thickness": 0.05,
       "depth": 0.1,
-      "height": 1.39,
+      "height": 1.3875,
       "bottomPlumbCutAngle": 0,
       "topPlumbCutAngle": 0
     },
@@ -444,7 +505,7 @@
       "position": [-6.785, 0.35, -2.875],
       "thickness": 0.05,
       "depth": 0.1,
-      "height": 1.39,
+      "height": 1.3875,
       "bottomPlumbCutAngle": 0,
       "topPlumbCutAngle": 0
     },
@@ -454,7 +515,7 @@
       "position": [-6.195, 0.35, -2.875],
       "thickness": 0.05,
       "depth": 0.1,
-      "height": 1.39,
+      "height": 1.3875,
       "bottomPlumbCutAngle": 0,
       "topPlumbCutAngle": 0
     },
@@ -464,7 +525,7 @@
       "position": [-5.605, 0.35, -2.875],
       "thickness": 0.05,
       "depth": 0.1,
-      "height": 1.39,
+      "height": 1.3875,
       "bottomPlumbCutAngle": 0,
       "topPlumbCutAngle": 0
     },
@@ -474,7 +535,7 @@
       "position": [-5.015, 0.35, -2.875],
       "thickness": 0.05,
       "depth": 0.1,
-      "height": 1.39,
+      "height": 1.3875,
       "bottomPlumbCutAngle": 0,
       "topPlumbCutAngle": 0
     },
@@ -484,7 +545,7 @@
       "position": [-4.425, 0.35, -2.875],
       "thickness": 0.05,
       "depth": 0.1,
-      "height": 1.39,
+      "height": 1.3875,
       "bottomPlumbCutAngle": 0,
       "topPlumbCutAngle": 0
     },
@@ -494,7 +555,7 @@
       "position": [-3.835, 0.35, -2.875],
       "thickness": 0.05,
       "depth": 0.1,
-      "height": 1.39,
+      "height": 1.3875,
       "bottomPlumbCutAngle": 0,
       "topPlumbCutAngle": 0
     },
@@ -504,7 +565,7 @@
       "position": [-3.245, 0.35, -2.875],
       "thickness": 0.05,
       "depth": 0.1,
-      "height": 1.39,
+      "height": 1.3875,
       "bottomPlumbCutAngle": 0,
       "topPlumbCutAngle": 0
     },
@@ -514,7 +575,7 @@
       "position": [-2.655, 0.35, -2.875],
       "thickness": 0.05,
       "depth": 0.1,
-      "height": 1.39,
+      "height": 1.3875,
       "bottomPlumbCutAngle": 0,
       "topPlumbCutAngle": 0
     },
@@ -524,7 +585,7 @@
       "position": [-2.065, 0.35, -2.875],
       "thickness": 0.05,
       "depth": 0.1,
-      "height": 1.39,
+      "height": 1.3875,
       "bottomPlumbCutAngle": 0,
       "topPlumbCutAngle": 0
     },
@@ -534,7 +595,7 @@
       "position": [-1.475, 0.35, -2.875],
       "thickness": 0.05,
       "depth": 0.1,
-      "height": 1.39,
+      "height": 1.3875,
       "bottomPlumbCutAngle": 0,
       "topPlumbCutAngle": 0
     },
@@ -544,7 +605,7 @@
       "position": [-0.885, 0.35, -2.875],
       "thickness": 0.05,
       "depth": 0.1,
-      "height": 1.39,
+      "height": 1.3875,
       "bottomPlumbCutAngle": 0,
       "topPlumbCutAngle": 0
     },
@@ -554,7 +615,7 @@
       "position": [-0.295, 0.35, -2.875],
       "thickness": 0.05,
       "depth": 0.1,
-      "height": 1.39,
+      "height": 1.3875,
       "bottomPlumbCutAngle": 0,
       "topPlumbCutAngle": 0
     },
@@ -564,7 +625,7 @@
       "position": [0.295, 0.35, -2.875],
       "thickness": 0.05,
       "depth": 0.1,
-      "height": 1.39,
+      "height": 1.3875,
       "bottomPlumbCutAngle": 0,
       "topPlumbCutAngle": 0
     },
@@ -574,7 +635,7 @@
       "position": [0.885, 0.35, -2.875],
       "thickness": 0.05,
       "depth": 0.1,
-      "height": 1.39,
+      "height": 1.3875,
       "bottomPlumbCutAngle": 0,
       "topPlumbCutAngle": 0
     },
@@ -584,7 +645,7 @@
       "position": [1.475, 0.35, -2.875],
       "thickness": 0.05,
       "depth": 0.1,
-      "height": 1.39,
+      "height": 1.3875,
       "bottomPlumbCutAngle": 0,
       "topPlumbCutAngle": 0
     },
@@ -594,7 +655,7 @@
       "position": [2.065, 0.35, -2.875],
       "thickness": 0.05,
       "depth": 0.1,
-      "height": 1.39,
+      "height": 1.3875,
       "bottomPlumbCutAngle": 0,
       "topPlumbCutAngle": 0
     },
@@ -604,7 +665,7 @@
       "position": [2.655, 0.35, -2.875],
       "thickness": 0.05,
       "depth": 0.1,
-      "height": 1.39,
+      "height": 1.3875,
       "bottomPlumbCutAngle": 0,
       "topPlumbCutAngle": 0
     },
@@ -614,7 +675,7 @@
       "position": [3.245, 0.35, -2.875],
       "thickness": 0.05,
       "depth": 0.1,
-      "height": 1.39,
+      "height": 1.3875,
       "bottomPlumbCutAngle": 0,
       "topPlumbCutAngle": 0
     },
@@ -624,7 +685,7 @@
       "position": [3.835, 0.35, -2.875],
       "thickness": 0.05,
       "depth": 0.1,
-      "height": 1.39,
+      "height": 1.3875,
       "bottomPlumbCutAngle": 0,
       "topPlumbCutAngle": 0
     },
@@ -634,7 +695,7 @@
       "position": [4.425, 0.35, -2.875],
       "thickness": 0.05,
       "depth": 0.1,
-      "height": 1.39,
+      "height": 1.3875,
       "bottomPlumbCutAngle": 0,
       "topPlumbCutAngle": 0
     },
@@ -644,7 +705,7 @@
       "position": [5.015, 0.35, -2.875],
       "thickness": 0.05,
       "depth": 0.1,
-      "height": 1.39,
+      "height": 1.3875,
       "bottomPlumbCutAngle": 0,
       "topPlumbCutAngle": 0
     },
@@ -654,7 +715,7 @@
       "position": [5.605, 0.35, -2.875],
       "thickness": 0.05,
       "depth": 0.1,
-      "height": 1.39,
+      "height": 1.3875,
       "bottomPlumbCutAngle": 0,
       "topPlumbCutAngle": 0
     },
@@ -664,7 +725,7 @@
       "position": [6.195, 0.35, -2.875],
       "thickness": 0.05,
       "depth": 0.1,
-      "height": 1.39,
+      "height": 1.3875,
       "bottomPlumbCutAngle": 0,
       "topPlumbCutAngle": 0
     },
@@ -674,7 +735,7 @@
       "position": [6.785, 0.35, -2.875],
       "thickness": 0.05,
       "depth": 0.1,
-      "height": 1.39,
+      "height": 1.3875,
       "bottomPlumbCutAngle": 0,
       "topPlumbCutAngle": 0
     },
@@ -684,7 +745,7 @@
       "position": [7.425, 0.35, -2.875],
       "thickness": 0.05,
       "depth": 0.1,
-      "height": 1.39,
+      "height": 1.3875,
       "bottomPlumbCutAngle": 0,
       "topPlumbCutAngle": 0
     },
