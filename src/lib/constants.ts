@@ -53,6 +53,8 @@ export const PLINTH_DEPTH_MAX = 6;
 // Base dimension constraints (same as plinth width)
 export const BASE_WIDTH_MIN = 3;
 export const BASE_WIDTH_MAX = 20;
+export const BASE_DEPTH_MIN = 5.6;
+export const BASE_DEPTH_MAX = 6;
 
 // ============================================================================
 // DEFAULT VALUES (used in components)
@@ -94,15 +96,14 @@ export const PLINTH_HEIGHT = 0.3;
 
 // Plinth defaults
 export const PLINTH_DEFAULT_WIDTH = 10;
-export const PLINTH_DEFAULT_DEPTH = 6;
+export const PLINTH_DEFAULT_DEPTH = 5.85;
 
 // Base fixed dimensions
-export const BASE_DEPTH = 6;
 export const BASE_HEIGHT = 0.05;
-export const BASE_DEPTH_OFFSET = (BASE_DEPTH - PLINTH_DEFAULT_DEPTH) / 2;
 
 // Base defaults
 export const BASE_DEFAULT_WIDTH = 9;
+export const BASE_DEFAULT_DEPTH = 6;
 
 // Knee brace scale constraints
 export const KNEE_BRACE_SCALE_MIN = 0.25;

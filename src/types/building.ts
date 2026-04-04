@@ -85,6 +85,7 @@ export type PlinthProps = {
 
 export type BaseProps = {
   width: number;
+  depth?: number;
 };
 
 export type KneeBraceProps = {

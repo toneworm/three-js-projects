@@ -6,8 +6,9 @@ import { useTexture } from "@react-three/drei";
 import * as THREE from "three";
 
 import {
-  BASE_DEPTH,
-  BASE_DEPTH_OFFSET,
+  BASE_DEFAULT_DEPTH,
+  BASE_DEPTH_MAX,
+  BASE_DEPTH_MIN,
   BASE_HEIGHT,
   BASE_WIDTH_MAX,
   BASE_WIDTH_MIN,
@@ -20,6 +21,7 @@ function clamp(value: number, min: number, max: number): number {
 
 export default function Base({
   width: rawWidth,
+  depth: rawDepth,
   ...meshProps
 }: BaseProps & JSX.IntrinsicElements["mesh"]) {
   const diffuse = useTexture("/textures/brushed_concrete_rough_1k.jpg");
@@ -28,7 +30,7 @@ export default function Base({
   diffuse.colorSpace = THREE.SRGBColorSpace;
 
   const width = clamp(rawWidth, BASE_WIDTH_MIN, BASE_WIDTH_MAX);
-  const depth = BASE_DEPTH;
+  const depth = clamp(rawDepth ?? BASE_DEFAULT_DEPTH, BASE_DEPTH_MIN, BASE_DEPTH_MAX);
   const height = BASE_HEIGHT;
 
   // shrink texture down a bit
@@ -36,7 +38,7 @@ export default function Base({
 
   const { geometry, material } = useMemo(() => {
     const geo = new THREE.BoxGeometry(width, height, depth);
-    geo.translate(0, -height / 2, BASE_DEPTH_OFFSET);
+    geo.translate(0, -height / 2, 0);
 
     const mat = new THREE.MeshStandardMaterial({
       map: diffuse,

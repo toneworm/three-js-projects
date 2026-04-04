@@ -1,0 +1,172 @@
+{
+  "name": "1-bay_standard_base",
+  "description": "1-bay standard base with posts, plates, knee braces, and studding on back and right walls",
+  "components": [
+    {
+      "id": "plinth",
+      "type": "plinth",
+      "position": [0, 0, 0],
+      "width": 3.1,
+      "depth": 5.85
+    },
+    {
+      "id": "base",
+      "type": "base",
+      "position": [0, 0, 0.075],
+      "width": 3.1,
+      "depth": 6
+    },
+    {
+      "id": "sole-plate-left",
+      "type": "plate",
+      "position": [-1.4425, 0.3, 0],
+      "rotation": [0, 1.5707963267948966, 0],
+      "length": 5.85,
+      "height": 0.05,
+      "depth": 0.215,
+      "leftEnd": "block",
+      "rightEnd": "block"
+    },
+    {
+      "id": "sole-plate-right",
+      "type": "plate",
+      "position": [1.4425, 0.3, 0],
+      "rotation": [0, 1.5707963267948966, 0],
+      "length": 5.85,
+      "height": 0.05,
+      "depth": 0.215,
+      "leftEnd": "block",
+      "rightEnd": "block"
+    },
+    {
+      "id": "sole-plate-back",
+      "type": "plate",
+      "position": [0, 0.3, -2.8175],
+      "length": 2.67,
+      "height": 0.05,
+      "depth": 0.215,
+      "leftEnd": "block",
+      "rightEnd": "block"
+    },
+    {
+      "id": "post-f-1",
+      "type": "post",
+      "position": [-1.475, 0, 3],
+      "height": 2.475,
+      "width": 0.15,
+      "depth": 0.15,
+      "topEnd": "tenon",
+      "bottomEnd": "block",
+      "endSize": 0.15
+    },
+    {
+      "id": "post-m-1",
+      "type": "post",
+      "position": [-1.475, 0.35, 0.075],
+      "height": 2.125,
+      "width": 0.15,
+      "depth": 0.15,
+      "topEnd": "tenon",
+      "bottomEnd": "block",
+      "endSize": 0.15
+    },
+    {
+      "id": "post-b-1",
+      "type": "post",
+      "position": [-1.475, 0.35, -2.85],
+      "height": 2.125,
+      "width": 0.15,
+      "depth": 0.15,
+      "topEnd": "tenon",
+      "bottomEnd": "block",
+      "endSize": 0.15
+    },
+    {
+      "id": "post-f-2",
+      "type": "post",
+      "position": [1.475, 0, 3],
+      "height": 2.475,
+      "width": 0.15,
+      "depth": 0.15,
+      "topEnd": "tenon",
+      "bottomEnd": "block",
+      "endSize": 0.15
+    },
+    {
+      "id": "post-m-2",
+      "type": "post",
+      "position": [1.475, 0.35, 0.075],
+      "height": 2.125,
+      "width": 0.15,
+      "depth": 0.15,
+      "topEnd": "tenon",
+      "bottomEnd": "block",
+      "endSize": 0.15
+    },
+    {
+      "id": "post-b-2",
+      "type": "post",
+      "position": [1.475, 0.35, -2.85],
+      "height": 2.125,
+      "width": 0.15,
+      "depth": 0.15,
+      "topEnd": "tenon",
+      "bottomEnd": "block",
+      "endSize": 0.15
+    },
+    {
+      "id": "plate-f-1",
+      "type": "plate",
+      "position": [0, 2.4, 3],
+      "length": 3.1,
+      "height": 0.15,
+      "depth": 0.15,
+      "leftEnd": "bottom",
+      "rightEnd": "bottom"
+    },
+    {
+      "id": "plate-b-1",
+      "type": "plate",
+      "position": [0, 2.4, -2.85],
+      "length": 3.1,
+      "height": 0.15,
+      "depth": 0.15,
+      "leftEnd": "bottom",
+      "rightEnd": "bottom"
+    },
+    {
+      "id": "plate-side-left",
+      "type": "plate",
+      "position": [-1.475, 2.4, 0.075],
+      "rotation": [0, 1.5707963267948966, 0],
+      "length": 6,
+      "height": 0.15,
+      "depth": 0.15,
+      "leftEnd": "top",
+      "rightEnd": "top"
+    },
+    {
+      "id": "plate-side-right",
+      "type": "plate",
+      "position": [1.475, 2.4, 0.075],
+      "rotation": [0, 1.5707963267948966, 0],
+      "length": 6,
+      "height": 0.15,
+      "depth": 0.15,
+      "leftEnd": "top",
+      "rightEnd": "top"
+    },
+    {
+      "id": "brace-f-1-x",
+      "type": "knee-brace",
+      "position": [-1.2625, 2.2375, 3],
+      "rotation": [0, -1.5707963267948966, 1.5707963267948966]
+    },
+    {
+      "id": "brace-f-2-x",
+      "type": "knee-brace",
+      "position": [1.2625, 2.2375, 3],
+      "rotation": [0, 1.5707963267948966, 1.5707963267948966]
+    }
+  ]
+}

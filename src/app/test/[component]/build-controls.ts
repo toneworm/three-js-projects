@@ -4,6 +4,9 @@ import type { Schema } from "leva/dist/declarations/src/types";
 
 import {
   // Base constraints
+  BASE_DEFAULT_DEPTH,
+  BASE_DEPTH_MAX,
+  BASE_DEPTH_MIN,
   BASE_WIDTH_MAX,
   BASE_WIDTH_MIN,
   // Cladding constraints
@@ -244,6 +247,13 @@ export function buildControls(
       const p = props as BaseProps;
       return {
         width: num("width", p.width, BASE_WIDTH_MIN, BASE_WIDTH_MAX, 0.1),
+        depth: num(
+          "depth",
+          p.depth ?? BASE_DEFAULT_DEPTH,
+          BASE_DEPTH_MIN,
+          BASE_DEPTH_MAX,
+          0.1,
+        ),
       };
     }
     case "knee-brace": {

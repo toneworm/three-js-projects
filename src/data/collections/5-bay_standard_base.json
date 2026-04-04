@@ -6,13 +6,15 @@
       "id": "plinth",
       "type": "plinth",
       "position": [0, 0, 0],
-      "width": 14.9
+      "width": 14.9,
+      "depth": 5.85
     },
     {
       "id": "base",
       "type": "base",
-      "position": [0, 0, 0],
-      "width": 14.9
+      "position": [0, 0, 0.075],
+      "width": 14.9,
+      "depth": 6
     },
     {
       "id": "sole-plate-left",
