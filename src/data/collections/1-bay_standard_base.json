@@ -320,7 +320,7 @@
       "topPlumbCutAngle": -0.7854
     },
     {
-      "id": "diag-r-front",
+      "id": "diag-f-right",
       "type": "studding",
       "position": [1.475, 0.35, 1.85],
       "rotation": [0, -1.5708, -0.7854],
@@ -331,7 +331,7 @@
       "topPlumbCutAngle": 0.7854
     },
     {
-      "id": "diag-r-back",
+      "id": "diag-b-right",
       "type": "studding",
       "position": [1.475, 0.35, -1.7],
       "rotation": [0, -1.5708, 0.7854],

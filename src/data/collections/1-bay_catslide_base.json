@@ -60,20 +60,9 @@
       "endSize": 0.15
     },
     {
-      "id": "post-m-1",
-      "type": "post",
-      "position": [-1.475, 0.35, 0.075],
-      "height": 2.125,
-      "width": 0.15,
-      "depth": 0.15,
-      "topEnd": "tenon",
-      "bottomEnd": "block",
-      "endSize": 0.15
-    },
-    {
       "id": "post-b-1",
       "type": "post",
-      "position": [-1.475, 0.35, -2.85],
+      "position": [-1.475, 0.35, -0.525],
       "height": 2.125,
       "width": 0.15,
       "depth": 0.15,
@@ -93,20 +82,9 @@
       "endSize": 0.15
     },
     {
-      "id": "post-m-2",
-      "type": "post",
-      "position": [1.475, 0.35, 0.075],
-      "height": 2.125,
-      "width": 0.15,
-      "depth": 0.15,
-      "topEnd": "tenon",
-      "bottomEnd": "block",
-      "endSize": 0.15
-    },
-    {
       "id": "post-b-2",
       "type": "post",
-      "position": [1.475, 0.35, -2.85],
+      "position": [1.475, 0.35, -0.525],
       "height": 2.125,
       "width": 0.15,
       "depth": 0.15,
@@ -118,43 +96,56 @@
       "id": "plate-f-1",
       "type": "plate",
       "position": [0, 2.4, 3],
-      "length": 3.1,
+      "length": 3.35,
       "height": 0.15,
       "depth": 0.15,
-      "leftEnd": "bottom",
-      "rightEnd": "bottom"
+      "leftEnd": "bevel",
+      "rightEnd": "bevel",
+      "bevelOffset": 0.02
     },
     {
       "id": "plate-b-1",
       "type": "plate",
-      "position": [0, 2.4, -2.85],
-      "length": 3.1,
+      "position": [0, 2.4, -0.525],
+      "length": 3.35,
       "height": 0.15,
       "depth": 0.15,
-      "leftEnd": "bottom",
-      "rightEnd": "bottom"
+      "leftEnd": "bevel",
+      "rightEnd": "bevel",
+      "bevelOffset": 0.02
+    },
+    {
+      "id": "plate-b-cs",
+      "type": "plate",
+      "position": [0, 1.7375, -2.875],
+      "length": 3.1,
+      "height": 0.05,
+      "depth": 0.1,
+      "leftEnd": "block",
+      "rightEnd": "block",
+      "bevelOffset": 0.02
     },
     {
       "id": "plate-side-left",
       "type": "plate",
-      "position": [-1.475, 2.4, 0.075],
+      "position": [-1.475, 2.55, 1.2375],
       "rotation": [0, 1.5707963267948966, 0],
-      "length": 6,
-      "height": 0.15,
+      "length": 3.675,
+      "height": 0.1,
       "depth": 0.15,
-      "leftEnd": "top",
-      "rightEnd": "top"
+      "leftEnd": "block",
+      "rightEnd": "block"
     },
     {
       "id": "plate-side-right",
       "type": "plate",
-      "position": [1.475, 2.4, 0.075],
+      "position": [1.475, 2.55, 1.2375],
       "rotation": [0, 1.5707963267948966, 0],
-      "length": 6,
-      "height": 0.15,
+      "length": 3.675,
+      "height": 0.1,
       "depth": 0.15,
-      "leftEnd": "top",
-      "rightEnd": "top"
+      "leftEnd": "block",
+      "rightEnd": "block"
     },
     {
       "id": "brace-f-1-x",
@@ -167,6 +158,212 @@
       "type": "knee-brace",
       "position": [1.2625, 2.2375, 3],
       "rotation": [0, 1.5707963267948966, 1.5707963267948966]
+    },
+    {
+      "id": "stud-b-l",
+      "type": "studding",
+      "position": [-1.525, 0.35, -2.875],
+      "thickness": 0.05,
+      "depth": 0.1,
+      "height": 1.39,
+      "bottomPlumbCutAngle": 0,
+      "topPlumbCutAngle": 0
+    },
+    {
+      "id": "stud-b-1",
+      "type": "studding",
+      "position": [-0.78, 0.35, -2.875],
+      "thickness": 0.05,
+      "depth": 0.1,
+      "height": 1.39,
+      "bottomPlumbCutAngle": 0,
+      "topPlumbCutAngle": 0
+    },
+    {
+      "id": "stud-b-2",
+      "type": "studding",
+      "position": [0, 0.35, -2.875],
+      "thickness": 0.05,
+      "depth": 0.1,
+      "height": 1.39,
+      "bottomPlumbCutAngle": 0,
+      "topPlumbCutAngle": 0
+    },
+    {
+      "id": "stud-b-3",
+      "type": "studding",
+      "position": [0.78, 0.35, -2.875],
+      "thickness": 0.05,
+      "depth": 0.1,
+      "height": 1.39,
+      "bottomPlumbCutAngle": 0,
+      "topPlumbCutAngle": 0
+    },
+    {
+      "id": "stud-b-r",
+      "type": "studding",
+      "position": [1.525, 0.35, -2.875],
+      "thickness": 0.05,
+      "depth": 0.1,
+      "height": 1.39,
+      "bottomPlumbCutAngle": 0,
+      "topPlumbCutAngle": 0
+    },
+
+    {
+      "id": "stud-r-1",
+      "type": "studding",
+      "position": [1.475, 0.35, 2.45],
+      "rotation": [0, 1.5707963267948966, 0],
+      "thickness": 0.05,
+      "depth": 0.1,
+      "height": 2.2,
+      "bottomPlumbCutAngle": 0,
+      "topPlumbCutAngle": 0
+    },
+    {
+      "id": "stud-r-2",
+      "type": "studding",
+      "position": [1.475, 0.35, 1.83],
+      "rotation": [0, 1.5707963267948966, 0],
+      "thickness": 0.05,
+      "depth": 0.1,
+      "height": 2.2,
+      "bottomPlumbCutAngle": 0,
+      "topPlumbCutAngle": 0
+    },
+    {
+      "id": "stud-r-3",
+      "type": "studding",
+      "position": [1.475, 0.35, 1.245],
+      "rotation": [0, 1.5707963267948966, 0],
+      "thickness": 0.05,
+      "depth": 0.1,
+      "height": 2.2,
+      "bottomPlumbCutAngle": 0,
+      "topPlumbCutAngle": 0
+    },
+    {
+      "id": "stud-r-4",
+      "type": "studding",
+      "position": [1.475, 0.35, 0.645],
+      "rotation": [0, 1.5707963267948966, 0],
+      "thickness": 0.05,
+      "depth": 0.1,
+      "height": 2.2,
+      "bottomPlumbCutAngle": 0,
+      "topPlumbCutAngle": 0
+    },
+    {
+      "id": "stud-r-5",
+      "type": "studding",
+      "position": [1.475, 0.35, 0.125],
+      "rotation": [0, 1.5707963267948966, 0],
+      "thickness": 0.05,
+      "depth": 0.1,
+      "height": 2.2,
+      "bottomPlumbCutAngle": 0,
+      "topPlumbCutAngle": 0
+    },
+    {
+      "id": "diag-f-right",
+      "type": "studding",
+      "position": [1.475, 0.35, 1.85],
+      "rotation": [0, -1.5708, -0.7854],
+      "thickness": 0.05,
+      "depth": 0.098,
+      "height": 1.525,
+      "bottomPlumbCutAngle": 0.7854,
+      "topPlumbCutAngle": -0.7854
+    },
+    {
+      "id": "diag-b-right",
+      "type": "studding",
+      "position": [1.475, 0.35, 0.625],
+      "rotation": [0, -1.5708, 0.7854],
+      "thickness": 0.05,
+      "depth": 0.098,
+      "height": 1.525,
+      "bottomPlumbCutAngle": 0.7854,
+      "topPlumbCutAngle": 0.7854
+    },
+
+    {
+      "id": "stud-l-1",
+      "type": "studding",
+      "position": [-1.475, 0.35, 2.45],
+      "rotation": [0, 1.5707963267948966, 0],
+      "thickness": 0.05,
+      "depth": 0.1,
+      "height": 2.2,
+      "bottomPlumbCutAngle": 0,
+      "topPlumbCutAngle": 0
+    },
+    {
+      "id": "stud-l-2",
+      "type": "studding",
+      "position": [-1.475, 0.35, 1.83],
+      "rotation": [0, 1.5707963267948966, 0],
+      "thickness": 0.05,
+      "depth": 0.1,
+      "height": 2.2,
+      "bottomPlumbCutAngle": 0,
+      "topPlumbCutAngle": 0
+    },
+    {
+      "id": "stud-l-3",
+      "type": "studding",
+      "position": [-1.475, 0.35, 1.245],
+      "rotation": [0, 1.5707963267948966, 0],
+      "thickness": 0.05,
+      "depth": 0.1,
+      "height": 2.2,
+      "bottomPlumbCutAngle": 0,
+      "topPlumbCutAngle": 0
+    },
+    {
+      "id": "stud-l-4",
+      "type": "studding",
+      "position": [-1.475, 0.35, 0.645],
+      "rotation": [0, 1.5707963267948966, 0],
+      "thickness": 0.05,
+      "depth": 0.1,
+      "height": 2.2,
+      "bottomPlumbCutAngle": 0,
+      "topPlumbCutAngle": 0
+    },
+    {
+      "id": "stud-l-5",
+      "type": "studding",
+      "position": [-1.475, 0.35, 0.125],
+      "rotation": [0, 1.5707963267948966, 0],
+      "thickness": 0.05,
+      "depth": 0.1,
+      "height": 2.2,
+      "bottomPlumbCutAngle": 0,
+      "topPlumbCutAngle": 0
+    },
+    {
+      "id": "diag-f-left",
+      "type": "studding",
+      "position": [-1.475, 0.35, 1.85],
+      "rotation": [0, -1.5708, -0.7854],
+      "thickness": 0.05,
+      "depth": 0.098,
+      "height": 1.525,
+      "bottomPlumbCutAngle": 0.7854,
+      "topPlumbCutAngle": -0.7854
+    },
+    {
+      "id": "diag-b-left",
+      "type": "studding",
+      "position": [-1.475, 0.35, 0.625],
+      "rotation": [0, -1.5708, 0.7854],
+      "thickness": 0.05,
+      "depth": 0.098,
+      "height": 1.525,
+      "bottomPlumbCutAngle": 0.7854,
+      "topPlumbCutAngle": 0.7854
     }
   ]
 }
