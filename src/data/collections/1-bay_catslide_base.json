@@ -1,6 +1,6 @@
 {
-  "name": "1-bay_standard_base",
-  "description": "1-bay standard base with posts, plates, knee braces, and studding on back and right walls",
+  "name": "1-bay_catslide_base",
+  "description": "1-bay catslide base with posts, plates, knee braces, and studding on back, left and right walls",
   "components": [
     {
       "id": "plinth",
