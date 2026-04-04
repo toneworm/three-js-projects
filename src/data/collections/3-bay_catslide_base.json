@@ -1,0 +1,616 @@
+{
+  "name": "3-bay_catslide_base",
+  "description": "3-bay catslide base with posts, plates, knee braces, and studding on back, left and right walls",
+  "components": [
+    {
+      "id": "plinth",
+      "type": "plinth",
+      "position": [0, 0, 0],
+      "width": 9.0,
+      "depth": 5.85
+    },
+    {
+      "id": "base",
+      "type": "base",
+      "position": [0, 0, 0.075],
+      "width": 9.0,
+      "depth": 6
+    },
+    {
+      "id": "sole-plate-left",
+      "type": "plate",
+      "position": [-4.3925, 0.3, 0],
+      "rotation": [0, 1.5707963267948966, 0],
+      "length": 5.85,
+      "height": 0.05,
+      "depth": 0.215,
+      "leftEnd": "block",
+      "rightEnd": "block"
+    },
+    {
+      "id": "sole-plate-right",
+      "type": "plate",
+      "position": [4.3925, 0.3, 0],
+      "rotation": [0, 1.5707963267948966, 0],
+      "length": 5.85,
+      "height": 0.05,
+      "depth": 0.215,
+      "leftEnd": "block",
+      "rightEnd": "block"
+    },
+    {
+      "id": "sole-plate-back",
+      "type": "plate",
+      "position": [0, 0.3, -2.8175],
+      "length": 8.57,
+      "height": 0.05,
+      "depth": 0.215,
+      "leftEnd": "block",
+      "rightEnd": "block"
+    },
+
+    {
+      "id": "post-f-1",
+      "type": "post",
+      "position": [-4.425, 0, 3],
+      "height": 2.475,
+      "width": 0.15,
+      "depth": 0.15,
+      "topEnd": "tenon",
+      "bottomEnd": "block",
+      "endSize": 0.15
+    },
+    {
+      "id": "post-b-1",
+      "type": "post",
+      "position": [-4.425, 0.35, -0.525],
+      "height": 2.125,
+      "width": 0.15,
+      "depth": 0.15,
+      "topEnd": "tenon",
+      "bottomEnd": "block",
+      "endSize": 0.15
+    },
+    {
+      "id": "post-f-2",
+      "type": "post",
+      "position": [-1.475, 0, 3],
+      "height": 2.475,
+      "width": 0.15,
+      "depth": 0.15,
+      "topEnd": "tenon",
+      "bottomEnd": "block",
+      "endSize": 0.15
+    },
+    {
+      "id": "post-b-2",
+      "type": "post",
+      "position": [-1.475, 0.35, -0.525],
+      "height": 2.125,
+      "width": 0.15,
+      "depth": 0.15,
+      "topEnd": "tenon",
+      "bottomEnd": "block",
+      "endSize": 0.15
+    },
+    {
+      "id": "post-f-3",
+      "type": "post",
+      "position": [1.475, 0, 3],
+      "height": 2.475,
+      "width": 0.15,
+      "depth": 0.15,
+      "topEnd": "tenon",
+      "bottomEnd": "block",
+      "endSize": 0.15
+    },
+    {
+      "id": "post-b-3",
+      "type": "post",
+      "position": [1.475, 0.35, -0.525],
+      "height": 2.125,
+      "width": 0.15,
+      "depth": 0.15,
+      "topEnd": "tenon",
+      "bottomEnd": "block",
+      "endSize": 0.15
+    },
+    {
+      "id": "post-f-4",
+      "type": "post",
+      "position": [4.425, 0, 3],
+      "height": 2.475,
+      "width": 0.15,
+      "depth": 0.15,
+      "topEnd": "tenon",
+      "bottomEnd": "block",
+      "endSize": 0.15
+    },
+    {
+      "id": "post-b-4",
+      "type": "post",
+      "position": [4.425, 0.35, -0.525],
+      "height": 2.125,
+      "width": 0.15,
+      "depth": 0.15,
+      "topEnd": "tenon",
+      "bottomEnd": "block",
+      "endSize": 0.15
+    },
+
+    {
+      "id": "plate-f-1",
+      "type": "plate",
+      "position": [-3.015, 2.4, 3],
+      "length": 3.23,
+      "height": 0.15,
+      "depth": 0.15,
+      "leftEnd": "bevel",
+      "rightEnd": "bottom",
+      "bevelOffset": 0.02
+    },
+    {
+      "id": "plate-f-2",
+      "type": "plate",
+      "position": [0, 2.4, 3],
+      "length": 3.1,
+      "height": 0.15,
+      "depth": 0.15,
+      "leftEnd": "top",
+      "rightEnd": "bottom"
+    },
+    {
+      "id": "plate-f-3",
+      "type": "plate",
+      "position": [3.015, 2.4, 3],
+      "length": 3.23,
+      "height": 0.15,
+      "depth": 0.15,
+      "leftEnd": "top",
+      "rightEnd": "bevel",
+      "bevelOffset": 0.02
+    },
+    {
+      "id": "plate-b-1",
+      "type": "plate",
+      "position": [-3.015, 2.4, -0.525],
+      "length": 3.23,
+      "height": 0.15,
+      "depth": 0.15,
+      "leftEnd": "bevel",
+      "rightEnd": "bottom",
+      "bevelOffset": 0.02
+    },
+    {
+      "id": "plate-b-2",
+      "type": "plate",
+      "position": [0, 2.4, -0.525],
+      "length": 3.1,
+      "height": 0.15,
+      "depth": 0.15,
+      "leftEnd": "top",
+      "rightEnd": "bottom"
+    },
+    {
+      "id": "plate-b-3",
+      "type": "plate",
+      "position": [3.015, 2.4, -0.525],
+      "length": 3.23,
+      "height": 0.15,
+      "depth": 0.15,
+      "leftEnd": "top",
+      "rightEnd": "bevel",
+      "bevelOffset": 0.02
+    },
+    {
+      "id": "plate-b-cs",
+      "type": "plate",
+      "position": [0, 1.7375, -2.875],
+      "length": 9.0,
+      "height": 0.05,
+      "depth": 0.1,
+      "leftEnd": "block",
+      "rightEnd": "block"
+    },
+    {
+      "id": "plate-side-left",
+      "type": "plate",
+      "position": [-4.425, 2.55, 1.2375],
+      "rotation": [0, 1.5707963267948966, 0],
+      "length": 3.675,
+      "height": 0.1,
+      "depth": 0.15,
+      "leftEnd": "block",
+      "rightEnd": "block"
+    },
+    {
+      "id": "plate-side-right",
+      "type": "plate",
+      "position": [4.425, 2.55, 1.2375],
+      "rotation": [0, 1.5707963267948966, 0],
+      "length": 3.675,
+      "height": 0.1,
+      "depth": 0.15,
+      "leftEnd": "block",
+      "rightEnd": "block"
+    },
+    {
+      "id": "tie-beam-2",
+      "type": "plate",
+      "position": [-1.475, 2.475, 1.2375],
+      "rotation": [0, 1.5707963267948966, 0],
+      "length": 3.675,
+      "height": 0.15,
+      "depth": 0.15,
+      "jointSize": 0.15,
+      "leftEnd": "top",
+      "rightEnd": "top"
+    },
+    {
+      "id": "tie-beam-3",
+      "type": "plate",
+      "position": [1.475, 2.475, 1.2375],
+      "rotation": [0, 1.5707963267948966, 0],
+      "length": 3.675,
+      "height": 0.15,
+      "depth": 0.15,
+      "jointSize": 0.15,
+      "leftEnd": "top",
+      "rightEnd": "top"
+    },
+
+    {
+      "id": "brace-f-1-x",
+      "type": "knee-brace",
+      "position": [-4.2125, 2.2375, 3],
+      "rotation": [0, -1.5707963267948966, 1.5707963267948966]
+    },
+    {
+      "id": "brace-f-2-left",
+      "type": "knee-brace",
+      "position": [-1.6875, 2.2375, 3],
+      "rotation": [0, 1.5707963267948966, 1.5707963267948966]
+    },
+    {
+      "id": "brace-f-2-right",
+      "type": "knee-brace",
+      "position": [-1.2625, 2.2375, 3],
+      "rotation": [0, -1.5707963267948966, 1.5707963267948966]
+    },
+    {
+      "id": "brace-f-3-left",
+      "type": "knee-brace",
+      "position": [1.2625, 2.2375, 3],
+      "rotation": [0, 1.5707963267948966, 1.5707963267948966]
+    },
+    {
+      "id": "brace-f-3-right",
+      "type": "knee-brace",
+      "position": [1.6875, 2.2375, 3],
+      "rotation": [0, -1.5707963267948966, 1.5707963267948966]
+    },
+    {
+      "id": "brace-f-4-x",
+      "type": "knee-brace",
+      "position": [4.2125, 2.2375, 3],
+      "rotation": [0, 1.5707963267948966, 1.5707963267948966]
+    },
+
+    {
+      "id": "stud-b-l",
+      "type": "studding",
+      "position": [-4.475, 0.35, -2.875],
+      "thickness": 0.05,
+      "depth": 0.1,
+      "height": 1.39,
+      "bottomPlumbCutAngle": 0,
+      "topPlumbCutAngle": 0
+    },
+    {
+      "id": "stud-b-1",
+      "type": "studding",
+      "position": [-3.835, 0.35, -2.875],
+      "thickness": 0.05,
+      "depth": 0.1,
+      "height": 1.39,
+      "bottomPlumbCutAngle": 0,
+      "topPlumbCutAngle": 0
+    },
+    {
+      "id": "stud-b-2",
+      "type": "studding",
+      "position": [-3.245, 0.35, -2.875],
+      "thickness": 0.05,
+      "depth": 0.1,
+      "height": 1.39,
+      "bottomPlumbCutAngle": 0,
+      "topPlumbCutAngle": 0
+    },
+    {
+      "id": "stud-b-3",
+      "type": "studding",
+      "position": [-2.655, 0.35, -2.875],
+      "thickness": 0.05,
+      "depth": 0.1,
+      "height": 1.39,
+      "bottomPlumbCutAngle": 0,
+      "topPlumbCutAngle": 0
+    },
+    {
+      "id": "stud-b-4",
+      "type": "studding",
+      "position": [-2.065, 0.35, -2.875],
+      "thickness": 0.05,
+      "depth": 0.1,
+      "height": 1.39,
+      "bottomPlumbCutAngle": 0,
+      "topPlumbCutAngle": 0
+    },
+    {
+      "id": "stud-b-5",
+      "type": "studding",
+      "position": [-1.475, 0.35, -2.875],
+      "thickness": 0.05,
+      "depth": 0.1,
+      "height": 1.39,
+      "bottomPlumbCutAngle": 0,
+      "topPlumbCutAngle": 0
+    },
+    {
+      "id": "stud-b-6",
+      "type": "studding",
+      "position": [-0.885, 0.35, -2.875],
+      "thickness": 0.05,
+      "depth": 0.1,
+      "height": 1.39,
+      "bottomPlumbCutAngle": 0,
+      "topPlumbCutAngle": 0
+    },
+    {
+      "id": "stud-b-7",
+      "type": "studding",
+      "position": [-0.295, 0.35, -2.875],
+      "thickness": 0.05,
+      "depth": 0.1,
+      "height": 1.39,
+      "bottomPlumbCutAngle": 0,
+      "topPlumbCutAngle": 0
+    },
+    {
+      "id": "stud-b-8",
+      "type": "studding",
+      "position": [0.295, 0.35, -2.875],
+      "thickness": 0.05,
+      "depth": 0.1,
+      "height": 1.39,
+      "bottomPlumbCutAngle": 0,
+      "topPlumbCutAngle": 0
+    },
+    {
+      "id": "stud-b-9",
+      "type": "studding",
+      "position": [0.885, 0.35, -2.875],
+      "thickness": 0.05,
+      "depth": 0.1,
+      "height": 1.39,
+      "bottomPlumbCutAngle": 0,
+      "topPlumbCutAngle": 0
+    },
+    {
+      "id": "stud-b-10",
+      "type": "studding",
+      "position": [1.475, 0.35, -2.875],
+      "thickness": 0.05,
+      "depth": 0.1,
+      "height": 1.39,
+      "bottomPlumbCutAngle": 0,
+      "topPlumbCutAngle": 0
+    },
+    {
+      "id": "stud-b-11",
+      "type": "studding",
+      "position": [2.065, 0.35, -2.875],
+      "thickness": 0.05,
+      "depth": 0.1,
+      "height": 1.39,
+      "bottomPlumbCutAngle": 0,
+      "topPlumbCutAngle": 0
+    },
+    {
+      "id": "stud-b-12",
+      "type": "studding",
+      "position": [2.655, 0.35, -2.875],
+      "thickness": 0.05,
+      "depth": 0.1,
+      "height": 1.39,
+      "bottomPlumbCutAngle": 0,
+      "topPlumbCutAngle": 0
+    },
+    {
+      "id": "stud-b-13",
+      "type": "studding",
+      "position": [3.245, 0.35, -2.875],
+      "thickness": 0.05,
+      "depth": 0.1,
+      "height": 1.39,
+      "bottomPlumbCutAngle": 0,
+      "topPlumbCutAngle": 0
+    },
+    {
+      "id": "stud-b-14",
+      "type": "studding",
+      "position": [3.835, 0.35, -2.875],
+      "thickness": 0.05,
+      "depth": 0.1,
+      "height": 1.39,
+      "bottomPlumbCutAngle": 0,
+      "topPlumbCutAngle": 0
+    },
+    {
+      "id": "stud-b-r",
+      "type": "studding",
+      "position": [4.475, 0.35, -2.875],
+      "thickness": 0.05,
+      "depth": 0.1,
+      "height": 1.39,
+      "bottomPlumbCutAngle": 0,
+      "topPlumbCutAngle": 0
+    },
+
+    {
+      "id": "stud-r-1",
+      "type": "studding",
+      "position": [4.425, 0.35, 2.45],
+      "rotation": [0, 1.5707963267948966, 0],
+      "thickness": 0.05,
+      "depth": 0.1,
+      "height": 2.2,
+      "bottomPlumbCutAngle": 0,
+      "topPlumbCutAngle": 0
+    },
+    {
+      "id": "stud-r-2",
+      "type": "studding",
+      "position": [4.425, 0.35, 1.83],
+      "rotation": [0, 1.5707963267948966, 0],
+      "thickness": 0.05,
+      "depth": 0.1,
+      "height": 2.2,
+      "bottomPlumbCutAngle": 0,
+      "topPlumbCutAngle": 0
+    },
+    {
+      "id": "stud-r-3",
+      "type": "studding",
+      "position": [4.425, 0.35, 1.245],
+      "rotation": [0, 1.5707963267948966, 0],
+      "thickness": 0.05,
+      "depth": 0.1,
+      "height": 2.2,
+      "bottomPlumbCutAngle": 0,
+      "topPlumbCutAngle": 0
+    },
+    {
+      "id": "stud-r-4",
+      "type": "studding",
+      "position": [4.425, 0.35, 0.645],
+      "rotation": [0, 1.5707963267948966, 0],
+      "thickness": 0.05,
+      "depth": 0.1,
+      "height": 2.2,
+      "bottomPlumbCutAngle": 0,
+      "topPlumbCutAngle": 0
+    },
+    {
+      "id": "stud-r-5",
+      "type": "studding",
+      "position": [4.425, 0.35, 0.125],
+      "rotation": [0, 1.5707963267948966, 0],
+      "thickness": 0.05,
+      "depth": 0.1,
+      "height": 2.2,
+      "bottomPlumbCutAngle": 0,
+      "topPlumbCutAngle": 0
+    },
+    {
+      "id": "stud-l-1",
+      "type": "studding",
+      "position": [-4.425, 0.35, 2.45],
+      "rotation": [0, 1.5707963267948966, 0],
+      "thickness": 0.05,
+      "depth": 0.1,
+      "height": 2.2,
+      "bottomPlumbCutAngle": 0,
+      "topPlumbCutAngle": 0
+    },
+    {
+      "id": "stud-l-2",
+      "type": "studding",
+      "position": [-4.425, 0.35, 1.83],
+      "rotation": [0, 1.5707963267948966, 0],
+      "thickness": 0.05,
+      "depth": 0.1,
+      "height": 2.2,
+      "bottomPlumbCutAngle": 0,
+      "topPlumbCutAngle": 0
+    },
+    {
+      "id": "stud-l-3",
+      "type": "studding",
+      "position": [-4.425, 0.35, 1.245],
+      "rotation": [0, 1.5707963267948966, 0],
+      "thickness": 0.05,
+      "depth": 0.1,
+      "height": 2.2,
+      "bottomPlumbCutAngle": 0,
+      "topPlumbCutAngle": 0
+    },
+    {
+      "id": "stud-l-4",
+      "type": "studding",
+      "position": [-4.425, 0.35, 0.645],
+      "rotation": [0, 1.5707963267948966, 0],
+      "thickness": 0.05,
+      "depth": 0.1,
+      "height": 2.2,
+      "bottomPlumbCutAngle": 0,
+      "topPlumbCutAngle": 0
+    },
+    {
+      "id": "stud-l-5",
+      "type": "studding",
+      "position": [-4.425, 0.35, 0.125],
+      "rotation": [0, 1.5707963267948966, 0],
+      "thickness": 0.05,
+      "depth": 0.1,
+      "height": 2.2,
+      "bottomPlumbCutAngle": 0,
+      "topPlumbCutAngle": 0
+    },
+
+    {
+      "id": "diag-f-right",
+      "type": "studding",
+      "position": [4.425, 0.35, 1.85],
+      "rotation": [0, -1.5708, -0.7854],
+      "thickness": 0.05,
+      "depth": 0.098,
+      "height": 1.525,
+      "bottomPlumbCutAngle": 0.7854,
+      "topPlumbCutAngle": -0.7854
+    },
+    {
+      "id": "diag-b-right",
+      "type": "studding",
+      "position": [4.425, 0.35, 0.625],
+      "rotation": [0, -1.5708, 0.7854],
+      "thickness": 0.05,
+      "depth": 0.098,
+      "height": 1.525,
+      "bottomPlumbCutAngle": 0.7854,
+      "topPlumbCutAngle": 0.7854
+    },
+    {
+      "id": "diag-f-left",
+      "type": "studding",
+      "position": [-4.425, 0.35, 1.85],
+      "rotation": [0, -1.5708, -0.7854],
+      "thickness": 0.05,
+      "depth": 0.098,
+      "height": 1.525,
+      "bottomPlumbCutAngle": 0.7854,
+      "topPlumbCutAngle": -0.7854
+    },
+    {
+      "id": "diag-b-left",
+      "type": "studding",
+      "position": [-4.425, 0.35, 0.625],
+      "rotation": [0, -1.5708, 0.7854],
+      "thickness": 0.05,
+      "depth": 0.098,
+      "height": 1.525,
+      "bottomPlumbCutAngle": 0.7854,
+      "topPlumbCutAngle": 0.7854
+    }
+  ]
+}
