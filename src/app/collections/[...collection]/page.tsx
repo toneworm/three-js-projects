@@ -11,8 +11,10 @@ import type { Collection } from "@/types/building";
 
 export default function CollectionPage() {
   const params = useParams();
-  const collection = params.collection as string;
+  const collectionSegments = params.collection as string[];
+  const collection = collectionSegments.join("/");
   const [data, setData] = useState<Collection | null>(null);
+  const [error, setError] = useState<string | null>(null);
 
   useEffect(() => {
     async function fetchCollection() {
@@ -22,6 +24,7 @@ export default function CollectionPage() {
         setData(json.default);
       } catch (error) {
         console.error(`Failed to load collection "${collection}":`, error);
+        setError(`Failed to load collection "${collection}"`);
       }
     }
 
@@ -34,7 +37,7 @@ export default function CollectionPage() {
     <div className="h-[calc(100vh-3.5rem)] w-full relative">
       <div className="absolute top-4 left-4 z-10 flex gap-2">
         <span className="text-sm text-muted-foreground">
-          Collection: {collection}
+          {error ? error : `Collection: ${collection}`}
         </span>
       </div>
       <Canvas

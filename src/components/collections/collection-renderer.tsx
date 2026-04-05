@@ -1,5 +1,3 @@
-// components/collections/collection-renderer.tsx
-
 import Base from "@/components/building/base";
 import Cladding from "@/components/building/cladding";
 import KneeBrace from "@/components/building/knee-brace";
