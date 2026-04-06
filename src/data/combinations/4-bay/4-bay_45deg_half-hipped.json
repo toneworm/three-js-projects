@@ -1,0 +1,8 @@
+{
+  "name": "Four Bay 45 Degree Half-Hipped Roof",
+  "description": "Four Bay 45 Degree Half-Hipped Roof combination",
+  "collections": [
+    "bases/4-bay_standard_base",
+    "roofs/4-bay/4-bay_45deg_half-hipped_roof"
+  ]
+}
