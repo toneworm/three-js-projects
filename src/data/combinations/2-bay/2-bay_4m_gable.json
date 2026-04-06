@@ -1,0 +1,5 @@
+{
+  "name": "Two Bay 4m Gable Roof",
+  "description": "Two Bay 4m Gable Roof combination",
+  "collections": ["bases/2-bay_standard_base", "roofs/2-bay/2-bay_4m_gable_roof"]
+}

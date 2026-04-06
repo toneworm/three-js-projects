@@ -1,0 +1,5 @@
+{
+  "name": "Four Bay 45deg Hipped Roof",
+  "description": "Four Bay 45deg Hipped Roof combination",
+  "collections": ["bases/4-bay_standard_base", "roofs/4-bay/4-bay_45deg_hipped_roof"]
+}

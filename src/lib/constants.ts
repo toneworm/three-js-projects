@@ -19,7 +19,7 @@ export const POST_HEIGHT_MIN = 1;
 export const POST_HEIGHT_MAX = 5.0;
 
 // Plate dimension constraints
-export const PLATE_LENGTH_MIN = 1.0;
+export const PLATE_LENGTH_MIN = 0.05;
 export const PLATE_LENGTH_MAX = 15.0;
 export const PLATE_DEPTH_MIN = 0.01;
 export const PLATE_DEPTH_MAX = 0.3;

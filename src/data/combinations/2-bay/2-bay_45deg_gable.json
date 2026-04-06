@@ -1,0 +1,8 @@
+{
+  "name": "Two Bay 45deg Gable Roof",
+  "description": "Two Bay 45deg Gable Roof combination",
+  "collections": [
+    "bases/2-bay_standard_base",
+    "roofs/2-bay/2-bay_45deg_gable_roof"
+  ]
+}

@@ -1,0 +1,135 @@
+{
+  "name": "One bay 4m gable roof",
+  "components": [
+    {
+      "id": "king-beam",
+      "type": "plate",
+      "position": [0, 4.115, 0.075],
+      "length": 3.0,
+      "height": 0.15,
+      "depth": 0.05,
+      "leftEnd": "block",
+      "rightEnd": "block"
+    },
+    {
+      "id": "rafter-f-1",
+      "type": "rafter",
+      "position": [-1.475, 2.55, 2.925],
+      "rotation": [0, 1.5708, 0],
+      "height": 0.17,
+      "depth": 0.04,
+      "run": 2.825,
+      "angle": 0.5,
+      "mouthSize": 0.15,
+      "cheekAngle": 0
+    },
+    {
+      "id": "rafter-f-2",
+      "type": "rafter",
+      "position": [-0.75, 2.55, 2.925],
+      "rotation": [0, 1.5708, 0],
+      "height": 0.17,
+      "depth": 0.04,
+      "run": 2.825,
+      "angle": 0.5,
+      "mouthSize": 0.15,
+      "cheekAngle": 0
+    },
+    {
+      "id": "rafter-f-3",
+      "type": "rafter",
+      "position": [0, 2.55, 2.925],
+      "rotation": [0, 1.5708, 0],
+      "height": 0.17,
+      "depth": 0.04,
+      "run": 2.825,
+      "angle": 0.5,
+      "mouthSize": 0.15,
+      "cheekAngle": 0
+    },
+    {
+      "id": "rafter-f-4",
+      "type": "rafter",
+      "position": [0.75, 2.55, 2.925],
+      "rotation": [0, 1.5708, 0],
+      "height": 0.17,
+      "depth": 0.04,
+      "run": 2.825,
+      "angle": 0.5,
+      "mouthSize": 0.15,
+      "cheekAngle": 0
+    },
+    {
+      "id": "rafter-f-5",
+      "type": "rafter",
+      "position": [1.475, 2.55, 2.925],
+      "rotation": [0, 1.5708, 0],
+      "height": 0.17,
+      "depth": 0.04,
+      "run": 2.825,
+      "angle": 0.5,
+      "mouthSize": 0.15,
+      "cheekAngle": 0
+    },
+    {
+      "id": "rafter-b-1",
+      "type": "rafter",
+      "position": [-1.475, 2.55, -2.775],
+      "rotation": [0, -1.5708, 0],
+      "height": 0.17,
+      "depth": 0.04,
+      "run": 2.825,
+      "angle": 0.5,
+      "mouthSize": 0.15,
+      "cheekAngle": 0
+    },
+    {
+      "id": "rafter-b-2",
+      "type": "rafter",
+      "position": [-0.75, 2.55, -2.775],
+      "rotation": [0, -1.5708, 0],
+      "height": 0.17,
+      "depth": 0.04,
+      "run": 2.825,
+      "angle": 0.5,
+      "mouthSize": 0.15,
+      "cheekAngle": 0
+    },
+    {
+      "id": "rafter-b-3",
+      "type": "rafter",
+      "position": [0, 2.55, -2.775],
+      "rotation": [0, -1.5708, 0],
+      "height": 0.17,
+      "depth": 0.04,
+      "run": 2.825,
+      "angle": 0.5,
+      "mouthSize": 0.15,
+      "cheekAngle": 0
+    },
+    {
+      "id": "rafter-b-4",
+      "type": "rafter",
+      "position": [0.75, 2.55, -2.775],
+      "rotation": [0, -1.5708, 0],
+      "height": 0.17,
+      "depth": 0.04,
+      "run": 2.825,
+      "angle": 0.5,
+      "mouthSize": 0.15,
+      "cheekAngle": 0
+    },
+    {
+      "id": "rafter-b-5",
+      "type": "rafter",
+      "position": [1.475, 2.55, -2.775],
+      "rotation": [0, -1.5708, 0],
+      "height": 0.17,
+      "depth": 0.04,
+      "run": 2.825,
+      "angle": 0.5,
+      "mouthSize": 0.15,
+      "cheekAngle": 0
+    }
+  ]
+}

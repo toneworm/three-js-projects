@@ -1,0 +1,8 @@
+{
+  "name": "Three Bay Catslide Gable Roof",
+  "description": "Three Bay Catslide Gable Roof combination",
+  "collections": [
+    "bases/3-bay_catslide_base",
+    "roofs/3-bay/3-bay_catslide_gable_roof"
+  ]
+}
