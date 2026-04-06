@@ -1,0 +1,8 @@
+{
+  "name": "Four Bay 4m Half-Hipped Roof",
+  "description": "Four Bay 4m Half-Hipped Roof combination",
+  "collections": [
+    "bases/4-bay_standard_base",
+    "roofs/4-bay/4-bay_4m_half-hipped_roof"
+  ]
+}
