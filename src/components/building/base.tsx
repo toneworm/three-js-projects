@@ -30,7 +30,11 @@ export default function Base({
   diffuse.colorSpace = THREE.SRGBColorSpace;
 
   const width = clamp(rawWidth, BASE_WIDTH_MIN, BASE_WIDTH_MAX);
-  const depth = clamp(rawDepth ?? BASE_DEFAULT_DEPTH, BASE_DEPTH_MIN, BASE_DEPTH_MAX);
+  const depth = clamp(
+    rawDepth ?? BASE_DEFAULT_DEPTH,
+    BASE_DEPTH_MIN,
+    BASE_DEPTH_MAX,
+  );
   const height = BASE_HEIGHT;
 
   // shrink texture down a bit
@@ -47,7 +51,7 @@ export default function Base({
     });
 
     return { geometry: geo, material: mat };
-  }, [width, diffuse]);
+  }, [width, diffuse, depth]);
 
   useEffect(() => {
     return () => {

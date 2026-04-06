@@ -1,5 +1,8 @@
 {
   "name": "Five Bay 45deg Hipped Roof",
   "description": "Five Bay 45deg Hipped Roof combination",
-  "collections": ["bases/5-bay_standard_base", "roofs/5-bay/5-bay_45deg_hipped_roof"]
+  "collections": [
+    "bases/5-bay_standard_base",
+    "roofs/5-bay/5-bay_45deg_hipped_roof"
+  ]
 }

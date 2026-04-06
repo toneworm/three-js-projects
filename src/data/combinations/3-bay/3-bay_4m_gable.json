@@ -1,5 +1,8 @@
 {
   "name": "Three Bay 4m Gable Roof",
   "description": "Three Bay 4m Gable Roof combination",
-  "collections": ["bases/3-bay_standard_base", "roofs/3-bay/3-bay_4m_gable_roof"]
+  "collections": [
+    "bases/3-bay_standard_base",
+    "roofs/3-bay/3-bay_4m_gable_roof"
+  ]
 }

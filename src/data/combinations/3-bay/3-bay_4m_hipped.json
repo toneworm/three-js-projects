@@ -1,5 +1,8 @@
 {
   "name": "Three Bay 4m Hipped Roof",
   "description": "Three Bay 4m Hipped Roof combination",
-  "collections": ["bases/3-bay_standard_base", "roofs/3-bay/3-bay_4m_hipped_roof"]
+  "collections": [
+    "bases/3-bay_standard_base",
+    "roofs/3-bay/3-bay_4m_hipped_roof"
+  ]
 }
