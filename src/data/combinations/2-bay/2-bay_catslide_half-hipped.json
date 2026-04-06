@@ -1,0 +1,8 @@
+{
+  "name": "Two Bay Catslide Half-Hipped Roof",
+  "description": "Two Bay Catslide Half-Hipped Roof combination",
+  "collections": [
+    "bases/2-bay_catslide_base",
+    "roofs/2-bay/2-bay_catslide_half-hipped_roof"
+  ]
+}

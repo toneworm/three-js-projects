@@ -1,0 +1,8 @@
+{
+  "name": "Three Bay Catslide Half-Hipped Roof",
+  "description": "Three Bay Catslide Half-Hipped Roof combination",
+  "collections": [
+    "bases/3-bay_catslide_base",
+    "roofs/3-bay/3-bay_catslide_half-hipped_roof"
+  ]
+}
