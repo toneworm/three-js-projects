@@ -12,9 +12,9 @@ import type { OrbitControls as OrbitControlsImpl } from "three-stdlib";
 import { CollectionRenderer } from "@/components/collections/collection-renderer";
 import { Loader } from "@/components/general/loader";
 import { Button } from "@/components/ui/button";
-import { cn } from "@/lib/utils";
-import { DEMO_GROUPS, DEMO_ITEMS } from "@/data/demo-manifest";
 import type { DemoItem } from "@/data/demo-manifest";
+import { DEMO_GROUPS, DEMO_ITEMS } from "@/data/demo-manifest";
+import { cn } from "@/lib/utils";
 import type { Collection, Vec3 } from "@/types/building";
 
 interface CameraPreset {

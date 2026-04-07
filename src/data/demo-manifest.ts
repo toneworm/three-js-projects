@@ -1,19 +1,16 @@
 // This is a hard-coded demo file and won't change (number of bays and variants are fixed and have been for years)
 
-import type { Collection } from "@/types/building";
-
+import base1Catslide from "@/data/collections/bases/1-bay_catslide_base.json";
 // ─── Bases ────────────────────────────────────────────────────────────────────
 import base1Standard from "@/data/collections/bases/1-bay_standard_base.json";
-import base1Catslide from "@/data/collections/bases/1-bay_catslide_base.json";
-import base2Standard from "@/data/collections/bases/2-bay_standard_base.json";
 import base2Catslide from "@/data/collections/bases/2-bay_catslide_base.json";
-import base3Standard from "@/data/collections/bases/3-bay_standard_base.json";
+import base2Standard from "@/data/collections/bases/2-bay_standard_base.json";
 import base3Catslide from "@/data/collections/bases/3-bay_catslide_base.json";
-import base4Standard from "@/data/collections/bases/4-bay_standard_base.json";
+import base3Standard from "@/data/collections/bases/3-bay_standard_base.json";
 import base4Catslide from "@/data/collections/bases/4-bay_catslide_base.json";
-import base5Standard from "@/data/collections/bases/5-bay_standard_base.json";
+import base4Standard from "@/data/collections/bases/4-bay_standard_base.json";
 import base5Catslide from "@/data/collections/bases/5-bay_catslide_base.json";
-
+import base5Standard from "@/data/collections/bases/5-bay_standard_base.json";
 // ─── Roofs: 1-bay ─────────────────────────────────────────────────────────────
 import roof1Bay4mGable from "@/data/collections/roofs/1-bay/1-bay_4m_gable_roof.json";
 import roof1Bay4mHalfHipped from "@/data/collections/roofs/1-bay/1-bay_4m_half-hipped_roof.json";
@@ -24,7 +21,6 @@ import roof1Bay45degHipped from "@/data/collections/roofs/1-bay/1-bay_45deg_hipp
 import roof1BayCatslideGable from "@/data/collections/roofs/1-bay/1-bay_catslide_gable_roof.json";
 import roof1BayCatslideHalfHipped from "@/data/collections/roofs/1-bay/1-bay_catslide_half-hipped_roof.json";
 import roof1BayCatslideHipped from "@/data/collections/roofs/1-bay/1-bay_catslide_hipped_roof.json";
-
 // ─── Roofs: 2-bay ─────────────────────────────────────────────────────────────
 import roof2Bay4mGable from "@/data/collections/roofs/2-bay/2-bay_4m_gable_roof.json";
 import roof2Bay4mHalfHipped from "@/data/collections/roofs/2-bay/2-bay_4m_half-hipped_roof.json";
@@ -35,7 +31,6 @@ import roof2Bay45degHipped from "@/data/collections/roofs/2-bay/2-bay_45deg_hipp
 import roof2BayCatslideGable from "@/data/collections/roofs/2-bay/2-bay_catslide_gable_roof.json";
 import roof2BayCatslideHalfHipped from "@/data/collections/roofs/2-bay/2-bay_catslide_half-hipped_roof.json";
 import roof2BayCatslideHipped from "@/data/collections/roofs/2-bay/2-bay_catslide_hipped_roof.json";
-
 // ─── Roofs: 3-bay ─────────────────────────────────────────────────────────────
 import roof3Bay4mGable from "@/data/collections/roofs/3-bay/3-bay_4m_gable_roof.json";
 import roof3Bay4mHalfHipped from "@/data/collections/roofs/3-bay/3-bay_4m_half-hipped_roof.json";
@@ -46,7 +41,6 @@ import roof3Bay45degHipped from "@/data/collections/roofs/3-bay/3-bay_45deg_hipp
 import roof3BayCatslideGable from "@/data/collections/roofs/3-bay/3-bay_catslide_gable_roof.json";
 import roof3BayCatslideHalfHipped from "@/data/collections/roofs/3-bay/3-bay_catslide_half-hipped_roof.json";
 import roof3BayCatslideHipped from "@/data/collections/roofs/3-bay/3-bay_catslide_hipped_roof.json";
-
 // ─── Roofs: 4-bay ─────────────────────────────────────────────────────────────
 import roof4Bay4mGable from "@/data/collections/roofs/4-bay/4-bay_4m_gable_roof.json";
 import roof4Bay4mHalfHipped from "@/data/collections/roofs/4-bay/4-bay_4m_half-hipped_roof.json";
@@ -57,7 +51,6 @@ import roof4Bay45degHipped from "@/data/collections/roofs/4-bay/4-bay_45deg_hipp
 import roof4BayCatslideGable from "@/data/collections/roofs/4-bay/4-bay_catslide_gable_roof.json";
 import roof4BayCatslideHalfHipped from "@/data/collections/roofs/4-bay/4-bay_catslide_half-hipped_roof.json";
 import roof4BayCatslideHipped from "@/data/collections/roofs/4-bay/4-bay_catslide_hipped_roof.json";
-
 // ─── Roofs: 5-bay ─────────────────────────────────────────────────────────────
 import roof5Bay4mGable from "@/data/collections/roofs/5-bay/5-bay_4m_gable_roof.json";
 import roof5Bay4mHalfHipped from "@/data/collections/roofs/5-bay/5-bay_4m_half-hipped_roof.json";
@@ -68,6 +61,7 @@ import roof5Bay45degHipped from "@/data/collections/roofs/5-bay/5-bay_45deg_hipp
 import roof5BayCatslideGable from "@/data/collections/roofs/5-bay/5-bay_catslide_gable_roof.json";
 import roof5BayCatslideHalfHipped from "@/data/collections/roofs/5-bay/5-bay_catslide_half-hipped_roof.json";
 import roof5BayCatslideHipped from "@/data/collections/roofs/5-bay/5-bay_catslide_hipped_roof.json";
+import type { Collection } from "@/types/building";
 
 // ─── Types ────────────────────────────────────────────────────────────────────
 
