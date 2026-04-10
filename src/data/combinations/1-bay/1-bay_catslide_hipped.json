@@ -1,8 +1,5 @@
 {
   "name": "One Bay Catslide Hipped Roof",
   "description": "One Bay Catslide Hipped Roof combination",
-  "collections": [
-    "bases/1-bay_catslide_base",
-    "roofs/1-bay/1-bay_catslide_hipped_roof"
-  ]
+  "collections": ["bases/1-bay_catslide_base"]
 }

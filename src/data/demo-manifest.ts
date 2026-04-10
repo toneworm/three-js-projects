@@ -109,7 +109,7 @@ function merge(
     name: `${bays}-bay ${PITCH_LABELS[pitch]} ${END_LABELS[end]}`,
     components: [
       ...((base.components ?? []) as Collection["components"]),
-      ...((roof.components ?? []) as Collection["components"]),
+      ...((roof?.components ?? []) as Collection["components"]),
     ],
   };
 }
@@ -143,7 +143,10 @@ type BaseMap = Record<
 >;
 type RoofMap = Record<
   1 | 2 | 3 | 4 | 5,
-  Record<Pitch, Record<EndStyle, { name: string; components?: unknown[] }>>
+  Record<
+    Pitch,
+    Partial<Record<EndStyle, { name: string; components?: unknown[] }>>
+  >
 >;
 
 const BASES: BaseMap = {
@@ -159,17 +162,17 @@ const ROOFS: RoofMap = {
     "4m": {
       gable: roof1Bay4mGable,
       "half-hipped": roof1Bay4mHalfHipped,
-      hipped: roof1Bay4mHipped,
+      // hipped: roof1Bay4mHipped,
     },
     "45deg": {
       gable: roof1Bay45degGable,
       "half-hipped": roof1Bay45degHalfHipped,
-      hipped: roof1Bay45degHipped,
+      // hipped: roof1Bay45degHipped,
     },
     catslide: {
       gable: roof1BayCatslideGable,
       "half-hipped": roof1BayCatslideHalfHipped,
-      hipped: roof1BayCatslideHipped,
+      // hipped: roof1BayCatslideHipped,
     },
   },
   2: {
@@ -247,11 +250,12 @@ function buildGroups(): DemoGroup[] {
     bays,
     label: `${bays}-Bay`,
     items: PITCHES.flatMap((pitch) =>
-      ENDS.map((end) => {
+      ENDS.flatMap((end) => {
         const base =
           pitch === "catslide" ? BASES[bays].catslide : BASES[bays].standard;
         const roof = ROOFS[bays][pitch][end];
-        return item(bays, pitch, end, base, roof);
+        if (!roof) return [];
+        return [item(bays, pitch, end, base, roof)];
       }),
     ),
   }));
