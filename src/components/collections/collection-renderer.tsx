@@ -56,6 +56,16 @@ function CollectionComponent(item: CollectionItem) {
 }
 
 export function CollectionRenderer({ collection }: { collection: Collection }) {
+  if (process.env.NODE_ENV !== "production") {
+    const ids = collection.components?.map((c) => c.id) ?? [];
+    const dupes = ids.filter((id, i) => ids.indexOf(id) !== i);
+    if (dupes.length) {
+      console.error(`[${collection.name}] duplicate component ids:`, [
+        ...new Set(dupes),
+      ]);
+    }
+  }
+
   return (
     <group>
       {collection.components?.map((item) => (

@@ -5,8 +5,8 @@
     {
       "id": "king-beam",
       "type": "plate",
-      "position": [0, 3.458, 1.2375],
-      "length": 14.9,
+      "position": [0, 3.5, 1.2375],
+      "length": 14.95,
       "height": 0.15,
       "depth": 0.05,
       "leftEnd": "block",

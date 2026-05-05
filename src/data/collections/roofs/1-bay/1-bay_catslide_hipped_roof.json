@@ -5,89 +5,62 @@
     {
       "id": "hip-rafter-front-left",
       "type": "rafter",
-      "position": [-1.4, 2.55, 2.925],
+      "position": [-1.4, 2.65, 2.925],
       "rotation": [0, 0.7854, 0],
       "height": 0.17,
       "depth": 0.06,
-      "run": 2.35,
+      "run": 1.945,
       "angle": 0.366519,
       "mouthSize": 0.225,
-      "cheekAngle": -0.7854
+      "cheekAngle": 0.7854
     },
     {
       "id": "hip-rafter-front-right",
       "type": "rafter",
-      "position": [1.4, 2.55, 2.925],
+      "position": [1.4, 2.65, 2.925],
       "rotation": [0, 2.3562, 0],
       "height": 0.17,
       "depth": 0.06,
-      "run": 2.35,
-      "angle": 0.366519,
-      "mouthSize": 0.225,
-      "cheekAngle": 0.7854
-    },
-    {
-      "id": "hip-rafter-back-left",
-      "type": "rafter",
-      "position": [-1.4, 2.55, -0.45],
-      "rotation": [0, -0.7854, 0],
-      "height": 0.17,
-      "depth": 0.06,
-      "run": 2.35,
-      "angle": 0.366519,
-      "mouthSize": 0.225,
-      "cheekAngle": 0.7854
-    },
-    {
-      "id": "hip-rafter-back-right",
-      "type": "rafter",
-      "position": [1.4, 2.55, -0.45],
-      "rotation": [0, -2.3562, 0],
-      "height": 0.17,
-      "depth": 0.06,
-      "run": 2.35,
+      "run": 1.945,
       "angle": 0.366519,
       "mouthSize": 0.225,
       "cheekAngle": -0.7854
     },
-
     {
-      "id": "rafter-f-common-1",
+      "id": "hip-rafter-back-left",
       "type": "rafter",
-      "position": [0, 2.55, 3],
-      "rotation": [0, 0, 0],
+      "position": [-1.4, 2.65, -0.45],
+      "rotation": [0, -0.7854, 0],
       "height": 0.17,
-      "depth": 0.04,
-      "run": 1.6625,
-      "angle": 0.5,
-      "mouthSize": 0.15,
-      "cheekAngle": 0
+      "depth": 0.06,
+      "run": 1.945,
+      "angle": 0.366519,
+      "mouthSize": 0.225,
+      "cheekAngle": -0.7854
+    },
+    {
+      "id": "hip-rafter-back-right",
+      "type": "rafter",
+      "position": [1.4, 2.65, -0.45],
+      "rotation": [0, -2.3562, 0],
+      "height": 0.17,
+      "depth": 0.06,
+      "run": 1.945,
+      "angle": 0.366519,
+      "mouthSize": 0.225,
+      "cheekAngle": 0.7854
     },
 
     {
-      "id": "rafter-b-common-1",
-      "type": "rafter",
-      "position": [0, 2.55, -0.45],
-      "rotation": [0, -1.5708, 0],
-      "height": 0.17,
-      "depth": 0.04,
-      "run": 1.6625,
-      "angle": 0.5,
-      "mouthSize": 0.15,
-      "cheekAngle": 0
-    },
-
-    {
-      "id": "rafter-r-common-1",
-      "type": "rafter",
-      "position": [1.4, 2.55, 1.2375],
-      "rotation": [0, 3.1416, 0],
-      "height": 0.17,
-      "depth": 0.04,
-      "run": 1.62,
-      "angle": 0.5,
-      "mouthSize": 0.15,
-      "cheekAngle": 0
+      "id": "king-beam",
+      "type": "plate",
+      "position": [0, 3.4275, 1.24],
+      "rotation": [0, 1.5708, 0],
+      "length": 0.715,
+      "height": 0.15,
+      "depth": 0.05,
+      "leftEnd": "block",
+      "rightEnd": "block"
     },
 
     {

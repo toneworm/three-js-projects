@@ -162,17 +162,17 @@ const ROOFS: RoofMap = {
     "4m": {
       gable: roof1Bay4mGable,
       "half-hipped": roof1Bay4mHalfHipped,
-      // hipped: roof1Bay4mHipped,
+      hipped: roof1Bay4mHipped,
     },
     "45deg": {
       gable: roof1Bay45degGable,
       "half-hipped": roof1Bay45degHalfHipped,
-      // hipped: roof1Bay45degHipped,
+      hipped: roof1Bay45degHipped,
     },
     catslide: {
       gable: roof1BayCatslideGable,
       "half-hipped": roof1BayCatslideHalfHipped,
-      // hipped: roof1BayCatslideHipped,
+      hipped: roof1BayCatslideHipped,
     },
   },
   2: {
@@ -254,6 +254,7 @@ function buildGroups(): DemoGroup[] {
         const base =
           pitch === "catslide" ? BASES[bays].catslide : BASES[bays].standard;
         const roof = ROOFS[bays][pitch][end];
+
         if (!roof) return [];
         return [item(bays, pitch, end, base, roof)];
       }),

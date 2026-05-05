@@ -1,5 +1,8 @@
 {
   "name": "One Bay 45deg Hipped Roof",
   "description": "One Bay 45deg Hipped Roof combination",
-  "collections": ["bases/1-bay_standard_base"]
+  "collections": [
+    "bases/1-bay_standard_base",
+    "roofs/1-bay/1-bay_45deg_hipped_roof"
+  ]
 }
