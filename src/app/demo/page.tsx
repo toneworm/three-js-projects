@@ -9,15 +9,15 @@ import {
 } from "@react-three/drei";
 import { Canvas } from "@react-three/fiber";
 import type { OrbitControls as OrbitControlsImpl } from "three-stdlib";
-import { cn } from "@/lib/utils";
 
 import { CollectionRenderer } from "@/components/collections/collection-renderer";
 import { Loader } from "@/components/general/loader";
 import { Button } from "@/components/ui/button";
 import type { DemoItem } from "@/data/demo-manifest";
 import { DEMO_GROUPS, DEMO_ITEMS } from "@/data/demo-manifest";
-import type { Collection, Vec3 } from "@/types/building";
 import { useCameraLogger } from "@/hooks/use-camera-logger";
+import { cn } from "@/lib/utils";
+import type { Collection, Vec3 } from "@/types/building";
 
 interface CameraPreset {
   position: Vec3;
